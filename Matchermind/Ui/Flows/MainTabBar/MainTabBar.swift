@@ -10,23 +10,30 @@ import SwiftUI
 struct MainTabBar: View {
     var body: some View {
         TabView {
-            Text("Flow learn")
-                .tabItem{
-                    TabItem(image: Image(systemName: "book"),
-                            caption: "Learn")
-                }
+            NavigationStack {
+                MainLFlView()
+            }
+            .tabItem{
+                TabItem(image: Image(systemName: "book"),
+                        caption: "Learn")
+            }
             
-            Text("Flow add")
-                .tabItem {
-                    TabItem(image: Image(systemName: "plus.message"),
-                            caption: "Quick add")
-                }
+            NavigationStack {
+                Text("Flow add")
+                
+            }
+            .tabItem {
+                TabItem(image: Image(systemName: "plus.message"),
+                        caption: "Quick add")
+            }
             
-            Text("Flow edit")
-                .tabItem{
-                    TabItem(image: Image(systemName: "wrench.and.screwdriver.fill"),
-                            caption: "Edit")
-                }
+            NavigationStack {
+                Text("Flow edit")
+            }
+            .tabItem{
+                TabItem(image: Image(systemName: "wrench.and.screwdriver.fill"),
+                        caption: "Edit")
+            }
         }
     }
 }

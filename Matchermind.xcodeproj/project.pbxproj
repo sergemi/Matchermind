@@ -19,6 +19,11 @@
 		8F9000942CAD7F00005C7822 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8F9000932CAD7F00005C7822 /* FirebaseFirestore */; };
 		8F9000982CAD887A005C7822 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9000972CAD887A005C7822 /* MainTabBar.swift */; };
 		8F90009C2CAD8C2D005C7822 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F90009B2CAD8C2D005C7822 /* TabItem.swift */; };
+		8F90009F2CADB43E005C7822 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F90009E2CADB43E005C7822 /* AuthService.swift */; };
+		8F9000A22CADF13B005C7822 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9000A12CADF13B005C7822 /* LoginView.swift */; };
+		8F9000A52CAE0CC4005C7822 /* NavLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9000A42CAE0CC4005C7822 /* NavLink.swift */; };
+		8F9000AA2CAE85C9005C7822 /* MainLFlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9000A92CAE85C8005C7822 /* MainLFlView.swift */; };
+		8F9000AD2CAE9763005C7822 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9000AC2CAE9763005C7822 /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +58,11 @@
 		8F90008D2CAD76DA005C7822 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8F9000972CAD887A005C7822 /* MainTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		8F90009B2CAD8C2D005C7822 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
+		8F90009E2CADB43E005C7822 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		8F9000A12CADF13B005C7822 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		8F9000A42CAE0CC4005C7822 /* NavLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavLink.swift; sourceTree = "<group>"; };
+		8F9000A92CAE85C8005C7822 /* MainLFlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLFlView.swift; sourceTree = "<group>"; };
+		8F9000AC2CAE9763005C7822 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,9 +116,11 @@
 		8F9000612CAD5874005C7822 /* Matchermind */ = {
 			isa = PBXGroup;
 			children = (
+				8F9000A32CAE0CAD005C7822 /* Models */,
 				8F9000622CAD5874005C7822 /* MatchermindApp.swift */,
 				8F9000992CAD8B3A005C7822 /* Ui */,
 				8F9000642CAD5874005C7822 /* ContentView.swift */,
+				8F90009D2CADA174005C7822 /* Services */,
 				8F9000662CAD5876005C7822 /* Assets.xcassets */,
 				8F9000682CAD5876005C7822 /* Matchermind.entitlements */,
 				8F90008D2CAD76DA005C7822 /* GoogleService-Info.plist */,
@@ -152,6 +164,11 @@
 		8F9000952CAD8851005C7822 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				8F9000A62CAE8503005C7822 /* LearnFlow */,
+				8F9000A72CAE8510005C7822 /* QuickAddFlow */,
+				8F9000A82CAE853A005C7822 /* EditFlow */,
+				8F9000A02CADF11D005C7822 /* AuthFlow */,
+				8F9000AB2CAE96F1005C7822 /* ProfileFlow */,
 				8F9000962CAD885F005C7822 /* MainTabBar */,
 			);
 			path = Flows;
@@ -180,6 +197,60 @@
 				8F90009B2CAD8C2D005C7822 /* TabItem.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		8F90009D2CADA174005C7822 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8F90009E2CADB43E005C7822 /* AuthService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		8F9000A02CADF11D005C7822 /* AuthFlow */ = {
+			isa = PBXGroup;
+			children = (
+				8F9000A12CADF13B005C7822 /* LoginView.swift */,
+			);
+			path = AuthFlow;
+			sourceTree = "<group>";
+		};
+		8F9000A32CAE0CAD005C7822 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8F9000A42CAE0CC4005C7822 /* NavLink.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8F9000A62CAE8503005C7822 /* LearnFlow */ = {
+			isa = PBXGroup;
+			children = (
+				8F9000A92CAE85C8005C7822 /* MainLFlView.swift */,
+			);
+			path = LearnFlow;
+			sourceTree = "<group>";
+		};
+		8F9000A72CAE8510005C7822 /* QuickAddFlow */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = QuickAddFlow;
+			sourceTree = "<group>";
+		};
+		8F9000A82CAE853A005C7822 /* EditFlow */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = EditFlow;
+			sourceTree = "<group>";
+		};
+		8F9000AB2CAE96F1005C7822 /* ProfileFlow */ = {
+			isa = PBXGroup;
+			children = (
+				8F9000AC2CAE9763005C7822 /* ProfileView.swift */,
+			);
+			path = ProfileFlow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,8 +391,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F9000A22CADF13B005C7822 /* LoginView.swift in Sources */,
+				8F9000AD2CAE9763005C7822 /* ProfileView.swift in Sources */,
 				8F9000982CAD887A005C7822 /* MainTabBar.swift in Sources */,
+				8F9000A52CAE0CC4005C7822 /* NavLink.swift in Sources */,
 				8F9000652CAD5874005C7822 /* ContentView.swift in Sources */,
+				8F90009F2CADB43E005C7822 /* AuthService.swift in Sources */,
+				8F9000AA2CAE85C9005C7822 /* MainLFlView.swift in Sources */,
 				8F90009C2CAD8C2D005C7822 /* TabItem.swift in Sources */,
 				8F9000632CAD5874005C7822 /* MatchermindApp.swift in Sources */,
 			);

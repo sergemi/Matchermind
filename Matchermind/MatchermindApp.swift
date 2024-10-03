@@ -14,7 +14,8 @@ struct MatchermindApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            ContentView<AuthService>(authService: AuthService())
         }
     }
 }

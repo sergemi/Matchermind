@@ -9,10 +9,21 @@ import SwiftUI
 
 struct MainLFlView: View {
     var body: some View {
-        Text("MainLFView")
+            VStack {
+                Text("Learn")
+        }
+        .toolbar {
+            NavigationLink {
+                ProfileView<AuthService>()
+            } label: {
+                Label("User Profile", systemImage: "person.crop.circle")
+            }
+        }
     }
 }
 
 #Preview {
-    MainLFView()
+    NavigationStack {
+        MainLFlView()
+    }
 }

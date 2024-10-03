@@ -7,12 +7,41 @@
 
 import SwiftUI
 
-struct LoginView: View {
+struct LoginView<AuthServiceProxy>: View where AuthServiceProxy: AuthServiceProtocol {
+    @EnvironmentObject var authService: AuthServiceProxy
+    
+    @State private var email: String = ""
+    @State private var password: String = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("User: \(authService.user?.email)")
+            TextField("Email", text: $email)
+                .autocorrectionDisabled()
+                .autocapitalization(.none)
+            
+            
+            TextField("Password", text: $password)
+                .autocorrectionDisabled()
+                .autocapitalization(.none)
+            
+            Spacer()
+            
+            Button {
+                Task {
+                    try await authService.login(email: email, password: password)
+                }
+            } label: {
+                Text("Login")
+            }
+        }
+        .padding()
     }
 }
 
 #Preview {
-    LoginView()
+    let mocAuth = MockAuthService(email: "aaa@gmail.com")
+    
+    return LoginView<MockAuthService>()
+        .environmentObject(mocAuth)
 }

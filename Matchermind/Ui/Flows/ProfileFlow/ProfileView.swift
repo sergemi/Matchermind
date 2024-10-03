@@ -7,12 +7,27 @@
 
 import SwiftUI
 
-struct ProfileView: View {
+struct ProfileView<AuthServiceProxy>: View where AuthServiceProxy: AuthServiceProtocol {
+    @EnvironmentObject var authService: AuthServiceProxy
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("User: \(authService.user?.email)")
+            Spacer()
+            Button {
+                Task {
+                    try authService.logOut()
+                }
+            } label: {
+                Text("Logout")
+            }
+        }
     }
 }
 
 #Preview {
-    ProfileView()
+    let mocAuth = MockAuthService(email: "aaa@gmail.com")
+    
+    return ProfileView<MockAuthService>()
+        .environmentObject(mocAuth)
 }

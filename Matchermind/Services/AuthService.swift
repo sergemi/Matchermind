@@ -10,7 +10,7 @@ import Combine
 import FirebaseAuth
 
 struct User: Equatable, Identifiable {
-    let id = UUID()
+    let id: String
     let email: String
 }
 
@@ -27,13 +27,14 @@ class AuthService: AuthServiceProtocol {
     
     init() {
         // Подписываемся на изменения состояния аутентификации
-        _ = Auth.auth().addStateDidChangeListener { [weak self] _, user in
+        _ = Auth.auth().addStateDidChangeListener { [weak self] _, firUser in
 //            self?.user = user?.email
-            guard let userEmail = user?.email else {
+            guard let firUser = firUser else {
                 return
             }
             
-            self?.user = User(email: userEmail)
+            self?.user = User(id: firUser.uid,
+                              email: firUser.email ?? "")
         }
     }
     
@@ -54,7 +55,8 @@ class MockAuthService: AuthServiceProtocol {
         guard let email = email else {
             return
         }
-        user = User(email: email)
+        user = User(id: UUID().uuidString,
+                    email: "aaa@gmail.com")
     }
     
     func logOut() throws {
@@ -62,6 +64,7 @@ class MockAuthService: AuthServiceProtocol {
     }
     
     func login(email: String, password: String) async throws {
-        user = User(email: email)
+        user = User(id: UUID().uuidString,
+                    email: email)
     }
 }

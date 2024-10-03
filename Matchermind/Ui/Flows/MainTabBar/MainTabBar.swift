@@ -11,7 +11,7 @@ struct MainTabBar: View {
     var body: some View {
         TabView {
             NavigationStack {
-                MainLFlView()
+                MainLearnView()
             }
             .tabItem{
                 TabItem(image: Image(systemName: "book"),

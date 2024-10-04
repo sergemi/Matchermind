@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginView<AuthServiceProxy>: View where AuthServiceProxy: AuthServiceProtocol {
     @EnvironmentObject var authService: AuthServiceProxy
+    @StateObject private var errorManager = ErrorManager()
     
     @State private var email: String = ""
     @State private var password: String = ""
@@ -27,14 +28,26 @@ struct LoginView<AuthServiceProxy>: View where AuthServiceProxy: AuthServiceProt
             
             Spacer()
             
+            Button("Test Error") {
+                let error = testError()
+                errorManager.handleError(error)
+            }
+            
             Button {
                 Task {
-                    try await authService.login(email: email, password: password)
+                    do {
+                        try await authService.login(email: email, password: password)
+                    }
+                    catch {
+                        print(error)
+                        print("!!!")
+                    }
                 }
             } label: {
                 Text("Login")
             }
         }
+        .withErrorAlert(errorManager: errorManager)
         .padding()
     }
 }

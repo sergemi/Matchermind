@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView<AuthServiceProxy: AuthServiceProtocol>: View {
     @StateObject var authService: AuthServiceProxy
+    @StateObject private var errorManager = ErrorManager()
     @StateObject private var viewModel: ContentViewViewModel<AuthServiceProxy>
     
     init(authService: AuthServiceProxy) {
@@ -19,10 +20,16 @@ struct ContentView<AuthServiceProxy: AuthServiceProtocol>: View {
     var body: some View {
         ZStack {
             VStack {
+                Button("Test Error") {
+                    let error = testError()
+                    errorManager.handleError(error)
+                }
 //                DebugAuthView<AuthService>()
                 MainTabBar()
             }
             .environmentObject(authService)
+            .withErrorAlert(errorManager: errorManager)
+            .environmentObject(errorManager)
             
             .fullScreenCover(isPresented: $viewModel.isAuthFlow, content: {
                 LoginView<AuthService>()

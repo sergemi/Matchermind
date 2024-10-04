@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8F383D6F2CAFCE5C00E87429 /* ContentViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F383D6E2CAFCE5C00E87429 /* ContentViewViewModel.swift */; };
+		8F383D712CB0010800E87429 /* DebugAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F383D702CB0010800E87429 /* DebugAuthView.swift */; };
 		8F9000632CAD5874005C7822 /* MatchermindApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9000622CAD5874005C7822 /* MatchermindApp.swift */; };
 		8F9000652CAD5874005C7822 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9000642CAD5874005C7822 /* ContentView.swift */; };
 		8F9000672CAD5876005C7822 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F9000662CAD5876005C7822 /* Assets.xcassets */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		8F383D6E2CAFCE5C00E87429 /* ContentViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewViewModel.swift; sourceTree = "<group>"; };
+		8F383D702CB0010800E87429 /* DebugAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugAuthView.swift; sourceTree = "<group>"; };
 		8F90005F2CAD5874005C7822 /* Matchermind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matchermind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F9000622CAD5874005C7822 /* MatchermindApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchermindApp.swift; sourceTree = "<group>"; };
 		8F9000642CAD5874005C7822 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			children = (
 				8F383D6E2CAFCE5C00E87429 /* ContentViewViewModel.swift */,
 				8F9000642CAD5874005C7822 /* ContentView.swift */,
+				8F383D702CB0010800E87429 /* DebugAuthView.swift */,
 			);
 			path = ContentView;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				8F383D6F2CAFCE5C00E87429 /* ContentViewViewModel.swift in Sources */,
 				8F9000AD2CAE9763005C7822 /* ProfileView.swift in Sources */,
 				8F9000AF2CAECE45005C7822 /* ResumeLearnView.swift in Sources */,
+				8F383D712CB0010800E87429 /* DebugAuthView.swift in Sources */,
 				8F9000982CAD887A005C7822 /* MainTabBar.swift in Sources */,
 				8F9000A52CAE0CC4005C7822 /* NavLink.swift in Sources */,
 				8F9000B32CAEF791005C7822 /* LoadingView.swift in Sources */,
@@ -606,6 +610,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -644,6 +650,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -26,9 +26,21 @@ class ContentViewViewModel<AuthServiceProxy: AuthServiceProtocol>: ObservableObj
     private func setupBindings() {
         authService.userPublisher
             .sink { [weak self] user in
-                if self?.isLoading == false {
-                    self?.isAuthFlow = (user == nil)
+                guard let self = self else {
+                    return
                 }
+                
+                if user != nil {
+                    self.isLoading = false
+                    self.isAuthFlow = false
+                }
+                else if !self.isLoading {
+                    self.isAuthFlow = true
+                }
+                
+//                if self?.isLoading == false {
+//                    self?.isAuthFlow = (user == nil)
+//                }
             }
             .store(in: &cancellables)
     }

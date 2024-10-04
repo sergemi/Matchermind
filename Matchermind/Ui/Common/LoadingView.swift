@@ -9,7 +9,34 @@ import SwiftUI
 
 struct LoadingView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            Color(.white)
+                .ignoresSafeArea()
+            GeometryReader {geometry in
+                let size = min(geometry.size.width, geometry.size.height) / 2
+                HStack {
+                    Spacer()
+                    VStack {
+                        Spacer()
+                        ProgressView()
+                            .progressViewStyle(.circular)
+                            .scaleEffect(size / 30)
+                            .frame(width: size, height: size)
+                        
+                        Text("Loading...")
+                            .font(.largeTitle)
+                        
+                        Spacer()
+                        Spacer()
+                    }
+                    .onAppear() {
+                        print(size)
+                    }
+                    
+                    Spacer()
+                }
+            }
+        }
     }
 }
 

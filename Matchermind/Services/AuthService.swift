@@ -5,8 +5,8 @@
 //  Created by sergemi on 02.10.2024.
 //
 
-//import Foundation
-import Combine
+import Foundation
+import SwiftUI // TODO: maybe dont need
 import FirebaseAuth
 
 struct User: Equatable, Identifiable {
@@ -17,6 +17,8 @@ struct User: Equatable, Identifiable {
 protocol AuthServiceProtocol: ObservableObject {
     var user: User? { get set }
     
+    var userPublisher: Published<User?>.Publisher { get }
+    
     func logOut() throws
     
     func login(email: String, password: String) async throws
@@ -25,10 +27,11 @@ protocol AuthServiceProtocol: ObservableObject {
 class AuthService: AuthServiceProtocol {
     @Published var user: User? = nil
     
+    var userPublisher: Published<User?>.Publisher { $user }
+    
     init() {
-        // Подписываемся на изменения состояния аутентификации
+        // Subscribe to firebase auth state changes
         _ = Auth.auth().addStateDidChangeListener { [weak self] _, firUser in
-//            self?.user = user?.email
             guard let firUser = firUser else {
                 return
             }
@@ -51,12 +54,17 @@ class AuthService: AuthServiceProtocol {
 class MockAuthService: AuthServiceProtocol {
     @Published var user: User? = nil
     
+    var userPublisher: Published<User?>.Publisher { $user }
+    
     init(email: String? = nil) {
         guard let email = email else {
             return
         }
         user = User(id: UUID().uuidString,
-                    email: "aaa@gmail.com")
+                    email: email)
+    }
+    
+    init() {
     }
     
     func logOut() throws {

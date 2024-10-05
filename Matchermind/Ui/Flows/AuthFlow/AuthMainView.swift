@@ -7,12 +7,19 @@
 
 import SwiftUI
 
-struct AuthMainView: View {
+struct AuthMainView<AuthServiceProxy: AuthServiceProtocol>: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            LoginView<AuthServiceProxy>()
+        }
     }
 }
 
 #Preview {
-    AuthMainView()
+    let mocAuth = MockAuthService(email: "aaa@gmail.com")
+    let errorManager = ErrorManager()
+    
+    return AuthMainView<MockAuthService>()
+        .environmentObject(mocAuth)
+        .environmentObject(errorManager)
 }

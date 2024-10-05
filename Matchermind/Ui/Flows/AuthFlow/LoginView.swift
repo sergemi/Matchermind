@@ -14,8 +14,6 @@ struct LoginView<AuthServiceProxy: AuthServiceProtocol>: View {
     @State private var email: String = ""
     @State private var password: String = ""
     
-    @State private var isSignUp = false
-    
     var body: some View {
         ZStack {
             Color(.white)
@@ -37,8 +35,11 @@ struct LoginView<AuthServiceProxy: AuthServiceProtocol>: View {
                     errorManager.handleError(error)
                 }
                 
-                Button("SignUp") {
-                    isSignUp.toggle()
+                NavigationLink {
+                    SignupView()
+                } label: {
+                    Text("SignUp")
+                        .padding()
                 }
                 
                 Button {
@@ -55,21 +56,19 @@ struct LoginView<AuthServiceProxy: AuthServiceProtocol>: View {
                     Text("Login")
                 }
             }
-            .navigationBarBackButtonHidden()
+//            .navigationBarBackButtonHidden()
             .withErrorAlert(errorManager: errorManager)
             .padding()
             
-            .sheet(isPresented: $isSignUp) {
-                SignupView()
-                    .environmentObject(errorManager)
-        }
         }
     }
 }
 
 #Preview {
     let mocAuth = MockAuthService(email: "aaa@gmail.com")
+    let errorManager = ErrorManager()
     
     return LoginView<MockAuthService>()
         .environmentObject(mocAuth)
+        .environmentObject(errorManager)
 }

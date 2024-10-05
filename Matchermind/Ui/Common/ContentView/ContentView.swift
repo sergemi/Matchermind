@@ -30,7 +30,7 @@ struct ContentView<AuthServiceProxy: AuthServiceProtocol>: View {
             }
             
             if authService.user == nil {
-                LoginView<AuthService>()
+                AuthMainView<AuthService>()
             }
             
             if viewModel.isLoading == true {

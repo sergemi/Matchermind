@@ -19,6 +19,7 @@ struct ContentView<AuthServiceProxy: AuthServiceProtocol>: View {
     
     var body: some View {
         ZStack {
+            
             VStack {
                 Button("Test Error") {
                     let error = testError()
@@ -27,19 +28,18 @@ struct ContentView<AuthServiceProxy: AuthServiceProtocol>: View {
 //                DebugAuthView<AuthService>()
                 MainTabBar()
             }
-            .environmentObject(authService)
-            .withErrorAlert(errorManager: errorManager)
-            .environmentObject(errorManager)
             
-            .fullScreenCover(isPresented: $viewModel.isAuthFlow, content: {
-                LoginView<AuthService>()
-                    .environmentObject(authService)
-        })
+            if authService.user == nil {
+                AuthMainView<AuthService>()
+            }
             
             if viewModel.isLoading == true {
                 LoadingView()
             }
         }
+        .environmentObject(authService)
+        .withErrorAlert(errorManager: errorManager)
+        .environmentObject(errorManager)
     }
 }
 

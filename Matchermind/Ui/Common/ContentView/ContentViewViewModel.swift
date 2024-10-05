@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class ContentViewViewModel<AuthServiceProxy: AuthServiceProtocol>: ObservableObject {
-    @Published var isLoading = true
+    @Published var isLoading = false
     @Published var isAuthFlow = false
     
     @Published private var authService: AuthServiceProxy
@@ -37,15 +37,15 @@ class ContentViewViewModel<AuthServiceProxy: AuthServiceProtocol>: ObservableObj
                 else if !self.isLoading {
                     self.isAuthFlow = true
                 }
-                
-//                if self?.isLoading == false {
-//                    self?.isAuthFlow = (user == nil)
-//                }
             }
             .store(in: &cancellables)
     }
     
     private func startLoading() {
+        guard isLoading else {
+            return
+        }
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             self.isLoading = false
             self.isAuthFlow = (self.authService.user == nil)

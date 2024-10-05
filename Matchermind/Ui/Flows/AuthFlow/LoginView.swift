@@ -17,49 +17,52 @@ struct LoginView<AuthServiceProxy>: View where AuthServiceProxy: AuthServiceProt
     @State private var isSignUp = false
     
     var body: some View {
-        VStack {
-            Text("User: \(authService.user?.email)")
-            TextField("Email", text: $email)
-                .autocorrectionDisabled()
-                .autocapitalization(.none)
-            
-            
-            TextField("Password", text: $password)
-                .autocorrectionDisabled()
-                .autocapitalization(.none)
-            
-            Spacer()
-            
-            Button("Test Error") {
-                let error = testError()
-                errorManager.handleError(error)
-            }
-            
-            Button("SignUp") {
-                isSignUp.toggle()
-            }
-            
-            Button {
-                Task {
-                    do {
-                        try await authService.login(email: email, password: password)
-                    }
-                    catch {
-                        print(error)
-                        print("!!!")
-                    }
+        ZStack {
+            Color(.white)
+            VStack {
+                Text("User: \(authService.user?.email)")
+                TextField("Email", text: $email)
+                    .autocorrectionDisabled()
+                    .autocapitalization(.none)
+                
+                
+                TextField("Password", text: $password)
+                    .autocorrectionDisabled()
+                    .autocapitalization(.none)
+                
+                Spacer()
+                
+                Button("Test Error") {
+                    let error = testError()
+                    errorManager.handleError(error)
                 }
-            } label: {
-                Text("Login")
+                
+                Button("SignUp") {
+                    isSignUp.toggle()
+                }
+                
+                Button {
+                    Task {
+                        do {
+                            try await authService.login(email: email, password: password)
+                        }
+                        catch {
+                            print(error)
+                            print("!!!")
+                        }
+                    }
+                } label: {
+                    Text("Login")
+                }
             }
+            .navigationBarBackButtonHidden()
+            .withErrorAlert(errorManager: errorManager)
+            .padding()
+            
+            .sheet(isPresented: $isSignUp) {
+                SignupView()
+                    .environmentObject(errorManager)
         }
-        .navigationBarBackButtonHidden()
-        .withErrorAlert(errorManager: errorManager)
-        .padding()
-        
-        .sheet(isPresented: $isSignUp) {
-            SignupView()
-                .environmentObject(errorManager)
         }
     }
 }

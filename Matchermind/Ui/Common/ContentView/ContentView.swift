@@ -19,22 +19,27 @@ struct ContentView<AuthServiceProxy: AuthServiceProtocol>: View {
     
     var body: some View {
         ZStack {
+            
             VStack {
                 Button("Test Error") {
                     let error = testError()
                     errorManager.handleError(error)
                 }
-//                DebugAuthView<AuthService>()
+                DebugAuthView<AuthService>()
                 MainTabBar()
             }
             .environmentObject(authService)
             .withErrorAlert(errorManager: errorManager)
             .environmentObject(errorManager)
-            
-            .fullScreenCover(isPresented: $viewModel.isAuthFlow, content: {
+            if authService.user == nil {
                 LoginView<AuthService>()
                     .environmentObject(authService)
-        })
+            }
+            
+            //            .fullScreenCover(isPresented: $viewModel.isAuthFlow, content: {
+            //                LoginView<AuthService>()
+            //                    .environmentObject(authService)
+            //        })
             
             if viewModel.isLoading == true {
                 LoadingView()

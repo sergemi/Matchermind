@@ -19,9 +19,9 @@ protocol AuthServiceProtocol: ObservableObject {
     
     var userPublisher: Published<User?>.Publisher { get }
     
-    func logOut() throws
+    func signOut() throws
     
-    func login(email: String, password: String) async throws
+    func signIn(email: String, password: String) async throws
 }
 
 class AuthService: AuthServiceProtocol {
@@ -41,12 +41,12 @@ class AuthService: AuthServiceProtocol {
         }
     }
     
-    @MainActor func logOut() throws {
+    @MainActor func signOut() throws {
         try Auth.auth().signOut()
         user = nil
     }
     
-    @MainActor func login(email: String, password: String) async throws {
+    @MainActor func signIn(email: String, password: String) async throws {
         try await Auth.auth().signIn(withEmail: email, password: password)
     }
 }
@@ -67,11 +67,11 @@ class MockAuthService: AuthServiceProtocol {
     init() {
     }
     
-    func logOut() throws {
+    func signOut() throws {
         user = nil
     }
     
-    func login(email: String, password: String) async throws {
+    func signIn(email: String, password: String) async throws {
         user = User(id: UUID().uuidString,
                     email: email)
     }

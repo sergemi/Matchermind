@@ -23,7 +23,7 @@ class ErrorManager: ObservableObject {
 
 extension View {
     func withErrorAlert(errorManager: ErrorManager) -> some View {
-        print(errorManager.currentError)
+        print(errorManager.currentError ?? "Unknown error")
         return self.alert(isPresented: .constant(errorManager.currentError != nil), content: {
             Alert(
                 title: Text("Error"),

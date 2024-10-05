@@ -44,11 +44,12 @@ struct SignInView<AuthServiceProxy: AuthServiceProtocol>: View {
                 Button {
                     Task {
                         do {
-                            try await authService.login(email: email, password: password)
+                            try await authService.signIn(email: email, password: password)
                         }
                         catch {
                             print(error)
-                            print("!!!")
+                            
+                            errorManager.handleError(error)
                         }
                     }
                 } label: {

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LoginView<AuthServiceProxy: AuthServiceProtocol>: View {
+struct SignInView<AuthServiceProxy: AuthServiceProtocol>: View {
     @EnvironmentObject var authService: AuthServiceProxy
     @EnvironmentObject var errorManager: ErrorManager
     
@@ -18,7 +18,6 @@ struct LoginView<AuthServiceProxy: AuthServiceProtocol>: View {
         ZStack {
             Color(.white)
             VStack {
-                Text("User: \(authService.user?.email)")
                 TextField("Email", text: $email)
                     .autocorrectionDisabled()
                     .autocapitalization(.none)
@@ -36,7 +35,7 @@ struct LoginView<AuthServiceProxy: AuthServiceProtocol>: View {
                 }
                 
                 NavigationLink {
-                    SignupView()
+                    SignUpView<AuthServiceProxy>()
                 } label: {
                     Text("SignUp")
                         .padding()
@@ -68,7 +67,7 @@ struct LoginView<AuthServiceProxy: AuthServiceProtocol>: View {
     let mocAuth = MockAuthService(email: "aaa@gmail.com")
     let errorManager = ErrorManager()
     
-    return LoginView<MockAuthService>()
+    return SignInView<MockAuthService>()
         .environmentObject(mocAuth)
         .environmentObject(errorManager)
 }

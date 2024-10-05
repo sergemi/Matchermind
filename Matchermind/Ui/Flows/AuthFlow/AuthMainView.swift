@@ -10,7 +10,7 @@ import SwiftUI
 struct AuthMainView<AuthServiceProxy: AuthServiceProtocol>: View {
     var body: some View {
         NavigationStack {
-            LoginView<AuthServiceProxy>()
+            SignInView<AuthServiceProxy>()
         }
     }
 }

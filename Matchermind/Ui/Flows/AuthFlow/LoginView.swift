@@ -14,6 +14,8 @@ struct LoginView<AuthServiceProxy>: View where AuthServiceProxy: AuthServiceProt
     @State private var email: String = ""
     @State private var password: String = ""
     
+    @State private var isSignUp = false
+    
     var body: some View {
         VStack {
             Text("User: \(authService.user?.email)")
@@ -33,6 +35,10 @@ struct LoginView<AuthServiceProxy>: View where AuthServiceProxy: AuthServiceProt
                 errorManager.handleError(error)
             }
             
+            Button("SignUp") {
+                isSignUp.toggle()
+            }
+            
             Button {
                 Task {
                     do {
@@ -47,8 +53,14 @@ struct LoginView<AuthServiceProxy>: View where AuthServiceProxy: AuthServiceProt
                 Text("Login")
             }
         }
+        .navigationBarBackButtonHidden()
         .withErrorAlert(errorManager: errorManager)
         .padding()
+        
+        .sheet(isPresented: $isSignUp) {
+            SignupView()
+                .environmentObject(errorManager)
+        }
     }
 }
 

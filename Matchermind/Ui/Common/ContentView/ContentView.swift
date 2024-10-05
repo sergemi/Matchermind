@@ -25,26 +25,21 @@ struct ContentView<AuthServiceProxy: AuthServiceProtocol>: View {
                     let error = testError()
                     errorManager.handleError(error)
                 }
-                DebugAuthView<AuthService>()
+//                DebugAuthView<AuthService>()
                 MainTabBar()
             }
-            .environmentObject(authService)
-            .withErrorAlert(errorManager: errorManager)
-            .environmentObject(errorManager)
+            
             if authService.user == nil {
                 LoginView<AuthService>()
-                    .environmentObject(authService)
             }
-            
-            //            .fullScreenCover(isPresented: $viewModel.isAuthFlow, content: {
-            //                LoginView<AuthService>()
-            //                    .environmentObject(authService)
-            //        })
             
             if viewModel.isLoading == true {
                 LoadingView()
             }
         }
+        .environmentObject(authService)
+        .withErrorAlert(errorManager: errorManager)
+        .environmentObject(errorManager)
     }
 }
 

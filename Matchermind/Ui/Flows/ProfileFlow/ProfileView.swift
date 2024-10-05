@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProfileView<AuthServiceProxy>: View where AuthServiceProxy: AuthServiceProtocol {
+struct ProfileView<AuthServiceProxy:AuthServiceProtocol>: View {
     @EnvironmentObject var authService: AuthServiceProxy
     
     var body: some View {

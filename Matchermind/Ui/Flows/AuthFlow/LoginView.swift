@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct LoginView<AuthServiceProxy>: View where AuthServiceProxy: AuthServiceProtocol {
+struct LoginView<AuthServiceProxy: AuthServiceProtocol>: View {
     @EnvironmentObject var authService: AuthServiceProxy
-    @StateObject private var errorManager = ErrorManager()
+    @EnvironmentObject var errorManager: ErrorManager
     
     @State private var email: String = ""
     @State private var password: String = ""

@@ -8,27 +8,25 @@
 import SwiftUI
 
 class SignInViewModel: ObservableObject {
-    private var errorManager: ErrorManager
+    private var errorManager: ErrorManager?
+    private var authService: (any AuthServiceProtocol)?
     
-    init(errorManager: ErrorManager) {
-        print(">> SignInViewModel.init")
-        self.errorManager = errorManager
-    }
-    
-    func setDependencies(errorManager: ErrorManager) {
+    func setDependencies(errorManager: ErrorManager, authService: any AuthServiceProtocol) {
         print(">> SignInViewModel.setDependencies")
         self.errorManager = errorManager
+        self.authService = authService
     }
     
     func test() {
         print("SignInViewModel.test")
         let error = testError2()
-        errorManager.handleError(error)
+        errorManager?.handleError(error)
     }
     
     func signIn(email: String, password: String) async throws {
-        print("signIn.call")
-        throw testError()
+        print("SignInViewModel.signIn")
+        try await authService?.signIn(email: email, password: password)
+//        throw testError()
         
 //        try await authService.signIn(email: email, password: password)
         /*

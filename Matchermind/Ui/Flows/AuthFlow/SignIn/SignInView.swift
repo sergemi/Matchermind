@@ -11,16 +11,18 @@ struct SignInView<AuthServiceProxy: AuthServiceProtocol>: View {
     @EnvironmentObject var errorManager: ErrorManager
     @EnvironmentObject var authService: AuthServiceProxy
     
-    @StateObject var viewModel: SignInViewModel
+    @StateObject var viewModel = SignInViewModel()
     
     @State private var email: String = ""
     @State private var password: String = ""
     
 //    init(authService: AuthServiceProxy) {
+    /*
     init() {
 //        _authService = StateObject(wrappedValue: authService)
         _viewModel = StateObject(wrappedValue: SignInViewModel(errorManager: ErrorManager()))
     }
+     */
     
     var body: some View {
         ZStack {
@@ -77,8 +79,10 @@ struct SignInView<AuthServiceProxy: AuthServiceProtocol>: View {
 //            .navigationBarBackButtonHidden()
             .padding()
             
-            .onAppear() {
-                viewModel.setDependencies(errorManager: errorManager)
+//            .onAppear() {
+            .task {
+                viewModel.setDependencies(errorManager: errorManager,
+                authService: authService)
             }
             
         }

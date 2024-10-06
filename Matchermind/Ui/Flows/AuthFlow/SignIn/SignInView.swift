@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct SignInView<AuthServiceProxy: AuthServiceProtocol>: View {
-    @EnvironmentObject var authService: AuthServiceProxy
     @EnvironmentObject var errorManager: ErrorManager
+    @EnvironmentObject var authService: AuthServiceProxy
+    
+    @StateObject var viewModel: SignInViewModel
     
     @State private var email: String = ""
     @State private var password: String = ""
+    
+//    init(authService: AuthServiceProxy) {
+    init() {
+//        _authService = StateObject(wrappedValue: authService)
+        _viewModel = StateObject(wrappedValue: SignInViewModel(errorManager: ErrorManager()))
+    }
     
     var body: some View {
         ZStack {
@@ -30,21 +38,31 @@ struct SignInView<AuthServiceProxy: AuthServiceProtocol>: View {
                 Spacer()
                 
                 Button("Test Error") {
-                    let error = testError()
+//                    let error = testError()
+//                    errorManager.handleError(error)
+                    
+                    viewModel.test()
+                }
+                
+                Button("Test Error 2") {
+                    let error = testError2()
                     errorManager.handleError(error)
                 }
                 
-                NavigationLink {
-                    SignUpView<AuthServiceProxy>()
-                } label: {
-                    Text("SignUp")
-                        .padding()
-                }
+//                NavigationLink {
+//                    SignUpView()
+//                } label: {
+//                    Text("SignUp")
+//                        .padding()
+//                }
                 
                 Button {
                     Task {
+//                        try await viewModel.signIn(email: email, password: password)
+                        
                         do {
-                            try await authService.signIn(email: email, password: password)
+//                            try await authService.signIn(email: email, password: password)
+                            try await viewModel.signIn(email: email, password: password)
                         }
                         catch {
                             print(error)
@@ -57,8 +75,11 @@ struct SignInView<AuthServiceProxy: AuthServiceProtocol>: View {
                 }
             }
 //            .navigationBarBackButtonHidden()
-            .withErrorAlert(errorManager: errorManager)
             .padding()
+            
+            .onAppear() {
+                viewModel.setDependencies(errorManager: errorManager)
+            }
             
         }
     }

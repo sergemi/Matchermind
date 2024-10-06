@@ -13,6 +13,11 @@ class testError: LocalizedError {
 
 }
 
+class testError2: LocalizedError {
+    var errorDescription: String? { "Test error 2" }
+
+}
+
 class ErrorManager: ObservableObject {
     @Published var currentError: Error?
 
@@ -23,7 +28,7 @@ class ErrorManager: ObservableObject {
 
 extension View {
     func withErrorAlert(errorManager: ErrorManager) -> some View {
-        print(errorManager.currentError ?? "Unknown error")
+        print("withErrorAlert")
         return self.alert(isPresented: .constant(errorManager.currentError != nil), content: {
             Alert(
                 title: Text("Error"),

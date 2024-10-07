@@ -22,16 +22,20 @@ protocol AuthServiceProtocol: ObservableObject {
     func signOut() throws
     
     func signIn(email: String, password: String) async throws
+    
+    func signUp(email: String, password: String) async throws
 }
 
 class AuthService: AuthServiceProtocol {
+    private var handle: AuthStateDidChangeListenerHandle?
+    
     @Published var user: User? = nil
     
     var userPublisher: Published<User?>.Publisher { $user }
     
     init() {
         // Subscribe to firebase auth state changes
-        _ = Auth.auth().addStateDidChangeListener { [weak self] _, firUser in
+        handle = Auth.auth().addStateDidChangeListener { [weak self] _, firUser in
             guard let firUser = firUser else {
                 return
             }
@@ -41,6 +45,13 @@ class AuthService: AuthServiceProtocol {
         }
     }
     
+    deinit {
+        guard let handle = handle else {
+            return
+        }
+        Auth.auth().removeStateDidChangeListener(handle)
+    }
+    
     @MainActor func signOut() throws {
         try Auth.auth().signOut()
         user = nil
@@ -48,6 +59,10 @@ class AuthService: AuthServiceProtocol {
     
     @MainActor func signIn(email: String, password: String) async throws {
         try await Auth.auth().signIn(withEmail: email, password: password)
+    }
+    
+    func signUp(email: String, password: String) async throws {
+        try await Auth.auth().createUser(withEmail: email, password: password)
     }
 }
 
@@ -75,4 +90,9 @@ class MockAuthService: AuthServiceProtocol {
         user = User(id: UUID().uuidString,
                     email: email)
     }
+    
+    func signUp(email: String, password: String) async throws {
+        // TODO: implement
+    }
+
 }

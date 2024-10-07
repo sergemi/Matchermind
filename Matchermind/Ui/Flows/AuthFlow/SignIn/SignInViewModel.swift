@@ -5,11 +5,22 @@
 //  Created by sergemi on 05.10.2024.
 //
 
-import SwiftUI
+import Foundation
 
 class SignInViewModel: ObservableObject {
     private var errorManager: ErrorManager?
     private var authService: (any AuthServiceProtocol)?
+    
+    @Published var email: String = ""
+    @Published var password: String = ""
+    
+    @Published var viewTitle = "Sign in"
+    
+    @Published var emailTitle = "E-mail"
+    @Published var emailHint = "Enter email"
+    
+    @Published var passwordTitle = "Password"
+    @Published var passwordHint = "At least 8 symbols"
     
     func setDependencies(errorManager: ErrorManager, authService: any AuthServiceProtocol) {
         print(">> SignInViewModel.setDependencies")
@@ -17,27 +28,16 @@ class SignInViewModel: ObservableObject {
         self.authService = authService
     }
     
-    func test() {
-        print("SignInViewModel.test")
-        let error = testError2()
-        errorManager?.handleError(error)
-    }
-    
-    func signIn(email: String, password: String) async throws {
+    func signIn(email: String, password: String) {
         print("SignInViewModel.signIn")
-        try await authService?.signIn(email: email, password: password)
-//        throw testError()
-        
-//        try await authService.signIn(email: email, password: password)
-        /*
-        do {
-            throw testError()
-//            try await authService.signIn(email: email, password: password)
+        Task {
+            do {
+                try await authService?.signIn(email: email, password: password)
+            }
+            catch {
+                print("signIn.catch")
+                await errorManager?.handleError(error)
+            }
         }
-        catch {
-            print("signIn.catch")
-            errorManager.handleError(error)
-        }
-         */
     }
 }

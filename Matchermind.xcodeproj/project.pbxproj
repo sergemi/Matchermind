@@ -15,6 +15,10 @@
 		8F383D7A2CB0FBA400E87429 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F383D792CB0FBA400E87429 /* SignUpView.swift */; };
 		8F383D7C2CB12D6000E87429 /* AuthMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F383D7B2CB12D6000E87429 /* AuthMainView.swift */; };
 		8F383D7F2CB15A7800E87429 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F383D7E2CB15A7800E87429 /* SignInViewModel.swift */; };
+		8F383D832CB3007A00E87429 /* TestfieldStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F383D822CB3007A00E87429 /* TestfieldStyles.swift */; };
+		8F383D852CB30C7C00E87429 /* DefaultTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F383D842CB30C7C00E87429 /* DefaultTextField.swift */; };
+		8F383D8C2CB34E0900E87429 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F383D8B2CB34E0900E87429 /* ButtonStyles.swift */; };
+		8F383D8E2CB3EDD600E87429 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F383D8D2CB3EDD600E87429 /* SignUpViewModel.swift */; };
 		8F9000632CAD5874005C7822 /* MatchermindApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9000622CAD5874005C7822 /* MatchermindApp.swift */; };
 		8F9000652CAD5874005C7822 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9000642CAD5874005C7822 /* ContentView.swift */; };
 		8F9000672CAD5876005C7822 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F9000662CAD5876005C7822 /* Assets.xcassets */; };
@@ -63,6 +67,10 @@
 		8F383D792CB0FBA400E87429 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		8F383D7B2CB12D6000E87429 /* AuthMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthMainView.swift; sourceTree = "<group>"; };
 		8F383D7E2CB15A7800E87429 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		8F383D822CB3007A00E87429 /* TestfieldStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestfieldStyles.swift; sourceTree = "<group>"; };
+		8F383D842CB30C7C00E87429 /* DefaultTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextField.swift; sourceTree = "<group>"; };
+		8F383D8B2CB34E0900E87429 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
+		8F383D8D2CB3EDD600E87429 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		8F90005F2CAD5874005C7822 /* Matchermind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matchermind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F9000622CAD5874005C7822 /* MatchermindApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchermindApp.swift; sourceTree = "<group>"; };
 		8F9000642CAD5874005C7822 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -140,6 +148,24 @@
 				8F383D7E2CB15A7800E87429 /* SignInViewModel.swift */,
 			);
 			path = SignIn;
+			sourceTree = "<group>";
+		};
+		8F383D812CB2FFFD00E87429 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				8F383D822CB3007A00E87429 /* TestfieldStyles.swift */,
+				8F383D8B2CB34E0900E87429 /* ButtonStyles.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		8F383D862CB3461500E87429 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				8F383D792CB0FBA400E87429 /* SignUpView.swift */,
+				8F383D8D2CB3EDD600E87429 /* SignUpViewModel.swift */,
+			);
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 		8F9000562CAD5874005C7822 = {
@@ -244,7 +270,9 @@
 			isa = PBXGroup;
 			children = (
 				8F90009B2CAD8C2D005C7822 /* TabItem.swift */,
+				8F383D842CB30C7C00E87429 /* DefaultTextField.swift */,
 				8F383D6D2CAFCE1600E87429 /* ContentView */,
+				8F383D812CB2FFFD00E87429 /* Styles */,
 				8F9000B22CAEF791005C7822 /* LoadingView.swift */,
 				8F383D772CB05A4400E87429 /* ViewModel.swift */,
 			);
@@ -265,7 +293,7 @@
 			children = (
 				8F383D7B2CB12D6000E87429 /* AuthMainView.swift */,
 				8F383D7D2CB159B000E87429 /* SignIn */,
-				8F383D792CB0FBA400E87429 /* SignUpView.swift */,
+				8F383D862CB3461500E87429 /* SignUp */,
 			);
 			path = AuthFlow;
 			sourceTree = "<group>";
@@ -451,17 +479,21 @@
 				8F383D7A2CB0FBA400E87429 /* SignUpView.swift in Sources */,
 				8F9000A22CADF13B005C7822 /* SignInView.swift in Sources */,
 				8F383D6F2CAFCE5C00E87429 /* ContentViewViewModel.swift in Sources */,
+				8F383D832CB3007A00E87429 /* TestfieldStyles.swift in Sources */,
 				8F9000AD2CAE9763005C7822 /* ProfileView.swift in Sources */,
 				8F383D7F2CB15A7800E87429 /* SignInViewModel.swift in Sources */,
 				8F9000AF2CAECE45005C7822 /* ResumeLearnView.swift in Sources */,
 				8F383D762CB058AB00E87429 /* ResumeLearnViewModel.swift in Sources */,
+				8F383D8C2CB34E0900E87429 /* ButtonStyles.swift in Sources */,
 				8F383D712CB0010800E87429 /* DebugAuthView.swift in Sources */,
+				8F383D8E2CB3EDD600E87429 /* SignUpViewModel.swift in Sources */,
 				8F383D782CB05A4400E87429 /* ViewModel.swift in Sources */,
 				8F9000982CAD887A005C7822 /* MainTabBar.swift in Sources */,
 				8F9000A52CAE0CC4005C7822 /* NavLink.swift in Sources */,
 				8F9000B32CAEF791005C7822 /* LoadingView.swift in Sources */,
 				8F9000652CAD5874005C7822 /* ContentView.swift in Sources */,
 				8F9000B12CAECEB6005C7822 /* StartNewLearnView.swift in Sources */,
+				8F383D852CB30C7C00E87429 /* DefaultTextField.swift in Sources */,
 				8F90009F2CADB43E005C7822 /* AuthService.swift in Sources */,
 				8F383D732CB0414B00E87429 /* ErrorManager.swift in Sources */,
 				8F9000AA2CAE85C9005C7822 /* MainLearnView.swift in Sources */,

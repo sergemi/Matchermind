@@ -8,81 +8,62 @@
 import SwiftUI
 
 struct SignInView<AuthServiceProxy: AuthServiceProtocol>: View {
-    @EnvironmentObject var errorManager: ErrorManager
-    @EnvironmentObject var authService: AuthServiceProxy
+    @EnvironmentObject private var errorManager: ErrorManager
+    @EnvironmentObject private var authService: AuthServiceProxy
     
-    @StateObject var viewModel = SignInViewModel()
+    @StateObject private var viewModel = SignInViewModel()
     
-    @State private var email: String = ""
-    @State private var password: String = ""
-    
-//    init(authService: AuthServiceProxy) {
+    //    init(authService: AuthServiceProxy) {
     /*
-    init() {
-//        _authService = StateObject(wrappedValue: authService)
-        _viewModel = StateObject(wrappedValue: SignInViewModel(errorManager: ErrorManager()))
-    }
+     init() {
+     //        _authService = StateObject(wrappedValue: authService)
+     _viewModel = StateObject(wrappedValue: SignInViewModel(errorManager: ErrorManager()))
+     }
      */
     
     var body: some View {
         ZStack {
-            Color(.white)
-            VStack {
-                TextField("Email", text: $email)
-                    .autocorrectionDisabled()
-                    .autocapitalization(.none)
+            Color("BackgroundColor")
+            VStack(spacing: 24) {
                 
+                DefaultTextField(text: $viewModel.email, placeholder: viewModel.emailHint, title: viewModel.emailTitle)
                 
-                TextField("Password", text: $password)
-                    .autocorrectionDisabled()
-                    .autocapitalization(.none)
+                DefaultTextField(text: $viewModel.password, placeholder: viewModel.passwordHint, title: viewModel.passwordTitle)
                 
-                Spacer()
+                Button("Sign in") {
+                    viewModel.signIn(email: viewModel.email, password: viewModel.password)
+                }
+                .buttonStyle(.bordered)
+                .frame(maxWidth: .infinity)
+                //                .buttonStyle(GhostButtonStyle())
                 
-                Button("Test Error") {
-//                    let error = testError()
-//                    errorManager.handleError(error)
+                HStack {
+                    Text("Don't have account yet?")
                     
-                    viewModel.test()
+                    NavigationLink {
+                        SignUpView<AuthServiceProxy>()
+                    } label: {
+                        Text("Sign Up!")
+                            .padding()
+                    }
                 }
                 
-                Button("Test Error 2") {
-                    let error = testError2()
-                    errorManager.handleError(error)
-                }
-                
-//                NavigationLink {
-//                    SignUpView()
-//                } label: {
-//                    Text("SignUp")
-//                        .padding()
+//                HStack { // reset password
+//                    Spacer()
+//                    
+//                    NavigationLink
 //                }
                 
-                Button {
-                    Task {
-//                        try await viewModel.signIn(email: email, password: password)
-                        
-                        do {
-//                            try await authService.signIn(email: email, password: password)
-                            try await viewModel.signIn(email: email, password: password)
-                        }
-                        catch {
-                            print(error)
-                            
-                            errorManager.handleError(error)
-                        }
-                    }
-                } label: {
-                    Text("Login")
-                }
+                Spacer()
             }
-//            .navigationBarBackButtonHidden()
+            //            .navigationBarBackButtonHidden()
+            .navigationTitle(viewModel.viewTitle)
             .padding()
             
-//            .onAppear() {
+            //            .onAppear() {
             .task {
                 viewModel.setDependencies(errorManager: errorManager,
-                authService: authService)
+                                          authService: authService)
             }
             
         }

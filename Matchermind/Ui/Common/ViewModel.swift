@@ -8,5 +8,5 @@
 import Foundation
 
 class ViewModel: ObservableObject {
-    @Published var error: Error?
+    @Published var error: Error? // TODO: obsolete?
 }

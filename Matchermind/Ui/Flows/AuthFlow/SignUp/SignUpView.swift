@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct SignUpView<AuthServiceProxy: AuthServiceProtocol>: View {
-    @EnvironmentObject var errorManager: ErrorManager
+    @EnvironmentObject private var errorManager: ErrorManager
+    @EnvironmentObject private var authService: AuthServiceProxy
+    
+    @StateObject private var viewModel = SignUpViewModel()
     
     var body: some View {
         VStack {
@@ -18,6 +21,11 @@ struct SignUpView<AuthServiceProxy: AuthServiceProtocol>: View {
                 let error = testError()
                 errorManager.handleError(error)
             }
+        }
+        .navigationTitle(viewModel.viewTitle)
+        
+        .task {
+            viewModel.setDependencies(errorManager: errorManager, authService: authService)
         }
     }
 }

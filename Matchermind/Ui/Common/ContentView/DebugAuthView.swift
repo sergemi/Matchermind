@@ -17,7 +17,7 @@ struct DebugAuthView<AuthServiceProxy: AuthServiceProtocol>: View {
                 
                 Button("Login") {
                     Task {
-                        _ = try await authService.login(email: "tester1@gmail.com",
+                        _ = try await authService.signIn(email: "tester1@gmail.com",
                                                         password: "tester1!"
                         )
                     }
@@ -28,7 +28,7 @@ struct DebugAuthView<AuthServiceProxy: AuthServiceProtocol>: View {
                 
                 Button("Logout") {
                     Task {
-                        try authService.logOut()
+                        try authService.signOut()
                     }
                 }
             }

@@ -16,7 +16,7 @@ struct ProfileView<AuthServiceProxy:AuthServiceProtocol>: View {
             Spacer()
             Button {
                 Task {
-                    try authService.logOut()
+                    try authService.signOut()
                 }
             } label: {
                 Text("Logout")

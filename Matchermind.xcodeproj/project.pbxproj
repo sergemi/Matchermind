@@ -20,6 +20,9 @@
 		8F383D8C2CB34E0900E87429 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F383D8B2CB34E0900E87429 /* ButtonStyles.swift */; };
 		8F383D8E2CB3EDD600E87429 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F383D8D2CB3EDD600E87429 /* SignUpViewModel.swift */; };
 		8F383D902CB4013400E87429 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F383D8F2CB4013400E87429 /* Coordinator.swift */; };
+		8F383D922CB4992F00E87429 /* MainQuickAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F383D912CB4992F00E87429 /* MainQuickAddView.swift */; };
+		8F383D942CB49B5200E87429 /* MainEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F383D932CB49B5200E87429 /* MainEditView.swift */; };
+		8F383D962CB49D4E00E87429 /* ProfileNavigationBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F383D952CB49D4E00E87429 /* ProfileNavigationBarButton.swift */; };
 		8F9000632CAD5874005C7822 /* MatchermindApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9000622CAD5874005C7822 /* MatchermindApp.swift */; };
 		8F9000652CAD5874005C7822 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9000642CAD5874005C7822 /* ContentView.swift */; };
 		8F9000672CAD5876005C7822 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F9000662CAD5876005C7822 /* Assets.xcassets */; };
@@ -73,6 +76,9 @@
 		8F383D8B2CB34E0900E87429 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		8F383D8D2CB3EDD600E87429 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		8F383D8F2CB4013400E87429 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		8F383D912CB4992F00E87429 /* MainQuickAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQuickAddView.swift; sourceTree = "<group>"; };
+		8F383D932CB49B5200E87429 /* MainEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEditView.swift; sourceTree = "<group>"; };
+		8F383D952CB49D4E00E87429 /* ProfileNavigationBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNavigationBarButton.swift; sourceTree = "<group>"; };
 		8F90005F2CAD5874005C7822 /* Matchermind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matchermind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F9000622CAD5874005C7822 /* MatchermindApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchermindApp.swift; sourceTree = "<group>"; };
 		8F9000642CAD5874005C7822 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -277,6 +283,7 @@
 				8F383D812CB2FFFD00E87429 /* Styles */,
 				8F9000B22CAEF791005C7822 /* LoadingView.swift */,
 				8F383D772CB05A4400E87429 /* ViewModel.swift */,
+				8F383D952CB49D4E00E87429 /* ProfileNavigationBarButton.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -322,6 +329,7 @@
 		8F9000A72CAE8510005C7822 /* QuickAddFlow */ = {
 			isa = PBXGroup;
 			children = (
+				8F383D912CB4992F00E87429 /* MainQuickAddView.swift */,
 			);
 			path = QuickAddFlow;
 			sourceTree = "<group>";
@@ -329,6 +337,7 @@
 		8F9000A82CAE853A005C7822 /* EditFlow */ = {
 			isa = PBXGroup;
 			children = (
+				8F383D932CB49B5200E87429 /* MainEditView.swift */,
 			);
 			path = EditFlow;
 			sourceTree = "<group>";
@@ -494,7 +503,10 @@
 				8F9000982CAD887A005C7822 /* MainTabBar.swift in Sources */,
 				8F9000A52CAE0CC4005C7822 /* NavLink.swift in Sources */,
 				8F9000B32CAEF791005C7822 /* LoadingView.swift in Sources */,
+				8F383D922CB4992F00E87429 /* MainQuickAddView.swift in Sources */,
 				8F9000652CAD5874005C7822 /* ContentView.swift in Sources */,
+				8F383D942CB49B5200E87429 /* MainEditView.swift in Sources */,
+				8F383D962CB49D4E00E87429 /* ProfileNavigationBarButton.swift in Sources */,
 				8F9000B12CAECEB6005C7822 /* StartNewLearnView.swift in Sources */,
 				8F383D852CB30C7C00E87429 /* DefaultTextField.swift in Sources */,
 				8F90009F2CADB43E005C7822 /* AuthService.swift in Sources */,

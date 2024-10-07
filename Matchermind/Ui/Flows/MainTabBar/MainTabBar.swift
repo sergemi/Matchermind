@@ -12,22 +12,15 @@ struct MainTabBar: View {
     var body: some View {
         TabView {
             NavigationStack(path: $coordinator.learnNavigationPath) {
-                MainLearnView()
-                    .navigationDestination(for: NavLink.self,
-                                           destination: coordinator.linkDestination)
+                coordinator.learnFlow()
             }
-            
-//            .navigationDestination(for: NavLink.self,
-//                                   destination: coordinator.linkDestination)
-            
-//            coordinator.learnFlow()
             .tabItem{
                 TabItem(image: Image(systemName: "book"),
                         caption: "Learn")
             }
             
-            NavigationStack {
-                Text("Flow add")
+            NavigationStack(path: $coordinator.quickAddNavigationPath) {
+                coordinator.quickAddFlow()
                 
             }
             .tabItem {
@@ -35,8 +28,8 @@ struct MainTabBar: View {
                         caption: "Quick add")
             }
             
-            NavigationStack {
-                Text("Flow edit")
+            NavigationStack(path: $coordinator.editNavigationPath) {
+                coordinator.editFlow()
             }
             .tabItem{
                 TabItem(image: Image(systemName: "wrench.and.screwdriver.fill"),

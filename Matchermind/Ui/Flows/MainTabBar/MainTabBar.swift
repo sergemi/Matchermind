@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct MainTabBar: View {
+    @EnvironmentObject private var coordinator: Coordinator
     var body: some View {
         TabView {
-            NavigationStack {
+            NavigationStack(path: $coordinator.learnNavigationPath) {
                 MainLearnView()
+                    .navigationDestination(for: NavLink.self,
+                                           destination: coordinator.linkDestination)
             }
+            
+//            .navigationDestination(for: NavLink.self,
+//                                   destination: coordinator.linkDestination)
+            
+//            coordinator.learnFlow()
             .tabItem{
                 TabItem(image: Image(systemName: "book"),
                         caption: "Learn")

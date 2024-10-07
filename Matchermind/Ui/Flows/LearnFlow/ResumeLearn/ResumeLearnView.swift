@@ -21,6 +21,10 @@ struct ResumeLearnView: View {
             }
         }
         .navigationTitle("ResumeLearnView")
+        
+        .task {
+            viewModel.setDependencies(errorManager: errorManager)
+        }
     }
 }
 

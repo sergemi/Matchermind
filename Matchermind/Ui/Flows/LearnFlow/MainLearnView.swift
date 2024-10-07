@@ -16,6 +16,10 @@ struct MainLearnView: View {
                 Text("Resume last")
             }
             
+            NavigationLink(value: NavLink.resumeLearnView) {
+                Text("Test link")
+            }
+            
             NavigationLink {
                 StartNewLearnView()
             } label: {

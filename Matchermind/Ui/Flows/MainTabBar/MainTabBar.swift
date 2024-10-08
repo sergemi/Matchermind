@@ -10,31 +10,30 @@ import SwiftUI
 struct MainTabBar: View {
     @EnvironmentObject private var coordinator: Coordinator
     var body: some View {
-        TabView {
+        TabView(selection: $coordinator.selectedTab) {
             NavigationStack(path: $coordinator.learnNavigationPath) {
-                coordinator.learnFlow()
+                coordinator.flowView(.learn)
             }
             .tabItem{
-                TabItem(image: Image(systemName: "book"),
-                        caption: "Learn")
+                coordinator.flowTabItem(.learn)
             }
+            .tag(Coordinator.NavigationFlow.learn)
             
             NavigationStack(path: $coordinator.quickAddNavigationPath) {
-                coordinator.quickAddFlow()
-                
+                coordinator.flowView(.quickAdd)
             }
             .tabItem {
-                TabItem(image: Image(systemName: "plus.message"),
-                        caption: "Quick add")
+                coordinator.flowTabItem(.quickAdd)
             }
+            .tag(Coordinator.NavigationFlow.quickAdd)
             
             NavigationStack(path: $coordinator.editNavigationPath) {
-                coordinator.editFlow()
+                coordinator.flowView(.edit)
             }
             .tabItem{
-                TabItem(image: Image(systemName: "wrench.and.screwdriver.fill"),
-                        caption: "Edit")
+                coordinator.flowTabItem(.edit)
             }
+            .tag(Coordinator.NavigationFlow.edit)
         }
     }
 }

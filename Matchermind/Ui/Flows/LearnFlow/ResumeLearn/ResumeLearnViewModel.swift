@@ -8,10 +8,17 @@
 import Foundation
 
 class ResumeLearnViewModel: ViewModel {
-    func fireError() {
+    private var errorManager: ErrorManager?
+    
+    func setDependencies(errorManager: ErrorManager) {
+        print(">> ResumeLearnViewModel.setDependencies")
+        self.errorManager = errorManager
+    }
+    
+    @MainActor func fireError() {
         print("fireError")
         
-       error = testError()
-//        errorManager.handleError(error)
+       let testError = testError()
+        errorManager?.handleError(testError)
     }
 }

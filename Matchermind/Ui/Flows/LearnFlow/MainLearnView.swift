@@ -16,6 +16,14 @@ struct MainLearnView: View {
                 Text("Resume last")
             }
             
+            NavigationLink(value: NavLink.resumeLearnView) {
+                Text("Test link")
+            }
+            
+            NavigationLink(value: NavLink.profileView) {
+                Text("Test profile")
+            }
+            
             NavigationLink {
                 StartNewLearnView()
             } label: {
@@ -25,11 +33,7 @@ struct MainLearnView: View {
         .navigationTitle("Learn main")
         
         .toolbar {
-            NavigationLink {
-                ProfileView<AuthService>()
-            } label: {
-                Label("User Profile", systemImage: "person.crop.circle")
-            }
+            ProfileNavigationBarButton()
         }
     }
 }

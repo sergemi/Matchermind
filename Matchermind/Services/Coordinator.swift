@@ -88,4 +88,10 @@ final class Coordinator: ObservableObject {
             EmptyView()
         }
     }
+    
+    // Learn flow
+    
+    func resumeLearn() {
+        learnNavigationPath.append(NavLink.resumeLearnView)
+    }
 }

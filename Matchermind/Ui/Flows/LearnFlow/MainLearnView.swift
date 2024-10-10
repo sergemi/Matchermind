@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MainLearnView: View {
+    @EnvironmentObject private var coordinator: Coordinator
+    
     var body: some View {
         VStack {
             NavigationLink {
@@ -15,6 +17,13 @@ struct MainLearnView: View {
             } label: {
                 Text("Resume last")
             }
+            
+            Button {
+                coordinator.resumeLearn()
+            } label: {
+                Text("Button resume learn")
+            }
+
             
             NavigationLink(value: NavLink.resumeLearnView) {
                 Text("Test link")

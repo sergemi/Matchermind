@@ -45,12 +45,16 @@ struct ContentView<AuthServiceProxy: AuthServiceProtocol>: View {
 
 #Preview("user logged in") {
     let mocAuth = MockAuthService(email: "aaa@gmail.com")
+    let coordinator = Coordinator()
     
     return ContentView<MockAuthService>(authService: mocAuth)
+        .environmentObject(coordinator)
 }
 
 #Preview("no user") {
     let mocAuth = MockAuthService()
+    let coordinator = Coordinator()
     
     return ContentView<MockAuthService>(authService: mocAuth)
+        .environmentObject(coordinator)
 }

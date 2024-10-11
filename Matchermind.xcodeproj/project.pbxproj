@@ -44,6 +44,13 @@
 		8F9000AF2CAECE45005C7822 /* ResumeLearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9000AE2CAECE45005C7822 /* ResumeLearnView.swift */; };
 		8F9000B12CAECEB6005C7822 /* StartNewLearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9000B02CAECEB5005C7822 /* StartNewLearnView.swift */; };
 		8F9000B32CAEF791005C7822 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9000B22CAEF791005C7822 /* LoadingView.swift */; };
+		8F9A42DD2CB96076007B4D48 /* ModulePreload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9A42DC2CB96076007B4D48 /* ModulePreload.swift */; };
+		8F9A42DF2CB968DF007B4D48 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9A42DE2CB968DF007B4D48 /* Exercise.swift */; };
+		8F9A42E12CB96945007B4D48 /* WordPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9A42E02CB96945007B4D48 /* WordPair.swift */; };
+		8F9A42E32CB969A0007B4D48 /* LearnedWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9A42E22CB969A0007B4D48 /* LearnedWord.swift */; };
+		8F9A42E52CB96A08007B4D48 /* TopicPreload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9A42E42CB96A08007B4D48 /* TopicPreload.swift */; };
+		8F9A42E72CB96A5F007B4D48 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9A42E62CB96A5F007B4D48 /* Topic.swift */; };
+		8F9A42E92CB96ADD007B4D48 /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9A42E82CB96ADD007B4D48 /* Module.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +110,13 @@
 		8F9000AE2CAECE45005C7822 /* ResumeLearnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeLearnView.swift; sourceTree = "<group>"; };
 		8F9000B02CAECEB5005C7822 /* StartNewLearnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartNewLearnView.swift; sourceTree = "<group>"; };
 		8F9000B22CAEF791005C7822 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		8F9A42DC2CB96076007B4D48 /* ModulePreload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulePreload.swift; sourceTree = "<group>"; };
+		8F9A42DE2CB968DF007B4D48 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		8F9A42E02CB96945007B4D48 /* WordPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPair.swift; sourceTree = "<group>"; };
+		8F9A42E22CB969A0007B4D48 /* LearnedWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnedWord.swift; sourceTree = "<group>"; };
+		8F9A42E42CB96A08007B4D48 /* TopicPreload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicPreload.swift; sourceTree = "<group>"; };
+		8F9A42E62CB96A5F007B4D48 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
+		8F9A42E82CB96ADD007B4D48 /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,6 +337,13 @@
 			isa = PBXGroup;
 			children = (
 				8F9000A42CAE0CC4005C7822 /* NavLink.swift */,
+				8F9A42DC2CB96076007B4D48 /* ModulePreload.swift */,
+				8F9A42DE2CB968DF007B4D48 /* Exercise.swift */,
+				8F9A42E02CB96945007B4D48 /* WordPair.swift */,
+				8F9A42E22CB969A0007B4D48 /* LearnedWord.swift */,
+				8F9A42E42CB96A08007B4D48 /* TopicPreload.swift */,
+				8F9A42E62CB96A5F007B4D48 /* Topic.swift */,
+				8F9A42E82CB96ADD007B4D48 /* Module.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -500,9 +521,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F383D7A2CB0FBA400E87429 /* SignUpView.swift in Sources */,
+				8F9A42E52CB96A08007B4D48 /* TopicPreload.swift in Sources */,
+				8F9A42DD2CB96076007B4D48 /* ModulePreload.swift in Sources */,
 				8F9000A22CADF13B005C7822 /* SignInView.swift in Sources */,
 				8F383D6F2CAFCE5C00E87429 /* ContentViewViewModel.swift in Sources */,
 				8F383D832CB3007A00E87429 /* TestfieldStyles.swift in Sources */,
+				8F9A42E72CB96A5F007B4D48 /* Topic.swift in Sources */,
 				8F9000AD2CAE9763005C7822 /* ProfileView.swift in Sources */,
 				8F383D7F2CB15A7800E87429 /* SignInViewModel.swift in Sources */,
 				8F9000AF2CAECE45005C7822 /* ResumeLearnView.swift in Sources */,
@@ -510,11 +534,13 @@
 				8F383D8C2CB34E0900E87429 /* ButtonStyles.swift in Sources */,
 				8F383D712CB0010800E87429 /* DebugAuthView.swift in Sources */,
 				8F383D8E2CB3EDD600E87429 /* SignUpViewModel.swift in Sources */,
+				8F9A42E32CB969A0007B4D48 /* LearnedWord.swift in Sources */,
 				8F383D782CB05A4400E87429 /* ViewModel.swift in Sources */,
 				8F9000982CAD887A005C7822 /* MainTabBar.swift in Sources */,
 				8F9000A52CAE0CC4005C7822 /* NavLink.swift in Sources */,
 				8F9000B32CAEF791005C7822 /* LoadingView.swift in Sources */,
 				8F383D922CB4992F00E87429 /* MainQuickAddView.swift in Sources */,
+				8F9A42E12CB96945007B4D48 /* WordPair.swift in Sources */,
 				8F9000652CAD5874005C7822 /* ContentView.swift in Sources */,
 				8F383D942CB49B5200E87429 /* MainEditView.swift in Sources */,
 				8F383D962CB49D4E00E87429 /* ProfileNavigationBarButton.swift in Sources */,
@@ -523,8 +549,10 @@
 				8F90009F2CADB43E005C7822 /* AuthService.swift in Sources */,
 				8F383D732CB0414B00E87429 /* ErrorManager.swift in Sources */,
 				8F9000AA2CAE85C9005C7822 /* MainLearnView.swift in Sources */,
+				8F9A42E92CB96ADD007B4D48 /* Module.swift in Sources */,
 				8F383D7C2CB12D6000E87429 /* AuthMainView.swift in Sources */,
 				8F383D992CB51C6A00E87429 /* Image+ImageName.swift in Sources */,
+				8F9A42DF2CB968DF007B4D48 /* Exercise.swift in Sources */,
 				8F383D902CB4013400E87429 /* Coordinator.swift in Sources */,
 				8F90009C2CAD8C2D005C7822 /* TabItem.swift in Sources */,
 				8F9000632CAD5874005C7822 /* MatchermindApp.swift in Sources */,

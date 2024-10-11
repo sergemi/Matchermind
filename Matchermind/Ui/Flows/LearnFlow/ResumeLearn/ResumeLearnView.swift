@@ -29,5 +29,7 @@ struct ResumeLearnView: View {
 }
 
 #Preview {
-    ResumeLearnView()
+    let errorManager = ErrorManager()
+    return ResumeLearnView()
+        .environmentObject(errorManager)
 }

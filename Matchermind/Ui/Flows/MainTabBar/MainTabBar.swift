@@ -39,5 +39,8 @@ struct MainTabBar: View {
 }
 
 #Preview {
-    MainTabBar()
+    let coordinator = Coordinator()
+    
+    return MainTabBar()
+        .environmentObject(coordinator)
 }

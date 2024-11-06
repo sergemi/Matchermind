@@ -67,6 +67,8 @@ class AuthService: AuthServiceProtocol {
 }
 
 class MockAuthService: AuthServiceProtocol {
+    static let mocUserEmail = "mocUser@gmail.com"
+    
     @Published var user: User? = nil
     
     var userPublisher: Published<User?>.Publisher { $user }

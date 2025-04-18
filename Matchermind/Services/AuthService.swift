@@ -52,7 +52,7 @@ class AuthService: AuthServiceProtocol {
         Auth.auth().removeStateDidChangeListener(handle)
     }
     
-    @MainActor func signOut() throws {
+    func signOut() throws {
         try Auth.auth().signOut()
         user = nil
     }
@@ -68,33 +68,59 @@ class AuthService: AuthServiceProtocol {
 
 class MockAuthService: AuthServiceProtocol {
     static let mocUserEmail = "mocUser@gmail.com"
+    static let mocUserPassword = "mocUser"
     
     @Published var user: User? = nil
-    
     var userPublisher: Published<User?>.Publisher { $user }
     
-    init(email: String? = nil) {
+    private struct MockUser {
+        var user: User
+        var password: String
+    }
+    
+    private var users: [String: MockUser] = [:]
+    
+    
+    init(email: String? = nil, password: String = "", autoLogin: Bool = false) {
         guard let email = email else {
             return
         }
-        user = User(id: UUID().uuidString,
-                    email: email)
-    }
-    
-    init() {
+        
+        let newUser = User(id: UUID().uuidString,
+                           email: email)
+        
+        let mockUser = MockUser(user: newUser, password: password)
+        users[newUser.id] = mockUser
+        
+        if autoLogin {
+            user = newUser
+        }
     }
     
     func signOut() throws {
+//        users.removeValue(forKey: user?.id ?? "")
         user = nil
     }
     
     func signIn(email: String, password: String) async throws {
-        user = User(id: UUID().uuidString,
-                    email: email)
+        // TODO: moc errors handle
+        
+        let signedUser = users.first(where: {$0.value.user.email == email} )
+        guard let signedUser = signedUser else {
+            return
+        }
+        user = signedUser.value.user
     }
     
     func signUp(email: String, password: String) async throws {
-        // TODO: implement
+        // TODO: moc errors handle
+        
+        let newUser = User(id: UUID().uuidString,
+                    email: email)
+        
+        user = newUser
+        let mockUser = MockUser(user: newUser, password: password)
+        users[newUser.id] = mockUser
     }
 
 }

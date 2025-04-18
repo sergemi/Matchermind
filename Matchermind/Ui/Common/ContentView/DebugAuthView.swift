@@ -17,8 +17,8 @@ struct DebugAuthView<AuthServiceProxy: AuthServiceProtocol>: View {
                 
                 Button("Login") {
                     Task {
-                        _ = try await authService.signIn(email: "tester1@gmail.com",
-                                                        password: "tester1!"
+                        _ = try await authService.signIn(email: MockAuthService.mocUserEmail,
+                                                         password: MockAuthService.mocUserPassword
                         )
                     }
                 }
@@ -37,14 +37,17 @@ struct DebugAuthView<AuthServiceProxy: AuthServiceProtocol>: View {
 }
 
 #Preview("user logged in") {
-    let mocAuth = MockAuthService(email: "aaa@gmail.com")
+    let mocAuth = MockAuthService(email: MockAuthService.mocUserEmail,
+                                  password: MockAuthService.mocUserPassword,
+                                  autoLogin: true)
     
     return DebugAuthView<MockAuthService>()
         .environmentObject(mocAuth)
 }
 
 #Preview("no user") {
-    let mocAuth = MockAuthService()
+    let mocAuth = MockAuthService(email: MockAuthService.mocUserEmail,
+                                  password: MockAuthService.mocUserPassword)
     
     return DebugAuthView<MockAuthService>()
         .environmentObject(mocAuth)

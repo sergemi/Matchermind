@@ -44,7 +44,9 @@ struct ContentView<AuthServiceProxy: AuthServiceProtocol>: View {
 }
 
 #Preview("user logged in") {
-    let mocAuth = MockAuthService(email: MockAuthService.mocUserEmail)
+    let mocAuth = MockAuthService(email: MockAuthService.mocUserEmail,
+                                  password: MockAuthService.mocUserPassword,
+                                  autoLogin: true)
     let coordinator = Coordinator()
     
     return ContentView<MockAuthService>(authService: mocAuth)
@@ -52,7 +54,8 @@ struct ContentView<AuthServiceProxy: AuthServiceProtocol>: View {
 }
 
 #Preview("no user") {
-    let mocAuth = MockAuthService()
+    let mocAuth = MockAuthService(email: MockAuthService.mocUserEmail,
+                                  password: MockAuthService.mocUserPassword)
     let coordinator = Coordinator()
     
     return ContentView<MockAuthService>(authService: mocAuth)

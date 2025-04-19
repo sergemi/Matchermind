@@ -71,7 +71,7 @@ struct SignInView<AuthServiceProxy: AuthServiceProtocol>: View {
 }
 
 #Preview {
-    let mocAuth = MockAuthService(email: "aaa@gmail.com")
+    let mocAuth = MockAuthService.initWithMockUser(loginned: false)
     let errorManager = ErrorManager()
     
     return SignInView<MockAuthService>()

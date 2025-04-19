@@ -38,15 +38,14 @@ struct ContentView<AuthServiceProxy: AuthServiceProtocol>: View {
             }
         }
         .environmentObject(authService)
-        .withErrorAlert(errorManager: errorManager)
+//        .withErrorAlert(errorManager: errorManager)
         .environmentObject(errorManager)
+        .withErrorAlert(errorManager: errorManager)
     }
 }
 
 #Preview("user logged in") {
-    let mocAuth = MockAuthService(email: MockAuthService.mocUserEmail,
-                                  password: MockAuthService.mocUserPassword,
-                                  autoLogin: true)
+    let mocAuth = MockAuthService.initWithMockUser(loginned: true)
     let coordinator = Coordinator()
     
     return ContentView<MockAuthService>(authService: mocAuth)
@@ -54,8 +53,7 @@ struct ContentView<AuthServiceProxy: AuthServiceProtocol>: View {
 }
 
 #Preview("no user") {
-    let mocAuth = MockAuthService(email: MockAuthService.mocUserEmail,
-                                  password: MockAuthService.mocUserPassword)
+    let mocAuth = MockAuthService.initWithMockUser(loginned: false)
     let coordinator = Coordinator()
     
     return ContentView<MockAuthService>(authService: mocAuth)

@@ -81,7 +81,7 @@ class MockAuthService: AuthServiceProtocol {
     private var users: [String: MockUser] = [:]
     
     
-    init(email: String? = nil, password: String = "", autoLogin: Bool = false) {
+    init(email: String?, password: String, autoLogin: Bool = false) {
         guard let email = email else {
             return
         }
@@ -95,6 +95,11 @@ class MockAuthService: AuthServiceProtocol {
         if autoLogin {
             user = newUser
         }
+    }
+    
+    static func initWithMockUser(loginned: Bool = true) -> MockAuthService {
+        let authService = MockAuthService(email: MockAuthService.mocUserEmail, password: MockAuthService.mocUserPassword, autoLogin: loginned)
+        return authService
     }
     
     func signOut() throws {

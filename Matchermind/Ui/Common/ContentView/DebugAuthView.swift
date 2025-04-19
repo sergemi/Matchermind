@@ -37,17 +37,14 @@ struct DebugAuthView<AuthServiceProxy: AuthServiceProtocol>: View {
 }
 
 #Preview("user logged in") {
-    let mocAuth = MockAuthService(email: MockAuthService.mocUserEmail,
-                                  password: MockAuthService.mocUserPassword,
-                                  autoLogin: true)
+    let mocAuth = MockAuthService.initWithMockUser(loginned: true)
     
     return DebugAuthView<MockAuthService>()
         .environmentObject(mocAuth)
 }
 
 #Preview("no user") {
-    let mocAuth = MockAuthService(email: MockAuthService.mocUserEmail,
-                                  password: MockAuthService.mocUserPassword)
+    let mocAuth = MockAuthService.initWithMockUser(loginned: false)
     
     return DebugAuthView<MockAuthService>()
         .environmentObject(mocAuth)

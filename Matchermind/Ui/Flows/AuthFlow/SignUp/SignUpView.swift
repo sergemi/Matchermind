@@ -31,7 +31,7 @@ struct SignUpView<AuthServiceProxy: AuthServiceProtocol>: View {
 }
 
 #Preview {
-    let mocAuth = MockAuthService()
+    let mocAuth = MockAuthService.initWithMockUser(loginned: false)
     let errorManager = ErrorManager()
     
     return SignUpView<MockAuthService>()

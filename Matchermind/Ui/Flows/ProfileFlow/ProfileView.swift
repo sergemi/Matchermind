@@ -26,7 +26,7 @@ struct ProfileView<AuthServiceProxy:AuthServiceProtocol>: View {
 }
 
 #Preview {
-    let mocAuth = MockAuthService(email: "aaa@gmail.com")
+    let mocAuth = MockAuthService.initWithMockUser(loginned: true)
     
     return ProfileView<MockAuthService>()
         .environmentObject(mocAuth)

@@ -16,7 +16,7 @@ struct AuthMainView<AuthServiceProxy: AuthServiceProtocol>: View {
 }
 
 #Preview {
-    let mocAuth = MockAuthService(email: MockAuthService.mocUserEmail)
+    let mocAuth = MockAuthService.initWithMockUser(loginned: true)
     let errorManager = ErrorManager()
     
     return AuthMainView<MockAuthService>()

@@ -11,11 +11,13 @@ import Firebase
 @main
 struct MatchermindApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject private var authService = AuthService()
     @StateObject private var coordinator = Coordinator()
     
     var body: some Scene {
         WindowGroup {
-            ContentView<AuthService>(authService: AuthService())
+            LazyContentView<AuthService>()
+                .environmentObject(authService)
                 .environmentObject(coordinator)
         }
     }

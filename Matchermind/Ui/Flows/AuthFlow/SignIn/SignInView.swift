@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SignInView<AuthServiceProxy: AuthServiceProtocol>: View {
     @EnvironmentObject private var errorManager: ErrorManager
-    @EnvironmentObject private var authService: AuthServiceProxy
+//    @EnvironmentObject private var authService: AuthServiceProxy
+    @EnvironmentObject var authService: AuthServiceProxy
     
     @StateObject private var viewModel = SignInViewModel()
     

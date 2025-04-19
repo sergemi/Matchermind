@@ -8,16 +8,16 @@
 import Foundation
 import Combine
 
-class ContentViewViewModel<AuthServiceProxy: AuthServiceProtocol>: ObservableObject {
+class ContentViewViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var isAuthFlow = false
     
-    @Published private var authService: AuthServiceProxy
+    @Published private var authService: any AuthServiceProtocol
     private var cancellables = Set<AnyCancellable>()
     
     private let loadingSeconds = 5
     
-    init(authService: AuthServiceProxy) {
+    init(authService: any AuthServiceProtocol) {
         self.authService = authService
         setupBindings()
         startLoading()

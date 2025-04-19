@@ -7,14 +7,22 @@
 
 import SwiftUI
 
+struct LazyContentView<AuthServiceProxy: AuthServiceProtocol>: View {
+    @EnvironmentObject var authService: AuthServiceProxy
+
+    var body: some View {
+        ContentView<AuthServiceProxy>(viewModel: ContentViewViewModel(authService: authService))
+            .environmentObject(authService)
+    }
+}
+
 struct ContentView<AuthServiceProxy: AuthServiceProtocol>: View {
-    @StateObject var authService: AuthServiceProxy
+    @EnvironmentObject var authService: AuthServiceProxy
     @StateObject private var errorManager = ErrorManager()
-    @StateObject private var viewModel: ContentViewViewModel<AuthServiceProxy>
+    @StateObject private var viewModel: ContentViewViewModel
     
-    init(authService: AuthServiceProxy) {
-        _authService = StateObject(wrappedValue: authService)
-        _viewModel = StateObject(wrappedValue: ContentViewViewModel(authService: authService))
+    init(viewModel: ContentViewViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
     
     var body: some View {
@@ -30,7 +38,7 @@ struct ContentView<AuthServiceProxy: AuthServiceProtocol>: View {
             }
             
             if authService.user == nil {
-                AuthMainView<AuthService>()
+                AuthMainView<AuthServiceProxy>()
             }
             
             if viewModel.isLoading == true {
@@ -38,24 +46,25 @@ struct ContentView<AuthServiceProxy: AuthServiceProtocol>: View {
             }
         }
         .environmentObject(authService)
-//        .withErrorAlert(errorManager: errorManager)
         .environmentObject(errorManager)
         .withErrorAlert(errorManager: errorManager)
     }
 }
 
 #Preview("user logged in") {
-    let mocAuth = MockAuthService.initWithMockUser(loginned: true)
+    let authService = MockAuthService.initWithMockUser(loginned: true)
     let coordinator = Coordinator()
     
-    return ContentView<MockAuthService>(authService: mocAuth)
+    return LazyContentView<MockAuthService>()
+        .environmentObject(authService)
         .environmentObject(coordinator)
 }
 
 #Preview("no user") {
-    let mocAuth = MockAuthService.initWithMockUser(loginned: false)
+    let authService = MockAuthService.initWithMockUser(loginned: false)
     let coordinator = Coordinator()
     
-    return ContentView<MockAuthService>(authService: mocAuth)
+    return LazyContentView<MockAuthService>()
+        .environmentObject(authService)
         .environmentObject(coordinator)
 }

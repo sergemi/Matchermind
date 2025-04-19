@@ -22,6 +22,9 @@ struct ProfileView<AuthServiceProxy:AuthServiceProtocol>: View {
                 Text("Logout")
             }
         }
+        .onAppear() { // TODO: remove
+            print("ProfileView.onAppear")
+        }
     }
 }
 

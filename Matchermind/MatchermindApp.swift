@@ -12,7 +12,7 @@ import Firebase
 struct MatchermindApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject private var authService = AuthService()
-    @StateObject private var coordinator = Coordinator()
+    @StateObject private var coordinator = Coordinator<AuthService>()
     
     var body: some Scene {
         WindowGroup {

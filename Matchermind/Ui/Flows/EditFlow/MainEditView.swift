@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainEditView: View {
+struct MainEditView<AuthServiceProxy: AuthServiceProtocol>: View {
     var body: some View {
         VStack {
             Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
@@ -15,11 +15,11 @@ struct MainEditView: View {
         .navigationTitle("Edit flow")
         
         .toolbar {
-            ProfileNavigationBarButton()
+            ProfileNavigationBarButton<AuthServiceProxy>()
         }
     }
 }
 
 #Preview {
-    MainEditView()
+    MainEditView<MockAuthService>()
 }

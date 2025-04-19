@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct MainLearnView: View {
-    @EnvironmentObject private var coordinator: Coordinator
+struct MainLearnView<AuthServiceProxy: AuthServiceProtocol>: View {
+    @EnvironmentObject private var coordinator: Coordinator<AuthServiceProxy>
     
     var body: some View {
         VStack {
@@ -42,13 +42,13 @@ struct MainLearnView: View {
         .navigationTitle("Learn main")
         
         .toolbar {
-            ProfileNavigationBarButton()
+            ProfileNavigationBarButton<AuthServiceProxy>()
         }
     }
 }
 
 #Preview {
     NavigationStack {
-        MainLearnView()
+        MainLearnView<MockAuthService>()
     }
 }

@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct MainTabBar: View {
-    @EnvironmentObject private var coordinator: Coordinator
+struct MainTabBar<AuthServiceProxy: AuthServiceProtocol>: View {
+    @EnvironmentObject private var coordinator: Coordinator<AuthServiceProxy>
     var body: some View {
         TabView(selection: $coordinator.selectedTab) {
             NavigationStack(path: $coordinator.learnNavigationPath) {
@@ -17,7 +17,7 @@ struct MainTabBar: View {
             .tabItem{
                 coordinator.flowTabItem(.learn)
             }
-            .tag(Coordinator.NavigationFlow.learn)
+            .tag(Coordinator<AuthServiceProxy>.NavigationFlow.learn)
             
             NavigationStack(path: $coordinator.quickAddNavigationPath) {
                 coordinator.flowView(.quickAdd)
@@ -25,7 +25,7 @@ struct MainTabBar: View {
             .tabItem {
                 coordinator.flowTabItem(.quickAdd)
             }
-            .tag(Coordinator.NavigationFlow.quickAdd)
+            .tag(Coordinator<AuthServiceProxy>.NavigationFlow.quickAdd)
             
             NavigationStack(path: $coordinator.editNavigationPath) {
                 coordinator.flowView(.edit)
@@ -33,14 +33,14 @@ struct MainTabBar: View {
             .tabItem{
                 coordinator.flowTabItem(.edit)
             }
-            .tag(Coordinator.NavigationFlow.edit)
+            .tag(Coordinator<AuthServiceProxy>.NavigationFlow.edit)
         }
     }
 }
 
 #Preview {
-    let coordinator = Coordinator()
+    let coordinator = Coordinator<MockAuthService>()
     
-    return MainTabBar()
+    return MainTabBar<MockAuthService>()
         .environmentObject(coordinator)
 }

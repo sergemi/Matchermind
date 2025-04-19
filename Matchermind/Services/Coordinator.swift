@@ -12,7 +12,7 @@ import SwiftUI
 
 
 
-final class Coordinator: ObservableObject {
+final class Coordinator<AuthServiceProxy: AuthServiceProtocol>: ObservableObject {
     enum NavigationFlow: String, Hashable {
         case learn
         case quickAdd
@@ -40,17 +40,17 @@ final class Coordinator: ObservableObject {
     @ViewBuilder func flowView(_ flow: NavigationFlow) -> some View {
         switch(flow) {
         case .learn:
-            MainLearnView()
+            MainLearnView<AuthServiceProxy>()
                 .navigationDestination(for: NavLink.self,
                                        destination: linkDestination)
             
         case .quickAdd:
-            MainQuickAddView()
+            MainQuickAddView<AuthServiceProxy>()
                 .navigationDestination(for: NavLink.self,
                                        destination: linkDestination)
             
         case .edit:
-            MainEditView()
+            MainEditView<AuthServiceProxy>()
                 .navigationDestination(for: NavLink.self,
                                        destination: linkDestination)
             
@@ -73,7 +73,7 @@ final class Coordinator: ObservableObject {
     @ViewBuilder private func linkDestination(link: NavLink) -> some View {
         switch link {
         case .mainLearnView:
-            MainLearnView()
+            MainLearnView<AuthServiceProxy>()
             
         case .resumeLearnView:
             ResumeLearnView()

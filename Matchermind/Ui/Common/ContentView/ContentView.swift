@@ -34,7 +34,7 @@ struct ContentView<AuthServiceProxy: AuthServiceProtocol>: View {
                     errorManager.handleError(error)
                 }
 //                DebugAuthView<AuthService>()
-                MainTabBar()
+                MainTabBar<AuthServiceProxy>()
             }
             
             if authService.user == nil {
@@ -53,7 +53,7 @@ struct ContentView<AuthServiceProxy: AuthServiceProtocol>: View {
 
 #Preview("user logged in") {
     let authService = MockAuthService.initWithMockUser(loginned: true)
-    let coordinator = Coordinator()
+    let coordinator = Coordinator<MockAuthService>()
     
     return LazyContentView<MockAuthService>()
         .environmentObject(authService)
@@ -62,7 +62,7 @@ struct ContentView<AuthServiceProxy: AuthServiceProtocol>: View {
 
 #Preview("no user") {
     let authService = MockAuthService.initWithMockUser(loginned: false)
-    let coordinator = Coordinator()
+    let coordinator = Coordinator<MockAuthService>()
     
     return LazyContentView<MockAuthService>()
         .environmentObject(authService)

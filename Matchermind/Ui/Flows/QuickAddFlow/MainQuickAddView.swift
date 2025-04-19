@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainQuickAddView: View {
+struct MainQuickAddView<AuthServiceProxy: AuthServiceProtocol>: View {
     var body: some View {
         VStack {
             Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
@@ -15,11 +15,11 @@ struct MainQuickAddView: View {
         .navigationTitle("Quick add")
         
         .toolbar {
-            ProfileNavigationBarButton()
+            ProfileNavigationBarButton<AuthServiceProxy>()
         }
     }
 }
 
 #Preview {
-    MainQuickAddView()
+    MainQuickAddView<MockAuthService>()
 }

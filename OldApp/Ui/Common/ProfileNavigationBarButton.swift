@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProfileNavigationBarButton<AuthServiceProxy: AuthServiceProtocol>: View {
+struct ProfileNavigationBarButton<AuthServiceProxy: AuthServiceProtocolOld>: View {
     var body: some View {
         NavigationLink {
             ProfileView<AuthServiceProxy>()
@@ -18,5 +18,5 @@ struct ProfileNavigationBarButton<AuthServiceProxy: AuthServiceProtocol>: View {
 }
 
 #Preview {
-    ProfileNavigationBarButton<MockAuthService>()
+    ProfileNavigationBarButton<MockAuthServiceOld>()
 }

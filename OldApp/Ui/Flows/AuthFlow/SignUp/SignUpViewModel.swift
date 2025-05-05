@@ -9,14 +9,14 @@ import Foundation
 
 class SignUpViewModel: ObservableObject {
     private var errorManager: ErrorManager?
-    private var authService: (any AuthServiceProtocol)?
+    private var authService: (any AuthServiceProtocolOld)?
     
     @Published var email: String = ""
     @Published var password: String = ""
     
     @Published var viewTitle = "Sign Up"
     
-    func setDependencies(errorManager: ErrorManager, authService: any AuthServiceProtocol) {
+    func setDependencies(errorManager: ErrorManager, authService: any AuthServiceProtocolOld) {
         print(">> SignUpViewModel.setDependencies")
         self.errorManager = errorManager
         self.authService = authService

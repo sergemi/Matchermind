@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainLearnView<AuthServiceProxy: AuthServiceProtocol>: View {
+struct MainLearnView<AuthServiceProxy: AuthServiceProtocolOld>: View {
     @EnvironmentObject private var coordinator: Coordinator<AuthServiceProxy>
     
     var body: some View {
@@ -49,6 +49,6 @@ struct MainLearnView<AuthServiceProxy: AuthServiceProtocol>: View {
 
 #Preview {
     NavigationStack {
-        MainLearnView<MockAuthService>()
+        MainLearnView<MockAuthServiceOld>()
     }
 }

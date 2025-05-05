@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DebugAuthView<AuthServiceProxy: AuthServiceProtocol>: View {
+struct DebugAuthView<AuthServiceProxy: AuthServiceProtocolOld>: View {
     @EnvironmentObject var authService: AuthServiceProxy
     
     var body: some View {
@@ -17,8 +17,8 @@ struct DebugAuthView<AuthServiceProxy: AuthServiceProtocol>: View {
                 
                 Button("Login") {
                     Task {
-                        _ = try await authService.signIn(email: MockAuthService.mocUserEmail,
-                                                         password: MockAuthService.mocUserPassword
+                        _ = try await authService.signIn(email: MockAuthServiceOld.mocUserEmail,
+                                                         password: MockAuthServiceOld.mocUserPassword
                         )
                     }
                 }
@@ -37,15 +37,15 @@ struct DebugAuthView<AuthServiceProxy: AuthServiceProtocol>: View {
 }
 
 #Preview("user logged in") {
-    let mocAuth = MockAuthService.initWithMockUser(loginned: true)
+    let mocAuth = MockAuthServiceOld.initWithMockUser(loginned: true)
     
-    return DebugAuthView<MockAuthService>()
+    return DebugAuthView<MockAuthServiceOld>()
         .environmentObject(mocAuth)
 }
 
 #Preview("no user") {
-    let mocAuth = MockAuthService.initWithMockUser(loginned: false)
+    let mocAuth = MockAuthServiceOld.initWithMockUser(loginned: false)
     
-    return DebugAuthView<MockAuthService>()
+    return DebugAuthView<MockAuthServiceOld>()
         .environmentObject(mocAuth)
 }

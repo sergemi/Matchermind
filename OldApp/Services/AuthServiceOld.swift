@@ -9,12 +9,7 @@ import Foundation
 import SwiftUI // TODO: maybe dont need
 import FirebaseAuth
 
-struct User: Equatable, Identifiable {
-    let id: String
-    let email: String
-}
-
-protocol AuthServiceProtocol: ObservableObject {
+protocol AuthServiceProtocolOld: ObservableObject {
     var user: User? { get set }
     
     var userPublisher: Published<User?>.Publisher { get }
@@ -26,7 +21,7 @@ protocol AuthServiceProtocol: ObservableObject {
     func signUp(email: String, password: String) async throws
 }
 
-class AuthService: AuthServiceProtocol {
+class AuthServiceOld: AuthServiceProtocolOld {
     private var handle: AuthStateDidChangeListenerHandle?
     
     @Published var user: User? = nil
@@ -66,7 +61,7 @@ class AuthService: AuthServiceProtocol {
     }
 }
 
-class MockAuthService: AuthServiceProtocol {
+class MockAuthServiceOld: AuthServiceProtocolOld {
     static let mocUserEmail = "mocUser@gmail.com"
     static let mocUserPassword = "mocUser"
     
@@ -97,8 +92,8 @@ class MockAuthService: AuthServiceProtocol {
         }
     }
     
-    static func initWithMockUser(loginned: Bool = true) -> MockAuthService {
-        let authService = MockAuthService(email: MockAuthService.mocUserEmail, password: MockAuthService.mocUserPassword, autoLogin: loginned)
+    static func initWithMockUser(loginned: Bool = true) -> MockAuthServiceOld {
+        let authService = MockAuthServiceOld(email: MockAuthServiceOld.mocUserEmail, password: MockAuthServiceOld.mocUserPassword, autoLogin: loginned)
         return authService
     }
     

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AuthMainView<AuthServiceProxy: AuthServiceProtocol>: View {
+struct AuthMainView<AuthServiceProxy: AuthServiceProtocolOld>: View {
     var body: some View {
         NavigationStack {
 //            Text("TODO")

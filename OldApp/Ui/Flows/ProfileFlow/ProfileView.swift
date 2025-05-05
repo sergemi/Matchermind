@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProfileView<AuthServiceProxy:AuthServiceProtocol>: View {
+struct ProfileView<AuthServiceProxy:AuthServiceProtocolOld>: View {
     @EnvironmentObject var authService: AuthServiceProxy
     
     var body: some View {
@@ -29,8 +29,8 @@ struct ProfileView<AuthServiceProxy:AuthServiceProtocol>: View {
 }
 
 #Preview {
-    let mocAuth = MockAuthService.initWithMockUser(loginned: true)
+    let mocAuth = MockAuthServiceOld.initWithMockUser(loginned: true)
     
-    return ProfileView<MockAuthService>()
+    return ProfileView<MockAuthServiceOld>()
         .environmentObject(mocAuth)
 }

@@ -12,12 +12,12 @@ class ContentViewViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var isAuthFlow = false
     
-    @Published private var authService: any AuthServiceProtocol
+    @Published private var authService: any AuthServiceProtocolOld
     private var cancellables = Set<AnyCancellable>()
     
     private let loadingSeconds = 5
     
-    init(authService: any AuthServiceProtocol) {
+    init(authService: any AuthServiceProtocolOld) {
         self.authService = authService
         setupBindings()
         startLoading()

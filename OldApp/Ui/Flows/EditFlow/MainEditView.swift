@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainEditView<AuthServiceProxy: AuthServiceProtocol>: View {
+struct MainEditView<AuthServiceProxy: AuthServiceProtocolOld>: View {
     var body: some View {
         VStack {
             Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
@@ -21,5 +21,5 @@ struct MainEditView<AuthServiceProxy: AuthServiceProtocol>: View {
 }
 
 #Preview {
-    MainEditView<MockAuthService>()
+    MainEditView<MockAuthServiceOld>()
 }

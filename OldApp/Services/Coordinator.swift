@@ -12,7 +12,7 @@ import SwiftUI
 
 
 
-final class Coordinator<AuthServiceProxy: AuthServiceProtocol>: ObservableObject {
+final class Coordinator<AuthServiceProxy: AuthServiceProtocolOld>: ObservableObject {
     enum NavigationFlow: String, Hashable {
         case learn
         case quickAdd
@@ -82,7 +82,7 @@ final class Coordinator<AuthServiceProxy: AuthServiceProtocol>: ObservableObject
             StartNewLearnView()
             
         case .profileView:
-            ProfileView<AuthService>() // TODO: implement template
+            ProfileView<AuthServiceOld>() // TODO: implement template
             
         default:
             EmptyView()

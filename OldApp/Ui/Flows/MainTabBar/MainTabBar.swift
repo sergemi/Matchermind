@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainTabBar<AuthServiceProxy: AuthServiceProtocol>: View {
+struct MainTabBar<AuthServiceProxy: AuthServiceProtocolOld>: View {
     @EnvironmentObject private var coordinator: Coordinator<AuthServiceProxy>
     var body: some View {
         TabView(selection: $coordinator.selectedTab) {
@@ -39,8 +39,8 @@ struct MainTabBar<AuthServiceProxy: AuthServiceProtocol>: View {
 }
 
 #Preview {
-    let coordinator = Coordinator<MockAuthService>()
+    let coordinator = Coordinator<MockAuthServiceOld>()
     
-    return MainTabBar<MockAuthService>()
+    return MainTabBar<MockAuthServiceOld>()
         .environmentObject(coordinator)
 }

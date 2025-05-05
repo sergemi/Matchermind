@@ -9,7 +9,7 @@ import Foundation
 
 class SignInViewModel: ObservableObject {
     private var errorManager: ErrorManager?
-    private var authService: (any AuthServiceProtocol)?
+    private var authService: (any AuthServiceProtocolOld)?
     
     @Published var email: String = ""
     @Published var password: String = ""
@@ -22,7 +22,7 @@ class SignInViewModel: ObservableObject {
     @Published var passwordTitle = "Password"
     @Published var passwordHint = "At least 8 symbols"
     
-    func setDependencies(errorManager: ErrorManager, authService: any AuthServiceProtocol) {
+    func setDependencies(errorManager: ErrorManager, authService: any AuthServiceProtocolOld) {
         print(">> SignInViewModel.setDependencies")
         self.errorManager = errorManager
         self.authService = authService

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SignUpView<AuthServiceProxy: AuthServiceProtocol>: View {
+struct SignUpView<AuthServiceProxy: AuthServiceProtocolOld>: View {
     @EnvironmentObject private var errorManager: ErrorManager
     @EnvironmentObject private var authService: AuthServiceProxy
     
@@ -31,10 +31,10 @@ struct SignUpView<AuthServiceProxy: AuthServiceProtocol>: View {
 }
 
 #Preview {
-    let mocAuth = MockAuthService.initWithMockUser(loginned: false)
+    let mocAuth = MockAuthServiceOld.initWithMockUser(loginned: false)
     let errorManager = ErrorManager()
     
-    return SignUpView<MockAuthService>()
+    return SignUpView<MockAuthServiceOld>()
         .environmentObject(mocAuth)
         .environmentObject(errorManager)
 }

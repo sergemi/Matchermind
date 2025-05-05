@@ -16,7 +16,7 @@ enum DataManagerError: Error, LocalizedError {
     case updateDataError
 }
 
-protocol DataManager: ObservableObject, Actor {
+protocol DataManagerOld: ObservableObject, Actor {
     var userId: String { get set}
     var modules: [ModulePreload] { get async throws }
     func module(id: String) async throws -> Module

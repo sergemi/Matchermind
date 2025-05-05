@@ -9,7 +9,8 @@ import SwiftUI
 import Firebase
 
 @main
-struct MatchermindApp: App {
+//struct MatchermindApp: App {
+struct MatchermindAppOld: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject private var authService = AuthService()
     @StateObject private var coordinator = Coordinator<AuthService>()

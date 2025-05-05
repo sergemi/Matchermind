@@ -82,7 +82,7 @@ final class Coordinator<AuthServiceProxy: AuthServiceProtocolOld>: ObservableObj
             StartNewLearnView()
             
         case .profileView:
-            ProfileView<AuthServiceOld>() // TODO: implement template
+            Text("aaa")
             
         default:
             EmptyView()

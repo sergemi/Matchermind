@@ -1,0 +1,44 @@
+//
+//  AuthService.swift
+//  MyRouter
+//
+//  Created by sergemi on 04/05/2025.
+//
+
+import Foundation
+
+protocol AuthServiceProtocol: Actor {
+    var user: User? { get }
+    func signIn(email: String, password: String) async throws
+    func signUp(email: String, password: String) async throws
+    func signOut() throws
+}
+
+@MainActor
+final class AuthService: ObservableObject {
+    @Published var user: User?
+//    var userPublisher: Published<User?>.Publisher { $user }
+
+    @Published var service: AuthServiceProtocol
+
+    init(service: AuthServiceProtocol) {
+        self.service = service
+        Task {
+            user = await self.service.user
+        }
+    }
+
+    func signIn(email: String, password: String) async {
+        try? await service.signIn(email: email, password: password)
+        user = await service.user
+    }
+    
+    func signOut() async {
+        try? await service.signOut()
+        user = nil
+    }
+
+    func syncUser() async {
+        user = await service.user
+    }
+}

@@ -10,7 +10,7 @@ import SwiftUI
 struct ProfileNavigationBarButton<AuthServiceProxy: AuthServiceProtocolOld>: View {
     var body: some View {
         NavigationLink {
-            ProfileView<AuthServiceProxy>()
+            Text("Stub")
         } label: {
             Label("User Profile", systemImage: "person.crop.circle")
         }

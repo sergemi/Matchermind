@@ -1,0 +1,41 @@
+//
+//  MainTabViewModel.swift
+//  MyRouter
+//
+//  Created by sergemi on 04/05/2025.
+//
+
+import SwiftUI
+
+final class MainTabViewModel: ObservableObject {
+    var router: AppRouter
+    
+    let tabs: [AppRouter.Tab] = [.learn,
+                                 .edit]
+    
+    let tabsItemData: [AppRouter.Tab: TabItemData] = [
+        .learn: TabItemData(caption: "Learn", image: .system("book")),
+        .edit: TabItemData(caption: "Edit", image: .system("pencil")),
+    ]
+    
+    @ViewBuilder func tabView(_ tab: AppRouter.Tab) -> some View {
+        switch(tab) {
+        case .learn:
+            LearnFlowView()
+        
+        case .edit:
+            EditFlowView()
+        }
+    }
+    
+    init(router: AppRouter) {
+        self.router = router
+    }
+}
+
+extension MainTabViewModel {
+    struct TabItemData {
+        let caption: String
+        let image: Image.ImageType
+    }
+}

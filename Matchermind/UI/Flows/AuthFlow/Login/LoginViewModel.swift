@@ -9,6 +9,12 @@ import Foundation
 
 final class LoginViewModel: AuthViewModel {
     @Published var title = "Login"
+    private var errorManager: ErrorManager?
+    
+    init(router: AppRouter, authService: AuthService, errorManager: ErrorManager) {
+        self.errorManager = errorManager
+        super.init(router: router, authService: authService)
+    }
     
     func login() {
         print("Login")
@@ -22,5 +28,11 @@ final class LoginViewModel: AuthViewModel {
     
     func register() {
         router.navigate(to: .auth(.rerister))
+    }
+    
+    @MainActor
+    func showTestError() {
+        let error = testError()
+        errorManager?.handleError(error)
     }
 }

@@ -40,4 +40,9 @@ class SignInViewModel: ObservableObject {
             }
         }
     }
+    
+    @MainActor func showTestError() {
+        let error = testError()
+        errorManager?.handleError(error)
+    }
 }

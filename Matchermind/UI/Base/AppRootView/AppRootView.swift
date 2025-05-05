@@ -3,6 +3,7 @@ import SwiftUI
 struct AppRootView: View {
     @StateObject private var router = AppRouter()
     @StateObject private var dataMgr: DataManager = FirebaseDataManager()
+    @StateObject private var errorManager = ErrorManager()
     
     @StateObject var authService = AuthService(service:
                                                 MockAuthService.initWithMockUser(loginned: true)
@@ -35,11 +36,14 @@ struct AppRootView: View {
             if router.isShowingAuth {
                 AuthFlowView(closeAction: router.closeAuth)
                     .environmentObject(router)
+                    .environmentObject(errorManager) // TODO: is it necessary?
                     .transition(.move(edge: .bottom))
                     .zIndex(1)
             }
         }
         .environmentObject(authService)
+        .environmentObject(errorManager)
+        .withErrorAlert(errorManager: errorManager)
         .task() {
             authService.$user.sink { user in
                 router.isShowingAuth = user == nil

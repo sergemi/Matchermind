@@ -9,11 +9,14 @@ import SwiftUI
 
 struct LoginView: View {
     @EnvironmentObject var router: AppRouter
-    @EnvironmentObject var authWrapper: AuthService
+    @EnvironmentObject var authService: AuthService
+    @EnvironmentObject private var errorManager: ErrorManager
+    
     
     var body: some View {
         LoginContentView(viewModel: LoginViewModel(router: router,
-                                                   authService: authWrapper))
+                                                   authService: authService,
+                                                   errorManager: errorManager))
     }
 }
 
@@ -27,6 +30,9 @@ struct LoginContentView: View {
                 viewModel.login()
             }
             Spacer()
+            Button("Test error") {
+                viewModel.showTestError()
+            }
             Button("Register") {
                 viewModel.register()
             }

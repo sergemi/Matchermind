@@ -33,6 +33,11 @@ final class AuthService: ObservableObject {
         user = await service.user
     }
     
+    func signUp(email: String, password: String) async throws {
+        try await service.signUp(email: email, password: password)
+        user = await service.user
+    }
+    
     func signOut() async throws {
         try await service.signOut()
         user = nil

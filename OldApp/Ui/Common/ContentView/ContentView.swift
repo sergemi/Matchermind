@@ -37,9 +37,9 @@ struct ContentView<AuthServiceProxy: AuthServiceProtocolOld>: View {
                 MainTabBar<AuthServiceProxy>()
             }
             
-            if authService.user == nil {
-                AuthMainView<AuthServiceProxy>()
-            }
+//            if authService.user == nil {
+//                AuthMainView<AuthServiceProxy>()
+//            }
             
             if viewModel.isLoading == true {
                 LoadingView()

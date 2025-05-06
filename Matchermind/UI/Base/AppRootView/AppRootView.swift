@@ -6,7 +6,8 @@ struct AppRootView: View {
     @StateObject private var errorManager = ErrorManager()
     
     @StateObject var authService = AuthService(service:
-                                                MockAuthService.initWithMockUser(loginned: true)
+//                                                MockAuthService.initWithMockUser(loginned: true)
+                                               FirebaseAuthService()
     )
     @StateObject var viewModel = AppRootViewModel()
 

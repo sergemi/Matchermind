@@ -36,7 +36,6 @@ struct SignInView<AuthServiceProxy: AuthServiceProtocolOld>: View {
                 }
                 .buttonStyle(.bordered)
                 .frame(maxWidth: .infinity)
-                //                .buttonStyle(GhostButtonStyle())
                 
                 HStack {
                     Text("Don't have account yet?")

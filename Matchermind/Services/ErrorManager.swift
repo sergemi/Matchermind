@@ -23,6 +23,7 @@ class ErrorManager: ObservableObject {
 
     @MainActor
     func handleError(_ error: Error) {
+        print("ErrorManager.handleError(\(error)")
         currentError = error
     }
 }

@@ -43,6 +43,8 @@ actor MockAuthService: AuthServiceProtocol {
             return
         }
         user = signedUser.value.user
+        
+//        throw testError()
     }
     
     func signUp(email: String, password: String) async throws {

@@ -28,17 +28,18 @@ final class AuthService: ObservableObject {
         }
     }
 
-    func signIn(email: String, password: String) async {
-        try? await service.signIn(email: email, password: password)
+    func signIn(email: String, password: String) async throws {
+        try await service.signIn(email: email, password: password)
         user = await service.user
     }
     
-    func signOut() async {
-        try? await service.signOut()
+    func signOut() async throws {
+        try await service.signOut()
         user = nil
     }
 
-    func syncUser() async {
-        user = await service.user
-    }
+    // TODO: WTF???
+//    func syncUser() async {
+//        user = await service.user
+//    }
 }

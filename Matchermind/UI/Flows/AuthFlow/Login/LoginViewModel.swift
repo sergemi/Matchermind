@@ -8,25 +8,43 @@
 import Foundation
 
 final class LoginViewModel: AuthViewModel {
-    @Published var title = "Login"
     private var errorManager: ErrorManager?
+    
+    @Published var title = "Sign in"
+    
+    @Published var emailTitle = "E-mail"
+    @Published var emailHint = "Enter email"
+    
+    @Published var passwordTitle = "Password"
+    @Published var passwordHint = "At least 8 symbols"
+    
+    @Published var email: String = ""
+    @Published var password: String = ""
     
     init(router: AppRouter, authService: AuthService, errorManager: ErrorManager) {
         self.errorManager = errorManager
         super.init(router: router, authService: authService)
     }
     
-    func login() {
+    func signIn() {
         print("Login")
 //        router.isShowingAuth = false
         Task {
-            let mocEmail = MockAuthService.mocUserEmail
-            let mocPassword = MockAuthService.mocUserPassword
-            await authService.signIn(email: mocEmail, password: mocPassword)
+//            let mocEmail = MockAuthService.mocUserEmail
+//            let mocPassword = MockAuthService.mocUserPassword
+//            await authService.signIn(email: mocEmail, password: mocPassword)
+            
+            do {
+                try await authService.signIn(email: email, password: password)
+            }
+            catch {
+                print("signIn.catch")
+                await errorManager?.handleError(error)
+            }
         }
     }
     
-    func register() {
+    func signUp() {
         router.navigate(to: .auth(.rerister))
     }
     

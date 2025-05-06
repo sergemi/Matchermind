@@ -21,7 +21,7 @@ final class ProfileViewModel: AuthViewModel {
     
     func logout() {
         Task {
-            await authService.signOut()
+            try await authService.signOut()
         }
     }
 }

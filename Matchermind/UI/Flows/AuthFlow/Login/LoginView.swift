@@ -24,26 +24,59 @@ struct LoginContentView: View {
     @StateObject var viewModel: LoginViewModel
     
     var body: some View {
-        VStack {
-            Text("Login screen")
-            Button("Login") {
-                viewModel.login()
+        VStack(spacing: 24) {
+            
+            DefaultTextField(text: $viewModel.email, placeholder: viewModel.emailHint, title: viewModel.emailTitle)
+            
+            DefaultTextField(text: $viewModel.password, placeholder: viewModel.passwordHint, title: viewModel.passwordTitle)
+            
+            Button("Sign in") {
+                viewModel.signIn()
             }
+            .buttonStyle(.bordered)
+            .frame(maxWidth: .infinity)
+            
+            HStack {
+                Text("Don't have account yet?")
+                
+                Button("Sign up!") {
+                    viewModel.signUp()
+                }
+            }
+            
+//                HStack { // reset password
+//                    Spacer()
+//
+//                    NavigationLink
+//                }
+            
             Spacer()
-            Button("Test error") {
-                viewModel.showTestError()
-            }
-            Button("Register") {
-                viewModel.register()
-            }
         }
+        .padding()
         .navigationTitle(viewModel.title)
-
+        
+//        VStack {
+//            Text("Login screen")
+//            Button("signIn") {
+//                viewModel.signIn()
+//            }
+//            Spacer()
+//            Button("Test error") {
+//                viewModel.showTestError()
+//            }
+//            Button("Register") {
+//                viewModel.register()
+//            }
+//        }
+//        .navigationTitle(viewModel.title)
+//
     }
 }
 
 #Preview {
+    let errorMgr = ErrorManager()
     withMockEnvironment(loginned: false) {
         LoginView()
+            .environmentObject(errorMgr)
     }
 }

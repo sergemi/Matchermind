@@ -58,6 +58,7 @@
 		8F8FA4352DC94B0B0024D01F /* UserStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA4062DC94B0B0024D01F /* UserStatisticsView.swift */; };
 		8F8FA4362DC94B0B0024D01F /* MainTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA3FD2DC94B0B0024D01F /* MainTabViewModel.swift */; };
 		8F8FA4372DC94B0B0024D01F /* LessonsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA4122DC94B0B0024D01F /* LessonsListViewModel.swift */; };
+		8F8FA4392DCA44180024D01F /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA4382DCA44180024D01F /* FirebaseAuthService.swift */; };
 		8F9000632CAD5874005C7822 /* MatchermindApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9000622CAD5874005C7822 /* MatchermindApp.swift */; };
 		8F9000652CAD5874005C7822 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9000642CAD5874005C7822 /* ContentView.swift */; };
 		8F9000672CAD5876005C7822 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F9000662CAD5876005C7822 /* Assets.xcassets */; };
@@ -155,6 +156,7 @@
 		8F8FA4192DC94B0B0024D01F /* EditLessonsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLessonsListViewModel.swift; sourceTree = "<group>"; };
 		8F8FA41B2DC94B0B0024D01F /* EditLessonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLessonView.swift; sourceTree = "<group>"; };
 		8F8FA41C2DC94B0B0024D01F /* EditLessonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLessonViewModel.swift; sourceTree = "<group>"; };
+		8F8FA4382DCA44180024D01F /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
 		8F90005F2CAD5874005C7822 /* Matchermind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matchermind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F9000622CAD5874005C7822 /* MatchermindApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchermindApp.swift; sourceTree = "<group>"; };
 		8F9000642CAD5874005C7822 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 			children = (
 				8F8FA3F02DC94AD10024D01F /* AuthService.swift */,
 				8F8FA3F12DC94AD10024D01F /* MockAuthService.swift */,
+				8F8FA4382DCA44180024D01F /* FirebaseAuthService.swift */,
 			);
 			path = AuthService;
 			sourceTree = "<group>";
@@ -846,6 +849,7 @@
 				8F383D8E2CB3EDD600E87429 /* SignUpViewModel.swift in Sources */,
 				8F9A42E32CB969A0007B4D48 /* LearnedWord.swift in Sources */,
 				8F383D782CB05A4400E87429 /* ViewModel.swift in Sources */,
+				8F8FA4392DCA44180024D01F /* FirebaseAuthService.swift in Sources */,
 				8F9000982CAD887A005C7822 /* MainTabBar.swift in Sources */,
 				8F9000A52CAE0CC4005C7822 /* NavLink.swift in Sources */,
 				8F9000B32CAEF791005C7822 /* LoadingView.swift in Sources */,

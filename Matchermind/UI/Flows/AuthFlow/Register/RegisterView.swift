@@ -9,11 +9,12 @@ import SwiftUI
 
 struct RegisterView: View {
     @EnvironmentObject var router: AppRouter
-    @EnvironmentObject var authWrapper: AuthService
+    @EnvironmentObject var authService: AuthService
+    @EnvironmentObject private var errorManager: ErrorManager
     
     var body: some View {
         RegisterContentView(viewModel: RegisterViewModel(router: router,
-                                                         authService: authWrapper))
+                                                         authService: authService))
     }
 }
 

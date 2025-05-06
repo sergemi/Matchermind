@@ -8,6 +8,8 @@
 import Foundation
 
 final class RegisterViewModel: AuthViewModel {
+    private var errorManager: ErrorManager?
+    
     @Published var title = "Register"
     
     func register() {

@@ -42,34 +42,11 @@ struct LoginContentView: View {
                 Button("Sign up!") {
                     viewModel.signUp()
                 }
-            }
-            
-//                HStack { // reset password
-//                    Spacer()
-//
-//                    NavigationLink
-//                }
-            
+            }            
             Spacer()
         }
         .padding()
         .navigationTitle(viewModel.title)
-        
-//        VStack {
-//            Text("Login screen")
-//            Button("signIn") {
-//                viewModel.signIn()
-//            }
-//            Spacer()
-//            Button("Test error") {
-//                viewModel.showTestError()
-//            }
-//            Button("Register") {
-//                viewModel.register()
-//            }
-//        }
-//        .navigationTitle(viewModel.title)
-//
     }
 }
 

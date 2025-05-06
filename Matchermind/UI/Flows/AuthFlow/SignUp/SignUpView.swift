@@ -1,5 +1,5 @@
 //
-//  LoginView.swift
+//  RegisterView.swift
 //  MyRouter
 //
 //  Created by sergemi on 04/05/2025.
@@ -7,42 +7,33 @@
 
 import SwiftUI
 
-struct LoginView: View {
+struct SignUpView: View {
     @EnvironmentObject var router: AppRouter
     @EnvironmentObject var authService: AuthService
     @EnvironmentObject private var errorManager: ErrorManager
     
-    
     var body: some View {
-        LoginContentView(viewModel: LoginViewModel(router: router,
-                                                   authService: authService,
-                                                   errorManager: errorManager))
+        SignUpContentView(viewModel: SignUpViewModel(router: router,
+                                                     authService: authService,
+                                                     errorManager: errorManager))
     }
 }
 
-struct LoginContentView: View {
-    @StateObject var viewModel: LoginViewModel
+struct SignUpContentView: View {
+    @StateObject var viewModel: SignUpViewModel
     
     var body: some View {
         VStack(spacing: 24) {
-            
             DefaultTextField(text: $viewModel.email, placeholder: viewModel.emailHint, title: viewModel.emailTitle)
             
             DefaultTextField(text: $viewModel.password, placeholder: viewModel.passwordHint, title: viewModel.passwordTitle)
             
-            Button("Sign in") {
-                viewModel.signIn()
+            Button("Sign up") {
+                viewModel.signUp()
             }
             .buttonStyle(.bordered)
             .frame(maxWidth: .infinity)
             
-            HStack {
-                Text("Don't have account yet?")
-                
-                Button("Sign up!") {
-                    viewModel.signUp()
-                }
-            }            
             Spacer()
         }
         .padding()
@@ -51,9 +42,7 @@ struct LoginContentView: View {
 }
 
 #Preview {
-    let errorMgr = ErrorManager()
-    withMockEnvironment(loginned: false) {
-        LoginView()
-            .environmentObject(errorMgr)
+    withMockEnvironment{
+        SignUpView()
     }
 }

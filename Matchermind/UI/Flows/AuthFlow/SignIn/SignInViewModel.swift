@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class LoginViewModel: AuthViewModel {
+final class SignInViewModel: AuthViewModel {
     private var errorManager: ErrorManager?
     
     @Published var title = "Sign in"
@@ -27,13 +27,8 @@ final class LoginViewModel: AuthViewModel {
     }
     
     func signIn() {
-        print("Login")
-//        router.isShowingAuth = false
+        print("signIn")
         Task {
-//            let mocEmail = MockAuthService.mocUserEmail
-//            let mocPassword = MockAuthService.mocUserPassword
-//            await authService.signIn(email: mocEmail, password: mocPassword)
-            
             do {
                 try await authService.signIn(email: email, password: password)
             }
@@ -45,9 +40,10 @@ final class LoginViewModel: AuthViewModel {
     }
     
     func signUp() {
-        router.navigate(to: .auth(.rerister))
+        router.navigate(to: .auth(.signUp))
     }
     
+    //TODO: remove after debug finish
     @MainActor
     func showTestError() {
         let error = testError()

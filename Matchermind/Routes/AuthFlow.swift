@@ -8,8 +8,8 @@
 import SwiftUI
 
 enum AuthFlowLink: Hashable {
-    case login
-    case rerister
+    case signIn
+    case signUp
 }
 
 struct AuthFlowView: View {
@@ -19,13 +19,13 @@ struct AuthFlowView: View {
 
     var body: some View {
         NavigationStack(path: $router.authPath) {
-            LoginView()
+            SignInView()
                 .navigationDestination(for: AuthFlowLink.self) { link in
                     switch link {
-                    case .login:
-                        LoginView()
-                    case .rerister:
-                        RegisterView()
+                    case .signIn:
+                        SignInView()
+                    case .signUp:
+                        SignUpView()
                     }
                 }
             

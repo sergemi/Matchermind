@@ -35,20 +35,20 @@
 		8F8FA4222DC94B0B0024D01F /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA3FC2DC94B0B0024D01F /* MainTabView.swift */; };
 		8F8FA4232DC94B0B0024D01F /* EditLessonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA41C2DC94B0B0024D01F /* EditLessonViewModel.swift */; };
 		8F8FA4242DC94B0B0024D01F /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA3F72DC94B0B0024D01F /* TabItem.swift */; };
-		8F8FA4252DC94B0B0024D01F /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA40E2DC94B0B0024D01F /* RegisterViewModel.swift */; };
-		8F8FA4262DC94B0B0024D01F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA40A2DC94B0B0024D01F /* LoginView.swift */; };
+		8F8FA4252DC94B0B0024D01F /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA40E2DC94B0B0024D01F /* SignUpViewModel.swift */; };
+		8F8FA4262DC94B0B0024D01F /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA40A2DC94B0B0024D01F /* SignInView.swift */; };
 		8F8FA4272DC94B0B0024D01F /* EditLessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA41B2DC94B0B0024D01F /* EditLessonView.swift */; };
 		8F8FA4282DC94B0B0024D01F /* EditLessonsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA4192DC94B0B0024D01F /* EditLessonsListViewModel.swift */; };
 		8F8FA4292DC94B0B0024D01F /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA4042DC94B0B0024D01F /* ProfileViewModel.swift */; };
 		8F8FA42A2DC94B0B0024D01F /* LessonsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA4112DC94B0B0024D01F /* LessonsListView.swift */; };
 		8F8FA42B2DC94B0B0024D01F /* AppRootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA4002DC94B0B0024D01F /* AppRootViewModel.swift */; };
-		8F8FA42C2DC94B0B0024D01F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA40B2DC94B0B0024D01F /* LoginViewModel.swift */; };
+		8F8FA42C2DC94B0B0024D01F /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA40B2DC94B0B0024D01F /* SignInViewModel.swift */; };
 		8F8FA42D2DC94B0B0024D01F /* EditLessonsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA4182DC94B0B0024D01F /* EditLessonsListView.swift */; };
 		8F8FA42E2DC94B0B0024D01F /* BaseViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA3FA2DC94B0B0024D01F /* BaseViewModels.swift */; };
 		8F8FA42F2DC94B0B0024D01F /* StartLessonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA4152DC94B0B0024D01F /* StartLessonViewModel.swift */; };
 		8F8FA4302DC94B0B0024D01F /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA3F82DC94B0B0024D01F /* ProfileButton.swift */; };
 		8F8FA4312DC94B0B0024D01F /* UserStatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA4072DC94B0B0024D01F /* UserStatisticsViewModel.swift */; };
-		8F8FA4322DC94B0B0024D01F /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA40D2DC94B0B0024D01F /* RegisterView.swift */; };
+		8F8FA4322DC94B0B0024D01F /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA40D2DC94B0B0024D01F /* SignUpView.swift */; };
 		8F8FA4332DC94B0B0024D01F /* AppRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA3FF2DC94B0B0024D01F /* AppRootView.swift */; };
 		8F8FA4342DC94B0B0024D01F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA4032DC94B0B0024D01F /* ProfileView.swift */; };
 		8F8FA4352DC94B0B0024D01F /* UserStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA4062DC94B0B0024D01F /* UserStatisticsView.swift */; };
@@ -135,10 +135,10 @@
 		8F8FA4042DC94B0B0024D01F /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		8F8FA4062DC94B0B0024D01F /* UserStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatisticsView.swift; sourceTree = "<group>"; };
 		8F8FA4072DC94B0B0024D01F /* UserStatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatisticsViewModel.swift; sourceTree = "<group>"; };
-		8F8FA40A2DC94B0B0024D01F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		8F8FA40B2DC94B0B0024D01F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		8F8FA40D2DC94B0B0024D01F /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
-		8F8FA40E2DC94B0B0024D01F /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		8F8FA40A2DC94B0B0024D01F /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		8F8FA40B2DC94B0B0024D01F /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		8F8FA40D2DC94B0B0024D01F /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		8F8FA40E2DC94B0B0024D01F /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		8F8FA4112DC94B0B0024D01F /* LessonsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsListView.swift; sourceTree = "<group>"; };
 		8F8FA4122DC94B0B0024D01F /* LessonsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsListViewModel.swift; sourceTree = "<group>"; };
 		8F8FA4142DC94B0B0024D01F /* StartLessonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartLessonView.swift; sourceTree = "<group>"; };
@@ -270,11 +270,11 @@
 		8F8FA3E92DC94A5D0024D01F /* Routes */ = {
 			isa = PBXGroup;
 			children = (
+				8F8FA3E82DC94A5D0024D01F /* AuthFlow.swift */,
+				8F8FA3E62DC94A5D0024D01F /* ProfileFlow.swift */,
 				8F8FA3E42DC94A5D0024D01F /* AppRouter.swift */,
 				8F8FA3E52DC94A5D0024D01F /* LearnFlow.swift */,
-				8F8FA3E62DC94A5D0024D01F /* ProfileFlow.swift */,
 				8F8FA3E72DC94A5D0024D01F /* EditFlow.swift */,
-				8F8FA3E82DC94A5D0024D01F /* AuthFlow.swift */,
 			);
 			path = Routes;
 			sourceTree = "<group>";
@@ -373,29 +373,29 @@
 			path = ProfileFlow;
 			sourceTree = "<group>";
 		};
-		8F8FA40C2DC94B0B0024D01F /* Login */ = {
+		8F8FA40C2DC94B0B0024D01F /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
-				8F8FA40A2DC94B0B0024D01F /* LoginView.swift */,
-				8F8FA40B2DC94B0B0024D01F /* LoginViewModel.swift */,
+				8F8FA40A2DC94B0B0024D01F /* SignInView.swift */,
+				8F8FA40B2DC94B0B0024D01F /* SignInViewModel.swift */,
 			);
-			path = Login;
+			path = SignIn;
 			sourceTree = "<group>";
 		};
-		8F8FA40F2DC94B0B0024D01F /* Register */ = {
+		8F8FA40F2DC94B0B0024D01F /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				8F8FA40D2DC94B0B0024D01F /* RegisterView.swift */,
-				8F8FA40E2DC94B0B0024D01F /* RegisterViewModel.swift */,
+				8F8FA40D2DC94B0B0024D01F /* SignUpView.swift */,
+				8F8FA40E2DC94B0B0024D01F /* SignUpViewModel.swift */,
 			);
-			path = Register;
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 		8F8FA4102DC94B0B0024D01F /* AuthFlow */ = {
 			isa = PBXGroup;
 			children = (
-				8F8FA40C2DC94B0B0024D01F /* Login */,
-				8F8FA40F2DC94B0B0024D01F /* Register */,
+				8F8FA40C2DC94B0B0024D01F /* SignIn */,
+				8F8FA40F2DC94B0B0024D01F /* SignUp */,
 			);
 			path = AuthFlow;
 			sourceTree = "<group>";
@@ -826,20 +826,20 @@
 				8F8FA4222DC94B0B0024D01F /* MainTabView.swift in Sources */,
 				8F8FA4232DC94B0B0024D01F /* EditLessonViewModel.swift in Sources */,
 				8F8FA4242DC94B0B0024D01F /* TabItem.swift in Sources */,
-				8F8FA4252DC94B0B0024D01F /* RegisterViewModel.swift in Sources */,
-				8F8FA4262DC94B0B0024D01F /* LoginView.swift in Sources */,
+				8F8FA4252DC94B0B0024D01F /* SignUpViewModel.swift in Sources */,
+				8F8FA4262DC94B0B0024D01F /* SignInView.swift in Sources */,
 				8F8FA4272DC94B0B0024D01F /* EditLessonView.swift in Sources */,
 				8F8FA4282DC94B0B0024D01F /* EditLessonsListViewModel.swift in Sources */,
 				8F8FA4292DC94B0B0024D01F /* ProfileViewModel.swift in Sources */,
 				8F8FA42A2DC94B0B0024D01F /* LessonsListView.swift in Sources */,
 				8F8FA42B2DC94B0B0024D01F /* AppRootViewModel.swift in Sources */,
-				8F8FA42C2DC94B0B0024D01F /* LoginViewModel.swift in Sources */,
+				8F8FA42C2DC94B0B0024D01F /* SignInViewModel.swift in Sources */,
 				8F8FA42D2DC94B0B0024D01F /* EditLessonsListView.swift in Sources */,
 				8F8FA42E2DC94B0B0024D01F /* BaseViewModels.swift in Sources */,
 				8F8FA42F2DC94B0B0024D01F /* StartLessonViewModel.swift in Sources */,
 				8F8FA4302DC94B0B0024D01F /* ProfileButton.swift in Sources */,
 				8F8FA4312DC94B0B0024D01F /* UserStatisticsViewModel.swift in Sources */,
-				8F8FA4322DC94B0B0024D01F /* RegisterView.swift in Sources */,
+				8F8FA4322DC94B0B0024D01F /* SignUpView.swift in Sources */,
 				8F8FA4332DC94B0B0024D01F /* AppRootView.swift in Sources */,
 				8F8FA4342DC94B0B0024D01F /* ProfileView.swift in Sources */,
 				8F8FA4352DC94B0B0024D01F /* UserStatisticsView.swift in Sources */,

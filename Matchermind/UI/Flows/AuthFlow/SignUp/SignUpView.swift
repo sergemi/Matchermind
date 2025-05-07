@@ -23,21 +23,23 @@ struct SignUpContentView: View {
     @StateObject var viewModel: SignUpViewModel
     
     var body: some View {
-        VStack(spacing: 24) {
-            DefaultTextField(text: $viewModel.email, placeholder: viewModel.emailHint, title: viewModel.emailTitle)
-            
-            DefaultTextField(text: $viewModel.password, placeholder: viewModel.passwordHint, title: viewModel.passwordTitle)
-            
-            Button("Sign up") {
-                viewModel.signUp()
+        ScrollView {
+            VStack(spacing: 24) {
+                DefaultTextField(text: $viewModel.email, placeholder: viewModel.emailHint, title: viewModel.emailTitle)
+                
+                DefaultTextField(text: $viewModel.password, placeholder: viewModel.passwordHint, title: viewModel.passwordTitle)
+                
+                Button("Sign up") {
+                    viewModel.signUp()
+                }
+                .buttonStyle(.bordered)
+                .frame(maxWidth: .infinity)
+                
+                Spacer()
             }
-            .buttonStyle(.bordered)
-            .frame(maxWidth: .infinity)
-            
-            Spacer()
+            .padding()
+            .navigationTitle(viewModel.title)
         }
-        .padding()
-        .navigationTitle(viewModel.title)
     }
 }
 

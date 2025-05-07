@@ -25,45 +25,48 @@ struct SignInContentView: View {
     @StateObject var viewModel: SignInViewModel
     
     var body: some View {
-        VStack(spacing: 24) {
-            AppleSignInMocButton()
-            
-            GoogleSignInButton(style: .standard) {
-                viewModel.continueWithGoogle()
-            }
-            
-//            Button {
-//                viewModel.continueWithGoogle()
-//            } label: {
-//                Image(.continueWithGoogle)
-//                    .resizable()
-//                    .scaledToFit()
-//                    .frame(width: 400, height: 48)
-//            }
-
-            
-            DefaultTextField(text: $viewModel.email, placeholder: viewModel.emailHint, title: viewModel.emailTitle)
-            
-            DefaultTextField(text: $viewModel.password, placeholder: viewModel.passwordHint, title: viewModel.passwordTitle)
-            
-            Button("Sign in") {
-                viewModel.signIn()
-            }
-            .buttonStyle(.bordered)
-            .frame(maxWidth: .infinity)
-            
-            HStack {
-                Text("Don't have account yet?")
+        ScrollView{
+            VStack(spacing: 24) {
+                AppleSignInMocButton()
                 
-                Button("Sign up!") {
-                    viewModel.signUp()
+                GoogleSignInButton(style: .standard) {
+                    viewModel.continueWithGoogle()
                 }
+                
+                //            Button {
+                //                viewModel.continueWithGoogle()
+                //            } label: {
+                //                Image(.continueWithGoogle)
+                //                    .resizable()
+                //                    .scaledToFit()
+                //                    .frame(width: 400, height: 48)
+                //            }
+                
+                Text("Or")
+                
+                DefaultTextField(text: $viewModel.email, placeholder: viewModel.emailHint, title: viewModel.emailTitle)
+                
+                DefaultTextField(text: $viewModel.password, placeholder: viewModel.passwordHint, title: viewModel.passwordTitle)
+                
+                Button("Sign in") {
+                    viewModel.signIn()
+                }
+                .buttonStyle(.bordered)
+                .frame(maxWidth: .infinity)
+                
+                HStack {
+                    Text("Don't have account yet?")
+                    
+                    Button("Sign up!") {
+                        viewModel.signUp()
+                    }
+                }
+                
+                Spacer()
             }
-            
-            Spacer()
+            .padding()
+            .navigationTitle(viewModel.title)
         }
-        .padding()
-        .navigationTitle(viewModel.title)
     }
 }
 

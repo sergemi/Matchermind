@@ -39,13 +39,15 @@ final class SignInViewModel: AuthViewModel {
         }
     }
     
+    @MainActor
     func continueWithGoogle() {
         Task {
             do {
                 try await authService.continueWithGoogle()
             }
             catch {
-                await errorManager?.handleError(error)
+//                await errorManager?.handleError(error)
+                errorManager?.handleError(error)
             }
         }
     }

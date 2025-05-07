@@ -46,6 +46,7 @@ final class AuthService: ObservableObject {
     
     func continueWithGoogle() async throws {
         try await service.continueWithGoogle()
+        user = await service.user
     }
 
     // TODO: WTF???

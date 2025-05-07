@@ -33,15 +33,6 @@ struct SignInContentView: View {
                     viewModel.continueWithGoogle()
                 }
                 
-                //            Button {
-                //                viewModel.continueWithGoogle()
-                //            } label: {
-                //                Image(.continueWithGoogle)
-                //                    .resizable()
-                //                    .scaledToFit()
-                //                    .frame(width: 400, height: 48)
-                //            }
-                
                 Text("Or")
                 
                 DefaultTextField(text: $viewModel.email, placeholder: viewModel.emailHint, title: viewModel.emailTitle)

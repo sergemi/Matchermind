@@ -45,7 +45,6 @@ struct AppleSignInMocButton: View {
             }
             .signInWithAppleButtonStyle(.whiteOutline)
             .frame(height: 45)
-            .cornerRadius(8)
         }
 }
 

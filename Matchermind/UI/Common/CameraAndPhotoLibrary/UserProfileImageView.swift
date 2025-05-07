@@ -10,8 +10,13 @@ import FirebaseStorage
 
 struct UserProfileImageView: View {
     let user: User
+    var size: CGFloat
     @State private var imageURL: URL?
     @State private var showingImagePicker = false
+    
+    func selectImage() {
+        showingImagePicker = true
+    }
 
     var body: some View {
         VStack(spacing: 20) {
@@ -22,24 +27,28 @@ struct UserProfileImageView: View {
                         image
                             .resizable()
                             .scaledToFill()
-                            .frame(width: 150, height: 150)
+                            .frame(width: size, height: size)
                             .clipShape(Circle())
                     case .failure(_):
                         Image(systemName: "person.crop.circle.badge.exclamationmark")
-                            .font(.largeTitle)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: size, height: size)
+                            .font(.largeTitle) // WTF?
                     default:
                         ProgressView()
                     }
                 }
             } else {
-                Image(systemName: "person.crop.circle")
+//                Image(systemName: "person.crop.circle")
+                Image(systemName: "person.crop.circle.fill")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 150, height: 150)
+                    .frame(width: size, height: size)
             }
 
             Button("Изменить фото") {
-                showingImagePicker = true
+                selectImage()
             }
         }
         .sheet(isPresented: $showingImagePicker) {

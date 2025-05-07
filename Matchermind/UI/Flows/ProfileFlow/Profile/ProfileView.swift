@@ -31,7 +31,8 @@ struct BaseProfileContentView: View {
 //            }
             Divider()
             if let currentUser = viewModel.authService.user {
-                UserProfileImageView(user: currentUser)
+                UserProfileImageView(user: currentUser,
+                                     size: 150)
             }
             
             Divider()

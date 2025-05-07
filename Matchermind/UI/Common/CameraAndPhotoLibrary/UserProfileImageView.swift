@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseStorage
+import SDWebImageSwiftUI
 
 struct UserProfileImageView: View {
     let user: User
@@ -17,44 +18,37 @@ struct UserProfileImageView: View {
     @State private var imageURL: URL?
     @State private var showingImagePicker = false
     
-    func selectImage() {
+    private func selectImage() {
         showingImagePicker = true
     }
     
     var body: some View {
         Button {
             if editable && action == nil {
-                showingImagePicker = true
+                selectImage()
             } else {
                 action?()
             }
-        } label:{
-            if let imageURL {
-                AsyncImage(url: imageURL) { phase in
-                    switch phase {
-                    case .success(let image):
-                        image
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: size, height: size)
-                            .clipShape(Circle())
-                    case .failure(_):
-                        Image(systemName: "person.crop.circle.badge.exclamationmark")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: size, height: size)
-                            .font(.largeTitle) // WTF?
-                    default:
-                        ProgressView()
-                    }
+        } label: {
+            ZStack {
+                Color.white
+                // Placeholder до загрузки
+                if imageURL == nil {
+                    Image(systemName: "person.crop.circle.fill")
+                        .resizable()
+                        .foregroundColor(.gray)
+                        .opacity(0.3)
                 }
-            } else {
-                //                Image(systemName: "person.crop.circle")
-                Image(systemName: "person.crop.circle.fill")
+
+                // Загруженное изображение
+                WebImage(url: imageURL)
                     .resizable()
-                    .scaledToFit()
-                    .frame(width: size, height: size)
+                    .indicator(.activity)
+                    .transition(.fade(duration: 0.5))
             }
+            .scaledToFill()
+            .frame(width: size, height: size)
+            .clipShape(Circle())
         }
         .buttonStyle(.plain)
         .frame(width: size, height: size)
@@ -77,3 +71,4 @@ struct UserProfileImageView: View {
         }
     }
 }
+

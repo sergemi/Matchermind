@@ -24,6 +24,7 @@ actor FirebaseAuthService: AuthServiceProtocol {
             guard let firUser = firUser else {
                 return
             }
+            print("photoURL: \(firUser.photoURL)")
             
             Task {
                 await self?.setUser(from: firUser)
@@ -86,41 +87,6 @@ actor FirebaseAuthService: AuthServiceProtocol {
         // Авторизация в Firebase
         try await Auth.auth().signIn(with: credential)
     }
-    
-//    func continueWithGoogle() async throws {
-//        print("continueWithGoogle")
-//        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-//        let config = GIDConfiguration(clientID: clientID)
-//        GIDSignIn.sharedInstance.configuration = config
-//        
-////        guard let windowScene = await UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-////        guard let rootViewController = await windowScene.windows.first?.rootViewController else { return }
-//        
-//        // Получаем rootViewController на главном потоке
-//            let rootViewController = try await MainActor.run {
-//                guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-//                      let rootVC = windowScene.windows.first?.rootViewController else {
-//                    throw URLError(.badURL)
-//                }
-//                return rootVC
-//            }
-//        
-////        let result = try await GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController)
-//        let result = try await MainActor.run {
-//            return GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController)
-//        }
-//        
-//        
-//        guard let idToken = result.user.idToken?.tokenString else {
-//            throw URLError(.badServerResponse)
-//        }
-//        
-//        let accessToken = result.user.accessToken.tokenString
-//        let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
-//        try await Auth.auth().signIn(with: credential)
-//        
-//        //        try await Auth.auth().signIn(with: credential)
-//    }
     
     private func googleSignOut() {
         GIDSignIn.sharedInstance.signOut() // TODO: try to make assync ?

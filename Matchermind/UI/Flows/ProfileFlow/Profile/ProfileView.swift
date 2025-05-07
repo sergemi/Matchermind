@@ -30,6 +30,11 @@ struct BaseProfileContentView: View {
                 Text("email: \( email)")
 //            }
             Divider()
+            if let currentUser = viewModel.authService.user {
+                UserProfileImageView(user: currentUser)
+            }
+            
+            Divider()
             Button("Statistics") {
                 viewModel.detailed()
             }

@@ -47,7 +47,6 @@
 		8F8FA42D2DC94B0B0024D01F /* EditLessonsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA4182DC94B0B0024D01F /* EditLessonsListView.swift */; };
 		8F8FA42E2DC94B0B0024D01F /* BaseViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA3FA2DC94B0B0024D01F /* BaseViewModels.swift */; };
 		8F8FA42F2DC94B0B0024D01F /* StartLessonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA4152DC94B0B0024D01F /* StartLessonViewModel.swift */; };
-		8F8FA4302DC94B0B0024D01F /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA3F82DC94B0B0024D01F /* ProfileButton.swift */; };
 		8F8FA4312DC94B0B0024D01F /* UserStatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA4072DC94B0B0024D01F /* UserStatisticsViewModel.swift */; };
 		8F8FA4322DC94B0B0024D01F /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA40D2DC94B0B0024D01F /* SignUpView.swift */; };
 		8F8FA4332DC94B0B0024D01F /* AppRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA3FF2DC94B0B0024D01F /* AppRootView.swift */; };
@@ -133,7 +132,6 @@
 		8F8FA3F02DC94AD10024D01F /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		8F8FA3F12DC94AD10024D01F /* MockAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthService.swift; sourceTree = "<group>"; };
 		8F8FA3F72DC94B0B0024D01F /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
-		8F8FA3F82DC94B0B0024D01F /* ProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
 		8F8FA3FA2DC94B0B0024D01F /* BaseViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModels.swift; sourceTree = "<group>"; };
 		8F8FA3FC2DC94B0B0024D01F /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		8F8FA3FD2DC94B0B0024D01F /* MainTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewModel.swift; sourceTree = "<group>"; };
@@ -323,7 +321,6 @@
 				8F8FA3F72DC94B0B0024D01F /* TabItem.swift */,
 				8F8FA44C2DCB78FC0024D01F /* CameraAndPhotoLibrary */,
 				8F8FA4442DCB4E610024D01F /* AppleSignInMocButton.swift */,
-				8F8FA3F82DC94B0B0024D01F /* ProfileButton.swift */,
 				8F383D842CB30C7C00E87429 /* DefaultTextField.swift */,
 			);
 			path = Common;
@@ -877,7 +874,6 @@
 				8F8FA42D2DC94B0B0024D01F /* EditLessonsListView.swift in Sources */,
 				8F8FA42E2DC94B0B0024D01F /* BaseViewModels.swift in Sources */,
 				8F8FA42F2DC94B0B0024D01F /* StartLessonViewModel.swift in Sources */,
-				8F8FA4302DC94B0B0024D01F /* ProfileButton.swift in Sources */,
 				8F8FA4312DC94B0B0024D01F /* UserStatisticsViewModel.swift in Sources */,
 				8F8FA4322DC94B0B0024D01F /* SignUpView.swift in Sources */,
 				8F8FA4332DC94B0B0024D01F /* AppRootView.swift in Sources */,

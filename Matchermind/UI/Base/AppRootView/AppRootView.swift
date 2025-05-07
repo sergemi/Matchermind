@@ -6,34 +6,39 @@ struct AppRootView: View {
     @StateObject private var errorManager = ErrorManager()
     
     @StateObject var authService = AuthService(service:
-//                                                MockAuthService.initWithMockUser(loginned: true)
+                                                //                                                MockAuthService.initWithMockUser(loginned: true)
                                                FirebaseAuthService()
     )
     @StateObject var viewModel = AppRootViewModel()
-
+    
     var body: some View {
         ZStack {
             MainTabView()
-            .environmentObject(dataMgr)
-            .environmentObject(router)
+                .environmentObject(dataMgr)
+                .environmentObject(router)
             
-            .overlay(alignment: .topTrailing) {
-                ProfileButton(size: 44) {
-                    router.showProfile()
+            
+                .overlay(alignment: .topTrailing) {
+                    if let currentUser = authService.user {
+                        
+                        UserProfileImageView(user: currentUser, size: 44) {
+                            router.showProfile()
+                        }
+                        .padding()
+                    }
                 }
-                .padding()
-            }
             
-            .sheet(isPresented: $router.isShowingProfile) {
-                ProfileFlowView()
-                    .environmentObject(router)
-            }
             
-//            .sheet(isPresented: $router.isShowingProfile) {
-//                ProfileFlowView()
-//                    .environmentObject(router)
-//            }
-
+                .sheet(isPresented: $router.isShowingProfile) {
+                    ProfileFlowView()
+                        .environmentObject(router)
+                }
+            
+            //            .sheet(isPresented: $router.isShowingProfile) {
+            //                ProfileFlowView()
+            //                    .environmentObject(router)
+            //            }
+            
             if router.isShowingAuth {
                 AuthFlowView(closeAction: router.closeAuth)
                     .environmentObject(router)

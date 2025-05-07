@@ -11,15 +11,24 @@ import FirebaseStorage
 struct UserProfileImageView: View {
     let user: User
     var size: CGFloat
+    var editable: Bool = false
+    var action: (() -> Void)? = nil
+    
     @State private var imageURL: URL?
     @State private var showingImagePicker = false
     
     func selectImage() {
         showingImagePicker = true
     }
-
+    
     var body: some View {
-        VStack(spacing: 20) {
+        Button {
+            if editable && action == nil {
+                showingImagePicker = true
+            } else {
+                action?()
+            }
+        } label:{
             if let imageURL {
                 AsyncImage(url: imageURL) { phase in
                     switch phase {
@@ -40,17 +49,15 @@ struct UserProfileImageView: View {
                     }
                 }
             } else {
-//                Image(systemName: "person.crop.circle")
+                //                Image(systemName: "person.crop.circle")
                 Image(systemName: "person.crop.circle.fill")
                     .resizable()
                     .scaledToFit()
                     .frame(width: size, height: size)
             }
-
-            Button("Изменить фото") {
-                selectImage()
-            }
         }
+        .buttonStyle(.plain)
+        .frame(width: size, height: size)
         .sheet(isPresented: $showingImagePicker) {
             ImageSourcePickerView(user: user) {
                 fetchImageURL()
@@ -60,7 +67,7 @@ struct UserProfileImageView: View {
             fetchImageURL()
         }
     }
-
+    
     private func fetchImageURL() {
         let ref = Storage.storage().reference(withPath: "avatars/\(user.id)/avatar.jpg")
         ref.downloadURL { url, _ in

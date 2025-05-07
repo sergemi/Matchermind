@@ -11,7 +11,7 @@ import GoogleSignInSwift
 struct SignInView: View {
     @EnvironmentObject var router: AppRouter
     @EnvironmentObject var authService: AuthService
-    @EnvironmentObject private var errorManager: ErrorManager
+    @EnvironmentObject var errorManager: ErrorManager
     
     
     var body: some View {
@@ -26,6 +26,8 @@ struct SignInContentView: View {
     
     var body: some View {
         VStack(spacing: 24) {
+            AppleSignInMocButton()
+            
             GoogleSignInButton(style: .standard) {
                 viewModel.continueWithGoogle()
             }

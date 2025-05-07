@@ -58,6 +58,7 @@
 		8F8FA43D2DCA97810024D01F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F8FA43C2DCA97810024D01F /* GoogleService-Info.plist */; };
 		8F8FA4412DCAB3240024D01F /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 8F8FA4402DCAB3240024D01F /* GoogleSignIn */; };
 		8F8FA4432DCAB3240024D01F /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8F8FA4422DCAB3240024D01F /* GoogleSignInSwift */; };
+		8F8FA4452DCB4E610024D01F /* AppleSignInMocButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA4442DCB4E610024D01F /* AppleSignInMocButton.swift */; };
 		8F9000632CAD5874005C7822 /* MatchermindApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9000622CAD5874005C7822 /* MatchermindApp.swift */; };
 		8F9000652CAD5874005C7822 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9000642CAD5874005C7822 /* ContentView.swift */; };
 		8F9000672CAD5876005C7822 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F9000662CAD5876005C7822 /* Assets.xcassets */; };
@@ -152,6 +153,7 @@
 		8F8FA4382DCA44180024D01F /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
 		8F8FA43C2DCA97810024D01F /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8F8FA43E2DCA9B850024D01F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8F8FA4442DCB4E610024D01F /* AppleSignInMocButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInMocButton.swift; sourceTree = "<group>"; };
 		8F90005F2CAD5874005C7822 /* Matchermind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matchermind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F9000622CAD5874005C7822 /* MatchermindApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchermindApp.swift; sourceTree = "<group>"; };
 		8F9000642CAD5874005C7822 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 			children = (
 				8F383D812CB2FFFD00E87429 /* Styles */,
 				8F8FA3F72DC94B0B0024D01F /* TabItem.swift */,
+				8F8FA4442DCB4E610024D01F /* AppleSignInMocButton.swift */,
 				8F8FA3F82DC94B0B0024D01F /* ProfileButton.swift */,
 				8F383D842CB30C7C00E87429 /* DefaultTextField.swift */,
 			);
@@ -814,6 +817,7 @@
 				8F8FA3E32DC949C60024D01F /* PreviewHelpers.swift in Sources */,
 				8F383D712CB0010800E87429 /* DebugAuthView.swift in Sources */,
 				8F9A42E32CB969A0007B4D48 /* LearnedWord.swift in Sources */,
+				8F8FA4452DCB4E610024D01F /* AppleSignInMocButton.swift in Sources */,
 				8F383D782CB05A4400E87429 /* ViewModel.swift in Sources */,
 				8F8FA4392DCA44180024D01F /* FirebaseAuthService.swift in Sources */,
 				8F9000982CAD887A005C7822 /* MainTabBar.swift in Sources */,

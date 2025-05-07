@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import GoogleSignInSwift
 
 struct SignInView: View {
     @EnvironmentObject var router: AppRouter
@@ -25,6 +26,19 @@ struct SignInContentView: View {
     
     var body: some View {
         VStack(spacing: 24) {
+            GoogleSignInButton(style: .standard) {
+                viewModel.continueWithGoogle()
+            }
+            
+//            Button {
+//                viewModel.continueWithGoogle()
+//            } label: {
+//                Image(.continueWithGoogle)
+//                    .resizable()
+//                    .scaledToFit()
+//                    .frame(width: 400, height: 48)
+//            }
+
             
             DefaultTextField(text: $viewModel.email, placeholder: viewModel.emailHint, title: viewModel.emailTitle)
             
@@ -52,9 +66,11 @@ struct SignInContentView: View {
 }
 
 #Preview {
+    
     let errorMgr = ErrorManager()
     withMockEnvironment(loginned: false) {
         SignInView()
             .environmentObject(errorMgr)
+            .withErrorAlert(errorManager: errorMgr)
     }
 }

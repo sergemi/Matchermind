@@ -59,6 +59,10 @@ actor MockAuthService: AuthServiceProtocol {
     func signOut() throws {
         user = nil
     }
+    
+    func continueWithGoogle() async throws {
+        print("TODO: continueWithGoogle")
+    }
 }
 
 extension MockAuthService {

@@ -6,7 +6,12 @@
 //
 
 import Foundation
+
+//import FirebaseCore // ?
+import Firebase
 import FirebaseAuth
+import GoogleSignIn
+import GoogleSignInSwift // ?
 
 actor FirebaseAuthService: AuthServiceProtocol {
     var user: User?
@@ -51,6 +56,37 @@ actor FirebaseAuthService: AuthServiceProtocol {
     
     func signOut() throws {
         try Auth.auth().signOut()
+        googleSignOut()
         user = nil
+    }
+    
+    func continueWithGoogle() async throws {
+        print("continueWithGoogle")
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+        let config = GIDConfiguration(clientID: clientID)
+        GIDSignIn.sharedInstance.configuration = config
+        
+//        guard let windowScene = await UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+//        guard let rootViewController = await windowScene.windows.first?.rootViewController else { return }
+        guard let windowScene = await UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+        guard let rootViewController = await windowScene.windows.first?.rootViewController else { return }
+        
+        let result = try await GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController)
+        
+        
+        guard let idToken = result.user.idToken?.tokenString else {
+            throw URLError(.badServerResponse)
+        }
+        
+        let accessToken = result.user.accessToken.tokenString
+        let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
+        try await Auth.auth().signIn(with: credential)
+        
+        //        try await Auth.auth().signIn(with: credential)
+    }
+    
+    private func googleSignOut() {
+        GIDSignIn.sharedInstance.signOut() // TODO: try to make assync ?
+        print("Google sign out")
     }
 }

@@ -39,6 +39,17 @@ final class SignInViewModel: AuthViewModel {
         }
     }
     
+    func continueWithGoogle() {
+        Task {
+            do {
+                try await authService.continueWithGoogle()
+            }
+            catch {
+                await errorManager?.handleError(error)
+            }
+        }
+    }
+    
     func signUp() {
         router.navigate(to: .auth(.signUp))
     }

@@ -12,6 +12,7 @@ protocol AuthServiceProtocol: Actor {
     func signIn(email: String, password: String) async throws
     func signUp(email: String, password: String) async throws
     func signOut() throws
+    func continueWithGoogle() async throws
 }
 
 @MainActor
@@ -41,6 +42,10 @@ final class AuthService: ObservableObject {
     func signOut() async throws {
         try await service.signOut()
         user = nil
+    }
+    
+    func continueWithGoogle() async throws {
+        try await service.continueWithGoogle()
     }
 
     // TODO: WTF???

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import GoogleSignIn
 
 @main
 struct MatchermindApp: App {
@@ -37,4 +38,12 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         
         return true
     }
+    
+    func application(
+            _ application: UIApplication,
+            open url: URL,
+            options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+        ) -> Bool {
+            return GIDSignIn.sharedInstance.handle(url)
+        }
 }

@@ -31,16 +31,13 @@ struct UserProfileImageView: View {
             }
         } label: {
             ZStack {
-                Color.white
-                // Placeholder до загрузки
-                if imageURL == nil {
+                // Placeholder
                     Image(systemName: "person.crop.circle.fill")
                         .resizable()
                         .foregroundColor(.gray)
                         .opacity(0.3)
-                }
 
-                // Загруженное изображение
+                // Avatar
                 WebImage(url: imageURL)
                     .resizable()
                     .indicator(.activity)

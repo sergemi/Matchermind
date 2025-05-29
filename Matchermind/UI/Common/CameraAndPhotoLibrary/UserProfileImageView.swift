@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
-import FirebaseStorage
 import SDWebImageSwiftUI
 
 struct UserProfileImageView: View {
     @EnvironmentObject var authService: AuthService // TODO: Remove?
+    
+    let storageService: StorageService = FirebaseStorageService()
     
     var size: CGFloat
     var editable: Bool = false
@@ -51,25 +52,29 @@ struct UserProfileImageView: View {
         .buttonStyle(.plain)
         .frame(width: size, height: size)
         .sheet(isPresented: $showingImagePicker) {
+            
             if let user = authService.user {
-                ImageSourcePickerView(user: user) {
-                    fetchImageURL(userId: user.id)
+                    ImageSourcePickerView(user: user) {
+                        Task {
+                            do {
+                                let url = try await storageService.fetchAvatarURL(userId: user.id)
+                                imageURL = url
+                            } catch {
+                                print("Failed to fetch image URL after image picker:", error)
                             }
-            }
+                        }
+                    }
+                }
         }
         .task(id: authService.userAvatarVersion) {
             if let user = authService.user {
-                fetchImageURL(userId: user.id)
-            }
-        }
-    }
-    
-    private func fetchImageURL(userId: String) {
-        let ref = Storage.storage().reference(withPath: "avatars/\(userId)/avatar.jpg")
-        ref.downloadURL { url, _ in
-            if let url = url {
-                imageURL = url
-            }
+                    do {
+                        let url = try await storageService.fetchAvatarURL(userId: user.id)
+                        imageURL = url
+                    } catch {
+                        print("Failed to fetch image URL:", error)
+                    }
+                }
         }
     }
 }

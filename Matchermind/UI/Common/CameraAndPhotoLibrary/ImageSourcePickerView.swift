@@ -14,6 +14,8 @@ struct ImageSourcePickerView: View {
     var onFinish: () -> Void
 
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var authService: AuthService
+    
     @State private var sourceType: ImagePickerView.SourceType?
     @State private var showPicker = false
 
@@ -74,6 +76,15 @@ struct ImageSourcePickerView: View {
 
     private func updateFirebaseUserPhotoURL(url: URL) {
         Auth.auth().currentUser?.createProfileChangeRequest().photoURL = url
-        Auth.auth().currentUser?.createProfileChangeRequest().commitChanges(completion: nil)
+//        Auth.auth().currentUser?.createProfileChangeRequest().commitChanges(completion: nil)
+        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+        changeRequest?.commitChanges { error in
+            if let error = error {
+                print("Ошибка при обновлении профиля: \(error.localizedDescription)")
+            } else {
+                print("Профиль успешно обновлён")
+                self.authService.notifyUserAvatarChanged()
+            }
+        }
     }
 }

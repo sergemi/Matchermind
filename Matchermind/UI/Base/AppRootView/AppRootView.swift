@@ -19,9 +19,9 @@ struct AppRootView: View {
             
             
                 .overlay(alignment: .topTrailing) {
-                    if let currentUser = authService.user {
+                    if let currentUser = authService.user { // TODO: remove?
                         
-                        UserProfileImageView(user: currentUser, size: 44) {
+                        UserProfileImageView(size: 44) {
                             router.showProfile()
                         }
                         .padding()

@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 import FirebaseStorage
 import SDWebImageSwiftUI
 
 struct UserProfileImageView: View {
-    let user: User
+    @EnvironmentObject var authService: AuthService // TODO: Remove?
+    
+//    let user: User
     var size: CGFloat
     var editable: Bool = false
     var action: (() -> Void)? = nil
@@ -50,22 +53,40 @@ struct UserProfileImageView: View {
         .buttonStyle(.plain)
         .frame(width: size, height: size)
         .sheet(isPresented: $showingImagePicker) {
-            ImageSourcePickerView(user: user) {
-                fetchImageURL()
+            if let user = authService.user {
+                ImageSourcePickerView(user: user) {
+                    fetchImageURL(userId: user.id)
+                            }
             }
+
+//            ImageSourcePickerView(user: user) {
+//                fetchImageURL()
+//            }
         }
-        .onAppear {
-            fetchImageURL()
+//        .onAppear {
+//            if let user = authService.user {
+//                fetchImageURL(userId: user.id)
+//            }
+//        }
+        .task(id: authService.userAvatarVersion) {
+            if let user = authService.user {
+                fetchImageURL(userId: user.id)
+            }
         }
     }
     
-    private func fetchImageURL() {
-        let ref = Storage.storage().reference(withPath: "avatars/\(user.id)/avatar.jpg")
+    private func fetchImageURL(userId: String) {
+        let ref = Storage.storage().reference(withPath: "avatars/\(userId)/avatar.jpg")
         ref.downloadURL { url, _ in
             if let url = url {
                 imageURL = url
             }
         }
+        print("currentUser: \(Auth.auth().currentUser)")
+        guard let url = Auth.auth().currentUser?.photoURL else {return}
+        
+        print(url)
+        print("!!!")
     }
 }
 

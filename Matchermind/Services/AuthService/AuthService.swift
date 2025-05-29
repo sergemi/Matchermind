@@ -18,17 +18,19 @@ protocol AuthServiceProtocol: Actor {
 @MainActor
 final class AuthService: ObservableObject {
     @Published var user: User?
-//    var userPublisher: Published<User?>.Publisher { $user }
-
+    //    var userPublisher: Published<User?>.Publisher { $user }
+    
+    @Published var userAvatarVersion: Int = 0
+    
     @Published var service: AuthServiceProtocol
-
+    
     init(service: AuthServiceProtocol) {
         self.service = service
         Task {
             user = await self.service.user
         }
     }
-
+    
     func signIn(email: String, password: String) async throws {
         try await service.signIn(email: email, password: password)
         user = await service.user
@@ -48,9 +50,13 @@ final class AuthService: ObservableObject {
         try await service.continueWithGoogle()
         user = await service.user
     }
-
+    
     // TODO: WTF???
-//    func syncUser() async {
-//        user = await service.user
-//    }
+    //    func syncUser() async {
+    //        user = await service.user
+    //    }
+    
+    func notifyUserAvatarChanged() {
+        userAvatarVersion += 1
+    }
 }

@@ -30,9 +30,8 @@ struct BaseProfileContentView: View {
                 Text("email: \( email)")
 //            }
             Divider()
-            if let currentUser = viewModel.authService.user {
-                UserProfileImageView(user: currentUser,
-                                     size: 150,
+            if let currentUser = viewModel.authService.user { // TODO: remove ?
+                UserProfileImageView(size: 150,
                                      editable: true)
             }
             

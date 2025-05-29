@@ -6,14 +6,12 @@
 //
 
 import SwiftUI
-import FirebaseAuth
 import FirebaseStorage
 import SDWebImageSwiftUI
 
 struct UserProfileImageView: View {
     @EnvironmentObject var authService: AuthService // TODO: Remove?
     
-//    let user: User
     var size: CGFloat
     var editable: Bool = false
     var action: (() -> Void)? = nil
@@ -58,16 +56,7 @@ struct UserProfileImageView: View {
                     fetchImageURL(userId: user.id)
                             }
             }
-
-//            ImageSourcePickerView(user: user) {
-//                fetchImageURL()
-//            }
         }
-//        .onAppear {
-//            if let user = authService.user {
-//                fetchImageURL(userId: user.id)
-//            }
-//        }
         .task(id: authService.userAvatarVersion) {
             if let user = authService.user {
                 fetchImageURL(userId: user.id)
@@ -82,11 +71,6 @@ struct UserProfileImageView: View {
                 imageURL = url
             }
         }
-        print("currentUser: \(Auth.auth().currentUser)")
-        guard let url = Auth.auth().currentUser?.photoURL else {return}
-        
-        print(url)
-        print("!!!")
     }
 }
 

@@ -223,6 +223,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8F0BB6B92DFDC2D400A53C1A /* ToDelete */ = {
+			isa = PBXGroup;
+			children = (
+				8F8FA3D92DC93F4E0024D01F /* MocLesson.swift */,
+			);
+			path = ToDelete;
+			sourceTree = "<group>";
+		};
 		8F383D6D2CAFCE1600E87429 /* ContentView */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,7 +289,7 @@
 		8F8FA3DB2DC93F4E0024D01F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8F8FA3D92DC93F4E0024D01F /* MocLesson.swift */,
+				8F0BB6B92DFDC2D400A53C1A /* ToDelete */,
 				8F8FA3DA2DC93F4E0024D01F /* User.swift */,
 			);
 			path = Models;

@@ -6,31 +6,32 @@
 //
 
 import SwiftUI
-import FirebaseStorage
 import FirebaseAuth
 
 struct ImageSourcePickerView: View {
     let user: User
     var onFinish: () -> Void
-
+    
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var authService: AuthService
     
+    let storageService: StorageService = FirebaseStorageService()
+    
     @State private var sourceType: ImagePickerView.SourceType?
     @State private var showPicker = false
-
+    
     var body: some View {
         VStack(spacing: 20) {
             Button("Сделать фото") {
                 sourceType = .camera
                 showPicker = true
             }
-
+            
             Button("Выбрать из галереи") {
                 sourceType = .photoLibrary
                 showPicker = true
             }
-
+            
             Button("Отмена", role: .cancel) {
                 dismiss()
             }
@@ -43,40 +44,30 @@ struct ImageSourcePickerView: View {
             }
         }
     }
-
+    
     private func uploadImage(_ image: UIImage) {
-        guard let imageData = image.jpegData(compressionQuality: 0.8) else { return }
-        
-        guard let uid = Auth.auth().currentUser?.uid else {
-            print("Not authenticated")
-            return
-        }
-
-        let ref = Storage.storage().reference(withPath: "avatars/\(user.id)/avatar.jpg")
-        print("ref: \(ref)")
-        ref.putData(imageData, metadata: nil) { _, error in
-            if error == nil {
-                ref.downloadURL { url, _ in
-                    if let url {
-                        updateFirebaseUserPhotoURL(url: url)
-                    }
-                }
+        Task {
+            guard let uid = Auth.auth().currentUser?.uid else {
+                print("Not authenticated")
+                return
             }
-            else {
-                print("Error: \(String(describing: error))")
-                print("")
+            
+            do {
+                let url = try await storageService.uploadAvatar(image: image, userId: uid)
+                updateFirebaseUserPhotoURL(url: url)
+            } catch {
+                print("Upload error: \(error)")
             }
-
-            DispatchQueue.main.async {
+            
+            await MainActor.run {
                 dismiss()
                 onFinish()
             }
         }
     }
-
+    
     private func updateFirebaseUserPhotoURL(url: URL) {
         Auth.auth().currentUser?.createProfileChangeRequest().photoURL = url
-//        Auth.auth().currentUser?.createProfileChangeRequest().commitChanges(completion: nil)
         let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
         changeRequest?.commitChanges { error in
             if let error = error {

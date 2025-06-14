@@ -63,6 +63,10 @@ actor MockAuthService: AuthServiceProtocol {
     func continueWithGoogle() async throws {
         print("TODO: continueWithGoogle")
     }
+    
+    func updateUserPhotoURL(url: URL, onSuccess: @escaping () -> Void) async throws {
+        onSuccess()
+    }
 }
 
 extension MockAuthService {

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import FirebaseAuth
 
 struct ImageSourcePickerView: View {
     let user: User
@@ -47,14 +46,14 @@ struct ImageSourcePickerView: View {
     
     private func uploadImage(_ image: UIImage) {
         Task {
-            guard let uid = Auth.auth().currentUser?.uid else {
+            guard let uid = authService.user?.id else {
                 print("Not authenticated")
                 return
             }
             
             do {
                 let url = try await storageService.uploadAvatar(image: image, userId: uid)
-                updateFirebaseUserPhotoURL(url: url)
+                try await authService.updateUserPhotoURL(url: url)
             } catch {
                 print("Upload error: \(error)")
             }
@@ -62,19 +61,6 @@ struct ImageSourcePickerView: View {
             await MainActor.run {
                 dismiss()
                 onFinish()
-            }
-        }
-    }
-    
-    private func updateFirebaseUserPhotoURL(url: URL) {
-        Auth.auth().currentUser?.createProfileChangeRequest().photoURL = url
-        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-        changeRequest?.commitChanges { error in
-            if let error = error {
-                print("Ошибка при обновлении профиля: \(error.localizedDescription)")
-            } else {
-                print("Профиль успешно обновлён")
-                self.authService.notifyUserAvatarChanged()
             }
         }
     }

@@ -13,6 +13,8 @@ protocol AuthServiceProtocol: Actor {
     func signUp(email: String, password: String) async throws
     func signOut() throws
     func continueWithGoogle() async throws
+    
+    func updateUserPhotoURL(url: URL, onSuccess: @escaping () -> Void) async throws
 }
 
 @MainActor
@@ -58,5 +60,11 @@ final class AuthService: ObservableObject {
     
     func notifyUserAvatarChanged() {
         userAvatarVersion += 1
+    }
+    
+    func updateUserPhotoURL(url: URL, onSuccess: (() -> Void)? = nil) async throws {
+        try await service.updateUserPhotoURL(url: url) {
+            self.notifyUserAvatarChanged()
+        }
     }
 }

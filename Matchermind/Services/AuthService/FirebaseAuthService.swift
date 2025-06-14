@@ -92,4 +92,24 @@ actor FirebaseAuthService: AuthServiceProtocol {
         GIDSignIn.sharedInstance.signOut() // TODO: try to make assync ?
         print("Google sign out")
     }
+    
+    func updateUserPhotoURL(url: URL, onSuccess: @escaping () -> Void) async throws {
+        guard let user = Auth.auth().currentUser else {
+                throw StorageServiceError.noUser
+            }
+
+            let changeRequest = user.createProfileChangeRequest()
+            changeRequest.photoURL = url
+
+            try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
+                changeRequest.commitChanges { error in
+                    if let error = error {
+                        continuation.resume(throwing: error)
+                    } else {
+                        continuation.resume()
+                        onSuccess()
+                    }
+                }
+            }
+    }
 }

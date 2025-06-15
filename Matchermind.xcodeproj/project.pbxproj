@@ -231,6 +231,14 @@
 			path = ToDelete;
 			sourceTree = "<group>";
 		};
+		8F0BB6C82DFE347E00A53C1A /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				8F8FA3EF2DC94AD10024D01F /* DataManager.swift */,
+			);
+			path = DataManager;
+			sourceTree = "<group>";
+		};
 		8F383D6D2CAFCE1600E87429 /* ContentView */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,6 +299,13 @@
 			children = (
 				8F0BB6B92DFDC2D400A53C1A /* ToDelete */,
 				8F8FA3DA2DC93F4E0024D01F /* User.swift */,
+				8F9A42DC2CB96076007B4D48 /* ModulePreload.swift */,
+				8F9A42E82CB96ADD007B4D48 /* Module.swift */,
+				8F9A42E42CB96A08007B4D48 /* TopicPreload.swift */,
+				8F9A42E62CB96A5F007B4D48 /* Topic.swift */,
+				8F9A42DE2CB968DF007B4D48 /* Exercise.swift */,
+				8F9A42E02CB96945007B4D48 /* WordPair.swift */,
+				8F9A42E22CB969A0007B4D48 /* LearnedWord.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -331,7 +346,7 @@
 				8F8FA3F22DC94AD10024D01F /* AuthService */,
 				8F560ABB2DE868780019A934 /* StorageService */,
 				8F383D722CB0414B00E87429 /* ErrorManager.swift */,
-				8F8FA3EF2DC94AD10024D01F /* DataManager.swift */,
+				8F0BB6C82DFE347E00A53C1A /* DataManager */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -650,13 +665,6 @@
 			isa = PBXGroup;
 			children = (
 				8F9000A42CAE0CC4005C7822 /* NavLink.swift */,
-				8F9A42DC2CB96076007B4D48 /* ModulePreload.swift */,
-				8F9A42DE2CB968DF007B4D48 /* Exercise.swift */,
-				8F9A42E02CB96945007B4D48 /* WordPair.swift */,
-				8F9A42E22CB969A0007B4D48 /* LearnedWord.swift */,
-				8F9A42E42CB96A08007B4D48 /* TopicPreload.swift */,
-				8F9A42E62CB96A5F007B4D48 /* Topic.swift */,
-				8F9A42E82CB96ADD007B4D48 /* Module.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

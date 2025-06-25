@@ -2,13 +2,14 @@ import SwiftUI
 
 struct AppRootView: View {
     @StateObject private var router = AppRouter()
-    @StateObject private var dataMgr: DataManager = FirebaseDataManager()
     @StateObject private var errorManager = ErrorManager()
     
     @StateObject var authService = AuthService(service:
                                                 //                                                MockAuthService.initWithMockUser(loginned: true)
                                                FirebaseAuthService()
     )
+    @StateObject private var dataMgr: DataManager = FirebaseDataManager()
+    
     @StateObject var viewModel = AppRootViewModel()
     
     var body: some View {
@@ -51,10 +52,28 @@ struct AppRootView: View {
         .environmentObject(errorManager)
         .withErrorAlert(errorManager: errorManager)
         .task() {
-            authService.$user.sink { user in
+            authService.$user.sink {user in
                 router.isShowingAuth = user == nil
-                if user == nil {
+                if let user = user {
+                    Task {
+                        do {
+                            try await dataMgr.setUser(user)
+                        }
+                        catch {
+                            print("Error setting user: \(error)")
+                        }
+                    }
+                }
+                else {
                     router.isShowingProfile = false
+                    Task {
+                        do {
+                            try await dataMgr.removeUser()
+                        }
+                        catch {
+                            print("Error setting user: \(error)")
+                        }
+                    }
                 }
             }
             .store(in: &viewModel.cancellables)

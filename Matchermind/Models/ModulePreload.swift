@@ -10,26 +10,26 @@ import Foundation
 struct ModulePreload: Identifiable, Equatable, Codable {
     let id: String
     var name: String
-    var author: String // author id
+    var authorId: String
     var isPublic: Bool
     
 
-    init(id: String, name: String, author: String, isPublic: Bool) {
+    init(id: String, name: String, authorId: String, isPublic: Bool) {
         self.id = id
         self.name = name
-        self.author = author
+        self.authorId = authorId
         self.isPublic = isPublic
     }
     
 
-    init(name: String, author: String, isPublic: Bool) {
+    init(name: String, authorId: String, isPublic: Bool) {
         self.init(id: UUID().uuidString,
                   name: name,
-                  author: author,
+                  authorId: authorId,
                   isPublic: isPublic)
     }
     
     init() {
-        self.init(name: "", author: "", isPublic: false)
+        self.init(name: "", authorId: "", isPublic: false)
     }
 }

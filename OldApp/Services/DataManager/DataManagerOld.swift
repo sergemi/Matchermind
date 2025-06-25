@@ -9,6 +9,7 @@ import Foundation
 
 enum DataManagerError: Error, LocalizedError {
     case unknownError
+    case userNotFound
     case moduleNotFound
     case topicNotFound
     case learnedWordNotFound
@@ -16,7 +17,7 @@ enum DataManagerError: Error, LocalizedError {
     case updateDataError
 }
 
-protocol DataManagerOld: ObservableObject, Actor {
+protocol DataManagerOld: Actor {
     var userId: String { get set}
     var modules: [ModulePreload] { get async throws }
     func module(id: String) async throws -> Module

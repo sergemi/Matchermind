@@ -21,8 +21,8 @@ struct Exercise: Identifiable, Equatable, Codable {
     
     var type: ExerciseType
     var maxScore: Int
-    var correct: Int = 0
-    var incorrect: Int = 0
+//    var correct: Int = 0 //TODO: remove?
+//    var incorrect: Int = 0
     
     init(id: String, type: ExerciseType, maxScore: Int) {
         self.id = id

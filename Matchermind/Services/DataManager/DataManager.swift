@@ -34,9 +34,49 @@ class DataManager: ObservableObject {
         } catch (DataManagerError.userNotFound) {
             try await dataService.createUser(user)
         }
+        
+        do {
+//            try await modulePreloads = dataService.fetchModules(for: user.id)
+            try await fetchModulePreloads()
+        }
+        catch {
+            print("Error: \(error)") //TODO: show errors correct
+        }
     }
     
     func fetchLessons() async throws { }
+    
+    func fetchModulePreloads() async throws {
+        guard let user = user else { throw DataManagerError.userNotFound }
+        
+        let modules = try await dataService.fetchModules(for: user.id)
+        if let quickModulePreview = modules.first(where: {$0.id == user.quickModuleId}) {
+            self.quickModule = try await dataService.fetchModule(by: quickModulePreview.id)
+        }
+        
+        await MainActor.run {
+            
+            self.modulePreloads = modules
+        }
+    }
+    
+    func fetchModule(by id: String) async throws -> Module {
+        let module = try await dataService.fetchModule(by: id)
+        return module
+    }
+    
+    func selectModule(by id: String) async throws -> Module {
+        await MainActor.run {
+            currentModule = nil
+        }
+        let module = try await fetchModule(by: id)
+        
+        await MainActor.run {
+            currentModule = module
+        }
+        
+        return module
+    }
     
     init(dataService: DataServiceProtocol) {
         self.dataService = dataService

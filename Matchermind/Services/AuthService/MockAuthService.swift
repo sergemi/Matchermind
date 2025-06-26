@@ -11,7 +11,7 @@ actor MockAuthService: AuthServiceProtocol {
     static let mocUserEmail = "mocUser@gmail.com"
     static let mocUserPassword = "mocUser"
     
-    private static let mocUser = User(id: UUID().uuidString, email: mocUserEmail)
+    static let mocUser = User(id: UUID().uuidString, email: mocUserEmail)
     private var users: [String: MockUser] = [:]
     
     var user: User?

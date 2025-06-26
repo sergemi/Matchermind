@@ -52,7 +52,11 @@ actor MocDataService: DataServiceProtocol {
     
     func fetchModule(by id: String) async throws -> Module {
         print("fetchModule")
-        let module = Module()
+//        let module = Module()
+        guard let module = modules.first(where: {$0.id == id}) else {
+            throw DataManagerError.moduleNotFound
+        }
+        
         return module
         
     }
@@ -64,17 +68,24 @@ actor MocDataService: DataServiceProtocol {
     
     init() {
         Task {
-            let user = User(id: "123", email: "test@test.com", name: "TestUser")
+//            let user = User(id: "123", email: "test@test.com", name: "TestUser")
+            let user = MockAuthService.mocUser
             
             do {
                 try await createUser(user)
-                let module1 = Module(name: "Module 1", details: "Detail 1", topics: [], authorId: user.id, isPublic: true)
-                let module2 = Module(name: "Module 2", details: "Detail 2", topics: [], authorId: user.id, isPublic: true)
-                let module3 = Module(name: "Module 3", details: "Detail 3", topics: [], authorId: user.id, isPublic: true)
+                let modulesCount = 50
+                for i in 1...modulesCount {
+                    let module = Module(name: "Module \(i)", details: "Details of module \(i)", topics: [], authorId: user.id, isPublic: true)
+                    try await createModule(module)
+                }
                 
-                try await createModule(module1)
-                try await createModule(module2)
-                try await createModule(module3)
+//                let module1 = Module(name: "Module 1", details: "Detail 1", topics: [], authorId: user.id, isPublic: true)
+//                let module2 = Module(name: "Module 2", details: "Detail 2", topics: [], authorId: user.id, isPublic: true)
+//                let module3 = Module(name: "Module 3", details: "Detail 3", topics: [], authorId: user.id, isPublic: true)
+//                
+//                try await createModule(module1)
+//                try await createModule(module2)
+//                try await createModule(module3)
                 
                 
                 let testModules = try await fetchModules(for: user.id)

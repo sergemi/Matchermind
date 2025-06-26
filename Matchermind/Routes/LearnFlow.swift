@@ -8,8 +8,10 @@
 import SwiftUI
 
 enum LearnFlowLink: Hashable {
-    case lessonsList
-    case startLesson(id: String)
+    case lessonsList //TODO: remove
+    case startLesson(id: String) //TODO: remove
+    case modulesList
+    case module(preload: ModulePreload)
 }
 
 struct LearnFlowView: View {
@@ -18,13 +20,21 @@ struct LearnFlowView: View {
     
     var body: some View {
         NavigationStack(path: $router.learnPath) {
-            LessonsListView()
+            //            LessonsListView()
+            ModulesListView()
                 .navigationDestination(for: LearnFlowLink.self) { link in
                     switch link {
                     case .lessonsList:
                         LessonsListView()
+                        
                     case .startLesson(let lessonId):
                         StartLessonView(lessonId: lessonId)
+                        
+                    case .modulesList:
+                        ModulesListView()
+                        
+                    case .module(let preload):
+                        ModuleView(modulePreload: preload)
                     }
                 }
         }

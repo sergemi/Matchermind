@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ModulePreload: Identifiable, Equatable, Codable {
+struct ModulePreload: Identifiable, Equatable, Codable, Hashable {
     let id: String
     var name: String
     var authorId: String

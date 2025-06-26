@@ -93,6 +93,11 @@
 		8FDC37952E041AD000F97004 /* DataServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37942E041AD000F97004 /* DataServiceProtocol.swift */; };
 		8FDC37972E043FCA00F97004 /* FirebaseDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37962E043FCA00F97004 /* FirebaseDataService.swift */; };
 		8FDC37992E04411800F97004 /* MocDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37982E04411800F97004 /* MocDataService.swift */; };
+		8FDC379C2E0C0B3A00F97004 /* ModulesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC379B2E0C0B3A00F97004 /* ModulesListViewModel.swift */; };
+		8FDC379E2E0C167100F97004 /* ModulesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC379D2E0C167100F97004 /* ModulesListView.swift */; };
+		8FDC37A62E0C42AD00F97004 /* ModuleListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37A52E0C42AD00F97004 /* ModuleListRow.swift */; };
+		8FDC37A92E0C687700F97004 /* ModuleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37A82E0C687700F97004 /* ModuleViewModel.swift */; };
+		8FDC37AB2E0C742000F97004 /* ModuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37AA2E0C742000F97004 /* ModuleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -198,6 +203,11 @@
 		8FDC37942E041AD000F97004 /* DataServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServiceProtocol.swift; sourceTree = "<group>"; };
 		8FDC37962E043FCA00F97004 /* FirebaseDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataService.swift; sourceTree = "<group>"; };
 		8FDC37982E04411800F97004 /* MocDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MocDataService.swift; sourceTree = "<group>"; };
+		8FDC379B2E0C0B3A00F97004 /* ModulesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulesListViewModel.swift; sourceTree = "<group>"; };
+		8FDC379D2E0C167100F97004 /* ModulesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulesListView.swift; sourceTree = "<group>"; };
+		8FDC37A52E0C42AD00F97004 /* ModuleListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleListRow.swift; sourceTree = "<group>"; };
+		8FDC37A82E0C687700F97004 /* ModuleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleViewModel.swift; sourceTree = "<group>"; };
+		8FDC37AA2E0C742000F97004 /* ModuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -484,6 +494,8 @@
 		8F8FA4172DC94B0B0024D01F /* LearnFlow */ = {
 			isa = PBXGroup;
 			children = (
+				8FDC379A2E0C0AAA00F97004 /* ModulesList */,
+				8FDC37A72E0C673600F97004 /* Module */,
 				8F8FA4132DC94B0B0024D01F /* LessonsList */,
 				8F8FA4162DC94B0B0024D01F /* StartLesson */,
 			);
@@ -730,6 +742,25 @@
 			path = DataService;
 			sourceTree = "<group>";
 		};
+		8FDC379A2E0C0AAA00F97004 /* ModulesList */ = {
+			isa = PBXGroup;
+			children = (
+				8FDC379D2E0C167100F97004 /* ModulesListView.swift */,
+				8FDC379B2E0C0B3A00F97004 /* ModulesListViewModel.swift */,
+				8FDC37A52E0C42AD00F97004 /* ModuleListRow.swift */,
+			);
+			path = ModulesList;
+			sourceTree = "<group>";
+		};
+		8FDC37A72E0C673600F97004 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				8FDC37A82E0C687700F97004 /* ModuleViewModel.swift */,
+				8FDC37AA2E0C742000F97004 /* ModuleView.swift */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -878,15 +909,18 @@
 				8F560ABA2DE8649C0019A934 /* StorageService.swift in Sources */,
 				8F9A42DD2CB96076007B4D48 /* ModulePreload.swift in Sources */,
 				8F383D6F2CAFCE5C00E87429 /* ContentViewViewModel.swift in Sources */,
+				8FDC37AB2E0C742000F97004 /* ModuleView.swift in Sources */,
 				8F383D832CB3007A00E87429 /* TestfieldStyles.swift in Sources */,
 				8F9A42E72CB96A5F007B4D48 /* Topic.swift in Sources */,
 				8F8FA3F42DC94AD10024D01F /* AuthService.swift in Sources */,
 				8F8FA3F52DC94AD10024D01F /* MockAuthService.swift in Sources */,
 				8F8FA3F62DC94AD10024D01F /* DataManager.swift in Sources */,
 				8F9000AF2CAECE45005C7822 /* ResumeLearnView.swift in Sources */,
+				8FDC379E2E0C167100F97004 /* ModulesListView.swift in Sources */,
 				8F383D762CB058AB00E87429 /* ResumeLearnViewModel.swift in Sources */,
 				8F383D8C2CB34E0900E87429 /* ButtonStyles.swift in Sources */,
 				8F8FA3E32DC949C60024D01F /* PreviewHelpers.swift in Sources */,
+				8FDC379C2E0C0B3A00F97004 /* ModulesListViewModel.swift in Sources */,
 				8F383D712CB0010800E87429 /* DebugAuthView.swift in Sources */,
 				8F9A42E32CB969A0007B4D48 /* LearnedWord.swift in Sources */,
 				8F8FA4452DCB4E610024D01F /* AppleSignInMocButton.swift in Sources */,
@@ -906,6 +940,7 @@
 				8F383D852CB30C7C00E87429 /* DefaultTextField.swift in Sources */,
 				8F90009F2CADB43E005C7822 /* AuthServiceOld.swift in Sources */,
 				8F383D732CB0414B00E87429 /* ErrorManager.swift in Sources */,
+				8FDC37A92E0C687700F97004 /* ModuleViewModel.swift in Sources */,
 				8F9000AA2CAE85C9005C7822 /* MainLearnView.swift in Sources */,
 				8FDC37972E043FCA00F97004 /* FirebaseDataService.swift in Sources */,
 				8F8FA3EA2DC94A5D0024D01F /* EditFlow.swift in Sources */,
@@ -930,6 +965,7 @@
 				8F8FA4312DC94B0B0024D01F /* UserStatisticsViewModel.swift in Sources */,
 				8F8FA4322DC94B0B0024D01F /* SignUpView.swift in Sources */,
 				8F8FA4332DC94B0B0024D01F /* AppRootView.swift in Sources */,
+				8FDC37A62E0C42AD00F97004 /* ModuleListRow.swift in Sources */,
 				8FDC37992E04411800F97004 /* MocDataService.swift in Sources */,
 				8F8FA4342DC94B0B0024D01F /* ProfileView.swift in Sources */,
 				8F8FA4352DC94B0B0024D01F /* UserStatisticsView.swift in Sources */,

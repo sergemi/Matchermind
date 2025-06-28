@@ -18,7 +18,7 @@ struct LazyContentView<AuthServiceProxy: AuthServiceProtocolOld>: View {
 
 struct ContentView<AuthServiceProxy: AuthServiceProtocolOld>: View {
     @EnvironmentObject var authService: AuthServiceProxy
-    @StateObject private var errorManager = ErrorManager()
+    @State private var errorManager = ErrorManager()
     @StateObject private var viewModel: ContentViewViewModel
     
     init(viewModel: ContentViewViewModel) {
@@ -46,7 +46,7 @@ struct ContentView<AuthServiceProxy: AuthServiceProtocolOld>: View {
             }
         }
         .environmentObject(authService)
-        .environmentObject(errorManager)
+        .environment(errorManager)
         .withErrorAlert(errorManager: errorManager)
     }
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ResumeLearnView: View {
     @StateObject var viewModel = ResumeLearnViewModel()
-    @EnvironmentObject var errorManager: ErrorManager
+    @Environment(ErrorManager.self) var errorManager
     
     var body: some View {
         VStack {
@@ -31,5 +31,5 @@ struct ResumeLearnView: View {
 #Preview {
     let errorManager = ErrorManager()
     return ResumeLearnView()
-        .environmentObject(errorManager)
+        .environment(errorManager)
 }

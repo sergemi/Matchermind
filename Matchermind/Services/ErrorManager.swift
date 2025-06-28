@@ -18,8 +18,9 @@ class testError2: LocalizedError {
 
 }
 
-class ErrorManager: ObservableObject {
-    @Published var currentError: Error?
+@Observable
+class ErrorManager {
+    var currentError: Error?
 
     @MainActor
     func handleError(_ error: Error) {

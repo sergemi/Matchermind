@@ -2,7 +2,7 @@ import SwiftUI
 
 struct AppRootView: View {
     @State private var router = AppRouter()
-    @StateObject private var errorManager = ErrorManager()
+    @State private var errorManager = ErrorManager()
     
     @State private var authService = AuthService(service:
                                                     //                                                MockAuthService.initWithMockUser(loginned: true)
@@ -34,13 +34,13 @@ struct AppRootView: View {
             if router.isShowingAuth {
                 AuthFlowView(closeAction: router.closeAuth)
                     .environment(router)
-                    .environmentObject(errorManager) // TODO: is it necessary?
+                    .environment(errorManager) // TODO: is it necessary?
                     .transition(.move(edge: .bottom))
                     .zIndex(1)
             }
         }
         .environment(authService)
-        .environmentObject(errorManager)
+        .environment(errorManager)
         .withErrorAlert(errorManager: errorManager)
         .onChange(of: authService.user) { _, user in
             router.isShowingAuth = user == nil

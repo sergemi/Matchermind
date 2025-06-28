@@ -10,7 +10,7 @@ import SwiftUI
 struct SignUpView: View {
     @Environment(AppRouter.self) var router
     @Environment(AuthService.self) var authService
-    @EnvironmentObject private var errorManager: ErrorManager
+    @Environment(ErrorManager.self) var errorManager
     
     var body: some View {
         SignUpContentView(viewModel: SignUpViewModel(router: router,

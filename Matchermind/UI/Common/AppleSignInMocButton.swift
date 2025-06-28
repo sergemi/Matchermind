@@ -18,7 +18,7 @@ class appleSignInMocErrorFailure: LocalizedError {
 
 
 struct AppleSignInMocButton: View {
-    @EnvironmentObject var errorManager: ErrorManager
+    @Environment(ErrorManager.self) var errorManager
     
     var body: some View {
         SignInWithAppleButton(.continue) { request in
@@ -52,6 +52,6 @@ struct AppleSignInMocButton: View {
     let errorMgr = ErrorManager()
     
     return AppleSignInMocButton()
-        .environmentObject(errorMgr)
+        .environment(errorMgr)
 //        .withErrorAlert(errorManager: errorMgr)
 }

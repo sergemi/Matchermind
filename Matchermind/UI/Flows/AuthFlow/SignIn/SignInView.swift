@@ -11,7 +11,7 @@ import GoogleSignInSwift
 struct SignInView: View {
     @Environment(AppRouter.self) var router
     @Environment(AuthService.self) var authService
-    @EnvironmentObject var errorManager: ErrorManager
+    @Environment(ErrorManager.self) var errorManager
     
     
     var body: some View {
@@ -66,7 +66,7 @@ struct SignInContentView: View {
     let errorMgr = ErrorManager()
     withMockEnvironment(loginned: false) {
         SignInView()
-            .environmentObject(errorMgr)
+            .environment(errorMgr)
             .withErrorAlert(errorManager: errorMgr)
     }
 }

@@ -18,13 +18,14 @@ protocol AuthServiceProtocol: Actor {
 }
 
 @MainActor
-final class AuthService: ObservableObject {
-    @Published var user: User?
+@Observable
+final class AuthService {
+    var user: User?
     //    var userPublisher: Published<User?>.Publisher { $user }
     
-    @Published var userAvatarVersion: Int = 0
+    var userAvatarVersion: Int = 0
     
-    @Published var service: AuthServiceProtocol
+    var service: AuthServiceProtocol
     
     init(service: AuthServiceProtocol) {
         self.service = service

@@ -4,9 +4,9 @@ struct AppRootView: View {
     @State private var router = AppRouter()
     @StateObject private var errorManager = ErrorManager()
     
-    @StateObject var authService = AuthService(service:
-                                                //                                                MockAuthService.initWithMockUser(loginned: true)
-                                               FirebaseAuthService()
+    @State private var authService = AuthService(service:
+                                                    //                                                MockAuthService.initWithMockUser(loginned: true)
+                                                 FirebaseAuthService()
     )
     @StateObject private var dataMgr: DataManager = FirebaseDataManager()
     
@@ -18,7 +18,6 @@ struct AppRootView: View {
                 .environmentObject(dataMgr)
                 .environment(router)
             
-            
                 .overlay(alignment: .topTrailing) {
                     if let currentUser = authService.user { // TODO: remove?
                         
@@ -28,18 +27,10 @@ struct AppRootView: View {
                         .padding()
                     }
                 }
-            
-            
                 .sheet(isPresented: $router.isShowingProfile) {
                     ProfileFlowView()
                         .environment(router)
                 }
-            
-            //            .sheet(isPresented: $router.isShowingProfile) {
-            //                ProfileFlowView()
-            //                    .environmentObject(router)
-            //            }
-            
             if router.isShowingAuth {
                 AuthFlowView(closeAction: router.closeAuth)
                     .environment(router)
@@ -48,35 +39,32 @@ struct AppRootView: View {
                     .zIndex(1)
             }
         }
-        .environmentObject(authService)
+        .environment(authService)
         .environmentObject(errorManager)
         .withErrorAlert(errorManager: errorManager)
-        .task() {
-            authService.$user.sink {user in
-                router.isShowingAuth = user == nil
-                if let user = user {
-                    Task {
-                        do {
-                            try await dataMgr.setUser(user)
-                        }
-                        catch {
-                            print("Error setting user: \(error)")
-                        }
+        .onChange(of: authService.user) { _, user in
+            router.isShowingAuth = user == nil
+            if let user = user {
+                Task {
+                    do {
+                        try await dataMgr.setUser(user)
                     }
-                }
-                else {
-                    router.isShowingProfile = false
-                    Task {
-                        do {
-                            try await dataMgr.removeUser()
-                        }
-                        catch {
-                            print("Error setting user: \(error)")
-                        }
+                    catch {
+                        print("Error setting user: \(error)")
                     }
                 }
             }
-            .store(in: &viewModel.cancellables)
+            else {
+                router.isShowingProfile = false
+                Task {
+                    do {
+                        try await dataMgr.removeUser()
+                    }
+                    catch {
+                        print("Error setting user: \(error)")
+                    }
+                }
+            }
         }
     }
 }

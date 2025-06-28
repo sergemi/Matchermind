@@ -9,11 +9,13 @@ import SwiftUI
 
 struct UserStatisticsView: View {
     @Environment(AppRouter.self) var router
-    @EnvironmentObject var authWrapper: AuthService
+//    @EnvironmentObject var authWrapper: AuthService
+    @Environment(AuthService.self) var authService
     
     var body: some View {
         DetailedProfileContentView(viewModel: UserStatisticsViewModel(router: router,
-                                                                      authService: authWrapper))
+//                                                                      authService: authWrapper))
+                                                                      authService: authService))
     }
 }
 

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StartLessonView: View {
     @Environment(AppRouter.self) var router
-    @EnvironmentObject var authService: AuthService
+    @Environment(AuthService.self) var authService
     @EnvironmentObject var dataMgr: DataManager
     
     let lessonId: String

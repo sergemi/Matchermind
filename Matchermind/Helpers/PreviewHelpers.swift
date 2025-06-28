@@ -20,7 +20,7 @@ func withMockEnvironment<Content: View>(
 
     content()
         .environment(mocRouter)
-        .environmentObject(mockWrapper)
+        .environment(mockWrapper)
 }
 
 @MainActor @ViewBuilder
@@ -35,6 +35,6 @@ func withMockDataEnvironment<Content: View>(
 
     content()
         .environment(mocRouter)
-        .environmentObject(mockWrapper)
+        .environment(mockWrapper)
         .environmentObject(mocDataMgr)
 }

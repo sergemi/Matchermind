@@ -10,7 +10,7 @@ import GoogleSignInSwift
 
 struct SignInView: View {
     @Environment(AppRouter.self) var router
-    @EnvironmentObject var authService: AuthService
+    @Environment(AuthService.self) var authService
     @EnvironmentObject var errorManager: ErrorManager
     
     

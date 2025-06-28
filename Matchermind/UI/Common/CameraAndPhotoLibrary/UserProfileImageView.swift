@@ -9,7 +9,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct UserProfileImageView: View {
-    @EnvironmentObject var authService: AuthService // TODO: Remove?
+    @Environment(AuthService.self) var authService // TODO: Remove?
     
     let storageService: StorageService = FirebaseStorageService()
     

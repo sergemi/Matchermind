@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @Environment(AppRouter.self) var router
-    @EnvironmentObject var authService: AuthService
+    @Environment(AuthService.self) var authService
     
     var body: some View {
         BaseProfileContentView(viewModel: ProfileViewModel(router: router,

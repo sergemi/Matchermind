@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ModuleView: View {
     @Environment(AppRouter.self) var router
-    @EnvironmentObject var authService: AuthService
+    @Environment(AuthService.self) var authService
     @EnvironmentObject var dataMgr: DataManager
     
     let modulePreload: ModulePreload

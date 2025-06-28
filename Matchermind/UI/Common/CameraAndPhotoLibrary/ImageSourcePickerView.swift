@@ -12,7 +12,7 @@ struct ImageSourcePickerView: View {
     var onFinish: () -> Void
     
     @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject var authService: AuthService
+    @Environment(AuthService.self) var authService
     
     let storageService: StorageService = FirebaseStorageService()
     

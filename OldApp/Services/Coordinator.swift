@@ -7,11 +7,6 @@
 
 import SwiftUI
 
-//@Observable class Coordinator {
-//    var learnNavigationPath = NavigationPath()
-
-
-
 final class Coordinator<AuthServiceProxy: AuthServiceProtocolOld>: ObservableObject {
     enum NavigationFlow: String, Hashable {
         case learn

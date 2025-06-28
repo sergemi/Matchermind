@@ -13,11 +13,13 @@ enum AuthFlowLink: Hashable {
 }
 
 struct AuthFlowView: View {
-    @EnvironmentObject var router: AppRouter
+    @Environment(AppRouter.self) private var router
     
     let closeAction: () -> Void // TODO: remove debug
 
     var body: some View {
+        @Bindable var router = router
+        
         NavigationStack(path: $router.authPath) {
             SignInView()
                 .navigationDestination(for: AuthFlowLink.self) { link in

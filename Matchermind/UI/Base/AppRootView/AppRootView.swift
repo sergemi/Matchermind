@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct AppRootView: View {
-    @StateObject private var router = AppRouter()
+    @State private var router = AppRouter()
     @StateObject private var errorManager = ErrorManager()
     
     @StateObject var authService = AuthService(service:
@@ -16,7 +16,7 @@ struct AppRootView: View {
         ZStack {
             MainTabView()
                 .environmentObject(dataMgr)
-                .environmentObject(router)
+                .environment(router)
             
             
                 .overlay(alignment: .topTrailing) {
@@ -32,7 +32,7 @@ struct AppRootView: View {
             
                 .sheet(isPresented: $router.isShowingProfile) {
                     ProfileFlowView()
-                        .environmentObject(router)
+                        .environment(router)
                 }
             
             //            .sheet(isPresented: $router.isShowingProfile) {
@@ -42,7 +42,7 @@ struct AppRootView: View {
             
             if router.isShowingAuth {
                 AuthFlowView(closeAction: router.closeAuth)
-                    .environmentObject(router)
+                    .environment(router)
                     .environmentObject(errorManager) // TODO: is it necessary?
                     .transition(.move(edge: .bottom))
                     .zIndex(1)

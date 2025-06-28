@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UserStatisticsView: View {
-    @EnvironmentObject var router: AppRouter
+    @Environment(AppRouter.self) var router
     @EnvironmentObject var authWrapper: AuthService
     
     var body: some View {

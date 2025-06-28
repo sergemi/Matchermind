@@ -19,7 +19,7 @@ func withMockEnvironment<Content: View>(
     let mockWrapper = AuthService(service: mockService)
 
     content()
-        .environmentObject(mocRouter)
+        .environment(mocRouter)
         .environmentObject(mockWrapper)
 }
 
@@ -34,7 +34,7 @@ func withMockDataEnvironment<Content: View>(
     let mocDataMgr: DataManager = MocDataManager()
 
     content()
-        .environmentObject(mocRouter)
+        .environment(mocRouter)
         .environmentObject(mockWrapper)
         .environmentObject(mocDataMgr)
 }

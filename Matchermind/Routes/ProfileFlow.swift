@@ -13,9 +13,10 @@ enum ProfileFlowLink: Hashable {
 }
 
 struct ProfileFlowView: View {
-    @EnvironmentObject var router: AppRouter
+    @Environment(AppRouter.self) private var router
     
     var body: some View {
+        @Bindable var router = router
         NavigationStack(path: $router.profilePath) {
             ProfileView()
                 .navigationDestination(for: ProfileFlowLink.self) { link in

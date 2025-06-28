@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LessonsListView: View {
-    @EnvironmentObject var router: AppRouter
+    @Environment(AppRouter.self) var router
     @EnvironmentObject var authService: AuthService
     @EnvironmentObject var dataMgr: DataManager
     

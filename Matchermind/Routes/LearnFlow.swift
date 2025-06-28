@@ -15,12 +15,13 @@ enum LearnFlowLink: Hashable {
 }
 
 struct LearnFlowView: View {
-    @EnvironmentObject var router: AppRouter
+    @Environment(AppRouter.self) private var router
     @EnvironmentObject var dataMgr: DataManager
     
     var body: some View {
+        @Bindable var router = router
+        
         NavigationStack(path: $router.learnPath) {
-            //            LessonsListView()
             ModulesListView()
                 .navigationDestination(for: LearnFlowLink.self) { link in
                     switch link {

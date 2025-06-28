@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @EnvironmentObject var router: AppRouter
+    @Environment(AppRouter.self) var router
     @EnvironmentObject var authService: AuthService
     
     var body: some View {

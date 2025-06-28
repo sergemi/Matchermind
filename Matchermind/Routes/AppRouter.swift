@@ -14,16 +14,17 @@ enum AppRoute: Hashable {
     case profile(ProfileFlowLink)
 }
 
-final class AppRouter: ObservableObject {
-    @Published var selectedTab: Tab = .learn
+@Observable
+final class AppRouter {
+    var selectedTab: Tab = .learn
     
-    @Published var learnPath = NavigationPath()
-    @Published var editPath = NavigationPath()
-    @Published var authPath = NavigationPath()
-    @Published var profilePath = NavigationPath()
+    var learnPath = NavigationPath()
+    var editPath = NavigationPath()
+    var authPath = NavigationPath()
+    var profilePath = NavigationPath()
     
-    @Published var isShowingAuth = false
-    @Published var isShowingProfile = false
+    var isShowingAuth = false
+    var isShowingProfile = false
 
     enum Tab: String, Identifiable {
         case learn

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StartLessonView: View {
-    @EnvironmentObject var router: AppRouter
+    @Environment(AppRouter.self) var router
     @EnvironmentObject var authService: AuthService
     @EnvironmentObject var dataMgr: DataManager
     
@@ -39,17 +39,17 @@ struct StartLessonContentView: View {
     }
 }
 
-#Preview {
-    let mockService = MockAuthService.initWithMockUser(loginned: true)
-    let mockWrapper = AuthService(service: mockService)
-    let dataMgr: DataManager = MocDataManager()
-    let router = AppRouter()
-    
-    let lesson = MocLesson(name: "Lesson for edit")
-    dataMgr.lessons.append(lesson)
-    
-    return StartLessonView(lessonId: lesson.id)
-        .environmentObject(dataMgr)
-        .environmentObject(router)
-        .environmentObject(mockWrapper)
-}
+//#Preview {
+//    let mockService = MockAuthService.initWithMockUser(loginned: true)
+//    let mockWrapper = AuthService(service: mockService)
+//    let dataMgr: DataManager = MocDataManager()
+//    let router = AppRouter()
+//    
+//    let lesson = MocLesson(name: "Lesson for edit")
+//    dataMgr.lessons.append(lesson)
+//    
+//    StartLessonView(lessonId: lesson.id)
+//        .environmentObject(dataMgr)
+//        .environment(router)
+//        .environmentObject(mockWrapper)
+//}

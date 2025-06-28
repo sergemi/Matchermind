@@ -13,9 +13,11 @@ enum EditFlowLink: Hashable {
 }
 
 struct EditFlowView: View {
-    @EnvironmentObject private var router: AppRouter
+    @Environment(AppRouter.self) private var router
     
     var body: some View {
+        @Bindable var router = router
+        
         NavigationStack(path: $router.editPath) {
             EditLessonsListView()
                 .navigationDestination(for: EditFlowLink.self) { link in

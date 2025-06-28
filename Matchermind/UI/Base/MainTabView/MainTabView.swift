@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainTabView: View {
-    @EnvironmentObject private var router: AppRouter
+    @Environment(AppRouter.self) private var router
     
     var body: some View {
         MainTabViewContentView(viewModel: MainTabViewModel(router: router))
@@ -16,10 +16,13 @@ struct MainTabView: View {
 }
 
 struct MainTabViewContentView: View {
+    @Environment(AppRouter.self) private var router
     @StateObject var viewModel: MainTabViewModel
     
     var body: some View {
-        TabView(selection: $viewModel.router.selectedTab) {
+        @Bindable var router = router
+        
+        TabView(selection: $router.selectedTab) {
             ForEach(viewModel.tabs) { tab in
                 if let tabItemData = viewModel.tabsItemData[tab] {
                     viewModel.tabView(tab)
@@ -37,7 +40,7 @@ struct MainTabViewContentView: View {
     let dataMgr: DataManager = MocDataManager()
     let router = AppRouter()
     
-    return MainTabView()
-        .environmentObject(router)
+    MainTabView()
+        .environment(router)
         .environmentObject(dataMgr)
 }

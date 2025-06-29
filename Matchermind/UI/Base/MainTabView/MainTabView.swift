@@ -42,5 +42,5 @@ struct MainTabViewContentView: View {
     
     MainTabView()
         .environment(router)
-        .environmentObject(dataMgr)
+        .environment(dataMgr)
 }

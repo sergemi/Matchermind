@@ -16,7 +16,7 @@ enum LearnFlowLink: Hashable {
 
 struct LearnFlowView: View {
     @Environment(AppRouter.self) private var router
-    @EnvironmentObject var dataMgr: DataManager
+    @Environment(DataManager.self) var dataMgr
     
     var body: some View {
         @Bindable var router = router

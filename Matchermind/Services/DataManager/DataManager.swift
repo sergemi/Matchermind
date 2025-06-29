@@ -7,14 +7,15 @@
 
 import Foundation
 
-class DataManager: ObservableObject {
-    @Published var lessons: [MocLesson] = [] // todo: remove
+@Observable
+class DataManager {
+    var lessons: [MocLesson] = [] // todo: remove
     private var user: User? = nil
     private var dataService: DataServiceProtocol
     
-    @Published var modulePreloads: [ModulePreload] = []
-    @Published var currentModule: Module?
-    @Published var quickModule: Module?
+    var modulePreloads: [ModulePreload] = []
+    var currentModule: Module?
+    var quickModule: Module?
     
     func removeUser() async throws {
         print("DataManager.removeUser")

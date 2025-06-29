@@ -11,16 +11,20 @@ import Combine
 final class EditLessonsListViewModel: DataViewModel {
     @Published var title = "Lessons to edit"
     
-    @Published var lessons: [MocLesson] = []
+//    @Published var lessons: [MocLesson] = []
+    var lessons: [MocLesson] {
+        dataMgr.lessons
+    }
+    
     private var cancellables = Set<AnyCancellable>()
     
-    override init(router: AppRouter, authService: AuthService,  dataMgr: DataManager) {
-        super.init(router: router, authService: authService, dataMgr: dataMgr)
-        
-        dataMgr.$lessons
-            .receive(on: DispatchQueue.main)
-            .assign(to: &$lessons)
-    }
+//    override init(router: AppRouter, authService: AuthService,  dataMgr: DataManager) {
+//        super.init(router: router, authService: authService, dataMgr: dataMgr)
+//        
+//        dataMgr.$lessons
+//            .receive(on: DispatchQueue.main)
+//            .assign(to: &$lessons)
+//    }
     
     func editLesson(id: String) {
         router.navigate(to: .edit(.editLesson(id: id)))

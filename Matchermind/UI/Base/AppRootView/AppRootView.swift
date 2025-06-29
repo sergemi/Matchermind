@@ -8,14 +8,14 @@ struct AppRootView: View {
                                                     //                                                MockAuthService.initWithMockUser(loginned: true)
                                                  FirebaseAuthService()
     )
-    @StateObject private var dataMgr: DataManager = FirebaseDataManager()
+    @State private var dataMgr: DataManager = FirebaseDataManager()
     
     @StateObject var viewModel = AppRootViewModel()
     
     var body: some View {
         ZStack {
             MainTabView()
-                .environmentObject(dataMgr)
+                .environment(dataMgr)
                 .environment(router)
             
                 .overlay(alignment: .topTrailing) {

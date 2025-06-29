@@ -10,7 +10,7 @@ import SwiftUI
 struct EditLessonsListView: View {
     @Environment(AppRouter.self) var router
     @Environment(AuthService.self) var authService
-    @EnvironmentObject var dataMgr: DataManager
+    @Environment(DataManager.self) var dataMgr
     
     var body: some View {
         EditLessonsListContentView(viewModel: EditLessonsListViewModel(router: router,

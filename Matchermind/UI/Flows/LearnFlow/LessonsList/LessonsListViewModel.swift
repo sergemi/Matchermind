@@ -11,15 +11,19 @@ import Combine
 final class LessonsListViewModel: DataViewModel {
     @Published var title = "Lessons"
     
-    @Published var lessons: [MocLesson] = []
+//    @Published var lessons: [MocLesson] = []
+    var lessons: [MocLesson] {
+        dataMgr.lessons
+    }
+    
     private var cancellables = Set<AnyCancellable>()
     
     override init(router: AppRouter, authService: AuthService,  dataMgr: DataManager) {
         super.init(router: router, authService: authService, dataMgr: dataMgr)
         
-        dataMgr.$lessons
-            .receive(on: DispatchQueue.main)
-            .assign(to: &$lessons)
+//        dataMgr.$lessons
+//            .receive(on: DispatchQueue.main)
+//            .assign(to: &$lessons)
         
         Task {
             try await dataMgr.fetchLessons()

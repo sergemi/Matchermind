@@ -10,7 +10,7 @@ import SwiftUI
 struct ModulesListView: View {
     @Environment(AppRouter.self) var router
     @Environment(AuthService.self) var authService
-    @EnvironmentObject var dataMgr: DataManager
+    @Environment(DataManager.self) var dataMgr
     
     var body: some View {
         ModulesListContentView(viewModel: ModulesListViewModel(router: router,

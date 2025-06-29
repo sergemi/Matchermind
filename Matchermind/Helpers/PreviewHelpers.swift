@@ -36,5 +36,5 @@ func withMockDataEnvironment<Content: View>(
     content()
         .environment(mocRouter)
         .environment(mockWrapper)
-        .environmentObject(mocDataMgr)
+        .environment(mocDataMgr)
 }

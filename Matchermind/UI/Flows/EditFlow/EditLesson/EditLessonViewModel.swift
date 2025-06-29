@@ -9,11 +9,11 @@ import Foundation
 import Combine
 
 final class EditLessonViewModel: DataViewModel {
-    @Published var title = "Edit lesson"
+    var title = "Edit lesson"
     
     var lesson: MocLesson?
-    @Published var name: String
-    @Published var canSave: Bool = false
+    var name: String
+    var canSave: Bool = false
     
     var isModified: Bool {
         let previousName = lesson?.name ?? ""

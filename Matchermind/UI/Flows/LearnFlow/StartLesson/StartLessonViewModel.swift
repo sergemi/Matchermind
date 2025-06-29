@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 final class StartLessonViewModel: DataViewModel {
-    @Published var title = "Start lesson"
+    var title = "Start lesson"
     var lesson: MocLesson?
     
     private var cancellables = Set<AnyCancellable>()

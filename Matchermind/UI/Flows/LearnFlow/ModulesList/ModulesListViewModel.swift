@@ -9,9 +9,7 @@ import Foundation
 import Combine
 
 final class ModulesListViewModel: DataViewModel {
-    @Published var title = "Modules to learn"
-//    @Published var modules: [ModulePreload] = []
-//    @Published var quickModule: ModulePreload? = nil
+    var title = "Modules to learn"
     var modules: [ModulePreload] {
         dataMgr.modulePreloads
     }
@@ -24,17 +22,6 @@ final class ModulesListViewModel: DataViewModel {
     
     override init(router: AppRouter, authService: AuthService, dataMgr: DataManager) {
         super.init(router: router, authService: authService, dataMgr: dataMgr)
-        
-//        dataMgr.$modulePreloads
-//            .receive(on: DispatchQueue.main)
-//            .assign(to: &$modules)
-//        
-//        dataMgr.$quickModule
-//            .receive(on: DispatchQueue.main)
-//            .sink { [weak self] module in
-//                self?.quickModule = module?.modulePreload
-//            }
-//            .store(in: &cancellables)
     }
     
     func selectModule(_ module: ModulePreload) {

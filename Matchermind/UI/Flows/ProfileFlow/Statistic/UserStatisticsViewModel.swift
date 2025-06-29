@@ -8,13 +8,7 @@
 import Foundation
 
 final class UserStatisticsViewModel: AuthViewModel {
-    @Published var title = "Statistics"
-    
-//    private var router: AppRouter
-//    
-//    init(router: AppRouter) {
-//        self.router = router
-//    }
+    var title = "Statistics"
     
     func detailed() {
         print("detailed")

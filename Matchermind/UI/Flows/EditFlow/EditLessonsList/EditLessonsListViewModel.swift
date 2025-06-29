@@ -9,9 +9,8 @@ import Foundation
 import Combine
 
 final class EditLessonsListViewModel: DataViewModel {
-    @Published var title = "Lessons to edit"
+    var title = "Lessons to edit"
     
-//    @Published var lessons: [MocLesson] = []
     var lessons: [MocLesson] {
         dataMgr.lessons
     }

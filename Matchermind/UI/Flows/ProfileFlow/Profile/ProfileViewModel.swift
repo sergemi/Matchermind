@@ -9,7 +9,7 @@ import Foundation
 
 @MainActor
 final class ProfileViewModel: AuthViewModel {
-    @Published var title = "Base profile"
+    var title = "Base profile"
     
     func detailed() {
         router.navigate(to: .profile(.statistics))

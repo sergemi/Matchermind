@@ -10,16 +10,16 @@ import Foundation
 final class SignInViewModel: AuthViewModel {
     private var errorManager: ErrorManager?
     
-    @Published var title = "Sign in"
+    var title = "Sign in"
     
-    @Published var emailTitle = "E-mail"
-    @Published var emailHint = "Enter email"
+    var emailTitle = "E-mail"
+    var emailHint = "Enter email"
     
-    @Published var passwordTitle = "Password"
-    @Published var passwordHint = "At least 8 symbols"
+    var passwordTitle = "Password"
+    var passwordHint = "At least 8 symbols"
     
-    @Published var email: String = ""
-    @Published var password: String = ""
+    var email: String = ""
+    var password: String = ""
     
     init(router: AppRouter, authService: AuthService, errorManager: ErrorManager) {
         self.errorManager = errorManager

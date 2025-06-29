@@ -7,7 +7,8 @@
 
 import Foundation
 
-class RoutedViewModel: ObservableObject {
+@Observable
+class RoutedViewModel {
     var router: AppRouter
     
     init(router: AppRouter) {

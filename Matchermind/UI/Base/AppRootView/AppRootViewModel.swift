@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
-class AppRootViewModel: ObservableObject {
+@Observable
+class AppRootViewModel {
     var cancellables = Set<AnyCancellable>()
 }

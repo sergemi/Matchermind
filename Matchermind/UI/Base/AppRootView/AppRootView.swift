@@ -10,7 +10,7 @@ struct AppRootView: View {
     )
     @State private var dataMgr: DataManager = FirebaseDataManager()
     
-    @StateObject var viewModel = AppRootViewModel()
+    @State var viewModel = AppRootViewModel()
     
     var body: some View {
         ZStack {

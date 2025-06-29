@@ -17,7 +17,7 @@ struct MainTabView: View {
 
 struct MainTabViewContentView: View {
     @Environment(AppRouter.self) private var router
-    @StateObject var viewModel: MainTabViewModel
+    @State var viewModel: MainTabViewModel
     
     var body: some View {
         @Bindable var router = router

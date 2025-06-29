@@ -7,6 +7,16 @@
 
 import Foundation
 
+enum DataManagerError: Error, LocalizedError {
+    case unknownError
+    case userNotFound
+    case moduleNotFound
+    case topicNotFound
+    case learnedWordNotFound
+    case wordPairNotFound
+    case updateDataError
+}
+
 @Observable
 class DataManager {
     var lessons: [MocLesson] = [] // todo: remove

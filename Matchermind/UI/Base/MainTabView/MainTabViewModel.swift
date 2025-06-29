@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-final class MainTabViewModel: ObservableObject {
+@Observable
+final class MainTabViewModel {
     var router: AppRouter
     
     let tabs: [AppRouter.Tab] = [.learn,

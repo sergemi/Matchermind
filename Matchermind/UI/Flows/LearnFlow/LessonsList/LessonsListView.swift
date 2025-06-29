@@ -20,7 +20,7 @@ struct LessonsListView: View {
 }
 
 struct LessonsListContentView: View {
-    @StateObject var viewModel: LessonsListViewModel
+    @State var viewModel: LessonsListViewModel
 
     var body: some View {
         VStack {

@@ -22,7 +22,7 @@ struct SignInView: View {
 }
 
 struct SignInContentView: View {
-    @StateObject var viewModel: SignInViewModel
+    @State var viewModel: SignInViewModel
     
     var body: some View {
         ScrollView{

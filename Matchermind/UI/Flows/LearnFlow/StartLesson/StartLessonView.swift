@@ -24,7 +24,7 @@ struct StartLessonView: View {
 }
 
 struct StartLessonContentView: View {
-    @StateObject var viewModel: StartLessonViewModel
+    @State var viewModel: StartLessonViewModel
     
     var body: some View {
         Text(viewModel.lesson?.name ?? "Unknown" )

@@ -18,18 +18,6 @@ struct MatchermindApp: App {
             AppRootView()
         }
     }
-    
-    // MARK - old app
-//    @StateObject private var authService = AuthServiceOld()
-//    @StateObject private var coordinator = Coordinator<AuthServiceOld>()
-//    
-//    var body: some Scene {
-//        WindowGroup {
-//            LazyContentView<AuthServiceOld>()
-//                .environmentObject(authService)
-//                .environmentObject(coordinator)
-//        }
-//    }
 }
 
 class AppDelegate: NSObject, UIApplicationDelegate {

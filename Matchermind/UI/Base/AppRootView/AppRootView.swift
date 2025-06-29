@@ -58,7 +58,7 @@ struct AppRootView: View {
                 router.isShowingProfile = false
                 Task {
                     do {
-                        try await dataMgr.removeUser()
+                        try await dataMgr.resetUser()
                     }
                     catch {
                         print("Error setting user: \(error)")

@@ -15,19 +15,22 @@ struct ModuleView: View {
     let modulePreload: ModulePreload
     
     var body: some View {
-        ModuleContentView(viewModel: ModuleViewModel(modulePreload: modulePreload,
-                                                     module: Binding(
-                                                        get: { dataMgr.currentModule },
-                                                        set: { dataMgr.currentModule = $0 }
-                                                     ),
-                                                     router: router,
-                                                     authService: authService,
-                                                     dataMgr: dataMgr))
+        ModuleContentView(modulePreload: modulePreload,
+                          router: router,
+                          authService: authService,
+                          dataMgr: dataMgr)
     }
 }
 
 struct ModuleContentView: View {
-    @State var viewModel: ModuleViewModel
+    @State private var viewModel: ModuleViewModel
+    
+    init(modulePreload: ModulePreload, router: AppRouter, authService: AuthService, dataMgr: DataManager) {
+        _viewModel = State(initialValue: ModuleViewModel(modulePreload: modulePreload,
+                                                         router: router,
+                                                         authService: authService,
+                                                         dataMgr: dataMgr))
+    }
     
     var body: some View {
         VStack {
@@ -40,6 +43,13 @@ struct ModuleContentView: View {
             }
         }
         .navigationTitle(viewModel.title)
+        .task() {
+            do {
+                try await viewModel.loadModule()
+            } catch {
+                print("Error: \(error)")
+            }
+        }
     }
 }
 

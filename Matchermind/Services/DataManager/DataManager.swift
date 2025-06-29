@@ -19,15 +19,13 @@ enum DataManagerError: Error, LocalizedError {
 
 @Observable
 class DataManager {
-    var lessons: [MocLesson] = [] // todo: remove
     private var user: User? = nil
     private var dataService: DataServiceProtocol
     
     var modulePreloads: [ModulePreload] = []
-    var currentModule: Module?
     var quickModule: Module?
     
-    func removeUser() async throws {
+    func resetUser() async throws {
         print("DataManager.removeUser")
         //clean data
         
@@ -37,7 +35,7 @@ class DataManager {
     
     func setUser(_ user: User) async throws {
         print("DataManager.setUser")
-        try await removeUser()
+        try await resetUser()
         self.user = user
         
         do {
@@ -66,26 +64,12 @@ class DataManager {
         }
         
         await MainActor.run {
-            
             self.modulePreloads = modules
         }
     }
     
     func fetchModule(by id: String) async throws -> Module {
         let module = try await dataService.fetchModule(by: id)
-        return module
-    }
-    
-    func selectModule(by id: String) async throws -> Module {
-        await MainActor.run {
-            currentModule = nil
-        }
-        let module = try await fetchModule(by: id)
-        
-        await MainActor.run {
-            currentModule = module
-        }
-        
         return module
     }
     
@@ -96,9 +80,10 @@ class DataManager {
     private func resetData() {
         lessons.removeAll() // todo: remove
         modulePreloads.removeAll()
-        currentModule = nil
         quickModule = nil
     }
+    
+    var lessons: [MocLesson] = [] // todo: remove
 }
 
 class FirebaseDataManager: DataManager {

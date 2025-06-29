@@ -25,13 +25,6 @@ final class ModulesListViewModel: DataViewModel {
     }
     
     func selectModule(_ module: ModulePreload) {
-        Task {
-            do {
-                try await _ = dataMgr.selectModule(by: module.id)
-            } catch {
-                print("Error selecting module: \(error)") // TODO: show error
-            }
-        }
         router.navigate(to: .learn(.module(preload: module)))
     }
     

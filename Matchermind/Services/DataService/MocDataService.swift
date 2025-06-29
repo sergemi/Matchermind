@@ -47,6 +47,9 @@ actor MocDataService: DataServiceProtocol {
     
     func fetchModules(for userId: String) async throws -> [ModulePreload] {
         let availabledMoules = modulePreloads.filter{$0.isPublic == true || $0.authorId == userId}
+        
+        try await Task.sleep(for: .seconds(3)) // TODO: test delay
+        
         return availabledMoules
     }
     
@@ -56,6 +59,8 @@ actor MocDataService: DataServiceProtocol {
         guard let module = modules.first(where: {$0.id == id}) else {
             throw DataManagerError.moduleNotFound
         }
+        
+        try await Task.sleep(for: .seconds(3)) // TODO: test delay
         
         return module
         

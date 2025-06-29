@@ -16,6 +16,7 @@ class RoutedViewModel {
     }
 }
 
+@Observable
 class AuthViewModel: RoutedViewModel {
     var authService: AuthService
     
@@ -25,6 +26,7 @@ class AuthViewModel: RoutedViewModel {
     }
 }
 
+@Observable
 class DataViewModel: AuthViewModel {
     var dataMgr: DataManager
     

@@ -32,12 +32,11 @@ final class ModuleViewModel: DataViewModel {
         print("loadModule")
         
         let loadedModule = try await dataMgr.fetchModule(by: modulePreload.id)
-        try await Task.sleep(for: .seconds(3))
+
         await MainActor.run {
             module = loadedModule
         }
         
-//        module = Module(name: "Loaded module", details: "Detailed description", topics: [], authorId: "10", isPublic: true)
         print("Module '\(module?.name ?? "Unnamed")' loaded!")
     }
 }

@@ -78,6 +78,7 @@
 		8FDC37B92E12DFB300F97004 /* FirebaseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37B82E12DFB300F97004 /* FirebaseDataManager.swift */; };
 		8FDC37BB2E12DFE000F97004 /* MocDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37BA2E12DFE000F97004 /* MocDataManager.swift */; };
 		8FDC37BF2E13356500F97004 /* DataManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37BE2E13356500F97004 /* DataManagerError.swift */; };
+		8FDC37C12E1343DF00F97004 /* PreviewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37C02E1343DF00F97004 /* PreviewWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,6 +169,7 @@
 		8FDC37B82E12DFB300F97004 /* FirebaseDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataManager.swift; sourceTree = "<group>"; };
 		8FDC37BA2E12DFE000F97004 /* MocDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MocDataManager.swift; sourceTree = "<group>"; };
 		8FDC37BE2E13356500F97004 /* DataManagerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerError.swift; sourceTree = "<group>"; };
+		8FDC37C02E1343DF00F97004 /* PreviewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				8F8FA3E12DC949C60024D01F /* PreviewHelpers.swift */,
+				8FDC37C02E1343DF00F97004 /* PreviewWrapper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -715,6 +718,7 @@
 				8FDC37AB2E0C742000F97004 /* ModuleView.swift in Sources */,
 				8F383D832CB3007A00E87429 /* TestfieldStyles.swift in Sources */,
 				8F9A42E72CB96A5F007B4D48 /* Topic.swift in Sources */,
+				8FDC37C12E1343DF00F97004 /* PreviewWrapper.swift in Sources */,
 				8F8FA3F42DC94AD10024D01F /* AuthService.swift in Sources */,
 				8F8FA3F52DC94AD10024D01F /* MockAuthService.swift in Sources */,
 				8F8FA3F62DC94AD10024D01F /* DataManager.swift in Sources */,

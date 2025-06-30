@@ -69,8 +69,14 @@ struct EditModulesListContentView: View {
     }
 }
 
-#Preview {
-    withMockDataEnvironment {
+//#Preview {
+//    withMockDataEnvironment {
+//        EditModulesListView()
+//    }
+//}
+
+#Preview("Данные есть") {
+    PreviewWrapper(withData: true) {
         EditModulesListView()
     }
 }

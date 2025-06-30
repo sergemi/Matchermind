@@ -10,14 +10,20 @@ import Foundation
 actor FirebaseDataService: DataServiceProtocol {
     // MARK: - DataServiceProtocol
     // MARK: User
-    func createUser(_ user: User) async throws {
+    func createUser(_ user: User) async throws -> User {
         print("createUser")
+        throw DataManagerError.userNotFound
     }
     
     func fetchUser(by id: String) async throws -> User {
         print("fetchUser")
         let user = User(id: "123", email: "Serg")
         return user
+    }
+    
+    func updateUser(_ user: User) async throws -> User {
+        print("updateUser")
+        throw DataManagerError.userNotFound
     }
     
     // MARK: Module

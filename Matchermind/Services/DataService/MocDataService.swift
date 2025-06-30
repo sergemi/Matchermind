@@ -13,14 +13,15 @@ actor MocDataService: DataServiceProtocol {
 
     // MARK: - DataServiceProtocol
     // MARK: User
-    func createUser(_ user: User) async throws {
+    func createUser(_ user: User) async throws -> User {
         print("createUser")
 //        try await testDelay()
         
         var newUser = user
         let quickModule = try await createQuickModule(for: user)
         newUser.quickModuleId = quickModule.id
-        users.append(user)
+        users.append(newUser)
+        return newUser
     }
     
     func fetchUser(by id: String) async throws -> User {
@@ -31,6 +32,15 @@ actor MocDataService: DataServiceProtocol {
             throw DataManagerError.userNotFound
         }
         return user
+    }
+    
+    func updateUser(_ user: User) async throws -> User {
+        guard let index = users.firstIndex(of: try await fetchUser(by: user.id)) else {
+            throw DataManagerError.userNotFound
+        }
+        
+        users[index] = user
+        return users[index]
     }
     
     // MARK: Module
@@ -45,14 +55,19 @@ actor MocDataService: DataServiceProtocol {
     
     func createQuickModule(for user: User) async throws -> Module {
         print("createQuickModule")
-        try await testDelay()
+//        try await testDelay()
         
         let quickModule = Module(name: "QuickModule",
-                                 details: "",
+                                 details: "\(user.name ?? user.email) quick module",
                                  topics: [],
                                  authorId: user.id,
                                  isPublic: false)
         try await createModule(quickModule)
+        
+//        var changedUser = user
+//        changedUser.quickModuleId = quickModule.id
+//        try await updateUser(changedUser)
+        
         return quickModule
     }
     

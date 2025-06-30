@@ -9,8 +9,9 @@ import Foundation
 
 protocol DataServiceProtocol: Actor {
     // MARK: User
-    func createUser(_ user: User) async throws
+    func createUser(_ user: User) async throws -> User
     func fetchUser(by id: String) async throws -> User
+    func updateUser(_ user: User) async throws -> User
     
     // MARK: Module
     func createModule(_ module: Module) async throws

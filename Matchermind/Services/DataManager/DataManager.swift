@@ -41,7 +41,8 @@ class DataManager {
         do {
             try await _ = dataService.fetchUser(by: user.id)
         } catch (DataManagerError.userNotFound) {
-            try await dataService.createUser(user)
+            let newUser = try await dataService.createUser(user)
+            self.user = newUser
         }
         
         do {

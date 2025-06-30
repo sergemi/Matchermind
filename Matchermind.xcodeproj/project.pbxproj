@@ -26,7 +26,6 @@
 		8F8FA3F42DC94AD10024D01F /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA3F02DC94AD10024D01F /* AuthService.swift */; };
 		8F8FA3F52DC94AD10024D01F /* MockAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA3F12DC94AD10024D01F /* MockAuthService.swift */; };
 		8F8FA3F62DC94AD10024D01F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA3EF2DC94AD10024D01F /* DataManager.swift */; };
-		8F8FA4212DC94B0B0024D01F /* StartLessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA4142DC94B0B0024D01F /* StartLessonView.swift */; };
 		8F8FA4222DC94B0B0024D01F /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA3FC2DC94B0B0024D01F /* MainTabView.swift */; };
 		8F8FA4232DC94B0B0024D01F /* EditLessonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA41C2DC94B0B0024D01F /* EditLessonViewModel.swift */; };
 		8F8FA4242DC94B0B0024D01F /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA3F72DC94B0B0024D01F /* TabItem.swift */; };
@@ -35,19 +34,16 @@
 		8F8FA4272DC94B0B0024D01F /* EditLessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA41B2DC94B0B0024D01F /* EditLessonView.swift */; };
 		8F8FA4282DC94B0B0024D01F /* EditLessonsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA4192DC94B0B0024D01F /* EditLessonsListViewModel.swift */; };
 		8F8FA4292DC94B0B0024D01F /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA4042DC94B0B0024D01F /* ProfileViewModel.swift */; };
-		8F8FA42A2DC94B0B0024D01F /* LessonsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA4112DC94B0B0024D01F /* LessonsListView.swift */; };
 		8F8FA42B2DC94B0B0024D01F /* AppRootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA4002DC94B0B0024D01F /* AppRootViewModel.swift */; };
 		8F8FA42C2DC94B0B0024D01F /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA40B2DC94B0B0024D01F /* SignInViewModel.swift */; };
 		8F8FA42D2DC94B0B0024D01F /* EditLessonsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA4182DC94B0B0024D01F /* EditLessonsListView.swift */; };
 		8F8FA42E2DC94B0B0024D01F /* BaseViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA3FA2DC94B0B0024D01F /* BaseViewModels.swift */; };
-		8F8FA42F2DC94B0B0024D01F /* StartLessonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA4152DC94B0B0024D01F /* StartLessonViewModel.swift */; };
 		8F8FA4312DC94B0B0024D01F /* UserStatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA4072DC94B0B0024D01F /* UserStatisticsViewModel.swift */; };
 		8F8FA4322DC94B0B0024D01F /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA40D2DC94B0B0024D01F /* SignUpView.swift */; };
 		8F8FA4332DC94B0B0024D01F /* AppRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA3FF2DC94B0B0024D01F /* AppRootView.swift */; };
 		8F8FA4342DC94B0B0024D01F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA4032DC94B0B0024D01F /* ProfileView.swift */; };
 		8F8FA4352DC94B0B0024D01F /* UserStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA4062DC94B0B0024D01F /* UserStatisticsView.swift */; };
 		8F8FA4362DC94B0B0024D01F /* MainTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA3FD2DC94B0B0024D01F /* MainTabViewModel.swift */; };
-		8F8FA4372DC94B0B0024D01F /* LessonsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA4122DC94B0B0024D01F /* LessonsListViewModel.swift */; };
 		8F8FA4392DCA44180024D01F /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8FA4382DCA44180024D01F /* FirebaseAuthService.swift */; };
 		8F8FA43D2DCA97810024D01F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F8FA43C2DCA97810024D01F /* GoogleService-Info.plist */; };
 		8F8FA4412DCAB3240024D01F /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 8F8FA4402DCAB3240024D01F /* GoogleSignIn */; };
@@ -133,10 +129,6 @@
 		8F8FA40B2DC94B0B0024D01F /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		8F8FA40D2DC94B0B0024D01F /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		8F8FA40E2DC94B0B0024D01F /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
-		8F8FA4112DC94B0B0024D01F /* LessonsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsListView.swift; sourceTree = "<group>"; };
-		8F8FA4122DC94B0B0024D01F /* LessonsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsListViewModel.swift; sourceTree = "<group>"; };
-		8F8FA4142DC94B0B0024D01F /* StartLessonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartLessonView.swift; sourceTree = "<group>"; };
-		8F8FA4152DC94B0B0024D01F /* StartLessonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartLessonViewModel.swift; sourceTree = "<group>"; };
 		8F8FA4182DC94B0B0024D01F /* EditLessonsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLessonsListView.swift; sourceTree = "<group>"; };
 		8F8FA4192DC94B0B0024D01F /* EditLessonsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLessonsListViewModel.swift; sourceTree = "<group>"; };
 		8F8FA41B2DC94B0B0024D01F /* EditLessonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLessonView.swift; sourceTree = "<group>"; };
@@ -410,31 +402,11 @@
 			path = AuthFlow;
 			sourceTree = "<group>";
 		};
-		8F8FA4132DC94B0B0024D01F /* LessonsList */ = {
-			isa = PBXGroup;
-			children = (
-				8F8FA4112DC94B0B0024D01F /* LessonsListView.swift */,
-				8F8FA4122DC94B0B0024D01F /* LessonsListViewModel.swift */,
-			);
-			path = LessonsList;
-			sourceTree = "<group>";
-		};
-		8F8FA4162DC94B0B0024D01F /* StartLesson */ = {
-			isa = PBXGroup;
-			children = (
-				8F8FA4142DC94B0B0024D01F /* StartLessonView.swift */,
-				8F8FA4152DC94B0B0024D01F /* StartLessonViewModel.swift */,
-			);
-			path = StartLesson;
-			sourceTree = "<group>";
-		};
 		8F8FA4172DC94B0B0024D01F /* LearnFlow */ = {
 			isa = PBXGroup;
 			children = (
 				8FDC379A2E0C0AAA00F97004 /* ModulesList */,
 				8FDC37A72E0C673600F97004 /* Module */,
-				8F8FA4132DC94B0B0024D01F /* LessonsList */,
-				8F8FA4162DC94B0B0024D01F /* StartLesson */,
 			);
 			path = LearnFlow;
 			sourceTree = "<group>";
@@ -773,7 +745,6 @@
 				8FDC37A92E0C687700F97004 /* ModuleViewModel.swift in Sources */,
 				8FDC37972E043FCA00F97004 /* FirebaseDataService.swift in Sources */,
 				8F8FA3EA2DC94A5D0024D01F /* EditFlow.swift in Sources */,
-				8F8FA4212DC94B0B0024D01F /* StartLessonView.swift in Sources */,
 				8F8FA4222DC94B0B0024D01F /* MainTabView.swift in Sources */,
 				8F560ABD2DE86D750019A934 /* FirebaseStorageService.swift in Sources */,
 				8F8FA4232DC94B0B0024D01F /* EditLessonViewModel.swift in Sources */,
@@ -784,13 +755,11 @@
 				8F8FA4272DC94B0B0024D01F /* EditLessonView.swift in Sources */,
 				8F8FA4282DC94B0B0024D01F /* EditLessonsListViewModel.swift in Sources */,
 				8F8FA4292DC94B0B0024D01F /* ProfileViewModel.swift in Sources */,
-				8F8FA42A2DC94B0B0024D01F /* LessonsListView.swift in Sources */,
 				8F8FA42B2DC94B0B0024D01F /* AppRootViewModel.swift in Sources */,
 				8F8FA4502DCB7C890024D01F /* ImageSourcePickerView.swift in Sources */,
 				8F8FA42C2DC94B0B0024D01F /* SignInViewModel.swift in Sources */,
 				8F8FA42D2DC94B0B0024D01F /* EditLessonsListView.swift in Sources */,
 				8F8FA42E2DC94B0B0024D01F /* BaseViewModels.swift in Sources */,
-				8F8FA42F2DC94B0B0024D01F /* StartLessonViewModel.swift in Sources */,
 				8F8FA4312DC94B0B0024D01F /* UserStatisticsViewModel.swift in Sources */,
 				8F8FA4322DC94B0B0024D01F /* SignUpView.swift in Sources */,
 				8F8FA4332DC94B0B0024D01F /* AppRootView.swift in Sources */,
@@ -799,7 +768,6 @@
 				8F8FA4342DC94B0B0024D01F /* ProfileView.swift in Sources */,
 				8F8FA4352DC94B0B0024D01F /* UserStatisticsView.swift in Sources */,
 				8F8FA4362DC94B0B0024D01F /* MainTabViewModel.swift in Sources */,
-				8F8FA4372DC94B0B0024D01F /* LessonsListViewModel.swift in Sources */,
 				8F8FA3EB2DC94A5D0024D01F /* LearnFlow.swift in Sources */,
 				8F8FA3EC2DC94A5D0024D01F /* AuthFlow.swift in Sources */,
 				8F8FA3ED2DC94A5D0024D01F /* ProfileFlow.swift in Sources */,

@@ -14,15 +14,22 @@ struct ModulesListView: View {
     @Environment(ErrorManager.self) var errorMgr
     
     var body: some View {
-        ModulesListContentView(viewModel: ModulesListViewModel(errorMgr: errorMgr,
-                                                               router: router,
-                                                              authService: authService,
-                                                              dataMgr: dataMgr))
+        ModulesListContentView(errorMgr: errorMgr,
+                               router: router,
+                               authService: authService,
+                               dataMgr: dataMgr)
     }
 }
 
 struct ModulesListContentView: View {
     @State var viewModel: ModulesListViewModel
+    
+    init(errorMgr: ErrorManager?, router: AppRouter, authService: AuthService, dataMgr: DataManager) {
+        _viewModel = State(initialValue: ModulesListViewModel(errorMgr: errorMgr,
+                                                              router: router,
+                                                              authService: authService,
+                                                              dataMgr: dataMgr))
+    }
     
     var body: some View {
         VStack {
@@ -56,7 +63,7 @@ struct ModulesListContentView: View {
                 .scrollIndicators(.hidden)
             }
         }
-//        .padding(.top, 8)
+        //        .padding(.top, 8)
         .padding()
         .navigationTitle(viewModel.title)
     }

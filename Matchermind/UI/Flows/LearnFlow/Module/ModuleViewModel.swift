@@ -19,7 +19,6 @@ final class ModuleViewModel: DataViewModel {
          router: AppRouter,
          authService: AuthService,
          dataMgr: DataManager) {
-        print("ModuleViewModel.init !!!")
         
         self.modulePreload = modulePreload
         title = modulePreload.name
@@ -34,11 +33,9 @@ final class ModuleViewModel: DataViewModel {
         do {
             let loadedModule = try await dataMgr.fetchModule(by: modulePreload.id)
             
-            
             await MainActor.run {
                 module = loadedModule
             }
-            
         } catch {
             await errorMgr?.handleError(error)
         }

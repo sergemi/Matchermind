@@ -32,6 +32,7 @@ func withMockDataEnvironment<Content: View>(
     @ViewBuilder content: @escaping () -> Content
 ) -> some View {
     let mocRouter = AppRouter()
+    let errorMgr = ErrorManager()
     let mockService = MockAuthService.initWithMockUser(loginned: loginned)
     let mockWrapper = AuthService(service: mockService)
     let mocDataMgr: DataManager = MocDataManager()
@@ -40,4 +41,6 @@ func withMockDataEnvironment<Content: View>(
         .environment(mocRouter)
         .environment(mockWrapper)
         .environment(mocDataMgr)
+        .environment(errorMgr)
+        .withErrorAlert(errorManager: errorMgr)
 }

@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 final class ModulesListViewModel: DataViewModel {
-    var title = "Modules to learn"
+    let title = "Modules to learn"
     var modules: [ModulePreload] {
         dataMgr.modulePreloads
     }
@@ -19,10 +19,6 @@ final class ModulesListViewModel: DataViewModel {
     }
     
     private var cancellables = Set<AnyCancellable>()
-    
-    override init(errorMgr: ErrorManager?, router: AppRouter, authService: AuthService, dataMgr: DataManager) {
-        super.init(errorMgr: errorMgr, router: router, authService: authService, dataMgr: dataMgr)
-    }
     
     func selectModule(_ module: ModulePreload) {
         router.navigate(to: .learn(.module(preload: module)))

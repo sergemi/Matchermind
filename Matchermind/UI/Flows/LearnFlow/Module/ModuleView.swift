@@ -11,11 +11,13 @@ struct ModuleView: View {
     @Environment(AppRouter.self) var router
     @Environment(AuthService.self) var authService
     @Environment(DataManager.self) var dataMgr
+    @Environment(ErrorManager.self) var errorMgr
     
     let modulePreload: ModulePreload
     
     var body: some View {
         ModuleContentView(modulePreload: modulePreload,
+                          errorMgr: errorMgr,
                           router: router,
                           authService: authService,
                           dataMgr: dataMgr)
@@ -25,8 +27,9 @@ struct ModuleView: View {
 struct ModuleContentView: View {
     @State private var viewModel: ModuleViewModel
     
-    init(modulePreload: ModulePreload, router: AppRouter, authService: AuthService, dataMgr: DataManager) {
+    init(modulePreload: ModulePreload, errorMgr: ErrorManager?, router: AppRouter, authService: AuthService, dataMgr: DataManager) {
         _viewModel = State(initialValue: ModuleViewModel(modulePreload: modulePreload,
+                                                         errorMgr: errorMgr,
                                                          router: router,
                                                          authService: authService,
                                                          dataMgr: dataMgr))

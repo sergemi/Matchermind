@@ -15,12 +15,15 @@ func withMockEnvironment<Content: View>(
     @ViewBuilder content: @escaping () -> Content
 ) -> some View {
     let mocRouter = AppRouter()
+    let errorMgr = ErrorManager()
     let mockService = MockAuthService.initWithMockUser(loginned: loginned)
     let mockWrapper = AuthService(service: mockService)
 
     content()
         .environment(mocRouter)
         .environment(mockWrapper)
+        .environment(errorMgr)
+        .withErrorAlert(errorManager: errorMgr)
 }
 
 @MainActor @ViewBuilder

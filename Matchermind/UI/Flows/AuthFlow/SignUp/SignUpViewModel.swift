@@ -8,8 +8,6 @@
 import Foundation
 
 final class SignUpViewModel: AuthViewModel {
-    private var errorManager: ErrorManager?
-    
     var title = "Sign Up"
     
     var emailTitle = "E-mail"
@@ -27,11 +25,6 @@ final class SignUpViewModel: AuthViewModel {
     var email2: String = ""
     var password2: String = ""
     
-    init(router: AppRouter, authService: AuthService, errorManager: ErrorManager) {
-        self.errorManager = errorManager
-        super.init(router: router, authService: authService)
-    }
-    
     func signUp() {
         print("signIn")
         Task {
@@ -40,7 +33,7 @@ final class SignUpViewModel: AuthViewModel {
             }
             catch {
                 print("signIn.catch")
-                await errorManager?.handleError(error)
+                await errorMgr?.handleError(error)
             }
         }
     }

@@ -11,9 +11,11 @@ struct EditLessonsListView: View {
     @Environment(AppRouter.self) var router
     @Environment(AuthService.self) var authService
     @Environment(DataManager.self) var dataMgr
+    @Environment(ErrorManager.self) var errorMgr
     
     var body: some View {
-        EditLessonsListContentView(viewModel: EditLessonsListViewModel(router: router,
+        EditLessonsListContentView(viewModel: EditLessonsListViewModel(errorMgr: errorMgr,
+                                                                       router: router,
                                                                        authService: authService,
                                                                        dataMgr: dataMgr))
     }

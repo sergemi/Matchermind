@@ -11,13 +11,14 @@ import GoogleSignInSwift
 struct SignInView: View {
     @Environment(AppRouter.self) var router
     @Environment(AuthService.self) var authService
-    @Environment(ErrorManager.self) var errorManager
+    @Environment(ErrorManager.self) var errorMgr
     
     
     var body: some View {
-        SignInContentView(viewModel: SignInViewModel(router: router,
-                                                   authService: authService,
-                                                   errorManager: errorManager))
+        SignInContentView(viewModel: SignInViewModel(errorMgr: errorMgr,
+                                                     router: router,
+                                                   authService: authService
+                                                     ))
     }
 }
 
@@ -62,11 +63,7 @@ struct SignInContentView: View {
 }
 
 #Preview {
-    
-    let errorMgr = ErrorManager()
     withMockEnvironment(loginned: false) {
         SignInView()
-            .environment(errorMgr)
-            .withErrorAlert(errorManager: errorMgr)
     }
 }

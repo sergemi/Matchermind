@@ -14,8 +14,8 @@ final class StartLessonViewModel: DataViewModel {
     
     private var cancellables = Set<AnyCancellable>()
     
-    init (router: AppRouter, authService: AuthService, dataMgr: DataManager, lessonId: String) {
-        super.init(router: router, authService: authService, dataMgr: dataMgr)
+    init (errorMgr: ErrorManager?, router: AppRouter, authService: AuthService, dataMgr: DataManager, lessonId: String) {
+        super.init(errorMgr: errorMgr, router: router, authService: authService, dataMgr: dataMgr)
         
         self.lesson = self.dataMgr.lessons.first(where: {$0.id == lessonId})
     }

@@ -15,6 +15,7 @@ final class ModuleViewModel: DataViewModel {
     var module: Module?
     
     init(modulePreload: ModulePreload,
+         errorMgr: ErrorManager?,
          router: AppRouter,
          authService: AuthService,
          dataMgr: DataManager) {
@@ -23,7 +24,8 @@ final class ModuleViewModel: DataViewModel {
         self.modulePreload = modulePreload
         title = modulePreload.name
 
-        super.init(router: router,
+        super.init(errorMgr: errorMgr,
+                   router: router,
                    authService: authService,
                    dataMgr: dataMgr)
     }

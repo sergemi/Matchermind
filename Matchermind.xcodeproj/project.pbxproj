@@ -592,8 +592,8 @@
 		8FDC37A72E0C673600F97004 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				8FDC37A82E0C687700F97004 /* ModuleViewModel.swift */,
 				8FDC37AA2E0C742000F97004 /* ModuleView.swift */,
+				8FDC37A82E0C687700F97004 /* ModuleViewModel.swift */,
 			);
 			path = Module;
 			sourceTree = "<group>";

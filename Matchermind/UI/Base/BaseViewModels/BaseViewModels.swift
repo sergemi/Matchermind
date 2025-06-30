@@ -9,9 +9,12 @@ import Foundation
 
 @Observable
 class RoutedViewModel {
+    var errorMgr: ErrorManager?
+    
     var router: AppRouter
     
-    init(router: AppRouter) {
+    init(errorMgr: ErrorManager?, router: AppRouter) {
+        self.errorMgr = errorMgr
         self.router = router
     }
 }
@@ -20,9 +23,9 @@ class RoutedViewModel {
 class AuthViewModel: RoutedViewModel {
     var authService: AuthService
     
-    init(router: AppRouter, authService: AuthService) {
+    init(errorMgr: ErrorManager?, router: AppRouter, authService: AuthService) {
         self.authService = authService
-        super.init(router: router)
+        super.init(errorMgr:errorMgr, router: router)
     }
 }
 
@@ -30,8 +33,8 @@ class AuthViewModel: RoutedViewModel {
 class DataViewModel: AuthViewModel {
     var dataMgr: DataManager
     
-    init(router: AppRouter, authService: AuthService,  dataMgr: DataManager) {
+    init(errorMgr: ErrorManager?, router: AppRouter, authService: AuthService,  dataMgr: DataManager) {
         self.dataMgr = dataMgr
-        super.init(router: router, authService: authService)
+        super.init(errorMgr: errorMgr, router: router, authService: authService)
     }
 }

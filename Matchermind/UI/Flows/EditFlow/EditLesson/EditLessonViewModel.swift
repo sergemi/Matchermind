@@ -26,10 +26,10 @@ final class EditLessonViewModel: DataViewModel {
     
     private var cancelables = Set<AnyCancellable>()
     
-    init (router: AppRouter, authService: AuthService, dataMgr: DataManager, lessonId: String) {
+    init (errorMgr: ErrorManager?, router: AppRouter, authService: AuthService, dataMgr: DataManager, lessonId: String) {
         self.name = lesson?.name ?? ""
         
-        super.init(router: router, authService: authService, dataMgr: dataMgr)
+        super.init(errorMgr: errorMgr, router: router, authService: authService, dataMgr: dataMgr)
         
         self.lesson = self.dataMgr.lessons.first(where: {$0.id == lessonId})
     }

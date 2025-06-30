@@ -8,8 +8,6 @@
 import Foundation
 
 final class SignInViewModel: AuthViewModel {
-    private var errorManager: ErrorManager?
-    
     var title = "Sign in"
     
     var emailTitle = "E-mail"
@@ -21,11 +19,6 @@ final class SignInViewModel: AuthViewModel {
     var email: String = ""
     var password: String = ""
     
-    init(router: AppRouter, authService: AuthService, errorManager: ErrorManager) {
-        self.errorManager = errorManager
-        super.init(router: router, authService: authService)
-    }
-    
     func signIn() {
         print("signIn")
         Task {
@@ -34,7 +27,7 @@ final class SignInViewModel: AuthViewModel {
             }
             catch {
                 print("signIn.catch")
-                await errorManager?.handleError(error)
+                await errorMgr?.handleError(error)
             }
         }
     }
@@ -46,8 +39,8 @@ final class SignInViewModel: AuthViewModel {
                 try await authService.continueWithGoogle()
             }
             catch {
-//                await errorManager?.handleError(error)
-                errorManager?.handleError(error)
+//                await errorMgr?.handleError(error)
+                errorMgr?.handleError(error)
             }
         }
     }
@@ -60,6 +53,6 @@ final class SignInViewModel: AuthViewModel {
     @MainActor
     func showTestError() {
         let error = testError()
-        errorManager?.handleError(error)
+        errorMgr?.handleError(error)
     }
 }

@@ -20,8 +20,8 @@ final class ModulesListViewModel: DataViewModel {
     
     private var cancellables = Set<AnyCancellable>()
     
-    override init(router: AppRouter, authService: AuthService, dataMgr: DataManager) {
-        super.init(router: router, authService: authService, dataMgr: dataMgr)
+    override init(errorMgr: ErrorManager?, router: AppRouter, authService: AuthService, dataMgr: DataManager) {
+        super.init(errorMgr: errorMgr, router: router, authService: authService, dataMgr: dataMgr)
     }
     
     func selectModule(_ module: ModulePreload) {

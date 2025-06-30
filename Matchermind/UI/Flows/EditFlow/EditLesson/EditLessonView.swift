@@ -11,11 +11,13 @@ struct EditLessonView: View {
     @Environment(AppRouter.self) var router
     @Environment(AuthService.self) var authService
     @Environment(DataManager.self) var dataMgr
+    @Environment(ErrorManager.self) var errorMgr
     
     let lessonId: String
     
     var body: some View {
-        EditLessonContentView(viewModel: EditLessonViewModel(router: router,
+        EditLessonContentView(viewModel: EditLessonViewModel(errorMgr: errorMgr,
+                                                             router: router,
                                                              authService: authService,
                                                              dataMgr: dataMgr,
                                                              lessonId: lessonId))

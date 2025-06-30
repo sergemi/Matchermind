@@ -82,6 +82,16 @@ class DataManager {
         return quickModule
     }
     
+    func create(module: Module) async throws -> Module {
+        let module = try await dataService.create(module: module)
+        return module
+    }
+    
+    func update(module: Module) async throws -> Module {
+        let module = try await dataService.update(module: module)
+        return module
+    }
+    
     // MARK: - Internal
     private func resetData() {
         modulePreloads.removeAll()

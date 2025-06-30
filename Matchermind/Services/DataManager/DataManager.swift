@@ -47,6 +47,7 @@ class DataManager {
         
         do {
 //            try await modulePreloads = dataService.fetchModules(for: user.id)
+            try await _ = fetchQuickModule()
             try await fetchModulePreloads()
         }
         catch {
@@ -57,10 +58,7 @@ class DataManager {
     func fetchModulePreloads() async throws {
         guard let user = user else { throw DataManagerError.userNotFound }
         
-        let modules = try await dataService.fetchModules(for: user.id)
-        if let quickModulePreview = modules.first(where: {$0.id == user.quickModuleId}) {
-            self.quickModule = try await dataService.fetchModule(by: quickModulePreview.id)
-        }
+        let modules = try await dataService.fetchModules(for: user.id).filter { $0.id != user.quickModuleId }
         
         await MainActor.run {
             self.modulePreloads = modules
@@ -70,6 +68,20 @@ class DataManager {
     func fetchModule(by id: String) async throws -> Module {
         let module = try await dataService.fetchModule(by: id)
         return module
+    }
+    
+    func fetchQuickModule() async throws -> Module {
+        guard let quickModuleId = user?.quickModuleId else {
+            throw DataManagerError.moduleNotFound // TODO: create separate error
+        }
+        quickModule = try await dataService.fetchModule(by: quickModuleId)
+//        quickModule = module
+        
+        guard let quickModule else {
+            throw DataManagerError.moduleNotFound // TODO: create separate error
+        }
+        
+        return quickModule
     }
     
     init(dataService: DataServiceProtocol) {

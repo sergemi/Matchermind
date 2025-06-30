@@ -10,15 +10,23 @@ import SwiftUI
 struct UserStatisticsView: View {
     @Environment(AppRouter.self) var router
     @Environment(AuthService.self) var authService
+    @Environment(DataManager.self) var dataMgr
     
     var body: some View {
-        DetailedProfileContentView(viewModel: UserStatisticsViewModel(router: router,
-                                                                      authService: authService))
+        DetailedProfileContentView(router: router,
+                                   authService: authService,
+                                   dataMgr: dataMgr)
     }
 }
 
 struct DetailedProfileContentView: View {
-    @State var viewModel: UserStatisticsViewModel
+    @State private var viewModel: UserStatisticsViewModel
+    
+    init(router: AppRouter, authService: AuthService, dataMgr: DataManager) {
+        _viewModel = State(initialValue: UserStatisticsViewModel(router: router,
+                                                                 authService: authService,
+                                                                 dataMgr: dataMgr))
+    }
     
     var body: some View {
         VStack {
@@ -29,7 +37,7 @@ struct DetailedProfileContentView: View {
 }
 
 #Preview {
-    withMockEnvironment {
+    withMockDataEnvironment {
         UserStatisticsView()
     }
 }

@@ -7,8 +7,8 @@
 
 import Foundation
 
-final class UserStatisticsViewModel: AuthViewModel {
-    var title = "Statistics"
+final class UserStatisticsViewModel: DataViewModel {
+    let title = "Statistics"
     
     func detailed() {
         print("detailed")

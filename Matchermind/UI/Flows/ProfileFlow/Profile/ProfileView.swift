@@ -12,13 +12,17 @@ struct ProfileView: View {
     @Environment(AuthService.self) var authService
     
     var body: some View {
-        BaseProfileContentView(viewModel: ProfileViewModel(router: router,
-                                                           authService: authService))
+        BaseProfileContentView(router: router, authService: authService)
     }
 }
 
 struct BaseProfileContentView: View {
-    @State var viewModel: ProfileViewModel
+    @State private var viewModel: ProfileViewModel
+    
+    init(router: AppRouter, authService: AuthService) {
+        _viewModel = State(initialValue: ProfileViewModel(router: router,
+                                                          authService: authService))
+    }
     
     var body: some View {
         VStack {
@@ -30,7 +34,7 @@ struct BaseProfileContentView: View {
                 Text("email: \( email)")
 //            }
             Divider()
-            if let currentUser = viewModel.authService.user { // TODO: remove ?
+            if viewModel.authService.user != nil {
                 UserProfileImageView(size: 150,
                                      editable: true)
             }

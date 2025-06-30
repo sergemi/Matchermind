@@ -8,7 +8,7 @@ struct AppRootView: View {
                                                     //                                                MockAuthService.initWithMockUser(loginned: true)
                                                  FirebaseAuthService()
     )
-    @State private var dataMgr: DataManager = FirebaseDataManager()
+    @State private var dataMgr: DataManager = MocDataManager(testDelayMax: 5)//FirebaseDataManager()
     
     @State var viewModel = AppRootViewModel()
     

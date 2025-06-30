@@ -53,8 +53,6 @@ class DataManager {
         }
     }
     
-    func fetchLessons() async throws { }
-    
     func fetchModulePreloads() async throws {
         guard let user = user else { throw DataManagerError.userNotFound }
         
@@ -78,46 +76,7 @@ class DataManager {
     }
     
     private func resetData() {
-        lessons.removeAll() // todo: remove
         modulePreloads.removeAll()
         quickModule = nil
-    }
-    
-    var lessons: [MocLesson] = [] // todo: remove
-}
-
-class FirebaseDataManager: DataManager {
-    convenience init() {
-        let dataService = MocDataService()
-        self.init(dataService: dataService)
-    }
-    
-    @MainActor
-    override func fetchLessons() async throws {
-        try await super.fetchLessons()
-        
-        lessons = [
-            MocLesson(name: "First lesson"),
-            MocLesson(name: "Second lesson"),
-            MocLesson(name: "Third lesson"),
-        ]
-    }
-}
-
-class MocDataManager: DataManager {
-    convenience init() {
-        let dataService = MocDataService()
-        self.init(dataService: dataService)
-    }
-    
-    @MainActor
-    override func fetchLessons() async throws {
-        try await super.fetchLessons()
-        
-        lessons = [
-            MocLesson(name: "Moc lesson 1"),
-            MocLesson(name: "Moc lesson 2"),
-            MocLesson(name: "Moc lesson 3"),
-        ]
     }
 }

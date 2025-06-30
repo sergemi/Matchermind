@@ -8,10 +8,15 @@
 import Foundation
 
 actor MocDataService: DataServiceProtocol {
+    
+    private let testDelayMax: Int
+
     // MARK: - DataServiceProtocol
     // MARK: User
     func createUser(_ user: User) async throws {
         print("createUser")
+//        try await testDelay()
+        
         var newUser = user
         let quickModule = try await createQuickModule(for: user)
         newUser.quickModuleId = quickModule.id
@@ -20,6 +25,8 @@ actor MocDataService: DataServiceProtocol {
     
     func fetchUser(by id: String) async throws -> User {
         print("fetchUser")
+//        try await testDelay()
+        
         guard let user = users.first(where: { $0.id == id}) else {
             throw DataManagerError.userNotFound
         }
@@ -29,6 +36,8 @@ actor MocDataService: DataServiceProtocol {
     // MARK: Module
     func createModule(_ module: Module) async throws {
         print("createModule")
+//        try await testDelay()
+        
         modules.append(module)
         let modulePreload = module.modulePreload
         modulePreloads.append(modulePreload)
@@ -36,6 +45,8 @@ actor MocDataService: DataServiceProtocol {
     
     func createQuickModule(for user: User) async throws -> Module {
         print("createQuickModule")
+        try await testDelay()
+        
         let quickModule = Module(name: "QuickModule",
                                  details: "",
                                  topics: [],
@@ -46,24 +57,21 @@ actor MocDataService: DataServiceProtocol {
     }
     
     func fetchModules(for userId: String) async throws -> [ModulePreload] {
+        try await testDelay()
+        
         let availabledMoules = modulePreloads.filter{$0.isPublic == true || $0.authorId == userId}
-        
-        try await Task.sleep(for: .seconds(3)) // TODO: test delay
-        
         return availabledMoules
     }
     
     func fetchModule(by id: String) async throws -> Module {
         print("fetchModule")
-//        let module = Module()
+        try await testDelay()
+        
         guard let module = modules.first(where: {$0.id == id}) else {
             throw DataManagerError.moduleNotFound
         }
         
-        try await Task.sleep(for: .seconds(3)) // TODO: test delay
-        
         return module
-        
     }
     
     // MARK: moc database
@@ -71,7 +79,8 @@ actor MocDataService: DataServiceProtocol {
     private var modules: [Module] = []
     private var modulePreloads: [ModulePreload] = []
     
-    init() {
+    init(testDelayMax: Int = 0) {
+        self.testDelayMax = testDelayMax
         Task {
 //            let user = User(id: "123", email: "test@test.com", name: "TestUser")
             let user = MockAuthService.mocUser
@@ -84,15 +93,6 @@ actor MocDataService: DataServiceProtocol {
                     try await createModule(module)
                 }
                 
-//                let module1 = Module(name: "Module 1", details: "Detail 1", topics: [], authorId: user.id, isPublic: true)
-//                let module2 = Module(name: "Module 2", details: "Detail 2", topics: [], authorId: user.id, isPublic: true)
-//                let module3 = Module(name: "Module 3", details: "Detail 3", topics: [], authorId: user.id, isPublic: true)
-//                
-//                try await createModule(module1)
-//                try await createModule(module2)
-//                try await createModule(module3)
-                
-                
                 let testModules = try await fetchModules(for: user.id)
                 print("availabled \(testModules.count) modules")
             }
@@ -101,5 +101,14 @@ actor MocDataService: DataServiceProtocol {
             }
         }
         
+    }
+    
+    // MARK: - Private interface
+    nonisolated private func testDelay() async throws {
+        if testDelayMax == 0 {
+            return
+        }
+        let delay = Int.random(in: 0...testDelayMax)
+        try await Task.sleep(for: .seconds(delay))
     }
 }

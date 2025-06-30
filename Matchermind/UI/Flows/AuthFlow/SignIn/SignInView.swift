@@ -13,17 +13,21 @@ struct SignInView: View {
     @Environment(AuthService.self) var authService
     @Environment(ErrorManager.self) var errorMgr
     
-    
     var body: some View {
-        SignInContentView(viewModel: SignInViewModel(errorMgr: errorMgr,
-                                                     router: router,
-                                                   authService: authService
-                                                     ))
+        SignInContentView(errorMgr: errorMgr,
+                          router: router,
+                          authService: authService)
     }
 }
 
 struct SignInContentView: View {
     @State var viewModel: SignInViewModel
+    
+    init(errorMgr: ErrorManager?, router: AppRouter, authService: AuthService) {
+        _viewModel = State(initialValue: SignInViewModel(errorMgr: errorMgr,
+                                                         router: router,
+                                                         authService: authService))
+    }
     
     var body: some View {
         ScrollView{

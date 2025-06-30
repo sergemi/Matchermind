@@ -79,28 +79,33 @@ actor MocDataService: DataServiceProtocol {
     private var modules: [Module] = []
     private var modulePreloads: [ModulePreload] = []
     
-    init(testDelayMax: Int = 0) {
+    init(testDelayMax: Int = 0, withData: Bool) {
         self.testDelayMax = testDelayMax
         Task {
-//            let user = User(id: "123", email: "test@test.com", name: "TestUser")
-            let user = MockAuthService.mocUser
-            
-            do {
-                try await createUser(user)
-                let modulesCount = 50
-                for i in 1...modulesCount {
-                    let module = Module(name: "Module \(i)", details: "Details of module \(i)", topics: [], authorId: user.id, isPublic: true)
-                    try await createModule(module)
-                }
-                
-                let testModules = try await fetchModules(for: user.id)
-                print("availabled \(testModules.count) modules")
-            }
-            catch {
-                print("error")
+            if withData {
+                try await createMocData()
             }
         }
         
+    }
+    
+    private func createMocData() async throws {
+        let user = MockAuthService.mocUser
+        
+        do {
+            try await createUser(user)
+            let modulesCount = 50
+            for i in 1...modulesCount {
+                let module = Module(name: "Module \(i)", details: "Details of module \(i)", topics: [], authorId: user.id, isPublic: true)
+                try await createModule(module)
+            }
+            
+            let testModules = try await fetchModules(for: user.id)
+            print("availabled \(testModules.count) modules")
+        }
+        catch {
+            print("error")
+        }
     }
     
     // MARK: - Private interface

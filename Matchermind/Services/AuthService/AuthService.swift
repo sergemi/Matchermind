@@ -21,9 +21,7 @@ protocol AuthServiceProtocol: Actor {
 @Observable
 final class AuthService {
     var user: User?
-    //    var userPublisher: Published<User?>.Publisher { $user }
-    
-    var userAvatarVersion: Int = 0
+    var userAvatarVersion: Int = 0 // For update avatar image with the same filename
     
     var service: AuthServiceProtocol
     
@@ -53,12 +51,7 @@ final class AuthService {
         try await service.continueWithGoogle()
         user = await service.user
     }
-    
-    // TODO: WTF???
-    //    func syncUser() async {
-    //        user = await service.user
-    //    }
-    
+        
     func notifyUserAvatarChanged() {
         userAvatarVersion += 1
     }

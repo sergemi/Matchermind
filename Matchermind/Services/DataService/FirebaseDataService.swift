@@ -37,9 +37,9 @@ actor FirebaseDataService: DataServiceProtocol {
     
     func fetchModule(by id: String) async throws -> Module {
         print("fetchModule")
-        let module = Module()
-        return module
-        
+//        let module = Module()
+//        return module
+        throw DataManagerError.moduleNotFound
     }
     
     

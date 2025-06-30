@@ -8,8 +8,9 @@
 import SwiftUI
 
 enum EditFlowLink: Hashable {
-    case lessonsList
-    case editLesson(id: String)
+    case modulesList
+    case newModule
+    case editModule(preload: ModulePreload)
 }
 
 struct EditFlowView: View {
@@ -19,13 +20,17 @@ struct EditFlowView: View {
         @Bindable var router = router
         
         NavigationStack(path: $router.editPath) {
-            EditLessonsListView()
+            EditModulesListView()
                 .navigationDestination(for: EditFlowLink.self) { link in
                     switch link {
-                    case .lessonsList:
-                        EditLessonsListView()
-                    case .editLesson(let lessonId):
-                        EditLessonView(lessonId: lessonId)
+                    case .modulesList:
+                        EditModulesListView()
+                        
+                    case .newModule:
+                        Text("UNDER CONSTRUCTION: newModule")
+                        
+                    case .editModule(let preload):
+                        Text("UNDER CONSTRUCTION: editModule '\(preload.name)'")
                     }
                 }
         }

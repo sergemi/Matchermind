@@ -11,13 +11,17 @@ struct MainTabView: View {
     @Environment(AppRouter.self) private var router
     
     var body: some View {
-        MainTabViewContentView(viewModel: MainTabViewModel(router: router))
+        MainTabViewContentView(router: router)
     }
 }
 
 struct MainTabViewContentView: View {
     @Environment(AppRouter.self) private var router
     @State var viewModel: MainTabViewModel
+    
+    init(router: AppRouter) {
+        _viewModel = State(initialValue: MainTabViewModel(router: router))
+    }
     
     var body: some View {
         @Bindable var router = router
@@ -37,10 +41,7 @@ struct MainTabViewContentView: View {
 }
 
 #Preview {
-    let dataMgr: DataManager = MocDataManager()
-    let router = AppRouter()
-    
-    MainTabView()
-        .environment(router)
-        .environment(dataMgr)
+    withMockDataEnvironment {
+        MainTabView()
+    }
 }

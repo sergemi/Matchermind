@@ -77,6 +77,7 @@
 		8FDC37B72E129EF300F97004 /* EditModulesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37B12E129EF300F97004 /* EditModulesListView.swift */; };
 		8FDC37B92E12DFB300F97004 /* FirebaseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37B82E12DFB300F97004 /* FirebaseDataManager.swift */; };
 		8FDC37BB2E12DFE000F97004 /* MocDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37BA2E12DFE000F97004 /* MocDataManager.swift */; };
+		8FDC37BF2E13356500F97004 /* DataManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37BE2E13356500F97004 /* DataManagerError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +167,7 @@
 		8FDC37B32E129EF300F97004 /* EditModuleListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditModuleListRow.swift; sourceTree = "<group>"; };
 		8FDC37B82E12DFB300F97004 /* FirebaseDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataManager.swift; sourceTree = "<group>"; };
 		8FDC37BA2E12DFE000F97004 /* MocDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MocDataManager.swift; sourceTree = "<group>"; };
+		8FDC37BE2E13356500F97004 /* DataManagerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,7 @@
 				8F8FA3EF2DC94AD10024D01F /* DataManager.swift */,
 				8FDC37B82E12DFB300F97004 /* FirebaseDataManager.swift */,
 				8FDC37BA2E12DFE000F97004 /* MocDataManager.swift */,
+				8FDC37BE2E13356500F97004 /* DataManagerError.swift */,
 			);
 			path = DataManager;
 			sourceTree = "<group>";
@@ -716,6 +719,7 @@
 				8F8FA3F52DC94AD10024D01F /* MockAuthService.swift in Sources */,
 				8F8FA3F62DC94AD10024D01F /* DataManager.swift in Sources */,
 				8FDC379E2E0C167100F97004 /* ModulesListView.swift in Sources */,
+				8FDC37BF2E13356500F97004 /* DataManagerError.swift in Sources */,
 				8F383D8C2CB34E0900E87429 /* ButtonStyles.swift in Sources */,
 				8F8FA3E32DC949C60024D01F /* PreviewHelpers.swift in Sources */,
 				8FDC379C2E0C0B3A00F97004 /* ModulesListViewModel.swift in Sources */,

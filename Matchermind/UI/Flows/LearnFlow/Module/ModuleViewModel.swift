@@ -31,7 +31,7 @@ final class ModuleViewModel: DataViewModel {
     
     func loadModule() async {
         do {
-            let loadedModule = try await dataMgr.fetchModule(by: modulePreload.id)
+            let loadedModule = try await dataMgr.fetchModule(id: modulePreload.id)
             
             await MainActor.run {
                 module = loadedModule

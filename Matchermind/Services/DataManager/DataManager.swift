@@ -7,26 +7,25 @@
 
 import Foundation
 
-enum DataManagerError: Error, LocalizedError {
-    case unknownError
-    case userNotFound
-    case moduleNotFound
-    case topicNotFound
-    case learnedWordNotFound
-    case wordPairNotFound
-    case updateDataError
-}
-
 @Observable
 class DataManager {
+    // MARK: - Setup
     private var user: User? = nil
     private var dataService: DataServiceProtocol
+    
+    init(dataService: DataServiceProtocol) {
+        self.dataService = dataService
+    }
+    
+    // MARK: - Data
     
     var modulePreloads: [ModulePreload] = []
     var quickModule: Module?
     
+    // MARK: - Interface
+    // MARK: User
     func resetUser() async throws {
-        print("DataManager.removeUser")
+        print("DataManager.resetUser")
         //clean data
         
         resetData()
@@ -46,13 +45,14 @@ class DataManager {
         }
         
         async let quickModule = fetchQuickModule()
-        async let modules = fetchModulePreloads()
+        async let modules = fetchModulesPreload()
         
         _ = try await quickModule
         _ = try await modules
     }
     
-    func fetchModulePreloads() async throws -> [ModulePreload] {
+    // MARK: Module
+    func fetchModulesPreload() async throws -> [ModulePreload] {
         guard let user = user else { throw DataManagerError.userNotFound }
         
         let modules = try await dataService.fetchModulesPreload(userId: user.id).filter { $0.id != user.quickModuleId }
@@ -64,7 +64,7 @@ class DataManager {
         return modules
     }
     
-    func fetchModule(by id: String) async throws -> Module {
+    func fetchModule(id: String) async throws -> Module {
         let module = try await dataService.fetchModule(id: id)
         return module
     }
@@ -82,10 +82,7 @@ class DataManager {
         return quickModule
     }
     
-    init(dataService: DataServiceProtocol) {
-        self.dataService = dataService
-    }
-    
+    // MARK: - Internal
     private func resetData() {
         modulePreloads.removeAll()
         quickModule = nil

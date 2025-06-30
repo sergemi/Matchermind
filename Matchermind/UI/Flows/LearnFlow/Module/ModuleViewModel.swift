@@ -31,14 +31,16 @@ final class ModuleViewModel: DataViewModel {
     }
     
     func loadModule() async throws {
-        print("loadModule")
-        
-        let loadedModule = try await dataMgr.fetchModule(by: modulePreload.id)
-
-        await MainActor.run {
-            module = loadedModule
+        do {
+            let loadedModule = try await dataMgr.fetchModule(by: modulePreload.id)
+            
+            
+            await MainActor.run {
+                module = loadedModule
+            }
+            
+        } catch {
+            await errorMgr?.handleError(error)
         }
-        
-        print("Module '\(module?.name ?? "Unnamed")' loaded!")
     }
 }

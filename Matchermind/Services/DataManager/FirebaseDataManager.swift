@@ -7,6 +7,7 @@
 
 import Foundation
 
+@Observable
 class FirebaseDataManager: DataManager {
     convenience init() {
         let dataService = FirebaseDataService()

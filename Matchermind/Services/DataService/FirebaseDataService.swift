@@ -10,43 +10,47 @@ import Foundation
 actor FirebaseDataService: DataServiceProtocol {
     // MARK: - DataServiceProtocol
     // MARK: User
-    func createUser(_ user: User) async throws -> User {
-        print("createUser")
+    func create(user: User) async throws -> User {
+        print("create(user")
         throw DataManagerError.userNotFound
     }
     
-    func fetchUser(by id: String) async throws -> User {
+    func fetchUser(id: String) async throws -> User {
         print("fetchUser")
         let user = User(id: "123", email: "Serg")
         return user
     }
     
-    func updateUser(_ user: User) async throws -> User {
+    func update(user: User) async throws -> User {
         print("updateUser")
         throw DataManagerError.userNotFound
     }
     
     // MARK: Module
-    func createModule(_ module: Module) async throws {
-        print("createModule")
+    func create(module: Module) async throws -> Module {
+        print("create(module")
+        throw DataManagerError.moduleNotFound
     }
     
-    func createQuickModule(for user: User) async throws -> Module {
+    func createQuickModule(user: User) async throws -> Module {
         print("createQuickModule")
         let module = Module()
         return module
     }
     
-    func fetchModules(for userId: String) async throws -> [ModulePreload] {
+    func fetchModulesPreload(userId: String) async throws -> [ModulePreload] {
         return [] //TODO: implement
     }
     
-    func fetchModule(by id: String) async throws -> Module {
+    func fetchModule(id: String) async throws -> Module {
         print("fetchModule")
 //        let module = Module()
 //        return module
         throw DataManagerError.moduleNotFound
     }
     
-    
+    func update(module: Module) async throws -> Module {
+        print("update(module")
+        throw DataManagerError.moduleNotFound
+    }
 }

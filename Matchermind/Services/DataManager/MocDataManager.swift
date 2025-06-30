@@ -7,6 +7,7 @@
 
 import Foundation
 
+@Observable
 class MocDataManager: DataManager {
     convenience init(testDelayMax: Int = 0, withData: Bool = false) {
         let dataService = MocDataService(testDelayMax: testDelayMax, withData: withData)

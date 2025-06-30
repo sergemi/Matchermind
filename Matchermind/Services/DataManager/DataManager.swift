@@ -39,34 +39,33 @@ class DataManager {
         self.user = user
         
         do {
-            try await _ = dataService.fetchUser(by: user.id)
+            try await _ = dataService.fetchUser(id: user.id)
         } catch (DataManagerError.userNotFound) {
-            let newUser = try await dataService.createUser(user)
+            let newUser = try await dataService.create(user: user)
             self.user = newUser
         }
         
-        do {
-//            try await modulePreloads = dataService.fetchModules(for: user.id)
-            try await _ = fetchQuickModule()
-            try await fetchModulePreloads()
-        }
-        catch {
-            print("Error: \(error)") //TODO: show errors correct
-        }
+        async let quickModule = fetchQuickModule()
+        async let modules = fetchModulePreloads()
+        
+        _ = try await quickModule
+        _ = try await modules
     }
     
-    func fetchModulePreloads() async throws {
+    func fetchModulePreloads() async throws -> [ModulePreload] {
         guard let user = user else { throw DataManagerError.userNotFound }
         
-        let modules = try await dataService.fetchModules(for: user.id).filter { $0.id != user.quickModuleId }
+        let modules = try await dataService.fetchModulesPreload(userId: user.id).filter { $0.id != user.quickModuleId }
         
         await MainActor.run {
             self.modulePreloads = modules
         }
+        
+        return modules
     }
     
     func fetchModule(by id: String) async throws -> Module {
-        let module = try await dataService.fetchModule(by: id)
+        let module = try await dataService.fetchModule(id: id)
         return module
     }
     
@@ -74,8 +73,7 @@ class DataManager {
         guard let quickModuleId = user?.quickModuleId else {
             throw DataManagerError.moduleNotFound // TODO: create separate error
         }
-        quickModule = try await dataService.fetchModule(by: quickModuleId)
-//        quickModule = module
+        quickModule = try await dataService.fetchModule(id: quickModuleId)
         
         guard let quickModule else {
             throw DataManagerError.moduleNotFound // TODO: create separate error

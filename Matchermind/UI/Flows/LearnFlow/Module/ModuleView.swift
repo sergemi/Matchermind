@@ -47,11 +47,7 @@ struct ModuleContentView: View {
         }
         .navigationTitle(viewModel.title)
         .task() {
-            do {
-                try await viewModel.loadModule()
-            } catch {
-                print("Error: \(error)")
-            }
+            await viewModel.loadModule()
         }
     }
 }

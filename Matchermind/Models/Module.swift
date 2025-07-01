@@ -47,4 +47,13 @@ extension Module {
                              authorId: authorId,
                              isPublic: isPublic)
     }
+    
+    init(preload: ModulePreload, details: String = "", topics: [TopicPreload] = []) {
+            self.id = preload.id
+            self.name = preload.name
+            self.details = details
+            self.topics = topics
+            self.authorId = preload.authorId
+            self.isPublic = preload.isPublic
+        }
 }

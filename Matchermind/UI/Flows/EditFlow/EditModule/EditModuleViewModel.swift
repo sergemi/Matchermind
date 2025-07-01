@@ -16,13 +16,14 @@ final class EditModuleViewModel: DataViewModel {
         
         return "Edit module '\(moduleName)'"
     }
+    
     var isNewModule: Bool {
         modulePreload == nil
     }
     
     let isQuickModule: Bool
     
-    let modulePreload: ModulePreload?
+    var modulePreload: ModulePreload?
     var startModule: Module?
     var currentModule: Module?
     
@@ -43,12 +44,15 @@ final class EditModuleViewModel: DataViewModel {
     }
     
     func getStartModule() async {
+        defer {
+            stopActivity()
+        }
+        startActivity("Load module...")
         guard let moduleId = modulePreload?.id else {
             return
         }
         
         do {
-            //let loadedModule*/ = try await dataMgr.fetchModule(id: moduleId)
             let loadedModule = isNewModule ? try await createNewModule() : try await loadModule(id: moduleId)
             
             await MainActor.run {
@@ -58,12 +62,7 @@ final class EditModuleViewModel: DataViewModel {
         } catch {
             await errorMgr?.handleError(error)
         }
-    }
-    
-    private func loadModule(id: String) async throws -> Module {
-        let module = try await dataMgr.fetchModule(id: id)
-        
-        return module
+        stopActivity()
     }
     
     private func createNewModule() async throws -> Module {
@@ -72,6 +71,12 @@ final class EditModuleViewModel: DataViewModel {
         }
         
         let module = Module(name: "", details: "", topics: [], authorId: authorId, isPublic: true)
+        return module
+    }
+    
+    private func loadModule(id: String) async throws -> Module {
+        let module = try await dataMgr.fetchModule(id: id)
+        
         return module
     }
 }

@@ -82,6 +82,7 @@
 		8FDC37C42E13C0E700F97004 /* EditModuleRowHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37C32E13C0E700F97004 /* EditModuleRowHeader.swift */; };
 		8FDC37C72E13DC2500F97004 /* EditModuleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37C62E13DC2500F97004 /* EditModuleViewModel.swift */; };
 		8FDC37C92E13F32000F97004 /* EditModuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37C82E13F32000F97004 /* EditModuleView.swift */; };
+		8FDC37CC2E14624200F97004 /* ActivitySpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37CB2E14624200F97004 /* ActivitySpinner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -176,6 +177,7 @@
 		8FDC37C32E13C0E700F97004 /* EditModuleRowHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditModuleRowHeader.swift; sourceTree = "<group>"; };
 		8FDC37C62E13DC2500F97004 /* EditModuleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditModuleViewModel.swift; sourceTree = "<group>"; };
 		8FDC37C82E13F32000F97004 /* EditModuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditModuleView.swift; sourceTree = "<group>"; };
+		8FDC37CB2E14624200F97004 /* ActivitySpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitySpinner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,6 +303,7 @@
 				8FDC37B02E103A0200F97004 /* ErrorManager */,
 				8FDC37932E041AB700F97004 /* DataService */,
 				8F0BB6C82DFE347E00A53C1A /* DataManager */,
+				8FDC37CA2E14618800F97004 /* ActivitySpinner */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -593,6 +596,14 @@
 			path = EditModule;
 			sourceTree = "<group>";
 		};
+		8FDC37CA2E14618800F97004 /* ActivitySpinner */ = {
+			isa = PBXGroup;
+			children = (
+				8FDC37CB2E14624200F97004 /* ActivitySpinner.swift */,
+			);
+			path = ActivitySpinner;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -794,6 +805,7 @@
 				8F8FA3ED2DC94A5D0024D01F /* ProfileFlow.swift in Sources */,
 				8FDC37922E04125200F97004 /* ExerciseProgress.swift in Sources */,
 				8FDC37952E041AD000F97004 /* DataServiceProtocol.swift in Sources */,
+				8FDC37CC2E14624200F97004 /* ActivitySpinner.swift in Sources */,
 				8F8FA3EE2DC94A5D0024D01F /* AppRouter.swift in Sources */,
 				8F9A42E92CB96ADD007B4D48 /* Module.swift in Sources */,
 				8F383D992CB51C6A00E87429 /* Image+ImageName.swift in Sources */,

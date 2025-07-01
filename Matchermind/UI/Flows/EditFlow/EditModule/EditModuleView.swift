@@ -40,15 +40,23 @@ struct EditModuleContentView: View {
     
     var body: some View {
         VStack {
-            if let module = viewModel.currentModule {
-                Text("Module loaded")
-                Text(module.details)
+            Text("temp")
+            Button("Print") {
+                print("Print !!!")
             }
-            else {
-                ProgressView()
-            }
+            Spacer()
+//            DefaultTextField(text: $viewModel.email, placeholder: viewModel.emailHint, title: viewModel.emailTitle)
+//            
+//            if let module = viewModel.currentModule {
+//                Text("Module loaded")
+//                Text(module.details)
+//            }
+//            else {
+//                ProgressView()
+//            }
         }
         .navigationTitle(viewModel.title)
+        .activitySpinner(viewModel: viewModel)
         .task() {
             await viewModel.getStartModule()
         }

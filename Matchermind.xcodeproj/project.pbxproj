@@ -79,6 +79,9 @@
 		8FDC37BB2E12DFE000F97004 /* MocDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37BA2E12DFE000F97004 /* MocDataManager.swift */; };
 		8FDC37BF2E13356500F97004 /* DataManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37BE2E13356500F97004 /* DataManagerError.swift */; };
 		8FDC37C12E1343DF00F97004 /* PreviewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37C02E1343DF00F97004 /* PreviewWrapper.swift */; };
+		8FDC37C42E13C0E700F97004 /* EditModuleRowHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37C32E13C0E700F97004 /* EditModuleRowHeader.swift */; };
+		8FDC37C72E13DC2500F97004 /* EditModuleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37C62E13DC2500F97004 /* EditModuleViewModel.swift */; };
+		8FDC37C92E13F32000F97004 /* EditModuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37C82E13F32000F97004 /* EditModuleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,6 +173,9 @@
 		8FDC37BA2E12DFE000F97004 /* MocDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MocDataManager.swift; sourceTree = "<group>"; };
 		8FDC37BE2E13356500F97004 /* DataManagerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerError.swift; sourceTree = "<group>"; };
 		8FDC37C02E1343DF00F97004 /* PreviewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewWrapper.swift; sourceTree = "<group>"; };
+		8FDC37C32E13C0E700F97004 /* EditModuleRowHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditModuleRowHeader.swift; sourceTree = "<group>"; };
+		8FDC37C62E13DC2500F97004 /* EditModuleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditModuleViewModel.swift; sourceTree = "<group>"; };
+		8FDC37C82E13F32000F97004 /* EditModuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditModuleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -414,6 +420,7 @@
 			isa = PBXGroup;
 			children = (
 				8FDC37B42E129EF300F97004 /* EditModulesList */,
+				8FDC37C52E13C9E700F97004 /* EditModule */,
 			);
 			path = EditFlow;
 			sourceTree = "<group>";
@@ -563,9 +570,27 @@
 			children = (
 				8FDC37B12E129EF300F97004 /* EditModulesListView.swift */,
 				8FDC37B22E129EF300F97004 /* EditModulesListViewModel.swift */,
-				8FDC37B32E129EF300F97004 /* EditModuleListRow.swift */,
+				8FDC37C22E13C0B400F97004 /* Elements */,
 			);
 			path = EditModulesList;
+			sourceTree = "<group>";
+		};
+		8FDC37C22E13C0B400F97004 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				8FDC37B32E129EF300F97004 /* EditModuleListRow.swift */,
+				8FDC37C32E13C0E700F97004 /* EditModuleRowHeader.swift */,
+			);
+			path = Elements;
+			sourceTree = "<group>";
+		};
+		8FDC37C52E13C9E700F97004 /* EditModule */ = {
+			isa = PBXGroup;
+			children = (
+				8FDC37C62E13DC2500F97004 /* EditModuleViewModel.swift */,
+				8FDC37C82E13F32000F97004 /* EditModuleView.swift */,
+			);
+			path = EditModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -739,6 +764,7 @@
 				8F383D732CB0414B00E87429 /* ErrorManager.swift in Sources */,
 				8FDC37A92E0C687700F97004 /* ModuleViewModel.swift in Sources */,
 				8FDC37972E043FCA00F97004 /* FirebaseDataService.swift in Sources */,
+				8FDC37C42E13C0E700F97004 /* EditModuleRowHeader.swift in Sources */,
 				8F8FA3EA2DC94A5D0024D01F /* EditFlow.swift in Sources */,
 				8F8FA4222DC94B0B0024D01F /* MainTabView.swift in Sources */,
 				8F560ABD2DE86D750019A934 /* FirebaseStorageService.swift in Sources */,
@@ -755,10 +781,12 @@
 				8F8FA4312DC94B0B0024D01F /* UserStatisticsViewModel.swift in Sources */,
 				8F8FA4322DC94B0B0024D01F /* SignUpView.swift in Sources */,
 				8F8FA4332DC94B0B0024D01F /* AppRootView.swift in Sources */,
+				8FDC37C72E13DC2500F97004 /* EditModuleViewModel.swift in Sources */,
 				8FDC37A62E0C42AD00F97004 /* ModuleListRow.swift in Sources */,
 				8FDC37992E04411800F97004 /* MocDataService.swift in Sources */,
 				8F8FA4342DC94B0B0024D01F /* ProfileView.swift in Sources */,
 				8F8FA4352DC94B0B0024D01F /* UserStatisticsView.swift in Sources */,
+				8FDC37C92E13F32000F97004 /* EditModuleView.swift in Sources */,
 				8FDC37B92E12DFB300F97004 /* FirebaseDataManager.swift in Sources */,
 				8F8FA4362DC94B0B0024D01F /* MainTabViewModel.swift in Sources */,
 				8F8FA3EB2DC94A5D0024D01F /* LearnFlow.swift in Sources */,

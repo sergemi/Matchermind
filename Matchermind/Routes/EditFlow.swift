@@ -10,7 +10,7 @@ import SwiftUI
 enum EditFlowLink: Hashable {
     case modulesList
     case newModule
-    case editModule(preload: ModulePreload)
+    case editModule(preload: ModulePreload, isQuickModule: Bool)
 }
 
 struct EditFlowView: View {
@@ -27,10 +27,11 @@ struct EditFlowView: View {
                         EditModulesListView()
                         
                     case .newModule:
-                        Text("UNDER CONSTRUCTION: newModule")
+                        EditModuleView(modulePreload: nil , isQuickModule: false)
                         
-                    case .editModule(let preload):
-                        Text("UNDER CONSTRUCTION: editModule '\(preload.name)'")
+                        
+                    case .editModule(let preload, let isQuickModule):
+                        EditModuleView(modulePreload: preload , isQuickModule: isQuickModule)
                     }
                 }
         }

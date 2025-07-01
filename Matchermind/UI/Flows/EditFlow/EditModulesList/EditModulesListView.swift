@@ -34,14 +34,18 @@ struct EditModulesListContentView: View {
     var body: some View {
         VStack {
             if let quickModule = viewModel.quickModule {
-                EditModuleListRow(modulePreload: quickModule)
+//                EditModuleListRow(modulePreload: quickModule)
+                
+                Button {
+                    viewModel.selectModule(quickModule)
+                } label: {
+                    EditModuleListRow(modulePreload: quickModule)
+                }
+                .buttonStyle(PlainButtonStyle())
             }
             
-            HStack {
-                Text("Modules:")
-                    .font(.title2)
-                
-                Spacer()
+            EditModuleRowHeader(count: viewModel.modules.count) {
+                viewModel.addModule()
             }
             if viewModel.modules.isEmpty {
                 Text("No modules available")
@@ -75,8 +79,9 @@ struct EditModulesListContentView: View {
 //    }
 //}
 
-#Preview("Данные есть") {
-    PreviewWrapper(withData: true) {
+#Preview("with data") {
+    PreviewWrapper() {
+//    PreviewWrapper(loginned: false) {
         EditModulesListView()
     }
 }

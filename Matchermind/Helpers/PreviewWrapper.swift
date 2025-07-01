@@ -9,7 +9,6 @@ import SwiftUI
 
 @MainActor
 struct PreviewWrapper<Content: View>: View {
-    // Здесь мы создаем источник истины для превью
     @State private var router: AppRouter
     @State private var errorManager: ErrorManager
     @State private var authService: AuthService
@@ -17,14 +16,12 @@ struct PreviewWrapper<Content: View>: View {
 
     private var content: () -> Content
 
-    // Добавляем инициализатор для гибкой настройки
     init(
         loginned: Bool = true,
         testDelayMax: Int = 0,
         withData: Bool = true,
         @ViewBuilder content: @escaping () -> Content
     ) {
-        // Важно: Инициализируем @State переменные именно так в init
         self._router = State(initialValue: AppRouter())
         self._errorManager = State(initialValue: ErrorManager())
         

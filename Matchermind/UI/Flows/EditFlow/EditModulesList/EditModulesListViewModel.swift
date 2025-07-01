@@ -21,8 +21,12 @@ final class EditModulesListViewModel: DataViewModel {
     private var cancellables = Set<AnyCancellable>()
     
     func selectModule(_ module: ModulePreload) {
-        router.navigate(to: .learn(.module(preload: module)))
-        router.navigate(to: .edit(.editModule(preload: module)))
+        let isQuickModule = module.id == dataMgr.quickModule?.id
+        router.navigate(to: .edit(.editModule(preload: module, isQuickModule: isQuickModule)))
+    }
+    
+    func addModule() {
+        router.navigate(to: .edit(.newModule))
     }
     
 }

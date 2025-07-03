@@ -92,6 +92,23 @@ class DataManager {
         return module
     }
     
+    // MARK: Topic
+    func create(topic: Topic, moduleId: String) async throws -> Module {
+        let module = try await dataService.create(topic: topic, moduleId: moduleId)
+        
+        return module
+    }
+    
+    func update(topic: Topic) async throws -> Topic {
+        let topic = try await dataService.update(topic: topic)
+        return topic
+    }
+    
+    func fetchTopic(id: String) async throws -> Topic {
+        let topic = try await dataService.fetchTopic(id: id)
+        return topic
+    }
+    
     // MARK: - Internal
     private func resetData() {
         modulePreloads.removeAll()

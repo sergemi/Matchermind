@@ -53,4 +53,20 @@ actor FirebaseDataService: DataServiceProtocol {
         print("update(module")
         throw DataManagerError.moduleNotFound
     }
+    
+    // MARK: Topics
+    func create(topic: Topic, moduleId: String) async throws -> Module {
+        print("create(topic")
+        throw DataManagerError.topicNotFound
+    }
+    
+    func update(topic: Topic) async throws -> Topic {
+        print("update(topic")
+        throw DataManagerError.topicNotFound
+    }
+    
+    func fetchTopic(id: String) async throws -> Topic {
+        print("fetchTopic")
+        throw DataManagerError.topicNotFound
+    }
 }

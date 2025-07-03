@@ -44,6 +44,7 @@ actor MocDataService: DataServiceProtocol {
     }
     
     func update(user: User) async throws -> User {
+        print("update(user")
         guard let index = users.firstIndex(of: try await fetchUser(id: user.id)) else {
             throw DataManagerError.userNotFound
         }
@@ -78,6 +79,7 @@ actor MocDataService: DataServiceProtocol {
     }
     
     func fetchModulesPreload(userId: String) async throws -> [ModulePreload] {
+        print("fetchModulesPreload")
         try await testDelay()
         
         let availabledMoules = modulePreloads.filter{$0.isPublic == true || $0.authorId == userId}
@@ -97,13 +99,71 @@ actor MocDataService: DataServiceProtocol {
     
     func update(module: Module) async throws -> Module {
         print("update(module")
-        throw DataManagerError.moduleNotFound
+        guard let moduleIndex = modules.firstIndex(of: module) else {
+            throw DataManagerError.moduleNotFound
+        }
+        modules[moduleIndex] = module
+        
+        let modulePreload = module.modulePreload
+        guard let modulePreloadIndex = modulePreloads.firstIndex(of: modulePreload) else {
+            throw DataManagerError.modulePreloadNotFound
+        }
+        modulePreloads[modulePreloadIndex] = modulePreload
+        
+        return module
+    }
+    
+    // MARK: Topics
+    func create(topic: Topic, moduleId: String) async throws -> Module {
+        var module = try await fetchModule(id: moduleId)
+        print("create(topic")
+//        testDelay()
+        
+        topics.append(topic)
+        let topicPreload = topic.topicPreload
+        topicPreloads.append(topicPreload)
+        
+        module.topics.append(topicPreload)
+        module = try await update(module: module)
+        
+        return module
+    }
+    
+    func update(topic: Topic) async throws -> Topic {
+        print("update(topic")
+        try await testDelay()
+        
+        guard let topicIndex = topics.firstIndex(of: topic) else {
+            throw DataManagerError.topicNotFound
+        }
+        topics[topicIndex] = topic
+        
+        let topicPreload = topic.topicPreload
+        guard let topicPreloadIndex = topicPreloads.firstIndex(of: topicPreload) else {
+            throw DataManagerError.topicPreloadNotFound
+        }
+        topicPreloads[topicPreloadIndex] = topicPreload
+        
+        return topic
+    }
+    
+    func fetchTopic(id: String) async throws -> Topic {
+        print("fetchTopic")
+        try await testDelay()
+        
+        guard let topic = topics.first(where: {$0.id == id}) else {
+            throw DataManagerError.topicNotFound
+        }
+        
+        return topic
     }
     
     // MARK: - moc database
     private var users: [User] = []
     private var modules: [Module] = []
     private var modulePreloads: [ModulePreload] = []
+    private var topicPreloads: [TopicPreload] = []
+    private var topics: [Topic] = []
     
     private func createMocData() async throws {
         let user = MockAuthService.mocUser

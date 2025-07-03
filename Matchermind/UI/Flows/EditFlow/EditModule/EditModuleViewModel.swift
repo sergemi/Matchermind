@@ -10,11 +10,11 @@ import Foundation
 @Observable
 final class EditModuleViewModel: DataViewModel {
     var title: String {
-        guard let moduleName = modulePreload?.name else {
-            return "Create module"
-        }
-        
-        return "Edit module '\(moduleName)'"
+        modulePreload == nil ? "Create module" : "Edit module"
+    }
+    
+    var saveBtnTitle: String {
+        modulePreload == nil ? "Create module" : "Save module"
     }
     
     var isNewModule: Bool {
@@ -24,8 +24,10 @@ final class EditModuleViewModel: DataViewModel {
     let isQuickModule: Bool
     
     var modulePreload: ModulePreload?
-    var startModule: Module?
-    var currentModule: Module?
+//    var startModule: Module?
+//    var currentModule: Module?
+    var startModule = Module()
+    var currentModule = Module()
     
     init(modulePreload: ModulePreload?,
          isQuickModule: Bool,
@@ -47,22 +49,48 @@ final class EditModuleViewModel: DataViewModel {
         defer {
             stopActivity()
         }
-        startActivity("Load module...")
-        guard let moduleId = modulePreload?.id else {
-            return
-        }
-        
+        startActivity()
+        print("!!! Before: \(currentModule.details)")
         do {
-            let loadedModule = isNewModule ? try await createNewModule() : try await loadModule(id: moduleId)
-            
-            await MainActor.run {
-                startModule = loadedModule
-                currentModule = startModule
+            if isNewModule {
+                let newModule = try await createNewModule()
+                await setModule(newModule)
             }
+            else {
+                guard let modulePreload = modulePreload else {
+                    throw DataManagerError.unknownError // TODO: change error
+                }
+                let initModule = Module(preload: modulePreload)
+                await setModule(initModule)
+                
+                let loadedModule = try await loadModule(id: modulePreload.id)
+                await setModule(loadedModule)
+            }
+            print("!!!After: \(currentModule.details)")
         } catch {
             await errorMgr?.handleError(error)
         }
         stopActivity()
+    }
+    
+    //MARK: - Private interface
+    
+    func saveModule() async {
+        defer {
+            stopActivity()
+        }
+        startActivity()
+        do {
+            print("Module \(currentModule.name) saved")
+        } catch {
+            await errorMgr?.handleError(error)
+        }
+    }
+    
+    @MainActor
+    private func setModule(_ module: Module) {
+        startModule = module
+        currentModule = module
     }
     
     private func createNewModule() async throws -> Module {

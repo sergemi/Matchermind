@@ -39,14 +39,20 @@ struct EditModuleContentView: View {
     }
     
     var body: some View {
-        VStack {
-            Text("temp")
-            Button("Print") {
-                print("Print !!!")
+        VStack(spacing: 16) {
+            DefaultTextField(text: $viewModel.currentModule.name, placeholder: "Module name", title: "Name")
+            
+            DefaultTextField(text: $viewModel.currentModule.details, placeholder: "Module details", title: "Details")
+            
+            Toggle("Public", isOn: $viewModel.currentModule.isPublic)
+            
+            
+            Button(viewModel.saveBtnTitle) {
+                Task {
+                    await viewModel.saveModule()
+                }
             }
-            Spacer()
-//            DefaultTextField(text: $viewModel.email, placeholder: viewModel.emailHint, title: viewModel.emailTitle)
-//            
+//
 //            if let module = viewModel.currentModule {
 //                Text("Module loaded")
 //                Text(module.details)
@@ -55,6 +61,7 @@ struct EditModuleContentView: View {
 //                ProgressView()
 //            }
         }
+        .padding()
         .navigationTitle(viewModel.title)
         .activitySpinner(viewModel: viewModel)
         .task() {

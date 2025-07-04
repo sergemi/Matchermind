@@ -9,7 +9,7 @@ struct AppRootView: View {
 //                                                 FirebaseAuthService()
     )
     @State private var dataMgr: DataManager =
-    MocDataManager(testDelayMax: 5,
+    MocDataManager(testDelayMax: 0,
                    withData: true)
 //    FirebaseDataManager()
     

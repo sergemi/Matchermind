@@ -170,7 +170,7 @@ actor MocDataService: DataServiceProtocol {
         
         do {
             _ = try await create(user: user)
-            let modulesCount = 50
+            let modulesCount = 5
             for i in 1...modulesCount {
                 let module = Module(name: "Module \(i)", details: "Details of module \(i)", topics: [], authorId: user.id, isPublic: true)
                 _ = try await create(module: module)

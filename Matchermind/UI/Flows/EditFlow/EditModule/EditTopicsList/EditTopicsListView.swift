@@ -15,7 +15,13 @@ struct EditTopicsListView: View {
         VStack {
 //            EditTopicsListRowHeader(count: topics.count, onAdd: {})
             EditTopicsListRowHeader(count: topics.count, onAdd: onAdd)
-            Spacer()
+            ScrollView {
+                LazyVStack(alignment: .leading, spacing: 8) {
+                    ForEach(topics) { topic in
+                        EditTopicsListRow(topicPreload: topic)
+                    }
+                }
+            }
         }
     }
 }

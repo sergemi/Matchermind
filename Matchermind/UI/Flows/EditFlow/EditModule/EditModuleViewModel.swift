@@ -51,29 +51,27 @@ final class EditModuleViewModel: DataViewModel {
             stopActivity()
         }
         startActivity()
-        print("!!! Before: \(currentModule.details)")
         do {
             if isNewModule {
-                /*let*/var newModule = try await createNewModule()
+                /*let*/var newModule = try await createNewModule() // TODO: remove
                 newModule.topics.append(TopicPreload(id: "1", name: "Topic 1"))
                 newModule.topics.append(TopicPreload(id: "2", name: "Topic 2"))
                 newModule.topics.append(TopicPreload(id: "3", name: "Topic 3"))
                 
-                await setModule(newModule)
+                setModule(newModule)
             }
             else {
                 guard let modulePreload = modulePreload else {
                     throw DataManagerError.unknownError // TODO: change error
                 }
                 let initModule = Module(preload: modulePreload)
-                await setModule(initModule)
+                setModule(initModule)
                 
                 let loadedModule = try await loadModule(id: modulePreload.id)
-                await setModule(loadedModule)
+                setModule(loadedModule)
             }
-            print("!!!After: \(currentModule.details)")
         } catch {
-            await errorMgr?.handleError(error)
+            errorMgr?.handleError(error)
         }
         stopActivity()
     }
@@ -98,7 +96,7 @@ final class EditModuleViewModel: DataViewModel {
     }
     
     private func createNewModule() async throws -> Module {
-        guard let authorId = await authService.user?.id else {
+        guard let authorId = authService.user?.id else {
             throw DataManagerError.userNotFound
         }
         

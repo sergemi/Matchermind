@@ -86,6 +86,8 @@
 		8FDC37D12E16F20800F97004 /* EditTopicsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37D02E16F20700F97004 /* EditTopicsListView.swift */; };
 		8FDC37D52E17240D00F97004 /* EditTopicsListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37D32E17240D00F97004 /* EditTopicsListRow.swift */; };
 		8FDC37D62E17240D00F97004 /* EditTopicsListRowHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37D22E17240D00F97004 /* EditTopicsListRowHeader.swift */; };
+		8FDC37D92E18449F00F97004 /* EditTopicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37D82E18449F00F97004 /* EditTopicView.swift */; };
+		8FDC37DB2E18468A00F97004 /* EditTopicViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37DA2E18468A00F97004 /* EditTopicViewViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,6 +186,8 @@
 		8FDC37D02E16F20700F97004 /* EditTopicsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTopicsListView.swift; sourceTree = "<group>"; };
 		8FDC37D22E17240D00F97004 /* EditTopicsListRowHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTopicsListRowHeader.swift; sourceTree = "<group>"; };
 		8FDC37D32E17240D00F97004 /* EditTopicsListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTopicsListRow.swift; sourceTree = "<group>"; };
+		8FDC37D82E18449F00F97004 /* EditTopicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTopicView.swift; sourceTree = "<group>"; };
+		8FDC37DA2E18468A00F97004 /* EditTopicViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTopicViewViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -430,6 +434,7 @@
 			children = (
 				8FDC37B42E129EF300F97004 /* EditModulesList */,
 				8FDC37C52E13C9E700F97004 /* EditModule */,
+				8FDC37D72E18446C00F97004 /* EditTopic */,
 			);
 			path = EditFlow;
 			sourceTree = "<group>";
@@ -629,6 +634,15 @@
 			path = Elements;
 			sourceTree = "<group>";
 		};
+		8FDC37D72E18446C00F97004 /* EditTopic */ = {
+			isa = PBXGroup;
+			children = (
+				8FDC37D82E18449F00F97004 /* EditTopicView.swift */,
+				8FDC37DA2E18468A00F97004 /* EditTopicViewViewModel.swift */,
+			);
+			path = EditTopic;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -775,6 +789,7 @@
 			files = (
 				8F9A42E52CB96A08007B4D48 /* TopicPreload.swift in Sources */,
 				8FDC37D52E17240D00F97004 /* EditTopicsListRow.swift in Sources */,
+				8FDC37DB2E18468A00F97004 /* EditTopicViewViewModel.swift in Sources */,
 				8FDC37D62E17240D00F97004 /* EditTopicsListRowHeader.swift in Sources */,
 				8F560ABA2DE8649C0019A934 /* StorageService.swift in Sources */,
 				8F9A42DD2CB96076007B4D48 /* ModulePreload.swift in Sources */,
@@ -795,6 +810,7 @@
 				8F8FA4392DCA44180024D01F /* FirebaseAuthService.swift in Sources */,
 				8F8FA4492DCB73D80024D01F /* ImagePickerView.swift in Sources */,
 				8F9A42E12CB96945007B4D48 /* WordPair.swift in Sources */,
+				8FDC37D92E18449F00F97004 /* EditTopicView.swift in Sources */,
 				8F383D852CB30C7C00E87429 /* DefaultTextField.swift in Sources */,
 				8FDC37B52E129EF300F97004 /* EditModuleListRow.swift in Sources */,
 				8FDC37D12E16F20800F97004 /* EditTopicsListView.swift in Sources */,

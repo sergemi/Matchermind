@@ -8,17 +8,23 @@
 import SwiftUI
 
 struct EditTopicsListView: View {
+    @Environment(AppRouter.self) var router
     @Binding var topics: [TopicPreload]
     let onAdd: () -> Void
-    // onAdd: <#T##() -> Void#>
+    
     var body: some View {
         VStack {
-//            EditTopicsListRowHeader(count: topics.count, onAdd: {})
             EditTopicsListRowHeader(count: topics.count, onAdd: onAdd)
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 8) {
                     ForEach(topics) { topic in
-                        EditTopicsListRow(topicPreload: topic)
+                        Button {
+                            print(topic.id)
+                            router.navigate(to: .edit(.editTopic(topicId: topic.id)))
+                        } label: {
+                            EditTopicsListRow(topicPreload: topic)
+                        }
+                        .buttonStyle(PlainButtonStyle())
                     }
                 }
             }

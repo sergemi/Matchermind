@@ -102,6 +102,10 @@ final class EditModuleViewModel: DataViewModel {
         }
             
     }
+    // MARK: Topics
+    func newTopic() {
+        router.navigate(to: .edit(.newTopic(moduleId: currentModule.id)))
+    }
     
     //MARK: - Private interface
     
@@ -145,9 +149,5 @@ final class EditModuleViewModel: DataViewModel {
         let module = try await dataMgr.fetchModule(id: id)
         
         return module
-    }
-    
-    func newTopic() {
-        print("newTopic")
     }
 }

@@ -76,6 +76,11 @@ final class EditModuleViewModel: DataViewModel {
         stopActivity()
     }
     
+    var canSave: Bool {
+        currentModule.name.count > 0 &&
+        currentModule != startModule
+    }
+    
     //MARK: - Private interface
     
     func saveModule() async {
@@ -84,6 +89,16 @@ final class EditModuleViewModel: DataViewModel {
         }
         startActivity()
         do {
+            if isNewModule {
+                let createdModule = try await dataMgr.create(module: currentModule)
+                setModule(createdModule)
+                modulePreload = createdModule.modulePreload
+            }
+            else {
+                let updatedModule = try await dataMgr.update(module: currentModule)
+                setModule(updatedModule)
+            }
+            
             print("Module \(currentModule.name) saved")
         } catch {
             await errorMgr?.handleError(error)

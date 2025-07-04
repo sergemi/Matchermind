@@ -25,4 +25,7 @@ final class ModulesListViewModel: DataViewModel {
         router.navigate(to: .learn(.module(preload: module)))
     }
     
+    func updateModules() async throws {
+        try await _ = dataMgr.fetchModulesPreload()
+    }
 }

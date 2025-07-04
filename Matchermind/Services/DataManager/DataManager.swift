@@ -57,6 +57,10 @@ class DataManager {
         
         let modules = try await dataService.fetchModulesPreload(userId: user.id).filter { $0.id != user.quickModuleId }
         
+        if modules == self.modulePreloads {
+            print("The same module preloads. Don't need change")
+            return modules }
+        
         await MainActor.run {
             self.modulePreloads = modules
         }

@@ -99,13 +99,13 @@ actor MocDataService: DataServiceProtocol {
     
     func update(module: Module) async throws -> Module {
         print("update(module")
-        guard let moduleIndex = modules.firstIndex(of: module) else {
+        guard let moduleIndex = modules.firstIndex(where: {$0.id == module.id}) else {
             throw DataManagerError.moduleNotFound
         }
         modules[moduleIndex] = module
         
         let modulePreload = module.modulePreload
-        guard let modulePreloadIndex = modulePreloads.firstIndex(of: modulePreload) else {
+        guard let modulePreloadIndex = modulePreloads.firstIndex(where: {$0.id == module.id}) else {
             throw DataManagerError.modulePreloadNotFound
         }
         modulePreloads[modulePreloadIndex] = modulePreload

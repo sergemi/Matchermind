@@ -40,8 +40,6 @@ struct EditModuleContentView: View {
     
     var body: some View {
         VStack(spacing: 16) {
-//            TextField("Name", text: $viewModel.currentModule.name)
-//            TextField("Details", text: $viewModel.currentModule.details)
             DefaultTextField(text: $viewModel.currentModule.name, placeholder: "Module name", title: "Name")
             
             DefaultTextField(text: $viewModel.currentModule.details, placeholder: "Module details", title: "Details")
@@ -60,6 +58,7 @@ struct EditModuleContentView: View {
                     await viewModel.saveModule()
                 }
             }
+            .disabled(!viewModel.canSave)
 //
 //            if let module = viewModel.currentModule {
 //                Text("Module loaded")

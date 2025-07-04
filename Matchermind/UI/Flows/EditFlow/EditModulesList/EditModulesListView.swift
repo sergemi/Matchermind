@@ -70,6 +70,12 @@ struct EditModulesListContentView: View {
         //        .padding(.top, 8)
         .padding()
         .navigationTitle(viewModel.title)
+        .onAppear() {
+            print("onAppear !!!")
+            Task{
+                await viewModel.updateModules()
+            }
+        }
     }
 }
 

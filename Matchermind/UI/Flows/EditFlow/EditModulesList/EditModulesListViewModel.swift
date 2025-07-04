@@ -30,4 +30,11 @@ final class EditModulesListViewModel: DataViewModel {
         router.navigate(to: .edit(.newModule))
     }
     
+    func updateModules() async {
+        do {
+            try await _ = dataMgr.fetchModulesPreload()
+        } catch {
+            await errorMgr?.handleError(error)
+        }
+    }
 }

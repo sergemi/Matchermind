@@ -66,6 +66,9 @@ struct ModulesListContentView: View {
         //        .padding(.top, 8)
         .padding()
         .navigationTitle(viewModel.title)
+        .onAppear() {
+//            print("onAppear !!!")
+        }
     }
 }
 

@@ -83,6 +83,9 @@
 		8FDC37C72E13DC2500F97004 /* EditModuleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37C62E13DC2500F97004 /* EditModuleViewModel.swift */; };
 		8FDC37C92E13F32000F97004 /* EditModuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37C82E13F32000F97004 /* EditModuleView.swift */; };
 		8FDC37CC2E14624200F97004 /* ActivitySpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37CB2E14624200F97004 /* ActivitySpinner.swift */; };
+		8FDC37D12E16F20800F97004 /* EditTopicsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37D02E16F20700F97004 /* EditTopicsListView.swift */; };
+		8FDC37D52E17240D00F97004 /* EditTopicsListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37D32E17240D00F97004 /* EditTopicsListRow.swift */; };
+		8FDC37D62E17240D00F97004 /* EditTopicsListRowHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37D22E17240D00F97004 /* EditTopicsListRowHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -178,6 +181,9 @@
 		8FDC37C62E13DC2500F97004 /* EditModuleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditModuleViewModel.swift; sourceTree = "<group>"; };
 		8FDC37C82E13F32000F97004 /* EditModuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditModuleView.swift; sourceTree = "<group>"; };
 		8FDC37CB2E14624200F97004 /* ActivitySpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitySpinner.swift; sourceTree = "<group>"; };
+		8FDC37D02E16F20700F97004 /* EditTopicsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTopicsListView.swift; sourceTree = "<group>"; };
+		8FDC37D22E17240D00F97004 /* EditTopicsListRowHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTopicsListRowHeader.swift; sourceTree = "<group>"; };
+		8FDC37D32E17240D00F97004 /* EditTopicsListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTopicsListRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -581,8 +587,8 @@
 		8FDC37C22E13C0B400F97004 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
-				8FDC37B32E129EF300F97004 /* EditModuleListRow.swift */,
 				8FDC37C32E13C0E700F97004 /* EditModuleRowHeader.swift */,
+				8FDC37B32E129EF300F97004 /* EditModuleListRow.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -590,8 +596,9 @@
 		8FDC37C52E13C9E700F97004 /* EditModule */ = {
 			isa = PBXGroup;
 			children = (
-				8FDC37C62E13DC2500F97004 /* EditModuleViewModel.swift */,
 				8FDC37C82E13F32000F97004 /* EditModuleView.swift */,
+				8FDC37C62E13DC2500F97004 /* EditModuleViewModel.swift */,
+				8FDC37CD2E1665AA00F97004 /* EditTopicsList */,
 			);
 			path = EditModule;
 			sourceTree = "<group>";
@@ -602,6 +609,24 @@
 				8FDC37CB2E14624200F97004 /* ActivitySpinner.swift */,
 			);
 			path = ActivitySpinner;
+			sourceTree = "<group>";
+		};
+		8FDC37CD2E1665AA00F97004 /* EditTopicsList */ = {
+			isa = PBXGroup;
+			children = (
+				8FDC37D02E16F20700F97004 /* EditTopicsListView.swift */,
+				8FDC37D42E17240D00F97004 /* Elements */,
+			);
+			path = EditTopicsList;
+			sourceTree = "<group>";
+		};
+		8FDC37D42E17240D00F97004 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				8FDC37D22E17240D00F97004 /* EditTopicsListRowHeader.swift */,
+				8FDC37D32E17240D00F97004 /* EditTopicsListRow.swift */,
+			);
+			path = Elements;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -749,6 +774,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F9A42E52CB96A08007B4D48 /* TopicPreload.swift in Sources */,
+				8FDC37D52E17240D00F97004 /* EditTopicsListRow.swift in Sources */,
+				8FDC37D62E17240D00F97004 /* EditTopicsListRowHeader.swift in Sources */,
 				8F560ABA2DE8649C0019A934 /* StorageService.swift in Sources */,
 				8F9A42DD2CB96076007B4D48 /* ModulePreload.swift in Sources */,
 				8FDC37AB2E0C742000F97004 /* ModuleView.swift in Sources */,
@@ -770,6 +797,7 @@
 				8F9A42E12CB96945007B4D48 /* WordPair.swift in Sources */,
 				8F383D852CB30C7C00E87429 /* DefaultTextField.swift in Sources */,
 				8FDC37B52E129EF300F97004 /* EditModuleListRow.swift in Sources */,
+				8FDC37D12E16F20800F97004 /* EditTopicsListView.swift in Sources */,
 				8FDC37B62E129EF300F97004 /* EditModulesListViewModel.swift in Sources */,
 				8FDC37B72E129EF300F97004 /* EditModulesListView.swift in Sources */,
 				8F383D732CB0414B00E87429 /* ErrorManager.swift in Sources */,

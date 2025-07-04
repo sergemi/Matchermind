@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 @Observable
 final class EditModuleViewModel: DataViewModel {
     var title: String {
@@ -53,7 +54,11 @@ final class EditModuleViewModel: DataViewModel {
         print("!!! Before: \(currentModule.details)")
         do {
             if isNewModule {
-                let newModule = try await createNewModule()
+                /*let*/var newModule = try await createNewModule()
+                newModule.topics.append(TopicPreload(id: "1", name: "Topic 1"))
+                newModule.topics.append(TopicPreload(id: "2", name: "Topic 2"))
+                newModule.topics.append(TopicPreload(id: "3", name: "Topic 3"))
+                
                 await setModule(newModule)
             }
             else {
@@ -87,7 +92,6 @@ final class EditModuleViewModel: DataViewModel {
         }
     }
     
-    @MainActor
     private func setModule(_ module: Module) {
         startModule = module
         currentModule = module
@@ -106,5 +110,9 @@ final class EditModuleViewModel: DataViewModel {
         let module = try await dataMgr.fetchModule(id: id)
         
         return module
+    }
+    
+    func newTopic() {
+        print("newTopic")
     }
 }

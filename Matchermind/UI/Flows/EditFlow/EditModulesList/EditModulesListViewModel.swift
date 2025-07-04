@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+@Observable
 final class EditModulesListViewModel: DataViewModel {
     let title = "Modules to edit"
     var modules: [ModulePreload] {

@@ -1,30 +1,30 @@
 //
-//  EditModuleRowHeader.swift
+//  EditTopicsListRowHeader.swift
 //  Matchermind
 //
-//  Created by sergemi on 01/07/2025.
+//  Created by sergemi on 03/07/2025.
 //
 
 import SwiftUI
 
-struct EditModuleRowHeader: View {
+struct EditTopicsListRowHeader: View {
     let count: Int
     let onAdd: () -> Void
     
     var body: some View {
         HStack {
-            Text("\(count) modules:")
+            Text("\(count) topics:")
                 .font(.title2)
             
             Spacer()
             
             Button(action: onAdd) {
-                Text("Add module")
+                Text("Add topic")
             }
         }
     }
 }
 
 #Preview {
-    EditModuleRowHeader(count: 10, onAdd: {})
+    EditTopicsListRowHeader(count: 10, onAdd: {})
 }

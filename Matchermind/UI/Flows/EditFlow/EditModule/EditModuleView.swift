@@ -40,12 +40,20 @@ struct EditModuleContentView: View {
     
     var body: some View {
         VStack(spacing: 16) {
+//            TextField("Name", text: $viewModel.currentModule.name)
+//            TextField("Details", text: $viewModel.currentModule.details)
             DefaultTextField(text: $viewModel.currentModule.name, placeholder: "Module name", title: "Name")
             
             DefaultTextField(text: $viewModel.currentModule.details, placeholder: "Module details", title: "Details")
             
             Toggle("Public", isOn: $viewModel.currentModule.isPublic)
             
+            EditTopicsListView(topics: $viewModel.currentModule.topics, onAdd: viewModel.newTopic)
+            
+//            EditTopicsListView(topics: $viewModel.currentModule.topics, onAdd: {
+//                print("Test test test!!!")
+//            })
+//                .frame(maxWidth: .infinity, maxHeight: .infinity)
             
             Button(viewModel.saveBtnTitle) {
                 Task {
@@ -73,3 +81,10 @@ struct EditModuleContentView: View {
 //#Preview {
 //    EditModuleView()
 //}
+
+#Preview("with data") {
+    let modulePreload = ModulePreload(name: "Module 1", authorId: "1", isPublic: false)
+    PreviewWrapper() {
+        EditModuleView(modulePreload: modulePreload, isQuickModule: false)
+    }
+}

@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+@Observable
 final class ModulesListViewModel: DataViewModel {
     let title = "Modules to learn"
     var modules: [ModulePreload] {

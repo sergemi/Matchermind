@@ -28,6 +28,7 @@ struct EditModuleView: View {
 
 struct EditModuleContentView: View {
     @State private var viewModel: EditModuleViewModel
+    @State var isFirstLoad: Bool = true
     
     init(modulePreload: ModulePreload?, isQuickModule: Bool, errorMgr: ErrorManager?, router: AppRouter, authService: AuthService, dataMgr: DataManager) {
         _viewModel = State(initialValue: EditModuleViewModel(modulePreload: modulePreload,
@@ -71,8 +72,16 @@ struct EditModuleContentView: View {
         .padding()
         .navigationTitle(viewModel.title)
         .activitySpinner(viewModel: viewModel)
-        .task() {
-            await viewModel.getStartModule()
+        .onAppear() {
+            Task {
+                if isFirstLoad {
+                    isFirstLoad = false
+                    await viewModel.getStartModule()
+                }
+                else {
+                    await viewModel.updateModule()
+                }
+            }
         }
     }
 }

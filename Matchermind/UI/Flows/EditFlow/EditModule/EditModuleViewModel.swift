@@ -25,8 +25,6 @@ final class EditModuleViewModel: DataViewModel {
     let isQuickModule: Bool
     
     var modulePreload: ModulePreload?
-//    var startModule: Module?
-//    var currentModule: Module?
     var startModule = Module()
     var currentModule = Module()
     
@@ -47,6 +45,7 @@ final class EditModuleViewModel: DataViewModel {
     }
     
     func getStartModule() async {
+        print("getStartModule()")
         defer {
             stopActivity()
         }
@@ -79,6 +78,29 @@ final class EditModuleViewModel: DataViewModel {
     var canSave: Bool {
         currentModule.name.count > 0 &&
         currentModule != startModule
+    }
+    
+    func updateModule() async {
+        print("updateModule()")
+        
+        do {
+            guard let moduleId = modulePreload?.id else {
+                throw DataManagerError.unknownError
+            }
+                
+            let updatedModule = try await loadModule(id: moduleId)
+            if updatedModule == currentModule {
+                return
+            }
+            await MainActor.run {
+                print("Module was changed from last onAppear. Update module.")
+                currentModule = updatedModule
+            }
+            
+        } catch {
+            errorMgr?.handleError(error)
+        }
+            
     }
     
     //MARK: - Private interface

@@ -55,8 +55,18 @@ struct EditTopicContentView: View {
     
     var body: some View {
         VStack(spacing: 16) {
-            Text("aaa")
+            DefaultTextField(text: $viewModel.currentTopic.name, placeholder: "Topic name", title: "Name")
+            
+            DefaultTextField(text: $viewModel.currentTopic.details, placeholder: "Topic details", title: "Details")
+            
+            Button(viewModel.saveBtnTitle) {
+                Task {
+                    await viewModel.saveTopic()
+                }
+            }
+            .disabled(!viewModel.canSave)
         }
+        .padding()
         .navigationTitle(viewModel.title)
     }
 }

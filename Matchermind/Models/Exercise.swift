@@ -16,6 +16,7 @@ enum ExerciseType: String, Equatable, Codable {
     case swapLettersTranslateInverse
 }
 
+// TODO: maybe need refactoring
 struct Exercise: Identifiable, Equatable, Codable {
     let id: String
     

@@ -49,25 +49,12 @@ struct EditModuleContentView: View {
             
             EditTopicsListView(topics: $viewModel.currentModule.topics, onAdd: viewModel.newTopic)
             
-//            EditTopicsListView(topics: $viewModel.currentModule.topics, onAdd: {
-//                print("Test test test!!!")
-//            })
-//                .frame(maxWidth: .infinity, maxHeight: .infinity)
-            
             Button(viewModel.saveBtnTitle) {
                 Task {
                     await viewModel.saveModule()
                 }
             }
             .disabled(!viewModel.canSave)
-//
-//            if let module = viewModel.currentModule {
-//                Text("Module loaded")
-//                Text(module.details)
-//            }
-//            else {
-//                ProgressView()
-//            }
         }
         .padding()
         .navigationTitle(viewModel.title)

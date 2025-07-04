@@ -16,6 +16,19 @@ final class EditTopicViewViewModel: DataViewModel{
         topicId != nil ? "Edit Topic" : "New Topic"
     }
     
+    var saveBtnTitle: String {
+        isNewTopic ? "Create topic" : "Save topic"
+    }
+    
+    var isNewTopic: Bool {
+        topicId == nil
+    }
+    
+    var canSave: Bool {
+        currentTopic.name.count > 0 &&
+        currentTopic != startTopic
+    }
+    
     var startTopic = Topic()
     var currentTopic = Topic()
     
@@ -33,5 +46,14 @@ final class EditTopicViewViewModel: DataViewModel{
                    router: router,
                    authService: authService,
                    dataMgr: dataMgr)
+    }
+    
+    //MARK: - Private interface
+    
+    func saveTopic() async {
+        defer {
+            stopActivity()
+        }
+        startActivity()
     }
 }

@@ -12,10 +12,10 @@ struct Topic: Identifiable, Equatable, Codable {
     
     var name: String
     var details: String
-    var words: [LearnedWord]
+    var words: [WordPair]
     var exercises: [ExerciseType]
     
-    init(id: String, name: String, details: String, words: [LearnedWord], exercises: [ExerciseType]) {
+    init(id: String, name: String, details: String, words: [WordPair], exercises: [ExerciseType]) {
         self.id = id
         self.name = name
         self.details = details
@@ -23,7 +23,7 @@ struct Topic: Identifiable, Equatable, Codable {
         self.exercises = exercises
     }
     
-    init(name: String, details: String, words: [LearnedWord], exercises: [ExerciseType]) {
+    init(name: String, details: String, words: [WordPair], exercises: [ExerciseType]) {
         self.init(id: UUID().uuidString,
                   name: name,
                   details: details,

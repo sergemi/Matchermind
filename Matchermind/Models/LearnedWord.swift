@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+// TODO: maybe need refactoring
 struct LearnedWord: Identifiable, Equatable, Codable {
     let id: String
     

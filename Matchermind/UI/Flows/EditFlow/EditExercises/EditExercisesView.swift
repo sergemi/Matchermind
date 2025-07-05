@@ -11,19 +11,45 @@ struct EditExercisesView: View {
     @Binding var exercises: Set<ExerciseType>
     
     var body: some View {
-        List(ExerciseType.allCases, id: \.self) { type in
-            Button {
-                if exercises.contains(type) {
-                    exercises.remove(type)
+        VStack {
+            List(ExerciseType.allCases, id: \.self) { type in
+                Button {
+                    if exercises.contains(type) {
+                        exercises.remove(type)
+                    }
+                    else {
+                        exercises.insert(type)
+                    }
+                } label: {
+                    EditExercisesRowView(checked: exercises.contains(type),
+                                         type: type)
                 }
-                else {
-                    exercises.insert(type)
-                }
-            } label: {
-                EditExercisesRowView(checked: exercises.contains(type),
-                                     type: type)
+                .buttonStyle(.plain)
             }
-            .buttonStyle(.plain)
+            HStack {
+                Button("Select all", action: {
+                    Task {
+                        await MainActor.run {
+                            exercises = Set(ExerciseType.allCases)
+                        }
+                    }
+                })
+                .frame(maxWidth: .infinity)
+                .layoutPriority(1)
+//                .buttonStyle(.bordered)
+                
+                Button("Clear all", action: {
+                    Task {
+                        await MainActor.run {
+                            exercises.removeAll()
+                        }
+                    }
+                })
+                .frame(maxWidth: .infinity)
+                .layoutPriority(1)
+                .tint(.red)
+//                .buttonStyle(.bordered)
+            }
         }
     }
 }

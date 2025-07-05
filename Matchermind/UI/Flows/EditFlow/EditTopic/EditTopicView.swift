@@ -67,7 +67,14 @@ struct EditTopicContentView: View {
             
             DefaultTextField(text: $viewModel.currentTopic.details, placeholder: "Topic details", title: "Details")
             
-            EditModuleExercisesView(exercises: $viewModel.currentTopic.exercises)
+            Button {
+                print("Go to excercises")
+                viewModel.router.editPath.append(EditExercisesLink())
+            } label: {
+                EditModuleExercisesView(exercises: $viewModel.currentTopic.exercises)
+                    .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
             
             EditWordsListView(words: $viewModel.currentTopic.words, onAdd: {
                 print("TODO: add word")
@@ -94,8 +101,13 @@ struct EditTopicContentView: View {
                 }
             }
         }
+        .navigationDestination(for: EditExercisesLink.self) { link in
+                EditExercisesView(exercises: $viewModel.currentTopic.exercises)
+        }
     }
 }
+
+struct EditExercisesLink: Hashable {}
 
 #Preview {
     PreviewWrapper() {

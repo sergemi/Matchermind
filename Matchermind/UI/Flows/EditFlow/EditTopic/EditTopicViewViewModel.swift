@@ -50,6 +50,9 @@ final class EditTopicViewViewModel: DataViewModel{
     
     func updateTopic() async {
         print("updateTopic()")
+        guard currentTopic == startTopic else { // modul changed from child view but not saved. Don't need load from server
+            return
+        }
         do {
             let updatedTopic = try await loadTopic(id: currentTopic.id)
             if updatedTopic == currentTopic {

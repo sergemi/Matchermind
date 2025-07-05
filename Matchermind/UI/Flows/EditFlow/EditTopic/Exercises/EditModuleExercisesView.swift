@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EditModuleExercisesView: View {
-    @Binding var exercises: [ExerciseType]
+    @Binding var exercises: Set<ExerciseType>
     
     var body: some View {
         HStack {
@@ -24,7 +24,7 @@ struct EditModuleExercisesView: View {
 
 #Preview {
     struct PreviewWrapper: View {
-        @State private var exercises: [ExerciseType] = [
+        @State private var exercises: Set<ExerciseType> = [
             .choseTranslate,
             .choseTranslateInverse
         ]

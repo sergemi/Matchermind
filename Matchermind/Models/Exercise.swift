@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ExerciseType: String, Equatable, Codable {
+enum ExerciseType: String, Equatable, Codable, CaseIterable {
     case choseTranslate
     case choseTranslateInverse
     case writeTranslate

@@ -92,6 +92,9 @@
 		8FDC37E02E19117E00F97004 /* EditWordsListRowHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37DF2E19117E00F97004 /* EditWordsListRowHeader.swift */; };
 		8FDC37E62E19135000F97004 /* EditWordsListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37E52E19135000F97004 /* EditWordsListRow.swift */; };
 		8FDC37E82E19189400F97004 /* EditWordsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37E72E19189400F97004 /* EditWordsListView.swift */; };
+		8FDC37EB2E19719F00F97004 /* EditExercisesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37EA2E19719F00F97004 /* EditExercisesView.swift */; };
+		8FDC37ED2E197AFC00F97004 /* CodableSetAsArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37EC2E197AFC00F97004 /* CodableSetAsArray.swift */; };
+		8FDC37EF2E197EA300F97004 /* EditExercisesRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37EE2E197EA300F97004 /* EditExercisesRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -196,6 +199,9 @@
 		8FDC37DF2E19117E00F97004 /* EditWordsListRowHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWordsListRowHeader.swift; sourceTree = "<group>"; };
 		8FDC37E52E19135000F97004 /* EditWordsListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWordsListRow.swift; sourceTree = "<group>"; };
 		8FDC37E72E19189400F97004 /* EditWordsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWordsListView.swift; sourceTree = "<group>"; };
+		8FDC37EA2E19719F00F97004 /* EditExercisesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExercisesView.swift; sourceTree = "<group>"; };
+		8FDC37EC2E197AFC00F97004 /* CodableSetAsArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableSetAsArray.swift; sourceTree = "<group>"; };
+		8FDC37EE2E197EA300F97004 /* EditExercisesRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExercisesRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +293,7 @@
 			children = (
 				8F8FA3E12DC949C60024D01F /* PreviewHelpers.swift */,
 				8FDC37C02E1343DF00F97004 /* PreviewWrapper.swift */,
+				8FDC37EC2E197AFC00F97004 /* CodableSetAsArray.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -443,6 +450,7 @@
 				8FDC37B42E129EF300F97004 /* EditModulesList */,
 				8FDC37C52E13C9E700F97004 /* EditModule */,
 				8FDC37D72E18446C00F97004 /* EditTopic */,
+				8FDC37E92E19710F00F97004 /* EditExercises */,
 			);
 			path = EditFlow;
 			sourceTree = "<group>";
@@ -679,6 +687,15 @@
 			path = WordsList;
 			sourceTree = "<group>";
 		};
+		8FDC37E92E19710F00F97004 /* EditExercises */ = {
+			isa = PBXGroup;
+			children = (
+				8FDC37EA2E19719F00F97004 /* EditExercisesView.swift */,
+				8FDC37EE2E197EA300F97004 /* EditExercisesRowView.swift */,
+			);
+			path = EditExercises;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -828,11 +845,13 @@
 				8FDC37DB2E18468A00F97004 /* EditTopicViewViewModel.swift in Sources */,
 				8FDC37D62E17240D00F97004 /* EditTopicsListRowHeader.swift in Sources */,
 				8F560ABA2DE8649C0019A934 /* StorageService.swift in Sources */,
+				8FDC37EF2E197EA300F97004 /* EditExercisesRowView.swift in Sources */,
 				8FDC37E82E19189400F97004 /* EditWordsListView.swift in Sources */,
 				8F9A42DD2CB96076007B4D48 /* ModulePreload.swift in Sources */,
 				8FDC37AB2E0C742000F97004 /* ModuleView.swift in Sources */,
 				8F383D832CB3007A00E87429 /* TestfieldStyles.swift in Sources */,
 				8F9A42E72CB96A5F007B4D48 /* Topic.swift in Sources */,
+				8FDC37EB2E19719F00F97004 /* EditExercisesView.swift in Sources */,
 				8FDC37C12E1343DF00F97004 /* PreviewWrapper.swift in Sources */,
 				8F8FA3F42DC94AD10024D01F /* AuthService.swift in Sources */,
 				8F8FA3F52DC94AD10024D01F /* MockAuthService.swift in Sources */,
@@ -867,6 +886,7 @@
 				8F8FA4252DC94B0B0024D01F /* SignUpViewModel.swift in Sources */,
 				8F8FA4262DC94B0B0024D01F /* SignInView.swift in Sources */,
 				8F8FA4292DC94B0B0024D01F /* ProfileViewModel.swift in Sources */,
+				8FDC37ED2E197AFC00F97004 /* CodableSetAsArray.swift in Sources */,
 				8F8FA42B2DC94B0B0024D01F /* AppRootViewModel.swift in Sources */,
 				8F8FA4502DCB7C890024D01F /* ImageSourcePickerView.swift in Sources */,
 				8F8FA42C2DC94B0B0024D01F /* SignInViewModel.swift in Sources */,

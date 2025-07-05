@@ -13,9 +13,9 @@ struct Topic: Identifiable, Equatable, Codable {
     var name: String
     var details: String
     var words: [WordPair]
-    var exercises: [ExerciseType]
+    @CodableSetAsArray var exercises: Set<ExerciseType>
     
-    init(id: String, name: String, details: String, words: [WordPair], exercises: [ExerciseType]) {
+    init(id: String, name: String, details: String, words: [WordPair], exercises: Set<ExerciseType>) {
         self.id = id
         self.name = name
         self.details = details
@@ -23,7 +23,7 @@ struct Topic: Identifiable, Equatable, Codable {
         self.exercises = exercises
     }
     
-    init(name: String, details: String, words: [WordPair], exercises: [ExerciseType]) {
+    init(name: String, details: String, words: [WordPair], exercises: Set<ExerciseType>) {
         self.init(id: UUID().uuidString,
                   name: name,
                   details: details,

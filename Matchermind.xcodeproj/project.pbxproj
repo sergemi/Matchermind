@@ -88,6 +88,10 @@
 		8FDC37D62E17240D00F97004 /* EditTopicsListRowHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37D22E17240D00F97004 /* EditTopicsListRowHeader.swift */; };
 		8FDC37D92E18449F00F97004 /* EditTopicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37D82E18449F00F97004 /* EditTopicView.swift */; };
 		8FDC37DB2E18468A00F97004 /* EditTopicViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37DA2E18468A00F97004 /* EditTopicViewViewModel.swift */; };
+		8FDC37DE2E18F75A00F97004 /* EditModuleExercisesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37DD2E18F75A00F97004 /* EditModuleExercisesView.swift */; };
+		8FDC37E02E19117E00F97004 /* EditWordsListRowHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37DF2E19117E00F97004 /* EditWordsListRowHeader.swift */; };
+		8FDC37E62E19135000F97004 /* EditWordsListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37E52E19135000F97004 /* EditWordsListRow.swift */; };
+		8FDC37E82E19189400F97004 /* EditWordsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37E72E19189400F97004 /* EditWordsListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,6 +192,10 @@
 		8FDC37D32E17240D00F97004 /* EditTopicsListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTopicsListRow.swift; sourceTree = "<group>"; };
 		8FDC37D82E18449F00F97004 /* EditTopicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTopicView.swift; sourceTree = "<group>"; };
 		8FDC37DA2E18468A00F97004 /* EditTopicViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTopicViewViewModel.swift; sourceTree = "<group>"; };
+		8FDC37DD2E18F75A00F97004 /* EditModuleExercisesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditModuleExercisesView.swift; sourceTree = "<group>"; };
+		8FDC37DF2E19117E00F97004 /* EditWordsListRowHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWordsListRowHeader.swift; sourceTree = "<group>"; };
+		8FDC37E52E19135000F97004 /* EditWordsListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWordsListRow.swift; sourceTree = "<group>"; };
+		8FDC37E72E19189400F97004 /* EditWordsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWordsListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -639,8 +647,36 @@
 			children = (
 				8FDC37D82E18449F00F97004 /* EditTopicView.swift */,
 				8FDC37DA2E18468A00F97004 /* EditTopicViewViewModel.swift */,
+				8FDC37E32E1912CE00F97004 /* Exercises */,
+				8FDC37E42E1912E100F97004 /* WordsList */,
 			);
 			path = EditTopic;
+			sourceTree = "<group>";
+		};
+		8FDC37DC2E18F6CB00F97004 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				8FDC37DF2E19117E00F97004 /* EditWordsListRowHeader.swift */,
+				8FDC37E52E19135000F97004 /* EditWordsListRow.swift */,
+			);
+			path = Elements;
+			sourceTree = "<group>";
+		};
+		8FDC37E32E1912CE00F97004 /* Exercises */ = {
+			isa = PBXGroup;
+			children = (
+				8FDC37DD2E18F75A00F97004 /* EditModuleExercisesView.swift */,
+			);
+			path = Exercises;
+			sourceTree = "<group>";
+		};
+		8FDC37E42E1912E100F97004 /* WordsList */ = {
+			isa = PBXGroup;
+			children = (
+				8FDC37E72E19189400F97004 /* EditWordsListView.swift */,
+				8FDC37DC2E18F6CB00F97004 /* Elements */,
+			);
+			path = WordsList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -792,6 +828,7 @@
 				8FDC37DB2E18468A00F97004 /* EditTopicViewViewModel.swift in Sources */,
 				8FDC37D62E17240D00F97004 /* EditTopicsListRowHeader.swift in Sources */,
 				8F560ABA2DE8649C0019A934 /* StorageService.swift in Sources */,
+				8FDC37E82E19189400F97004 /* EditWordsListView.swift in Sources */,
 				8F9A42DD2CB96076007B4D48 /* ModulePreload.swift in Sources */,
 				8FDC37AB2E0C742000F97004 /* ModuleView.swift in Sources */,
 				8F383D832CB3007A00E87429 /* TestfieldStyles.swift in Sources */,
@@ -817,10 +854,12 @@
 				8FDC37B62E129EF300F97004 /* EditModulesListViewModel.swift in Sources */,
 				8FDC37B72E129EF300F97004 /* EditModulesListView.swift in Sources */,
 				8F383D732CB0414B00E87429 /* ErrorManager.swift in Sources */,
+				8FDC37E02E19117E00F97004 /* EditWordsListRowHeader.swift in Sources */,
 				8FDC37A92E0C687700F97004 /* ModuleViewModel.swift in Sources */,
 				8FDC37972E043FCA00F97004 /* FirebaseDataService.swift in Sources */,
 				8FDC37C42E13C0E700F97004 /* EditModuleRowHeader.swift in Sources */,
 				8F8FA3EA2DC94A5D0024D01F /* EditFlow.swift in Sources */,
+				8FDC37DE2E18F75A00F97004 /* EditModuleExercisesView.swift in Sources */,
 				8F8FA4222DC94B0B0024D01F /* MainTabView.swift in Sources */,
 				8F560ABD2DE86D750019A934 /* FirebaseStorageService.swift in Sources */,
 				8F8FA4242DC94B0B0024D01F /* TabItem.swift in Sources */,
@@ -831,6 +870,7 @@
 				8F8FA42B2DC94B0B0024D01F /* AppRootViewModel.swift in Sources */,
 				8F8FA4502DCB7C890024D01F /* ImageSourcePickerView.swift in Sources */,
 				8F8FA42C2DC94B0B0024D01F /* SignInViewModel.swift in Sources */,
+				8FDC37E62E19135000F97004 /* EditWordsListRow.swift in Sources */,
 				8F8FA42E2DC94B0B0024D01F /* BaseViewModels.swift in Sources */,
 				8FDC37BB2E12DFE000F97004 /* MocDataManager.swift in Sources */,
 				8F8FA4312DC94B0B0024D01F /* UserStatisticsViewModel.swift in Sources */,

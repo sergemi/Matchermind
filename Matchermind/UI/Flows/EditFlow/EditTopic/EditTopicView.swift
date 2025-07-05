@@ -59,6 +59,12 @@ struct EditTopicContentView: View {
             
             DefaultTextField(text: $viewModel.currentTopic.details, placeholder: "Topic details", title: "Details")
             
+            EditModuleExercisesView(exercises: $viewModel.currentTopic.exercises)
+            
+            EditWordsListView(words: $viewModel.currentTopic.words, onAdd: {
+                print("TODO: add word")
+            })
+            
             Button(viewModel.saveBtnTitle) {
                 Task {
                     await viewModel.saveTopic()

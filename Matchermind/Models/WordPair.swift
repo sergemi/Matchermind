@@ -23,7 +23,7 @@ struct WordPair: Identifiable, Equatable, Codable {
         self.notes = notes
     }
     
-    init (target: String, translate: String, pronounce: String, notes: String) {
+    init (target: String, translate: String, pronounce: String = "", notes: String = "") {
         self.init(id: UUID().uuidString,
                   target: target,
                   translate: translate,

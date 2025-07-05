@@ -11,7 +11,7 @@ import Foundation
 @Observable
 final class EditTopicViewViewModel: DataViewModel{
     let moduleId: String?
-    let topicId: String?
+    var topicId: String?
     var title: String {
         topicId != nil ? "Edit Topic" : "New Topic"
     }
@@ -48,12 +48,78 @@ final class EditTopicViewViewModel: DataViewModel{
                    dataMgr: dataMgr)
     }
     
-    //MARK: - Private interface
+    func updateTopic() async {
+        print("updateTopic()")
+        do {
+            let updatedTopic = try await loadTopic(id: currentTopic.id)
+            if updatedTopic == currentTopic {
+                return
+            }
+            await MainActor.run {
+                print("Topic was changed from last onAppear. Update topic.")
+                currentTopic = updatedTopic
+            }
+
+        } catch {
+            errorMgr?.handleError(error)
+        }
+    }
+    
+    func getStartTopic() async {
+        if isNewTopic {
+            return
+        }
+        
+        defer {
+            stopActivity()
+        }
+        startActivity()
+        
+        do {
+            guard let topicId = topicId else {
+                throw DataManagerError.unknownError
+            }
+            let loaddedTopic = try await loadTopic(id: topicId)
+            setTopic(loaddedTopic)
+        } catch {
+            errorMgr?.handleError(error)
+        }
+    }
     
     func saveTopic() async {
         defer {
             stopActivity()
         }
         startActivity()
+        do {
+            guard let moduleId = moduleId else {
+                throw DataManagerError.unknownError // TODO: change
+            }
+            
+            if isNewTopic {
+                
+                _ = try await dataMgr.create(topic: currentTopic, moduleId: moduleId)
+                setTopic(currentTopic)
+                topicId = currentTopic.id
+            }
+            else {
+                let updatedTopic = try await dataMgr.update(topic: currentTopic, moduleId: moduleId)
+                setTopic(updatedTopic)
+            }
+        } catch {
+            errorMgr?.handleError(error)
+        }
+    }
+    
+    //MARK: - Private interface
+    private func setTopic(_ topic: Topic) {
+        startTopic = topic
+        currentTopic = topic
+    }
+    
+    private func loadTopic(id: String) async throws -> Topic {
+        let topic = try await dataMgr.fetchTopic(id: id)
+        
+        return topic
     }
 }

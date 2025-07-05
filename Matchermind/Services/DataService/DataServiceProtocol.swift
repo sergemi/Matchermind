@@ -24,7 +24,7 @@ protocol DataServiceProtocol: Actor {
     
     // MARK: Topics
     func create(topic: Topic, moduleId: String) async throws -> Module
-    func update(topic: Topic) async throws -> Topic
+    func update(topic: Topic, moduleId: String?) async throws -> Topic
     func fetchTopic(id: String) async throws -> Topic
     // TODO: make remove
 }

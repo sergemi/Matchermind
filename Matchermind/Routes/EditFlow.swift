@@ -12,7 +12,7 @@ enum EditFlowLink: Hashable {
     case newModule
     case editModule(preload: ModulePreload, isQuickModule: Bool)
     case newTopic(moduleId: String)
-    case editTopic(topicId: String)
+    case editTopic(moduleId: String, topicId: String)
 }
 
 struct EditFlowView: View {
@@ -38,8 +38,8 @@ struct EditFlowView: View {
                     case .newTopic(let moduleId):
                         EditTopicView(moduleId: moduleId)
                         
-                    case .editTopic(let topicId):
-                        EditTopicView(topicId: topicId)
+                    case .editTopic(let moduleId, let topicId):
+                        EditTopicView(moduleId:moduleId, topicId: topicId)
                         
                     }
                 }

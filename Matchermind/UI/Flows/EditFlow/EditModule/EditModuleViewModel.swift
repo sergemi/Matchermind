@@ -72,7 +72,7 @@ final class EditModuleViewModel: DataViewModel {
         } catch {
             errorMgr?.handleError(error)
         }
-        stopActivity()
+//        stopActivity() // TODO: remove?
     }
     
     var canSave: Bool {
@@ -107,8 +107,6 @@ final class EditModuleViewModel: DataViewModel {
         router.navigate(to: .edit(.newTopic(moduleId: currentModule.id)))
     }
     
-    //MARK: - Private interface
-    
     func saveModule() async {
         defer {
             stopActivity()
@@ -127,10 +125,11 @@ final class EditModuleViewModel: DataViewModel {
             
             print("Module \(currentModule.name) saved")
         } catch {
-            await errorMgr?.handleError(error)
+            errorMgr?.handleError(error)
         }
     }
     
+    //MARK: - Private interface
     private func setModule(_ module: Module) {
         startModule = module
         currentModule = module

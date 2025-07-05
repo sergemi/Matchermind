@@ -103,8 +103,8 @@ class DataManager {
         return module
     }
     
-    func update(topic: Topic) async throws -> Topic {
-        let topic = try await dataService.update(topic: topic)
+    func update(topic: Topic, moduleId: String? = nil) async throws -> Topic {
+        let topic = try await dataService.update(topic: topic, moduleId: moduleId)
         return topic
     }
     

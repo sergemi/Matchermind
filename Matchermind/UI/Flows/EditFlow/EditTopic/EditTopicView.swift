@@ -13,18 +13,25 @@ struct EditTopicView: View {
     @Environment(DataManager.self) var dataMgr
     @Environment(ErrorManager.self) var errorMgr
     
-    let moduleId: String?
+    let moduleId: String
     let topicId: String?
-    
-    init(moduleId: String) {
+
+    init(moduleId: String, topicId: String? = nil) {
         self.moduleId = moduleId
-        self.topicId = nil
-    }
-    
-    init(topicId: String) {
-        self.moduleId = nil
         self.topicId = topicId
     }
+
+    
+    //TODO: remove
+//    init(moduleId: String) {
+//        self.moduleId = moduleId
+//        self.topicId = nil
+//    }
+//    
+//    init(topicId: String) {
+//        self.moduleId = nil
+//        self.topicId = topicId
+//    }
     
     var body: some View {
         EditTopicContentView(moduleId: moduleId,
@@ -38,6 +45,7 @@ struct EditTopicView: View {
 
 struct EditTopicContentView: View {
     @State private var viewModel: EditTopicViewViewModel
+    @State var isFirstLoad: Bool = true
     
     init(moduleId: String?,
          topicId: String?,
@@ -74,6 +82,18 @@ struct EditTopicContentView: View {
         }
         .padding()
         .navigationTitle(viewModel.title)
+        .activitySpinner(viewModel: viewModel)
+        .onAppear() {
+            Task {
+                if isFirstLoad {
+                    isFirstLoad = false
+                    await viewModel.getStartTopic()
+                }
+                else {
+                    await viewModel.updateTopic()
+                }
+            }
+        }
     }
 }
 

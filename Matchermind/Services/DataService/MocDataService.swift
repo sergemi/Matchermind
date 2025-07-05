@@ -129,20 +129,29 @@ actor MocDataService: DataServiceProtocol {
         return module
     }
     
-    func update(topic: Topic) async throws -> Topic {
+    func update(topic: Topic, moduleId: String?) async throws -> Topic {
         print("update(topic")
         try await testDelay()
         
-        guard let topicIndex = topics.firstIndex(of: topic) else {
+        guard let topicIndex = topics.firstIndex(where: {$0.id == topic.id }) else {
             throw DataManagerError.topicNotFound
         }
         topics[topicIndex] = topic
         
         let topicPreload = topic.topicPreload
-        guard let topicPreloadIndex = topicPreloads.firstIndex(of: topicPreload) else {
+        guard let topicPreloadIndex = topicPreloads.firstIndex(where: {$0.id == topic.id }) else {
             throw DataManagerError.topicPreloadNotFound
         }
         topicPreloads[topicPreloadIndex] = topicPreload
+        
+        if let moduleId = moduleId {
+            var module = try await fetchModule(id: moduleId)
+            guard let topicPreloadIndex = module.topics.firstIndex(where: {$0.id == topic.id }) else {
+                throw DataManagerError.topicPreloadNotFound
+            }
+            module.topics[topicPreloadIndex] = topicPreload
+            _ = try await update(module: module)
+        }
         
         return topic
     }

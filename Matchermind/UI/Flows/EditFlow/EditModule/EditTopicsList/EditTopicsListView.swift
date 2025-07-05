@@ -10,6 +10,7 @@ import SwiftUI
 struct EditTopicsListView: View {
     @Environment(AppRouter.self) var router
     @Binding var topics: [TopicPreload]
+    let moduleId: String
     let onAdd: () -> Void
     
     var body: some View {
@@ -20,7 +21,7 @@ struct EditTopicsListView: View {
                     ForEach(topics) { topic in
                         Button {
                             print(topic.id)
-                            router.navigate(to: .edit(.editTopic(topicId: topic.id)))
+                            router.navigate(to: .edit(.editTopic(moduleId: moduleId, topicId: topic.id)))
                         } label: {
                             EditTopicsListRow(topicPreload: topic)
                         }
@@ -40,7 +41,7 @@ struct EditTopicsListView: View {
         ]
         
         var body: some View {
-            EditTopicsListView(topics: $topics, onAdd: {})
+            EditTopicsListView(topics: $topics, moduleId: "1", onAdd: {})
         }
     }
     

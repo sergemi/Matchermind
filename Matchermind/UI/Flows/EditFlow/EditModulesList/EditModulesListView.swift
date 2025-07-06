@@ -40,6 +40,7 @@ struct EditModulesListContentView: View {
                     viewModel.selectModule(quickModule)
                 } label: {
                     EditModuleListRow(modulePreload: quickModule)
+                        .contentShape(Rectangle())
                 }
                 .buttonStyle(PlainButtonStyle())
             }
@@ -59,6 +60,7 @@ struct EditModulesListContentView: View {
                                 viewModel.selectModule(module)
                             } label: {
                                 EditModuleListRow(modulePreload: module)
+                                    .contentShape(Rectangle())
                             }
                             .buttonStyle(PlainButtonStyle())
                         }

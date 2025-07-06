@@ -24,6 +24,7 @@ struct EditTopicsListView: View {
                             router.navigate(to: .edit(.editTopic(moduleId: moduleId, topicId: topic.id)))
                         } label: {
                             EditTopicsListRow(topicPreload: topic)
+                                .contentShape(Rectangle())
                         }
                         .buttonStyle(PlainButtonStyle())
                     }

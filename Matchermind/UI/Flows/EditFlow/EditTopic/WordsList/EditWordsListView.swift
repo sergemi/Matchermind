@@ -23,6 +23,7 @@ struct EditWordsListView: View {
 //                            router.navigate(to: .edit(.editTopic(topicId: topic.id)))
                         } label: {
                             EditWordsListRow(wordPair: word)
+                                .contentShape(Rectangle())
                         }
                         .buttonStyle(PlainButtonStyle())
                     }

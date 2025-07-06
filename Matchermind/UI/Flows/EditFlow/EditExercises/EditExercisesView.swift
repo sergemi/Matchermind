@@ -11,46 +11,41 @@ struct EditExercisesView: View {
     @Binding var exercises: Set<ExerciseType>
     
     var body: some View {
-        VStack {
-            List(ExerciseType.allCases, id: \.self) { type in
-                Button {
-                    if exercises.contains(type) {
-                        exercises.remove(type)
+        List {
+            Section {
+                ForEach(ExerciseType.allCases, id: \.self) { type in
+                    Button {
+                        if exercises.contains(type) {
+                            exercises.remove(type)
+                        } else {
+                            exercises.insert(type)
+                        }
+                    } label: {
+                        EditExercisesRowView(checked: exercises.contains(type),
+                                             type: type)
+                        .contentShape(Rectangle())
                     }
-                    else {
-                        exercises.insert(type)
-                    }
-                } label: {
-                    EditExercisesRowView(checked: exercises.contains(type),
-                                         type: type)
+                    .buttonStyle(.plain)
                 }
-                .buttonStyle(.plain)
-            }
-            HStack {
-                Button("Select all", action: {
-                    Task {
-                        await MainActor.run {
-                            exercises = Set(ExerciseType.allCases)
-                        }
+            } footer: {
+                HStack {
+                    Button("Select all") {
+                        exercises = Set(ExerciseType.allCases)
                     }
-                })
-                .frame(maxWidth: .infinity)
-                .layoutPriority(1)
-//                .buttonStyle(.bordered)
-                
-                Button("Clear all", action: {
-                    Task {
-                        await MainActor.run {
-                            exercises.removeAll()
-                        }
+                    .frame(maxWidth: .infinity)
+                    .buttonStyle(.bordered)
+                    
+                    Button("Clear all") {
+                        exercises.removeAll()
                     }
-                })
-                .frame(maxWidth: .infinity)
-                .layoutPriority(1)
-                .tint(.red)
-//                .buttonStyle(.bordered)
+                    .frame(maxWidth: .infinity)
+                    .tint(.red)
+                    .buttonStyle(.bordered)
+                }
+                .padding(.top)
             }
         }
+        .navigationTitle("Select exercises")
     }
 }
 

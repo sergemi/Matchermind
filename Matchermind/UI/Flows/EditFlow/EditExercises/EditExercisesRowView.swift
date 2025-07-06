@@ -15,6 +15,7 @@ struct EditExercisesRowView: View {
             Image(systemName: checked ? "checkmark.square" : "square")
 //                .foregroundColor(.accentColor)
             Text(type.rawValue)
+            Spacer()
         }
     }
 }

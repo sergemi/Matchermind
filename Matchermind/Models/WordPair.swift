@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WordPair: Identifiable, Equatable, Codable {
+struct WordPair: Identifiable, Equatable, Codable, Hashable {
     let id: String
     
     var target: String

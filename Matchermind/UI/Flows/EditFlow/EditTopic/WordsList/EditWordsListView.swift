@@ -11,6 +11,7 @@ struct EditWordsListView: View {
     @Environment(AppRouter.self) var router
     @Binding var words: [WordPair]
     let onAdd: () -> Void
+    let onEdit: (_ id: String) -> Void
     
     var body: some View {
         VStack {
@@ -20,7 +21,7 @@ struct EditWordsListView: View {
                     ForEach(words) { word in
                         Button {
                             print(word.id)
-//                            router.navigate(to: .edit(.editTopic(topicId: topic.id)))
+                            onEdit(word.id)
                         } label: {
                             EditWordsListRow(wordPair: word)
                                 .contentShape(Rectangle())

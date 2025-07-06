@@ -20,18 +20,6 @@ struct EditTopicView: View {
         self.moduleId = moduleId
         self.topicId = topicId
     }
-
-    
-    //TODO: remove
-//    init(moduleId: String) {
-//        self.moduleId = moduleId
-//        self.topicId = nil
-//    }
-//    
-//    init(topicId: String) {
-//        self.moduleId = nil
-//        self.topicId = topicId
-//    }
     
     var body: some View {
         EditTopicContentView(moduleId: moduleId,
@@ -69,7 +57,7 @@ struct EditTopicContentView: View {
             
             Button {
                 print("Go to excercises")
-                viewModel.router.editPath.append(EditExercisesLink())
+                viewModel.router.editPath.append(EditTopicNavigationLink.editExercises)
             } label: {
                 EditModuleExercisesView(exercises: $viewModel.currentTopic.exercises)
                     .contentShape(Rectangle())
@@ -77,7 +65,11 @@ struct EditTopicContentView: View {
             .buttonStyle(.plain)
             
             EditWordsListView(words: $viewModel.currentTopic.words, onAdd: {
-                print("TODO: add word")
+                viewModel.router.editPath.append(EditTopicNavigationLink.addWord)
+            }, onEdit: {id in
+                if let wordPair = viewModel.currentTopic.words.first(where: {$0.id == id}) {
+                    viewModel.router.editPath.append(EditTopicNavigationLink.editWord(wordPair))
+                }
             })
             
             Button(viewModel.saveBtnTitle) {
@@ -101,13 +93,33 @@ struct EditTopicContentView: View {
                 }
             }
         }
-        .navigationDestination(for: EditExercisesLink.self) { link in
+        .navigationDestination(for: EditTopicNavigationLink.self) { link in
+            switch link {
+            case .editExercises:
                 EditExercisesView(exercises: $viewModel.currentTopic.exercises)
+                
+            case .addWord:
+                EditWordPairView(wordPairs: $viewModel.currentTopic.words)
+                
+            case .editWord(let wordPair):
+                EditWordPairView(wordPairs: $viewModel.currentTopic.words, editedWordPair: wordPair)
+            }
+                
         }
     }
+    
+    // TODO: Internal navigation (not used AppRouter)
+    struct EditExercisesLink: Hashable {}
+    
+    enum EditTopicNavigationLink: Hashable {
+        case editExercises
+        case addWord
+        case editWord(WordPair)
+    }
+    
 }
 
-struct EditExercisesLink: Hashable {}
+
 
 #Preview {
     PreviewWrapper() {

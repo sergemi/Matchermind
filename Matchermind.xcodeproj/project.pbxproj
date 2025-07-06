@@ -95,6 +95,8 @@
 		8FDC37EB2E19719F00F97004 /* EditExercisesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37EA2E19719F00F97004 /* EditExercisesView.swift */; };
 		8FDC37ED2E197AFC00F97004 /* CodableSetAsArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37EC2E197AFC00F97004 /* CodableSetAsArray.swift */; };
 		8FDC37EF2E197EA300F97004 /* EditExercisesRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37EE2E197EA300F97004 /* EditExercisesRowView.swift */; };
+		8FDC37F22E1A7BDB00F97004 /* EditWordPairView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37F12E1A7BDB00F97004 /* EditWordPairView.swift */; };
+		8FDC37F42E1A803800F97004 /* EditWordPairViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37F32E1A803800F97004 /* EditWordPairViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -202,6 +204,8 @@
 		8FDC37EA2E19719F00F97004 /* EditExercisesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExercisesView.swift; sourceTree = "<group>"; };
 		8FDC37EC2E197AFC00F97004 /* CodableSetAsArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableSetAsArray.swift; sourceTree = "<group>"; };
 		8FDC37EE2E197EA300F97004 /* EditExercisesRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExercisesRowView.swift; sourceTree = "<group>"; };
+		8FDC37F12E1A7BDB00F97004 /* EditWordPairView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWordPairView.swift; sourceTree = "<group>"; };
+		8FDC37F32E1A803800F97004 /* EditWordPairViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWordPairViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -451,6 +455,7 @@
 				8FDC37C52E13C9E700F97004 /* EditModule */,
 				8FDC37D72E18446C00F97004 /* EditTopic */,
 				8FDC37E92E19710F00F97004 /* EditExercises */,
+				8FDC37F02E1A7B2900F97004 /* EditWordPair */,
 			);
 			path = EditFlow;
 			sourceTree = "<group>";
@@ -696,6 +701,15 @@
 			path = EditExercises;
 			sourceTree = "<group>";
 		};
+		8FDC37F02E1A7B2900F97004 /* EditWordPair */ = {
+			isa = PBXGroup;
+			children = (
+				8FDC37F12E1A7BDB00F97004 /* EditWordPairView.swift */,
+				8FDC37F32E1A803800F97004 /* EditWordPairViewModel.swift */,
+			);
+			path = EditWordPair;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -887,6 +901,7 @@
 				8F8FA4262DC94B0B0024D01F /* SignInView.swift in Sources */,
 				8F8FA4292DC94B0B0024D01F /* ProfileViewModel.swift in Sources */,
 				8FDC37ED2E197AFC00F97004 /* CodableSetAsArray.swift in Sources */,
+				8FDC37F22E1A7BDB00F97004 /* EditWordPairView.swift in Sources */,
 				8F8FA42B2DC94B0B0024D01F /* AppRootViewModel.swift in Sources */,
 				8F8FA4502DCB7C890024D01F /* ImageSourcePickerView.swift in Sources */,
 				8F8FA42C2DC94B0B0024D01F /* SignInViewModel.swift in Sources */,
@@ -905,6 +920,7 @@
 				8FDC37B92E12DFB300F97004 /* FirebaseDataManager.swift in Sources */,
 				8F8FA4362DC94B0B0024D01F /* MainTabViewModel.swift in Sources */,
 				8F8FA3EB2DC94A5D0024D01F /* LearnFlow.swift in Sources */,
+				8FDC37F42E1A803800F97004 /* EditWordPairViewModel.swift in Sources */,
 				8F8FA3EC2DC94A5D0024D01F /* AuthFlow.swift in Sources */,
 				8F8FA3ED2DC94A5D0024D01F /* ProfileFlow.swift in Sources */,
 				8FDC37922E04125200F97004 /* ExerciseProgress.swift in Sources */,

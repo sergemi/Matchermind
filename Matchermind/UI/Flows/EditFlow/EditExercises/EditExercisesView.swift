@@ -46,6 +46,7 @@ struct EditExercisesView: View {
             }
         }
         .navigationTitle("Select exercises")
+        .backButton()
     }
 }
 

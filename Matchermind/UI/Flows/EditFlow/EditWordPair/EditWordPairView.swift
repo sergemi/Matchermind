@@ -49,10 +49,11 @@ struct EditWordPairView: View {
             Button(viewModel.saveBtnTitle) {
                 viewModel.saveWord()
             }
-            .disabled(!viewModel.hasUnsavedChanges)
+            .disabled(!viewModel.canSave)
         }
         .padding()
         .navigationTitle(viewModel.title)
+        .alertOnBackButton(viewModel: viewModel)
     }
 }
 

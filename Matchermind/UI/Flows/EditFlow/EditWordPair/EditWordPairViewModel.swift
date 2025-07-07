@@ -29,9 +29,13 @@ final class EditWordPairViewModel: BaseViewModel, HasUnsavedChanges {
         isNewWord ? "Create word" : "Save word"
     }
     
-    var hasUnsavedChanges: Bool {
+    var canSave: Bool {
         editedWordPair.target.count > 0 &&
         editedWordPair.translate.count > 0 &&
+        hasUnsavedChanges
+    }
+    
+    var hasUnsavedChanges: Bool {
         editedWordPair != startWordPair
     }
     

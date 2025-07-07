@@ -46,6 +46,7 @@ struct ModuleContentView: View {
             }
         }
         .navigationTitle(viewModel.title)
+        .backButton()
         .task() {
             await viewModel.loadModule()
         }

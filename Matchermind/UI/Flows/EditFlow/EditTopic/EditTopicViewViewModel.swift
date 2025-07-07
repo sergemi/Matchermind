@@ -25,8 +25,12 @@ final class EditTopicViewViewModel: DataViewModel, HasUnsavedChanges{
     }
     
     var hasUnsavedChanges: Bool {
-        currentTopic.name.count > 0 &&
         currentTopic != startTopic
+    }
+    
+    var canSave: Bool {
+        currentTopic.name.count > 0 &&
+        hasUnsavedChanges
     }
     
     var startTopic = Topic()

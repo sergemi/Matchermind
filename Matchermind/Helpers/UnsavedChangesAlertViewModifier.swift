@@ -8,6 +8,7 @@
 //import Foundation
 import SwiftUI
 
+@MainActor
 protocol HasUnsavedChanges {
     var hasUnsavedChanges: Bool { get }
 }
@@ -33,7 +34,7 @@ struct UnsavedChangesAlertModifier<VM: AnyObject>: ViewModifier {
     @State private var showAlert = false
     
     let viewModel: VM
-    let condition: (VM) -> Bool
+    let condition: (VM) async -> Bool
     let message: String
     
     func body(content: Content) -> some View {
@@ -42,10 +43,12 @@ struct UnsavedChangesAlertModifier<VM: AnyObject>: ViewModifier {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     BackButton {
-                        if condition(viewModel) {
-                            showAlert = true
-                        } else {
-                            dismiss()
+                        Task {
+                            if await condition(viewModel) {
+                                showAlert = true
+                            } else {
+                                dismiss()
+                            }
                         }
                     }
                 }
@@ -64,9 +67,18 @@ struct UnsavedChangesAlertModifier<VM: AnyObject>: ViewModifier {
 extension View {
     func alertOnBackButton<VM: AnyObject>(
         viewModel: VM,
-        when condition: @escaping (VM) -> Bool = { ($0 as? any HasUnsavedChanges)?.hasUnsavedChanges ?? false },
+        when condition: @escaping (VM) async -> Bool = {
+            guard let hasUnsaved = $0 as? any HasUnsavedChanges else { return false }
+            return await MainActor.run { hasUnsaved.hasUnsavedChanges }
+        },
         message: String = "If you exit without saving the data it will be lost."
     ) -> some View {
         modifier(UnsavedChangesAlertModifier(viewModel: viewModel, condition: condition, message: message))
+    }
+}
+
+extension View {
+    func backButton() -> some View {
+        modifier(BackButtonViewModifier())
     }
 }

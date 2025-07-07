@@ -77,10 +77,11 @@ struct EditTopicContentView: View {
                     await viewModel.saveTopic()
                 }
             }
-            .disabled(!viewModel.hasUnsavedChanges)
+            .disabled(!viewModel.canSave)
         }
         .padding()
         .navigationTitle(viewModel.title)
+        .alertOnBackButton(viewModel: viewModel)
         .activitySpinner(viewModel: viewModel)
         .onAppear() {
             Task {

@@ -51,6 +51,11 @@ class DataManager {
         _ = try await modules
     }
     
+    func delete(user: User) async throws -> User {
+        let user = try await dataService.delete(user: user)
+        return user
+    }
+    
     // MARK: Module
     func fetchModulesPreload() async throws -> [ModulePreload] {
         guard let user = user else { throw DataManagerError.userNotFound }
@@ -96,6 +101,11 @@ class DataManager {
         return module
     }
     
+    func delete(module: Module) async throws -> Module {
+        let module = try await dataService.delete(module: module)
+        return module
+    }
+    
     // MARK: Topic
     func create(topic: Topic, moduleId: String) async throws -> Module {
         let module = try await dataService.create(topic: topic, moduleId: moduleId)
@@ -110,6 +120,11 @@ class DataManager {
     
     func fetchTopic(id: String) async throws -> Topic {
         let topic = try await dataService.fetchTopic(id: id)
+        return topic
+    }
+    
+    func delete(topic: Topic) async throws -> Topic {
+        let topic = try await dataService.delete(topic: topic)
         return topic
     }
     

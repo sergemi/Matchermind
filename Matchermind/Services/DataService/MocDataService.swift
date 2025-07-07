@@ -53,6 +53,15 @@ actor MocDataService: DataServiceProtocol {
         return users[index]
     }
     
+    func delete(user: User) async throws -> User {
+        print("delete(user")
+        guard let index = users.firstIndex(where: {$0.id == user.id}) else {
+            throw DataManagerError.userNotFound
+        }
+        
+        return users.remove(at: index)
+    }
+    
     // MARK: Module
     func create(module: Module) async throws -> Module {
         print("create(module(module")
@@ -113,6 +122,22 @@ actor MocDataService: DataServiceProtocol {
         return module
     }
     
+    func delete(module: Module) async throws -> Module {
+        print("delete(module")
+        
+        guard let moduleIndex = modules.firstIndex(where: {$0.id == module.id }) else {
+            throw DataManagerError.moduleNotFound
+        }
+        let ret = modules.remove(at: moduleIndex)
+        
+        guard let modulePreloadIndex = modulePreloads.firstIndex(where: {$0.id == module.id }) else {
+            throw DataManagerError.modulePreloadNotFound
+        }
+        modulePreloads.remove(at: modulePreloadIndex)
+        
+        return ret
+    }
+    
     // MARK: Topics
     func create(topic: Topic, moduleId: String) async throws -> Module {
         var module = try await fetchModule(id: moduleId)
@@ -165,6 +190,22 @@ actor MocDataService: DataServiceProtocol {
         }
         
         return topic
+    }
+    
+    func delete(topic: Topic) async throws -> Topic {
+        print("delete(topic")
+        
+        guard let topicIndex = topics.firstIndex(where: {$0.id == topic.id }) else {
+            throw DataManagerError.topicNotFound
+        }
+        let ret = topics.remove(at: topicIndex)
+        
+        guard let topicPreloadIndex = topicPreloads.firstIndex(where: {$0.id == topic.id }) else {
+            throw DataManagerError.topicPreloadNotFound
+        }
+        topicPreloads.remove(at: topicPreloadIndex)
+        
+        return ret
     }
     
     // MARK: - moc database

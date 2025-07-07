@@ -52,11 +52,7 @@ final class EditModuleViewModel: DataViewModel {
         startActivity()
         do {
             if isNewModule {
-                /*let*/var newModule = try await createNewModule() // TODO: remove
-                newModule.topics.append(TopicPreload(id: "1", name: "Topic 1"))
-                newModule.topics.append(TopicPreload(id: "2", name: "Topic 2"))
-                newModule.topics.append(TopicPreload(id: "3", name: "Topic 3"))
-                
+                let newModule = try await createNewModule()
                 setModule(newModule)
             }
             else {
@@ -72,7 +68,6 @@ final class EditModuleViewModel: DataViewModel {
         } catch {
             errorMgr?.handleError(error)
         }
-//        stopActivity() // TODO: remove?
     }
     
     var canSave: Bool {

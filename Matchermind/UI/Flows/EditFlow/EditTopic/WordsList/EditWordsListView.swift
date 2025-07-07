@@ -13,29 +13,44 @@ struct EditWordsListView: View {
     let onAdd: () -> Void
     let onEdit: (_ id: String) -> Void
     
+    @State private var indexSetToDelete: IndexSet? = nil
+    @State private var showDeleteConfirmation = false
+    
     var body: some View {
-        List() {
+        List {
             EditWordsListRowHeader(count: words.count, onAdd: onAdd)
                 .listRowInsets(.init())
             
             ForEach(words) { word in
                 Button {
-                    print(word.id)
                     onEdit(word.id)
                 } label: {
                     EditWordsListRow(wordPair: word)
                         .contentShape(Rectangle())
                 }
-                .buttonStyle(PlainButtonStyle())
+                .buttonStyle(.plain)
                 .listRowInsets(.init())
             }
-            .onDelete(perform: deleteItems)
+            .onDelete { indexSet in
+                indexSetToDelete = indexSet
+                showDeleteConfirmation = true
+            }
         }
         .listStyle(.plain)
-    }
-    
-    private func deleteItems(at offsets: IndexSet) {
-        words.remove(atOffsets: offsets)
+        .confirmationDialog(
+            "Are you sure you want to delete this word?",
+            isPresented: $showDeleteConfirmation,
+            titleVisibility: .visible
+        ) {
+            Button("Delete", role: .destructive) {
+                if let indexSetToDelete {
+                    words.remove(atOffsets: indexSetToDelete)
+                }
+            }
+            Button("Cancel", role: .cancel) {
+                indexSetToDelete = nil
+            }
+        }
     }
 }
 

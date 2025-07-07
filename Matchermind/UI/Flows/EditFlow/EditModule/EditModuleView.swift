@@ -48,6 +48,7 @@ struct EditModuleContentView: View {
             Toggle("Public", isOn: $viewModel.currentModule.isPublic)
             
             EditTopicsListView(topics: $viewModel.currentModule.topics, moduleId: viewModel.currentModule.id, onAdd: viewModel.newTopic)
+                .disabled(viewModel.isNewModule)
             
             Button(viewModel.saveBtnTitle) {
                 Task {

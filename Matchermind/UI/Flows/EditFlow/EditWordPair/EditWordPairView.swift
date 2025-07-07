@@ -49,7 +49,7 @@ struct EditWordPairView: View {
             Button(viewModel.saveBtnTitle) {
                 viewModel.saveWord()
             }
-            .disabled(!viewModel.canSave)
+            .disabled(!viewModel.hasUnsavedChanges)
         }
         .padding()
         .navigationTitle(viewModel.title)

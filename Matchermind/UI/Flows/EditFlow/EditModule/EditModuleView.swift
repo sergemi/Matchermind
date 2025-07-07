@@ -55,10 +55,11 @@ struct EditModuleContentView: View {
                     await viewModel.saveModule()
                 }
             }
-            .disabled(!viewModel.canSave)
+            .disabled(!viewModel.hasUnsavedChanges)
         }
         .padding()
         .navigationTitle(viewModel.title)
+        .alertOnBackButton(viewModel: viewModel)
         .activitySpinner(viewModel: viewModel)
         .onAppear() {
             Task {

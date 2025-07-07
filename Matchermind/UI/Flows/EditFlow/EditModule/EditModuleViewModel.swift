@@ -9,7 +9,7 @@ import Foundation
 
 @MainActor
 @Observable
-final class EditModuleViewModel: DataViewModel {
+final class EditModuleViewModel: DataViewModel, HasUnsavedChanges {
     var title: String {
         modulePreload == nil ? "Create module" : "Edit module"
     }
@@ -70,7 +70,7 @@ final class EditModuleViewModel: DataViewModel {
         }
     }
     
-    var canSave: Bool {
+    var hasUnsavedChanges: Bool {
         currentModule.name.count > 0 &&
         currentModule != startModule
     }

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8F383D732CB0414B00E87429 /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F383D722CB0414B00E87429 /* ErrorManager.swift */; };
-		8F383D832CB3007A00E87429 /* TestfieldStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F383D822CB3007A00E87429 /* TestfieldStyles.swift */; };
+		8F383D832CB3007A00E87429 /* TextfieldStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F383D822CB3007A00E87429 /* TextfieldStyles.swift */; };
 		8F383D852CB30C7C00E87429 /* DefaultTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F383D842CB30C7C00E87429 /* DefaultTextField.swift */; };
 		8F383D8C2CB34E0900E87429 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F383D8B2CB34E0900E87429 /* ButtonStyles.swift */; };
 		8F383D992CB51C6A00E87429 /* Image+ImageName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F383D982CB51C6A00E87429 /* Image+ImageName.swift */; };
@@ -97,6 +97,8 @@
 		8FDC37EF2E197EA300F97004 /* EditExercisesRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37EE2E197EA300F97004 /* EditExercisesRowView.swift */; };
 		8FDC37F22E1A7BDB00F97004 /* EditWordPairView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37F12E1A7BDB00F97004 /* EditWordPairView.swift */; };
 		8FDC37F42E1A803800F97004 /* EditWordPairViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37F32E1A803800F97004 /* EditWordPairViewModel.swift */; };
+		8FDC37F62E1BACF800F97004 /* UnsavedChangesAlertViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37F52E1BACF800F97004 /* UnsavedChangesAlertViewModifier.swift */; };
+		8FDC37F82E1BC33A00F97004 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC37F72E1BC33A00F97004 /* BackButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,7 +120,7 @@
 
 /* Begin PBXFileReference section */
 		8F383D722CB0414B00E87429 /* ErrorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
-		8F383D822CB3007A00E87429 /* TestfieldStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestfieldStyles.swift; sourceTree = "<group>"; };
+		8F383D822CB3007A00E87429 /* TextfieldStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldStyles.swift; sourceTree = "<group>"; };
 		8F383D842CB30C7C00E87429 /* DefaultTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextField.swift; sourceTree = "<group>"; };
 		8F383D8B2CB34E0900E87429 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		8F383D982CB51C6A00E87429 /* Image+ImageName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+ImageName.swift"; sourceTree = "<group>"; };
@@ -206,6 +208,8 @@
 		8FDC37EE2E197EA300F97004 /* EditExercisesRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExercisesRowView.swift; sourceTree = "<group>"; };
 		8FDC37F12E1A7BDB00F97004 /* EditWordPairView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWordPairView.swift; sourceTree = "<group>"; };
 		8FDC37F32E1A803800F97004 /* EditWordPairViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWordPairViewModel.swift; sourceTree = "<group>"; };
+		8FDC37F52E1BACF800F97004 /* UnsavedChangesAlertViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsavedChangesAlertViewModifier.swift; sourceTree = "<group>"; };
+		8FDC37F72E1BC33A00F97004 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,7 +257,7 @@
 		8F383D812CB2FFFD00E87429 /* Styles */ = {
 			isa = PBXGroup;
 			children = (
-				8F383D822CB3007A00E87429 /* TestfieldStyles.swift */,
+				8F383D822CB3007A00E87429 /* TextfieldStyles.swift */,
 				8F383D8B2CB34E0900E87429 /* ButtonStyles.swift */,
 			);
 			path = Styles;
@@ -298,6 +302,7 @@
 				8F8FA3E12DC949C60024D01F /* PreviewHelpers.swift */,
 				8FDC37C02E1343DF00F97004 /* PreviewWrapper.swift */,
 				8FDC37EC2E197AFC00F97004 /* CodableSetAsArray.swift */,
+				8FDC37F52E1BACF800F97004 /* UnsavedChangesAlertViewModifier.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -341,8 +346,9 @@
 			isa = PBXGroup;
 			children = (
 				8F383D812CB2FFFD00E87429 /* Styles */,
-				8F8FA3F72DC94B0B0024D01F /* TabItem.swift */,
 				8F8FA44C2DCB78FC0024D01F /* CameraAndPhotoLibrary */,
+				8F8FA3F72DC94B0B0024D01F /* TabItem.swift */,
+				8FDC37F72E1BC33A00F97004 /* BackButton.swift */,
 				8F8FA4442DCB4E610024D01F /* AppleSignInMocButton.swift */,
 				8F383D842CB30C7C00E87429 /* DefaultTextField.swift */,
 			);
@@ -863,7 +869,7 @@
 				8FDC37E82E19189400F97004 /* EditWordsListView.swift in Sources */,
 				8F9A42DD2CB96076007B4D48 /* ModulePreload.swift in Sources */,
 				8FDC37AB2E0C742000F97004 /* ModuleView.swift in Sources */,
-				8F383D832CB3007A00E87429 /* TestfieldStyles.swift in Sources */,
+				8F383D832CB3007A00E87429 /* TextfieldStyles.swift in Sources */,
 				8F9A42E72CB96A5F007B4D48 /* Topic.swift in Sources */,
 				8FDC37EB2E19719F00F97004 /* EditExercisesView.swift in Sources */,
 				8FDC37C12E1343DF00F97004 /* PreviewWrapper.swift in Sources */,
@@ -878,6 +884,7 @@
 				8F9A42E32CB969A0007B4D48 /* LearnedWord.swift in Sources */,
 				8F8FA4452DCB4E610024D01F /* AppleSignInMocButton.swift in Sources */,
 				8F8FA4392DCA44180024D01F /* FirebaseAuthService.swift in Sources */,
+				8FDC37F82E1BC33A00F97004 /* BackButton.swift in Sources */,
 				8F8FA4492DCB73D80024D01F /* ImagePickerView.swift in Sources */,
 				8F9A42E12CB96945007B4D48 /* WordPair.swift in Sources */,
 				8FDC37D92E18449F00F97004 /* EditTopicView.swift in Sources */,
@@ -890,6 +897,7 @@
 				8FDC37E02E19117E00F97004 /* EditWordsListRowHeader.swift in Sources */,
 				8FDC37A92E0C687700F97004 /* ModuleViewModel.swift in Sources */,
 				8FDC37972E043FCA00F97004 /* FirebaseDataService.swift in Sources */,
+				8FDC37F62E1BACF800F97004 /* UnsavedChangesAlertViewModifier.swift in Sources */,
 				8FDC37C42E13C0E700F97004 /* EditModuleRowHeader.swift in Sources */,
 				8F8FA3EA2DC94A5D0024D01F /* EditFlow.swift in Sources */,
 				8FDC37DE2E18F75A00F97004 /* EditModuleExercisesView.swift in Sources */,

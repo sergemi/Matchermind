@@ -9,7 +9,7 @@ import SwiftUI
 
 @MainActor
 @Observable
-final class EditWordPairViewModel: BaseViewModel {
+final class EditWordPairViewModel: BaseViewModel, HasUnsavedChanges {
     var wordPairsBinding: Binding<[WordPair]>
     var startWordPair: WordPair
     var editedWordPair: WordPair
@@ -29,7 +29,7 @@ final class EditWordPairViewModel: BaseViewModel {
         isNewWord ? "Create word" : "Save word"
     }
     
-    var canSave: Bool {
+    var hasUnsavedChanges: Bool {
         editedWordPair.target.count > 0 &&
         editedWordPair.translate.count > 0 &&
         editedWordPair != startWordPair

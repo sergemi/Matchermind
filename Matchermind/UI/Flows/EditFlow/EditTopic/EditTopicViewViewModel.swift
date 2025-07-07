@@ -9,7 +9,7 @@ import Foundation
 
 @MainActor
 @Observable
-final class EditTopicViewViewModel: DataViewModel{
+final class EditTopicViewViewModel: DataViewModel, HasUnsavedChanges{
     let moduleId: String?
     var topicId: String?
     var title: String {
@@ -24,7 +24,7 @@ final class EditTopicViewViewModel: DataViewModel{
         topicId == nil
     }
     
-    var canSave: Bool {
+    var hasUnsavedChanges: Bool {
         currentTopic.name.count > 0 &&
         currentTopic != startTopic
     }

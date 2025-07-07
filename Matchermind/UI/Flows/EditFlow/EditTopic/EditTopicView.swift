@@ -77,7 +77,7 @@ struct EditTopicContentView: View {
                     await viewModel.saveTopic()
                 }
             }
-            .disabled(!viewModel.canSave)
+            .disabled(!viewModel.hasUnsavedChanges)
         }
         .padding()
         .navigationTitle(viewModel.title)

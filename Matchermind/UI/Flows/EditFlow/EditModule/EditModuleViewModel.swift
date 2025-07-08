@@ -37,7 +37,7 @@ final class EditModuleViewModel: DataViewModel, HasUnsavedChanges {
         
         self.modulePreload = modulePreload
         self.isQuickModule = isQuickModule
-
+        
         super.init(errorMgr: errorMgr,
                    router: router,
                    authService: authService,
@@ -82,7 +82,7 @@ final class EditModuleViewModel: DataViewModel, HasUnsavedChanges {
             guard let moduleId = modulePreload?.id else {
                 throw DataManagerError.unknownError
             }
-                
+            
             let updatedModule = try await loadModule(id: moduleId)
             if updatedModule == currentModule {
                 return
@@ -95,11 +95,7 @@ final class EditModuleViewModel: DataViewModel, HasUnsavedChanges {
         } catch {
             errorMgr?.handleError(error)
         }
-            
-    }
-    // MARK: Topics
-    func newTopic() {
-        router.navigate(to: .edit(.newTopic(moduleId: currentModule.id)))
+        
     }
     
     func saveModule() async {
@@ -119,6 +115,21 @@ final class EditModuleViewModel: DataViewModel, HasUnsavedChanges {
             }
             
             print("Module \(currentModule.name) saved")
+        } catch {
+            errorMgr?.handleError(error)
+        }
+    }
+    
+    // MARK: Topics
+    func newTopic() {
+        router.navigate(to: .edit(.newTopic(moduleId: currentModule.id)))
+    }
+    
+    func deleteTopics(withIDs ids: [String]) async {
+        do {
+            for id in ids {
+                try await dataMgr.deleteTopic(id: id)
+            }
         } catch {
             errorMgr?.handleError(error)
         }

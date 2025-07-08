@@ -12,6 +12,7 @@ struct EditTopicsListView: View {
     @Binding var topics: [TopicPreload]
     let moduleId: String
     let onAdd: () -> Void
+    let onDelete: (_ ids: [String], _ completion: @escaping () -> Void) -> Void
     
     @State private var indexSetToDelete: IndexSet? = nil
     @State private var showDeleteConfirmation = false
@@ -43,8 +44,12 @@ struct EditTopicsListView: View {
             titleVisibility: .visible
         ) {
             Button("Delete", role: .destructive) {
-                if let indexSetToDelete {
-                    topics.remove(atOffsets: indexSetToDelete)
+                guard let indexSet = indexSetToDelete else { return }
+                let ids = indexSet.map { topics[$0].id }
+                
+                onDelete(ids) {
+                    topics.remove(atOffsets: indexSet)
+                    indexSetToDelete = nil
                 }
             }
             Button("Cancel", role: .cancel) {
@@ -54,17 +59,17 @@ struct EditTopicsListView: View {
     }
 }
 
-#Preview {
-    struct PreviewWrapper: View {
-        @State private var topics: [TopicPreload] = [
-            TopicPreload(id: "1", name: "Topic 1"),
-            TopicPreload(id: "2", name: "Topic 2")
-        ]
-        
-        var body: some View {
-            EditTopicsListView(topics: $topics, moduleId: "1", onAdd: {})
-        }
-    }
-    
-    return PreviewWrapper()
-}
+//#Preview {
+//    struct PreviewWrapper: View {
+//        @State private var topics: [TopicPreload] = [
+//            TopicPreload(id: "1", name: "Topic 1"),
+//            TopicPreload(id: "2", name: "Topic 2")
+//        ]
+//        
+//        var body: some View {
+//            EditTopicsListView(topics: $topics, moduleId: "1", onAdd: {})
+//        }
+//    }
+//    
+//    return PreviewWrapper()
+//}

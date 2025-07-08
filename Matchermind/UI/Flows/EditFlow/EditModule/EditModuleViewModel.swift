@@ -128,7 +128,7 @@ final class EditModuleViewModel: DataViewModel, HasUnsavedChanges {
     func deleteTopics(withIDs ids: [String]) async {
         do {
             for id in ids {
-                try await dataMgr.deleteTopic(id: id)
+                _ = try await dataMgr.deleteTopic(id: id)
             }
         } catch {
             errorMgr?.handleError(error)

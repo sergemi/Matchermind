@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+@MainActor
 @Observable
 final class EditModulesListViewModel: DataViewModel {
     let title = "Modules to edit"
@@ -30,11 +31,21 @@ final class EditModulesListViewModel: DataViewModel {
         router.navigate(to: .edit(.newModule))
     }
     
+    func deleteModules(withIDs ids: [String]) async {
+        do {
+            for id in ids {
+                _ = try await dataMgr.deleteModule(id: id)
+            }
+        } catch {
+            errorMgr?.handleError(error)
+        }
+    }
+    
     func updateModules() async {
         do {
             try await _ = dataMgr.fetchModulesPreload()
         } catch {
-            await errorMgr?.handleError(error)
+            errorMgr?.handleError(error)
         }
     }
 }

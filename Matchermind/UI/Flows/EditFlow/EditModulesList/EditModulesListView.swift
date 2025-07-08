@@ -80,9 +80,14 @@ struct EditModulesListContentView: View {
                     titleVisibility: .visible
                 ) {
                     Button("Delete", role: .destructive) {
-                        if let indexSetToDelete {
-                            print("TODO: implement delete module")
-//                            viewModel.modules.remove(atOffsets: indexSetToDelete)
+                        guard let indexSet = indexSetToDelete else { return }
+                        let ids = indexSet.map { viewModel.modules[$0].id }
+                        
+                        Task {
+                            await viewModel.deleteModules(withIDs: ids)
+                            // remove from list
+                            indexSetToDelete = nil
+                            await viewModel.updateModules()
                         }
                     }
                     Button("Cancel", role: .cancel) {

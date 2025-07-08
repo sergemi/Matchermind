@@ -21,10 +21,12 @@ protocol DataServiceProtocol: Actor {
     func fetchModule(id: String) async throws -> Module
     func update(module: Module) async throws -> Module
     func delete(module: Module) async throws -> Module
+    func deleteModule(id: String) async throws -> Module
     
     // MARK: Topics
     func create(topic: Topic, moduleId: String) async throws -> Module
     func update(topic: Topic, moduleId: String?) async throws -> Topic
     func fetchTopic(id: String) async throws -> Topic
     func delete(topic: Topic) async throws -> Topic
+    func deleteTopic(id: String) async throws -> Topic
 }

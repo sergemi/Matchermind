@@ -124,16 +124,26 @@ actor MocDataService: DataServiceProtocol {
     
     func delete(module: Module) async throws -> Module {
         print("delete(module")
+        let moduleId = module.id
         
-        guard let moduleIndex = modules.firstIndex(where: {$0.id == module.id }) else {
+        return try await deleteModule(id: moduleId)
+    }
+    
+    func deleteModule(id: String) async throws -> Module {
+        print("deleteModule(id")
+        print("modules: \(modules.count), modulePreloads: \(modulePreloads.count)")
+        
+        guard let moduleIndex = modules.firstIndex(where: {$0.id == id }) else {
             throw DataManagerError.moduleNotFound
         }
         let ret = modules.remove(at: moduleIndex)
         
-        guard let modulePreloadIndex = modulePreloads.firstIndex(where: {$0.id == module.id }) else {
+        guard let modulePreloadIndex = modulePreloads.firstIndex(where: {$0.id == id }) else {
             throw DataManagerError.modulePreloadNotFound
         }
         modulePreloads.remove(at: modulePreloadIndex)
+        print("after delete")
+        print("modules: \(modules.count), modulePreloads: \(modulePreloads.count)")
         
         return ret
     }
@@ -195,16 +205,26 @@ actor MocDataService: DataServiceProtocol {
     func delete(topic: Topic) async throws -> Topic {
         print("delete(topic")
         
-        guard let topicIndex = topics.firstIndex(where: {$0.id == topic.id }) else {
+        let id = topic.id
+        let ret = try await deleteTopic(id: id)
+        
+        return ret
+    }
+    
+    func deleteTopic(id: String) async throws -> Topic {
+        print("deleteTopic(id")
+        print("modules: \(topics.count), topicPreloads: \(topicPreloads.count)")
+        guard let topicIndex = topics.firstIndex(where: {$0.id == id }) else {
             throw DataManagerError.topicNotFound
         }
         let ret = topics.remove(at: topicIndex)
         
-        guard let topicPreloadIndex = topicPreloads.firstIndex(where: {$0.id == topic.id }) else {
+        guard let topicPreloadIndex = topicPreloads.firstIndex(where: {$0.id == id }) else {
             throw DataManagerError.topicPreloadNotFound
         }
         topicPreloads.remove(at: topicPreloadIndex)
-        
+        print("after delete")
+        print("modules: \(topics.count), topicPreloads: \(topicPreloads.count)")
         return ret
     }
     

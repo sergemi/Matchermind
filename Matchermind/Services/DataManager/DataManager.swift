@@ -106,6 +106,11 @@ class DataManager {
         return module
     }
     
+    func deleteModule(id: String) async throws -> Module {
+        let ret = try await dataService.deleteModule(id: id)
+        return ret
+    }
+    
     // MARK: Topic
     func create(topic: Topic, moduleId: String) async throws -> Module {
         let module = try await dataService.create(topic: topic, moduleId: moduleId)
@@ -126,6 +131,11 @@ class DataManager {
     func delete(topic: Topic) async throws -> Topic {
         let topic = try await dataService.delete(topic: topic)
         return topic
+    }
+    
+    func deleteTopic(id: String) async throws -> Topic {
+        let ret = try await dataService.deleteTopic(id: id)
+        return ret
     }
     
     // MARK: - Internal

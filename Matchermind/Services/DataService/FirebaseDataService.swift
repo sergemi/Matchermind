@@ -64,6 +64,11 @@ actor FirebaseDataService: DataServiceProtocol {
         throw DataManagerError.moduleNotFound
     }
     
+    func deleteModule(id: String) async throws -> Module {
+        print("deleteModule(id")
+        throw DataManagerError.moduleNotFound
+    }
+    
     // MARK: Topics
     func create(topic: Topic, moduleId: String) async throws -> Module {
         print("create(topic")
@@ -82,6 +87,11 @@ actor FirebaseDataService: DataServiceProtocol {
     
     func delete(topic: Topic) async throws -> Topic {
         print("delete(topic")
+        throw DataManagerError.topicNotFound
+    }
+    
+    func deleteTopic(id: String) async throws -> Topic {
+        print("deleteTopic(id")
         throw DataManagerError.topicNotFound
     }
 }

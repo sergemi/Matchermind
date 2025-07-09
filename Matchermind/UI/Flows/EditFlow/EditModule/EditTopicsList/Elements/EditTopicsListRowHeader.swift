@@ -21,6 +21,7 @@ struct EditTopicsListRowHeader: View {
             Button(action: onAdd) {
                 Text("Add topic")
             }
+            .foregroundColor(.accentColor)
         }
     }
 }

@@ -21,6 +21,7 @@ struct EditWordsListRowHeader: View {
             Button(action: onAdd) {
                 Text("Add word")
             }
+            .foregroundColor(.accentColor)
         }
     }
 }

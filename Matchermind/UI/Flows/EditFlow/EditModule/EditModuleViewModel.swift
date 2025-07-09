@@ -146,7 +146,13 @@ final class EditModuleViewModel: DataViewModel, HasUnsavedChanges {
             throw DataManagerError.userNotFound
         }
         
-        let module = Module(name: "", details: "", topics: [], authorId: authorId, isPublic: true)
+        let module = Module(name: "",
+                            details: "",
+                            topics: [],
+                            authorId: authorId,
+                            isPublic: true,
+                            targetLocaleId: "", // TODO: put something
+                            translateLocaleId: "")
         return module
     }
     

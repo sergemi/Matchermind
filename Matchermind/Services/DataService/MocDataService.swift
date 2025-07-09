@@ -81,7 +81,9 @@ actor MocDataService: DataServiceProtocol {
                                  details: "\(user.name ?? user.email) quick module",
                                  topics: [],
                                  authorId: user.id,
-                                 isPublic: false)
+                                 isPublic: false,
+                                 targetLocaleId: "", // TODO: put something
+                                 translateLocaleId: "")
         let module = try await create(module: quickModule)
         
         return module
@@ -242,7 +244,13 @@ actor MocDataService: DataServiceProtocol {
             _ = try await create(user: user)
             let modulesCount = 5
             for i in 1...modulesCount {
-                let module = Module(name: "Module \(i)", details: "Details of module \(i)", topics: [], authorId: user.id, isPublic: true)
+                let module = Module(name: "Module \(i)",
+                                    details: "Details of module \(i)",
+                                    topics: [],
+                                    authorId: user.id,
+                                    isPublic: true,
+                                    targetLocaleId: "", // TODO: put something
+                                    translateLocaleId: "")
                 _ = try await create(module: module)
             }
             

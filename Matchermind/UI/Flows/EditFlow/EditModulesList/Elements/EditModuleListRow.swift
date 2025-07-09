@@ -25,7 +25,9 @@ struct EditModuleListRow: View {
                         details: "Module details",
                         topics: [],
                         authorId: "1",
-                        isPublic: true)
+                        isPublic: true,
+                        targetLocaleId: "", // TODO: put something
+                        translateLocaleId: "")
     let modulePreload = module.modulePreload
     
     return EditModuleListRow(modulePreload: modulePreload)

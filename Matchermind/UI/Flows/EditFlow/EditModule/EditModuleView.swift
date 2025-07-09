@@ -86,7 +86,11 @@ struct EditModuleContentView: View {
 //}
 
 #Preview("with data") {
-    let modulePreload = ModulePreload(name: "Module 1", authorId: "1", isPublic: false)
+    let modulePreload = ModulePreload(name: "Module 1",
+                                      authorId: "1",
+                                      isPublic: false,
+                                      targetLocaleId: "", // TODO: put something
+                                      translateLocaleId: "")
     PreviewWrapper() {
         EditModuleView(modulePreload: modulePreload, isQuickModule: false)
     }

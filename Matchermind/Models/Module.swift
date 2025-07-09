@@ -16,44 +16,56 @@ struct Module: Identifiable, Equatable, Codable {
     var authorId: String
     var isPublic: Bool
     
-    init(id: String, name: String, details: String, topics: [TopicPreload], authorId: String, isPublic: Bool) {
+    var targetLocaleId: String
+    var translateLocaleId: String
+    
+    init(id: String, name: String, details: String, topics: [TopicPreload], authorId: String, isPublic: Bool, targetLocaleId: String, translateLocaleId: String) {
         self.id = id
         self.name = name
         self.details = details
         self.topics = topics
         self.authorId = authorId
         self.isPublic = isPublic
+        self.targetLocaleId = targetLocaleId
+        self.translateLocaleId = translateLocaleId
     }
     
-    init(name: String, details: String, topics: [TopicPreload], authorId: String, isPublic: Bool) {
+    init(name: String, details: String, topics: [TopicPreload], authorId: String, isPublic: Bool, targetLocaleId: String, translateLocaleId: String) {
         self.init(id: UUID().uuidString,
                   name: name,
                   details: details,
                   topics: topics,
                   authorId: authorId,
-                  isPublic: isPublic)
+                  isPublic: isPublic,
+                  targetLocaleId: targetLocaleId,
+                  translateLocaleId: translateLocaleId)
     }
     
     init() {
-        self.init(name: "", details: "", topics: [], authorId: "", isPublic: false)
+        self.init(name: "", details: "", topics: [], authorId: "", isPublic: false,
+                  targetLocaleId: "", translateLocaleId: "") // TODO: Init by current locale
     }
 }
 
 extension Module {
     var modulePreload: ModulePreload {
-        let topicIds = topics.map { $0.id }
         return ModulePreload(id: id,
                              name: name,
                              authorId: authorId,
-                             isPublic: isPublic)
+                             isPublic: isPublic,
+                             targetLocaleId: targetLocaleId,
+                             translateLocaleId: translateLocaleId)
     }
     
     init(preload: ModulePreload, details: String = "", topics: [TopicPreload] = []) {
-            self.id = preload.id
-            self.name = preload.name
-            self.details = details
-            self.topics = topics
-            self.authorId = preload.authorId
-            self.isPublic = preload.isPublic
-        }
+        self.id = preload.id
+        self.name = preload.name
+        self.details = details
+        self.topics = topics
+        self.authorId = preload.authorId
+        self.isPublic = preload.isPublic
+        self.targetLocaleId = preload.targetLocaleId
+        self.translateLocaleId = preload.translateLocaleId
+        
+    }
 }

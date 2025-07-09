@@ -23,8 +23,10 @@ struct EditTopicsListRow: View {
     let topic = Topic(name: "Topic",
                       details: "Topic details",
                       words: [],
-                      exercises: [])
+                      exercises: [],
+                      targetLocaleId: "", // TODO: Add real
+                      translateLocaleId: "")
     let topicPreload = topic.topicPreload
     
-    return EditTopicsListRow(topicPreload: topicPreload)
+    EditTopicsListRow(topicPreload: topicPreload)
 }

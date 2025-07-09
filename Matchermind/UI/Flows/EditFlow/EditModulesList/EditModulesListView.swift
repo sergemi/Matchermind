@@ -86,8 +86,8 @@ struct EditModulesListContentView: View {
                         Task {
                             await viewModel.deleteModules(withIDs: ids)
                             // remove from list
-                            indexSetToDelete = nil
                             await viewModel.updateModules()
+                            indexSetToDelete = nil
                         }
                     }
                     Button("Cancel", role: .cancel) {

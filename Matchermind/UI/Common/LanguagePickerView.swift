@@ -57,14 +57,16 @@ struct LanguagePickerView: View {
     }
 }
 
-//#Preview {
-//    LanguagePickerPreviewWrapper()
-//}
-//
-//private struct LanguagePickerPreviewWrapper: View {
-//    @State private var locale = Locale.current
-//
-//    var body: some View {
-//        LanguagePickerView(selectedLocale: $locale)
-//    }
-//}
+#Preview {
+    LanguagePickerPreviewWrapper()
+}
+
+private struct LanguagePickerPreviewWrapper: View {
+    @State private var selectedLocaleId: String = "en"
+
+    var body: some View {
+        NavigationStack {
+            LanguagePickerView(selectedLocaleId: $selectedLocaleId)
+        }
+    }
+}

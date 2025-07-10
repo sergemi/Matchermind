@@ -48,35 +48,11 @@ struct EditModuleContentView: View {
             
             DefaultTextField(text: $viewModel.currentModule.details, placeholder: "Module details", title: "Details")
             
-            //
-            Button {
-                showTargetPicker = true
-            } label: {
-                HStack {
-                    Text("Target Language:")
-                    Spacer()
-                    Text(Locale.current.localizedString(forIdentifier: viewModel.currentModule.targetLocaleId) ?? "Select")
-                        .foregroundColor(.accentColor)
-                }
-            }
-            .sheet(isPresented: $showTargetPicker) {
-                LanguagePickerView(selectedLocaleId: $viewModel.currentModule.targetLocaleId)
-            }
+            LanguageSelectorButton(title: "Target Language:",
+                                   selectedLocaleId: $viewModel.currentModule.targetLocaleId)
 
-            Button {
-                showTranslatePicker = true
-            } label: {
-                HStack {
-                    Text("Translate Language:")
-                    Spacer()
-                    Text(Locale.current.localizedString(forIdentifier: viewModel.currentModule.translateLocaleId) ?? "Select")
-                        .foregroundColor(.accentColor)
-                }
-            }
-            .sheet(isPresented: $showTranslatePicker) {
-                LanguagePickerView(selectedLocaleId: $viewModel.currentModule.translateLocaleId)
-            }
-            //
+            LanguageSelectorButton(title: "Translate Language:",
+                                   selectedLocaleId: $viewModel.currentModule.translateLocaleId)
             
             Toggle("Public", isOn: $viewModel.currentModule.isPublic)
             

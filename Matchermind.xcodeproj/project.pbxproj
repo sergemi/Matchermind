@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8F2CCD102E1F9BF8009FECA5 /* LanguagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2CCD0F2E1F9BF8009FECA5 /* LanguagePickerView.swift */; };
 		8F2CCD122E1F9D45009FECA5 /* Locale+localizedLanguageName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2CCD112E1F9D45009FECA5 /* Locale+localizedLanguageName.swift */; };
+		8F2CCD142E1FB805009FECA5 /* LanguageSelectorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2CCD132E1FB805009FECA5 /* LanguageSelectorButton.swift */; };
 		8F383D732CB0414B00E87429 /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F383D722CB0414B00E87429 /* ErrorManager.swift */; };
 		8F383D832CB3007A00E87429 /* TextfieldStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F383D822CB3007A00E87429 /* TextfieldStyles.swift */; };
 		8F383D852CB30C7C00E87429 /* DefaultTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F383D842CB30C7C00E87429 /* DefaultTextField.swift */; };
@@ -123,6 +124,7 @@
 /* Begin PBXFileReference section */
 		8F2CCD0F2E1F9BF8009FECA5 /* LanguagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerView.swift; sourceTree = "<group>"; };
 		8F2CCD112E1F9D45009FECA5 /* Locale+localizedLanguageName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+localizedLanguageName.swift"; sourceTree = "<group>"; };
+		8F2CCD132E1FB805009FECA5 /* LanguageSelectorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectorButton.swift; sourceTree = "<group>"; };
 		8F383D722CB0414B00E87429 /* ErrorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
 		8F383D822CB3007A00E87429 /* TextfieldStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldStyles.swift; sourceTree = "<group>"; };
 		8F383D842CB30C7C00E87429 /* DefaultTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextField.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 				8F8FA3F72DC94B0B0024D01F /* TabItem.swift */,
 				8FDC37F72E1BC33A00F97004 /* BackButton.swift */,
 				8F2CCD0F2E1F9BF8009FECA5 /* LanguagePickerView.swift */,
+				8F2CCD132E1FB805009FECA5 /* LanguageSelectorButton.swift */,
 				8F8FA4442DCB4E610024D01F /* AppleSignInMocButton.swift */,
 				8F383D842CB30C7C00E87429 /* DefaultTextField.swift */,
 			);
@@ -940,6 +943,7 @@
 				8F8FA3EC2DC94A5D0024D01F /* AuthFlow.swift in Sources */,
 				8F8FA3ED2DC94A5D0024D01F /* ProfileFlow.swift in Sources */,
 				8FDC37922E04125200F97004 /* ExerciseProgress.swift in Sources */,
+				8F2CCD142E1FB805009FECA5 /* LanguageSelectorButton.swift in Sources */,
 				8FDC37952E041AD000F97004 /* DataServiceProtocol.swift in Sources */,
 				8FDC37CC2E14624200F97004 /* ActivitySpinner.swift in Sources */,
 				8F8FA3EE2DC94A5D0024D01F /* AppRouter.swift in Sources */,

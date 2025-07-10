@@ -12,6 +12,7 @@ struct User: Equatable, Identifiable {
     let email: String
     var name: String? = nil //TODO: maybe change inicialization later
     var quickModuleId: String? = nil
+    var quickTopicId: String? = nil
     var lastModuleId: String? = nil
     var lastTopicId: String? = nil
     var isEditor: Bool = true

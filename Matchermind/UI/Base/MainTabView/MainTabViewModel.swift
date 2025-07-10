@@ -12,10 +12,12 @@ final class MainTabViewModel {
     var router: AppRouter
     
     let tabs: [AppRouter.Tab] = [.learn,
+                                 .quickAdd,
                                  .edit]
     
     let tabsItemData: [AppRouter.Tab: TabItemData] = [
         .learn: TabItemData(caption: "Learn", image: .system("book")),
+        .quickAdd: TabItemData(caption: "Add word", image: .system("plus")),
         .edit: TabItemData(caption: "Edit", image: .system("pencil")),
     ]
     
@@ -23,6 +25,9 @@ final class MainTabViewModel {
         switch(tab) {
         case .learn:
             LearnFlowView()
+            
+        case .quickAdd:
+            QuickAddFlowView()
         
         case .edit:
             EditFlowView()

@@ -9,6 +9,7 @@ import SwiftUI
 
 enum AppRoute: Hashable {
     case learn(LearnFlowLink)
+    case quickAdd(QuickAddFlowLink)
     case edit(EditFlowLink)
     case auth(AuthFlowLink)
     case profile(ProfileFlowLink)
@@ -22,12 +23,14 @@ final class AppRouter {
     var editPath = NavigationPath()
     var authPath = NavigationPath()
     var profilePath = NavigationPath()
+    var quickAddPath = NavigationPath()
     
     var isShowingAuth = false
     var isShowingProfile = false
 
     enum Tab: String, Identifiable {
         case learn
+        case quickAdd
         case edit
         
         var id: String { rawValue }
@@ -38,6 +41,10 @@ final class AppRouter {
         case .learn(let link):
             learnPath.append(link)
             selectedTab = .learn
+            
+        case .quickAdd(let link):
+            quickAddPath.append(link)
+            selectedTab = .quickAdd
             
         case .edit(let link):
             editPath.append(link)

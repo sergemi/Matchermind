@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TopicPreload: Identifiable, Equatable, Codable {
+struct TopicPreload: Identifiable, Equatable, Codable, Hashable {
     let id: String
     var name: String
     var targetLocaleId: String

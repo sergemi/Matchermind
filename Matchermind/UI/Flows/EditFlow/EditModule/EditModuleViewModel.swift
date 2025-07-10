@@ -122,7 +122,7 @@ final class EditModuleViewModel: DataViewModel, HasUnsavedChanges {
     
     // MARK: Topics
     func newTopic() {
-        router.navigate(to: .edit(.newTopic(moduleId: currentModule.id)))
+        router.navigate(to: .edit(.newTopic(module: currentModule)))
     }
     
     func deleteTopics(withIDs ids: [String]) async {

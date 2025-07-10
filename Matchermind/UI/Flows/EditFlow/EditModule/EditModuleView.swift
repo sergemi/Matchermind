@@ -56,7 +56,7 @@ struct EditModuleContentView: View {
             
             Toggle("Public", isOn: $viewModel.currentModule.isPublic)
             
-            EditTopicsListView(topics: $viewModel.currentModule.topics, moduleId: viewModel.currentModule.id, onAdd: viewModel.newTopic,
+            EditTopicsListView(topics: $viewModel.currentModule.topics, module: viewModel.currentModule, onAdd: viewModel.newTopic,
                                onDelete: { ids, completion in
                                    Task {
                                        await viewModel.deleteTopics(withIDs: ids)

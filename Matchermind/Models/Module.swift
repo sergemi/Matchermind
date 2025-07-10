@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Module: Identifiable, Equatable, Codable {
+struct Module: Identifiable, Equatable, Codable, Hashable {
     let id: String
     
     var name: String

@@ -13,16 +13,16 @@ struct EditTopicView: View {
     @Environment(DataManager.self) var dataMgr
     @Environment(ErrorManager.self) var errorMgr
     
-    let moduleId: String
+    let module: Module
     let topicId: String?
 
-    init(moduleId: String, topicId: String? = nil) {
-        self.moduleId = moduleId
+    init(module: Module, topicId: String? = nil) {
+        self.module = module
         self.topicId = topicId
     }
     
     var body: some View {
-        EditTopicContentView(moduleId: moduleId,
+        EditTopicContentView(module: module,
                              topicId: topicId,
                              errorMgr: errorMgr,
                              router: router,
@@ -35,13 +35,13 @@ struct EditTopicContentView: View {
     @State private var viewModel: EditTopicViewViewModel
     @State var isFirstLoad: Bool = true
     
-    init(moduleId: String?,
+    init(module: Module,
          topicId: String?,
          errorMgr: ErrorManager?,
          router: AppRouter,
          authService: AuthService,
          dataMgr: DataManager) {
-        _viewModel = State(initialValue: EditTopicViewViewModel(moduleId: moduleId,
+        _viewModel = State(initialValue: EditTopicViewViewModel(module: module,
                                                                 topicId: topicId,
                                                                 errorMgr: errorMgr,
                                                                 router: router,
@@ -128,8 +128,8 @@ struct EditTopicContentView: View {
 
 
 
-#Preview {
-    PreviewWrapper() {
-        EditTopicView(moduleId: "1")
-    }
-}
+//#Preview {
+//    PreviewWrapper() {
+//        EditTopicView(moduleId: "1")
+//    }
+//}

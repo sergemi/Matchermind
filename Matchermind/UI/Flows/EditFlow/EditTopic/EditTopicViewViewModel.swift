@@ -10,7 +10,7 @@ import Foundation
 @MainActor
 @Observable
 final class EditTopicViewViewModel: DataViewModel, HasUnsavedChanges{
-    let moduleId: String?
+    let module: Module
     var topicId: String?
     var title: String {
         topicId != nil ? "Edit Topic" : "New Topic"
@@ -33,18 +33,32 @@ final class EditTopicViewViewModel: DataViewModel, HasUnsavedChanges{
         hasUnsavedChanges
     }
     
-    var startTopic = Topic()
-    var currentTopic = Topic()
+    var startTopic: Topic
+    var currentTopic: Topic
     
-    init(moduleId: String?,
+    init(module: Module,
          topicId: String?,
          errorMgr: ErrorManager?,
          router: AppRouter,
          authService: AuthService,
          dataMgr: DataManager) {
         
-        self.moduleId = moduleId
+        self.module = module
         self.topicId = topicId
+        
+        startTopic = Topic(name: "",
+                           details: "",
+                           words: [],
+                           exercises: [],
+                           targetLocaleId: module.targetLocaleId,
+                           translateLocaleId: module.translateLocaleId)
+        
+        currentTopic = Topic(name: "",
+                           details: "",
+                           words: [],
+                           exercises: [],
+                           targetLocaleId: module.targetLocaleId,
+                           translateLocaleId: module.translateLocaleId)
 
         super.init(errorMgr: errorMgr,
                    router: router,
@@ -99,18 +113,14 @@ final class EditTopicViewViewModel: DataViewModel, HasUnsavedChanges{
         }
         startActivity()
         do {
-            guard let moduleId = moduleId else {
-                throw DataManagerError.unknownError // TODO: change
-            }
-            
             if isNewTopic {
                 
-                _ = try await dataMgr.create(topic: currentTopic, moduleId: moduleId)
+                _ = try await dataMgr.create(topic: currentTopic, moduleId: module.id)
                 setTopic(currentTopic)
                 topicId = currentTopic.id
             }
             else {
-                let updatedTopic = try await dataMgr.update(topic: currentTopic, moduleId: moduleId)
+                let updatedTopic = try await dataMgr.update(topic: currentTopic, moduleId: module.id)
                 setTopic(updatedTopic)
             }
         } catch {

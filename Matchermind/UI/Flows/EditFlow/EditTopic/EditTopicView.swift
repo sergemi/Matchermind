@@ -55,6 +55,12 @@ struct EditTopicContentView: View {
             
             DefaultTextField(text: $viewModel.currentTopic.details, placeholder: "Topic details", title: "Details")
             
+            LanguageSelectorButton(title: "Target Language:",
+                                   selectedLocaleId: $viewModel.currentTopic.targetLocaleId)
+
+            LanguageSelectorButton(title: "Translate Language:",
+                                   selectedLocaleId: $viewModel.currentTopic.translateLocaleId)
+            
             Button {
                 print("Go to excercises")
                 viewModel.router.editPath.append(EditTopicNavigationLink.editExercises)

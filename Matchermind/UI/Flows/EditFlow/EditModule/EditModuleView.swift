@@ -30,6 +30,9 @@ struct EditModuleContentView: View {
     @State private var viewModel: EditModuleViewModel
     @State var isFirstLoad: Bool = true
     
+    @State private var showTargetPicker = false
+    @State private var showTranslatePicker = false
+    
     init(modulePreload: ModulePreload?, isQuickModule: Bool, errorMgr: ErrorManager?, router: AppRouter, authService: AuthService, dataMgr: DataManager) {
         _viewModel = State(initialValue: EditModuleViewModel(modulePreload: modulePreload,
                                                              isQuickModule: isQuickModule,
@@ -44,6 +47,36 @@ struct EditModuleContentView: View {
             DefaultTextField(text: $viewModel.currentModule.name, placeholder: "Module name", title: "Name")
             
             DefaultTextField(text: $viewModel.currentModule.details, placeholder: "Module details", title: "Details")
+            
+            //
+            Button {
+                showTargetPicker = true
+            } label: {
+                HStack {
+                    Text("Target Language:")
+                    Spacer()
+                    Text(Locale.current.localizedString(forIdentifier: viewModel.currentModule.targetLocaleId) ?? "Select")
+                        .foregroundColor(.accentColor)
+                }
+            }
+            .sheet(isPresented: $showTargetPicker) {
+                LanguagePickerView(selectedLocaleId: $viewModel.currentModule.targetLocaleId)
+            }
+
+            Button {
+                showTranslatePicker = true
+            } label: {
+                HStack {
+                    Text("Translate Language:")
+                    Spacer()
+                    Text(Locale.current.localizedString(forIdentifier: viewModel.currentModule.translateLocaleId) ?? "Select")
+                        .foregroundColor(.accentColor)
+                }
+            }
+            .sheet(isPresented: $showTranslatePicker) {
+                LanguagePickerView(selectedLocaleId: $viewModel.currentModule.translateLocaleId)
+            }
+            //
             
             Toggle("Public", isOn: $viewModel.currentModule.isPublic)
             

@@ -30,7 +30,13 @@ struct Module: Identifiable, Equatable, Codable {
         self.translateLocaleId = translateLocaleId
     }
     
-    init(name: String, details: String, topics: [TopicPreload], authorId: String, isPublic: Bool, targetLocaleId: String, translateLocaleId: String) {
+    init(name: String = "",
+         details: String = "",
+         topics: [TopicPreload] = [],
+         authorId: String = "",
+         isPublic: Bool = false,
+         targetLocaleId: String = Locale.current.identifier,
+         translateLocaleId: String = Locale.current.identifier) {
         self.init(id: UUID().uuidString,
                   name: name,
                   details: details,
@@ -39,11 +45,6 @@ struct Module: Identifiable, Equatable, Codable {
                   isPublic: isPublic,
                   targetLocaleId: targetLocaleId,
                   translateLocaleId: translateLocaleId)
-    }
-    
-    init() {
-        self.init(name: "", details: "", topics: [], authorId: "", isPublic: false,
-                  targetLocaleId: "", translateLocaleId: "") // TODO: Init by current locale
     }
 }
 

@@ -15,7 +15,7 @@ struct EditTopicView: View {
     
     let module: Module
     let topicId: String?
-
+    
     init(module: Module, topicId: String? = nil) {
         self.module = module
         self.topicId = topicId
@@ -57,7 +57,7 @@ struct EditTopicContentView: View {
             
             LanguageSelectorButton(title: "Target Language:",
                                    selectedLocaleId: $viewModel.currentTopic.targetLocaleId)
-
+            
             LanguageSelectorButton(title: "Translate Language:",
                                    selectedLocaleId: $viewModel.currentTopic.translateLocaleId)
             
@@ -106,12 +106,17 @@ struct EditTopicContentView: View {
                 EditExercisesView(exercises: $viewModel.currentTopic.exercises)
                 
             case .addWord:
-                EditWordPairView(wordPairs: $viewModel.currentTopic.words)
+                EditWordPairView(wordPairs: $viewModel.currentTopic.words,
+                                 targetLocaleId: viewModel.currentTopic.targetLocaleId,
+                                 translateLocaleId: viewModel.currentTopic.translateLocaleId)
                 
             case .editWord(let wordPair):
-                EditWordPairView(wordPairs: $viewModel.currentTopic.words, editedWordPair: wordPair)
+                EditWordPairView(wordPairs: $viewModel.currentTopic.words,
+                                 targetLocaleId: viewModel.currentTopic.targetLocaleId,
+                                 translateLocaleId: viewModel.currentTopic.translateLocaleId,
+                                 editedWordPair: wordPair)
             }
-                
+            
         }
     }
     

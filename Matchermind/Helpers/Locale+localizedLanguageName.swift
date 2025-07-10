@@ -13,3 +13,11 @@ extension Locale {
         return self.localizedString(forLanguageCode: languageCode)?.capitalized
     }
 }
+
+extension Locale {
+    func localizedLanguageName(for identifier: String) -> String? {
+        let locale = Locale(identifier: identifier)
+        guard let languageCode = locale.language.languageCode?.identifier else { return nil }
+        return self.localizedString(forLanguageCode: languageCode)?.capitalized
+    }
+}

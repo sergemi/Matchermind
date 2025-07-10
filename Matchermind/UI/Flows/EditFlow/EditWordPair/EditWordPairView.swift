@@ -23,20 +23,29 @@ struct EditWordPairView: View {
     
     @State private var viewModel: EditWordPairViewModel
     
-    init(wordPairs: Binding<[WordPair]>, editedWordPair: WordPair? = nil) {
+    init(wordPairs: Binding<[WordPair]>,
+         targetLocaleId: String,
+         translateLocaleId: String,
+         editedWordPair: WordPair? = nil) {
         let environment = EnvironmentValues()
         let errorMgr = environment.errorManager
         
         _viewModel = State(initialValue: EditWordPairViewModel(errorMgr: errorMgr,
                                                                wordPairsBinding: wordPairs,
+                                                               targetLocaleId: targetLocaleId,
+                                                               translateLocaleId: translateLocaleId,
                                                                editedWordPair: editedWordPair))
     }
     
     var body: some View {
-        VStack {
-            DefaultTextField(text: $viewModel.editedWordPair.target, placeholder: "Word wich you want to learn", title: "Target word")
+        VStack(spacing: 20) {
+            DefaultTextField(text: $viewModel.editedWordPair.target,
+                             placeholder: "Word wich you want to learn",
+                             title: viewModel.targetTitle)
             
-            DefaultTextField(text: $viewModel.editedWordPair.translate, placeholder: "Translate of the word", title: "Translate")
+            DefaultTextField(text: $viewModel.editedWordPair.translate,
+                             placeholder: "Translate of the word",
+                             title: viewModel.translateTitle)
             
             DefaultTextField(text: $viewModel.editedWordPair.pronounce, placeholder: "Pronounce", title: "Pronounce")
             
@@ -63,6 +72,9 @@ struct EditWordPairView: View {
 #Preview {
     let errorMgr = ErrorManager()
     
-    EditWordPairView(wordPairs: .constant([]), editedWordPair: nil)
-        .environment(errorMgr)
+    EditWordPairView(wordPairs: .constant([]),
+                     targetLocaleId: Locale.current.identifier,
+                     translateLocaleId: Locale.current.identifier,
+                     editedWordPair: nil)
+    .environment(errorMgr)
 }

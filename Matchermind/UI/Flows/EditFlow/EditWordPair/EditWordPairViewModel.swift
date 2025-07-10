@@ -13,6 +13,8 @@ final class EditWordPairViewModel: BaseViewModel, HasUnsavedChanges {
     var wordPairsBinding: Binding<[WordPair]>
     var startWordPair: WordPair
     var editedWordPair: WordPair
+    var targetLocaleId: String
+    var translateLocaleId: String
     
     var wordPairs: [WordPair] {
         get { wordPairsBinding.wrappedValue }
@@ -29,6 +31,22 @@ final class EditWordPairViewModel: BaseViewModel, HasUnsavedChanges {
         isNewWord ? "Create word" : "Save word"
     }
     
+    var targetTitle: String {
+        if let localeName = Locale.current.localizedString(forIdentifier: targetLocaleId) {
+            return "Target word (\(localeName))"
+        } else {
+            return "Target word"
+        }
+    }
+    
+    var translateTitle: String {
+        if let localeName = Locale.current.localizedString(forIdentifier: translateLocaleId) {
+            return "Translation (\(localeName))"
+        } else {
+            return "Translation"
+        }
+    }
+    
     var canSave: Bool {
         editedWordPair.target.count > 0 &&
         editedWordPair.translate.count > 0 &&
@@ -39,8 +57,14 @@ final class EditWordPairViewModel: BaseViewModel, HasUnsavedChanges {
         editedWordPair != startWordPair
     }
     
-    init(errorMgr: ErrorManager?, wordPairsBinding: Binding<[WordPair]>, editedWordPair: WordPair?) {
+    init(errorMgr: ErrorManager?,
+         wordPairsBinding: Binding<[WordPair]>,
+         targetLocaleId: String,
+         translateLocaleId: String,
+         editedWordPair: WordPair?) {
         self.wordPairsBinding = wordPairsBinding
+        self.targetLocaleId = targetLocaleId
+        self.translateLocaleId = translateLocaleId
         
         self.isNewWord = editedWordPair == nil
         let newWordPair = editedWordPair ?? WordPair()

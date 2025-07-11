@@ -21,6 +21,7 @@ class DataManager {
     
     var modulePreloads: [ModulePreload] = []
     var quickModule: Module?
+    var quickTopic: Topic?
     
     // MARK: - Interface
     // MARK: User
@@ -49,6 +50,8 @@ class DataManager {
         
         _ = try await quickModule
         _ = try await modules
+        guard let quickTopicId = self.user?.quickTopicId else { return }
+        quickTopic = try await dataService.fetchTopic(id: quickTopicId)
     }
     
     func delete(user: User) async throws -> User {

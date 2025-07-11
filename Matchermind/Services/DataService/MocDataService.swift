@@ -29,6 +29,8 @@ actor MocDataService: DataServiceProtocol {
         var newUser = user
         let quickModule = try await createQuickModule(user: user)
         newUser.quickModuleId = quickModule.id
+        newUser.quickTopicId = quickModule.topics.first?.id
+        
         users.append(newUser)
         return newUser
     }

@@ -15,5 +15,5 @@ struct User: Equatable, Identifiable {
     var quickTopicId: String? = nil
     var lastModuleId: String? = nil
     var lastTopicId: String? = nil
-    var isEditor: Bool = true
+    var isCreator: Bool = true
 }

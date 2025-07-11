@@ -81,12 +81,18 @@ actor MocDataService: DataServiceProtocol {
                                  details: "\(user.name ?? user.email) quick module",
                                  topics: [],
                                  authorId: user.id,
-                                 isPublic: false,
-                                 targetLocaleId: "", // TODO: put something
-                                 translateLocaleId: "")
+                                 isPublic: false)
         let module = try await create(module: quickModule)
         
-        return module
+        let defTopic = Topic(name: "Default",
+                             details: "",
+                             words: [],
+                             exercises: [],
+                             targetLocaleId: quickModule.targetLocaleId,
+                             translateLocaleId: quickModule.targetLocaleId)
+        let ret = try await create(topic: defTopic, moduleId: quickModule.id)
+        
+        return ret
     }
     
     func fetchModulesPreload(userId: String) async throws -> [ModulePreload] {

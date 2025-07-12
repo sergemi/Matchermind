@@ -10,15 +10,30 @@ import Foundation
 @MainActor
 @Observable
 final class QuickAddWordViewModel: DataViewModel, HasUnsavedChanges {
-    var hasUnsavedChanges: Bool = false
+    
+    init(module: Module,
+         topic: Topic,
+        errorMgr: ErrorManager?,
+         router: AppRouter,
+         authService: AuthService,
+         dataMgr: DataManager) {
+        self.startTopic = topic
+        self.currentTopic = topic
+        
+        super.init(errorMgr: errorMgr, router: router, authService: authService, dataMgr: dataMgr)
+    }
     
     var title = "Quick add word"
     
 //    let module: Module
 //    var topicId: String?
 //    
-//    var startTopic: Topic
-//    var currentTopic: Topic
+    var startTopic: Topic
+    var currentTopic: Topic
+    
+    var hasUnsavedChanges: Bool {
+        currentTopic != startTopic
+    }
     
     var quickModuleIdStr: String {
         "quickModule: \(dataMgr.quickModule?.name ?? "nil")"

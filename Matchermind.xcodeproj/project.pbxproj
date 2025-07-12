@@ -14,6 +14,7 @@
 		8F2CCD192E203135009FECA5 /* QuickAddWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2CCD182E203135009FECA5 /* QuickAddWordView.swift */; };
 		8F2CCD1B2E203151009FECA5 /* QuickAddWordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2CCD1A2E203151009FECA5 /* QuickAddWordViewModel.swift */; };
 		8F2CCD1E2E2145D5009FECA5 /* TopicPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2CCD1D2E2145D5009FECA5 /* TopicPickerView.swift */; };
+		8F2CCD202E22422B009FECA5 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2CCD1F2E22422B009FECA5 /* View+.swift */; };
 		8F383D732CB0414B00E87429 /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F383D722CB0414B00E87429 /* ErrorManager.swift */; };
 		8F383D832CB3007A00E87429 /* TextfieldStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F383D822CB3007A00E87429 /* TextfieldStyles.swift */; };
 		8F383D852CB30C7C00E87429 /* DefaultTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F383D842CB30C7C00E87429 /* DefaultTextField.swift */; };
@@ -133,6 +134,7 @@
 		8F2CCD182E203135009FECA5 /* QuickAddWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAddWordView.swift; sourceTree = "<group>"; };
 		8F2CCD1A2E203151009FECA5 /* QuickAddWordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAddWordViewModel.swift; sourceTree = "<group>"; };
 		8F2CCD1D2E2145D5009FECA5 /* TopicPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicPickerView.swift; sourceTree = "<group>"; };
+		8F2CCD1F2E22422B009FECA5 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		8F383D722CB0414B00E87429 /* ErrorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
 		8F383D822CB3007A00E87429 /* TextfieldStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldStyles.swift; sourceTree = "<group>"; };
 		8F383D842CB30C7C00E87429 /* DefaultTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextField.swift; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 				8FDC37C02E1343DF00F97004 /* PreviewWrapper.swift */,
 				8FDC37EC2E197AFC00F97004 /* CodableSetAsArray.swift */,
 				8FDC37F52E1BACF800F97004 /* UnsavedChangesAlertViewModifier.swift */,
+				8F2CCD1F2E22422B009FECA5 /* View+.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -957,6 +960,7 @@
 				8F2CCD1B2E203151009FECA5 /* QuickAddWordViewModel.swift in Sources */,
 				8F8FA42E2DC94B0B0024D01F /* BaseViewModels.swift in Sources */,
 				8FDC37BB2E12DFE000F97004 /* MocDataManager.swift in Sources */,
+				8F2CCD202E22422B009FECA5 /* View+.swift in Sources */,
 				8F8FA4312DC94B0B0024D01F /* UserStatisticsViewModel.swift in Sources */,
 				8F8FA4322DC94B0B0024D01F /* SignUpView.swift in Sources */,
 				8F8FA4332DC94B0B0024D01F /* AppRootView.swift in Sources */,

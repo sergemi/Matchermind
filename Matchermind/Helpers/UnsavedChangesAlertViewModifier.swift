@@ -5,7 +5,6 @@
 //  Created by sergemi on 07/07/2025.
 //
 
-//import Foundation
 import SwiftUI
 
 @MainActor
@@ -32,22 +31,25 @@ struct BackButtonViewModifier: ViewModifier {
 struct UnsavedChangesAlertModifier<VM: AnyObject>: ViewModifier {
     @Environment(\.dismiss) private var dismiss
     @State private var showAlert = false
-    
+
     let viewModel: VM
     let condition: (VM) async -> Bool
     let message: String
-    
+    let showBackButton: Bool
+
     func body(content: Content) -> some View {
         content
-            .navigationBarBackButtonHidden(true)
+            .navigationBarBackButtonHidden(showBackButton)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    BackButton {
-                        Task {
-                            if await condition(viewModel) {
-                                showAlert = true
-                            } else {
-                                dismiss()
+                if showBackButton {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        BackButton {
+                            Task {
+                                if await condition(viewModel) {
+                                    showAlert = true
+                                } else {
+                                    dismiss()
+                                }
                             }
                         }
                     }
@@ -67,13 +69,21 @@ struct UnsavedChangesAlertModifier<VM: AnyObject>: ViewModifier {
 extension View {
     func alertOnBackButton<VM: AnyObject>(
         viewModel: VM,
+        showBackButton: Bool = true,
         when condition: @escaping (VM) async -> Bool = {
             guard let hasUnsaved = $0 as? any HasUnsavedChanges else { return false }
             return await MainActor.run { hasUnsaved.hasUnsavedChanges }
         },
         message: String = "If you exit without saving the data it will be lost."
     ) -> some View {
-        modifier(UnsavedChangesAlertModifier(viewModel: viewModel, condition: condition, message: message))
+        modifier(
+            UnsavedChangesAlertModifier(
+                viewModel: viewModel,
+                condition: condition,
+                message: message,
+                showBackButton: showBackButton
+            )
+        )
     }
 }
 

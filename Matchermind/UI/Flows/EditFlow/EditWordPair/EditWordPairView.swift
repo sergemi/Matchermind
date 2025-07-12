@@ -20,15 +20,21 @@ extension EnvironmentValues {
 
 struct EditWordPairView: View {
     @Environment(ErrorManager.self) var errorMgr
+    private var isSubView: Bool
+    private var isRootView: Bool
     
     @State private var viewModel: EditWordPairViewModel
     
     init(wordPairs: Binding<[WordPair]>,
          targetLocaleId: String,
          translateLocaleId: String,
-         editedWordPair: WordPair? = nil) {
+         editedWordPair: WordPair? = nil,
+         isSubView: Bool = false,
+         isRootView: Bool = false) {
         let environment = EnvironmentValues()
         let errorMgr = environment.errorManager
+        self.isSubView = isSubView
+        self.isRootView = isRootView
         
         _viewModel = State(initialValue: EditWordPairViewModel(errorMgr: errorMgr,
                                                                wordPairsBinding: wordPairs,
@@ -61,8 +67,10 @@ struct EditWordPairView: View {
             .disabled(!viewModel.canSave)
         }
         .padding()
-        .navigationTitle(viewModel.title)
-        .alertOnBackButton(viewModel: viewModel)
+        .applyIf(!isSubView) {
+                $0.navigationTitle(viewModel.title)
+            }
+        .alertOnBackButton(viewModel: viewModel, showBackButton: !isRootView)
     }
 }
 

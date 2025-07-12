@@ -14,10 +14,25 @@ struct QuickAddWordView: View {
     @Environment(ErrorManager.self) var errorMgr
     
     var body: some View {
-        QuickAddWordContentView(errorMgr: errorMgr,
-                                router: router,
-                                authService: authService,
-                                dataMgr: dataMgr)
+        if let quickModule = dataMgr.quickModule,
+           let quickTopic = dataMgr.quickTopic {
+            
+            QuickAddWordContentView(module: quickModule,
+                                    topic: quickTopic,
+                                    errorMgr: errorMgr,
+                                    router: router,
+                                    authService: authService,
+                                    dataMgr: dataMgr)
+        }
+        else {
+            VStack(spacing: 16) {
+                ProgressView()
+                Text("Loading quick module...")
+                    .font(.callout)
+                    .foregroundColor(.gray)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
     }
 }
 
@@ -25,11 +40,15 @@ struct QuickAddWordContentView: View {
     @State private var viewModel: QuickAddWordViewModel
     @State private var showTopicPicker = false
     
-    init(errorMgr: ErrorManager?,
+    init(module: Module,
+         topic: Topic,
+         errorMgr: ErrorManager?,
          router: AppRouter,
          authService: AuthService,
          dataMgr: DataManager) {
-        _viewModel = State(initialValue: QuickAddWordViewModel(errorMgr: errorMgr,
+        _viewModel = State(initialValue: QuickAddWordViewModel(module: module,
+                                                               topic: topic,
+                                                               errorMgr: errorMgr,
                                                                router: router,
                                                                authService: authService,
                                                                dataMgr: dataMgr))
@@ -53,16 +72,22 @@ struct QuickAddWordContentView: View {
             
             Text(viewModel.quickModuleIdStr)
             Text(viewModel.quickTopickIdStr)
+            
+            EditWordPairView(wordPairs: $viewModel.currentTopic.words,
+                             targetLocaleId: viewModel.currentTopic.targetLocaleId,
+                             translateLocaleId: viewModel.currentTopic.translateLocaleId,
+                             isSubView: true,
+                             isRootView: true)
         }
         .navigationTitle(viewModel.title)
         .sheet(isPresented: $showTopicPicker) {
-                TopicPickerView(
-                    topics: viewModel.dataMgr.quickModule?.topics ?? [],
-                    selected: viewModel.dataMgr.quickTopic?.topicPreload
-                ) { newTopic in
-//                    viewModel.dataMgr.quickTopic = newTopic
-                    print(newTopic.name)
-                }
+            TopicPickerView(
+                topics: viewModel.dataMgr.quickModule?.topics ?? [],
+                selected: viewModel.dataMgr.quickTopic?.topicPreload
+            ) { newTopic in
+                //                    viewModel.dataMgr.quickTopic = newTopic
+                print(newTopic.name)
             }
+        }
     }
 }

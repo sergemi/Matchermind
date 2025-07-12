@@ -17,6 +17,7 @@ final class QuickAddWordViewModel: DataViewModel, HasUnsavedChanges {
          router: AppRouter,
          authService: AuthService,
          dataMgr: DataManager) {
+        self.module = module
         self.startTopic = topic
         self.currentTopic = topic
         
@@ -25,7 +26,7 @@ final class QuickAddWordViewModel: DataViewModel, HasUnsavedChanges {
     
     var title = "Quick add word"
     
-//    let module: Module
+    var module: Module
 //    var topicId: String?
 //    
     var startTopic: Topic
@@ -35,6 +36,31 @@ final class QuickAddWordViewModel: DataViewModel, HasUnsavedChanges {
         currentTopic != startTopic
     }
     
+    func saveQuickModule() async {
+        print("saveQuickModule")
+        defer {
+            stopActivity()
+        }
+        startActivity()
+        do {
+            let updatedTopic = try await dataMgr.update(topic: currentTopic, moduleId: module.id)
+            setTopic(updatedTopic)
+            dataMgr.quickTopic = updatedTopic
+            
+            let updatedModule = try await dataMgr.update(module: module)
+            dataMgr.quickModule = updatedModule
+        } catch {
+            errorMgr?.handleError(error)
+        }
+    }
+    
+    //MARK: - Private interface
+    private func setTopic(_ topic: Topic) {
+        startTopic = topic
+        currentTopic = topic
+    }
+    
+    // TODO: remove
     var quickModuleIdStr: String {
         "quickModule: \(dataMgr.quickModule?.name ?? "nil")"
     }

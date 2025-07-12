@@ -17,7 +17,7 @@ final class EditTopicViewViewModel: DataViewModel, HasUnsavedChanges{
     }
     
     var saveBtnTitle: String {
-        isNewTopic ? "Create topic" : "Save topic"
+        isNewTopic ? "New topic" : "Save topic"
     }
     
     var isNewTopic: Bool {

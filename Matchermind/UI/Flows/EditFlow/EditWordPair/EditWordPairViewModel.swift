@@ -24,11 +24,11 @@ final class EditWordPairViewModel: BaseViewModel, HasUnsavedChanges {
     var isNewWord: Bool
     
     var title: String {
-        isNewWord ? "Create word" : "Edit word"
+        isNewWord ? "Add word" : "Edit word"
     }
     
     var saveBtnTitle: String {
-        isNewWord ? "Create word" : "Save word"
+        isNewWord ? "Add word" : "Save word"
     }
     
     var targetTitle: String {

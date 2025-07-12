@@ -11,11 +11,11 @@ import Foundation
 @Observable
 final class EditModuleViewModel: DataViewModel, HasUnsavedChanges {
     var title: String {
-        modulePreload == nil ? "Create module" : "Edit module"
+        modulePreload == nil ? "Add module" : "Edit module"
     }
     
     var saveBtnTitle: String {
-        modulePreload == nil ? "Create module" : "Save module"
+        modulePreload == nil ? "Add module" : "Save module"
     }
     
     var isNewModule: Bool {
@@ -115,6 +115,10 @@ final class EditModuleViewModel: DataViewModel, HasUnsavedChanges {
             }
             
             print("Module \(currentModule.name) saved")
+            if isQuickModule {
+                print("Save quick module to dataMgr")
+                dataMgr.quickModule = currentModule
+            }
         } catch {
             errorMgr?.handleError(error)
         }

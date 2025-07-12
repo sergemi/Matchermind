@@ -16,13 +16,13 @@ struct QuickAddWordView: View {
     var body: some View {
         if let quickModule = dataMgr.quickModule,
            let quickTopic = dataMgr.quickTopic {
-            
             QuickAddWordContentView(module: quickModule,
                                     topic: quickTopic,
                                     errorMgr: errorMgr,
                                     router: router,
                                     authService: authService,
                                     dataMgr: dataMgr)
+            
         }
         else {
             VStack(spacing: 16) {
@@ -78,7 +78,15 @@ struct QuickAddWordContentView: View {
                              translateLocaleId: viewModel.currentTopic.translateLocaleId,
                              isSubView: true,
                              isRootView: true)
+            if viewModel.hasUnsavedChanges {
+                Button("Save") {
+                    Task {
+                        await viewModel.saveQuickModule()
+                    }
+                }
+            }
         }
+        .activitySpinner(viewModel: viewModel)
         .navigationTitle(viewModel.title)
         .sheet(isPresented: $showTopicPicker) {
             TopicPickerView(

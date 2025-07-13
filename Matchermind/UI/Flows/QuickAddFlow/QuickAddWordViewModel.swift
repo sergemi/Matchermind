@@ -64,7 +64,6 @@ final class QuickAddWordViewModel: DataViewModel, HasUnsavedChanges {
             let topic = try await dataMgr.fetchTopic(id: preload.id)
             dataMgr.quickTopic = topic
             currentTopic = topic
-            
         } catch {
             errorMgr?.handleError(error)
         }

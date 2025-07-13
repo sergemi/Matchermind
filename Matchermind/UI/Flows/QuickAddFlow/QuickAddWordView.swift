@@ -75,6 +75,7 @@ struct QuickAddWordContentView: View {
                              translateLocaleId: viewModel.currentTopic.translateLocaleId,
                              isSubView: true,
                              isRootView: true)
+            .id(viewModel.currentTopic.id)
             if viewModel.hasUnsavedChanges {
                 Button("Save") {
                     Task {

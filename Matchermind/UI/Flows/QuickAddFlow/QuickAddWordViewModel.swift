@@ -11,13 +11,11 @@ import Foundation
 @Observable
 final class QuickAddWordViewModel: DataViewModel, HasUnsavedChanges {
     
-    init(module: Module,
-         topic: Topic,
-        errorMgr: ErrorManager?,
+    init(topic: Topic,
+         errorMgr: ErrorManager?,
          router: AppRouter,
          authService: AuthService,
          dataMgr: DataManager) {
-        self.module = module
         self.startTopic = topic
         self.currentTopic = topic
         
@@ -26,9 +24,8 @@ final class QuickAddWordViewModel: DataViewModel, HasUnsavedChanges {
     
     var title = "Quick add word"
     
-    var module: Module
-//    var topicId: String?
-//    
+    //    var topicId: String?
+    //
     var startTopic: Topic
     var currentTopic: Topic
     

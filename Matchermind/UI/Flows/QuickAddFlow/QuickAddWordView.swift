@@ -16,8 +16,7 @@ struct QuickAddWordView: View {
     var body: some View {
         if let quickModule = dataMgr.quickModule,
            let quickTopic = dataMgr.quickTopic {
-            QuickAddWordContentView(module: quickModule,
-                                    topic: quickTopic,
+            QuickAddWordContentView(topic: quickTopic,
                                     errorMgr: errorMgr,
                                     router: router,
                                     authService: authService,
@@ -40,14 +39,12 @@ struct QuickAddWordContentView: View {
     @State private var viewModel: QuickAddWordViewModel
     @State private var showTopicPicker = false
     
-    init(module: Module,
-         topic: Topic,
+    init(topic: Topic,
          errorMgr: ErrorManager?,
          router: AppRouter,
          authService: AuthService,
          dataMgr: DataManager) {
-        _viewModel = State(initialValue: QuickAddWordViewModel(module: module,
-                                                               topic: topic,
+        _viewModel = State(initialValue: QuickAddWordViewModel(topic: topic,
                                                                errorMgr: errorMgr,
                                                                router: router,
                                                                authService: authService,

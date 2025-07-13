@@ -93,8 +93,10 @@ struct QuickAddWordContentView: View {
                 topics: viewModel.dataMgr.quickModule?.topics ?? [],
                 selected: viewModel.dataMgr.quickTopic?.topicPreload
             ) { newTopic in
-                //                    viewModel.dataMgr.quickTopic = newTopic
-                print(newTopic.name)
+                Task {
+                    await viewModel.setQuickTopic(preload: newTopic)
+                    print(newTopic.name)
+                }
             }
         }
     }

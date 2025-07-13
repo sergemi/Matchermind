@@ -43,12 +43,31 @@ final class QuickAddWordViewModel: DataViewModel, HasUnsavedChanges {
         }
         startActivity()
         do {
+            guard let module = dataMgr.quickModule else {
+                throw DataManagerError.moduleNotFound // TODO: change error
+            }
+            
             let updatedTopic = try await dataMgr.update(topic: currentTopic, moduleId: module.id)
             setTopic(updatedTopic)
             dataMgr.quickTopic = updatedTopic
             
             let updatedModule = try await dataMgr.update(module: module)
-            dataMgr.quickModule = updatedModule
+            dataMgr.quickModule = updatedModule // TODO: remove line?
+        } catch {
+            errorMgr?.handleError(error)
+        }
+    }
+    
+    func setQuickTopic(preload: TopicPreload) async {
+        defer {
+            stopActivity()
+        }
+        startActivity()
+        do {
+            let topic = try await dataMgr.fetchTopic(id: preload.id)
+            dataMgr.quickTopic = topic
+            currentTopic = topic
+            
         } catch {
             errorMgr?.handleError(error)
         }

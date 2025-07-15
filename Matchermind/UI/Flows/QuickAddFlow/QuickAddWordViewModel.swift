@@ -23,6 +23,7 @@ final class QuickAddWordViewModel: DataViewModel, HasUnsavedChanges {
     }
     
     var title = "Quick add word"
+    var showTopicPicker: Bool = false
     
     //    var topicId: String?
     //
@@ -64,6 +65,18 @@ final class QuickAddWordViewModel: DataViewModel, HasUnsavedChanges {
             let topic = try await dataMgr.fetchTopic(id: preload.id)
             dataMgr.quickTopic = topic
             currentTopic = topic
+        } catch {
+            errorMgr?.handleError(error)
+        }
+    }
+    
+    func navigateToNewTopic() {
+        showTopicPicker = false
+        do {
+            guard let module = dataMgr.quickModule else {
+                throw DataManagerError.moduleNotFound
+            }
+            router.navigate(to: .quickAdd(.newTopic(module: module)))
         } catch {
             errorMgr?.handleError(error)
         }

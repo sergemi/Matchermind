@@ -9,6 +9,7 @@ import SwiftUI
 
 enum QuickAddFlowLink: Hashable {
     case addWord
+    case newTopic(module: Module)
 }
 
 struct QuickAddFlowView: View {
@@ -23,6 +24,9 @@ struct QuickAddFlowView: View {
                     switch link {
                     case .addWord:
                         QuickAddWordView()
+                        
+                    case .newTopic(let module):
+                        EditTopicView(module: module)
                     }
                 }
         }

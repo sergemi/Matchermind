@@ -37,7 +37,6 @@ struct QuickAddWordView: View {
 
 struct QuickAddWordContentView: View {
     @State private var viewModel: QuickAddWordViewModel
-    @State private var showTopicPicker = false
     
     init(topic: Topic,
          errorMgr: ErrorManager?,
@@ -54,7 +53,7 @@ struct QuickAddWordContentView: View {
     var body: some View {
         VStack{
             Button {
-                showTopicPicker = true
+                viewModel.showTopicPicker = true
             } label: {
                 HStack {
                     Text("Topic:")
@@ -87,7 +86,7 @@ struct QuickAddWordContentView: View {
         }
         .activitySpinner(viewModel: viewModel)
         .navigationTitle(viewModel.title)
-        .sheet(isPresented: $showTopicPicker) {
+        .sheet(isPresented: $viewModel.showTopicPicker) {
             VStack {
                 TopicPickerView(
                     topics: viewModel.dataMgr.quickModule?.topics ?? [],
@@ -101,6 +100,7 @@ struct QuickAddWordContentView: View {
                 
                 Button("New Topic") {
                     print("Create new topic")
+                    viewModel.navigateToNewTopic()
                 }
             }
         }

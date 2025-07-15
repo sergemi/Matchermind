@@ -65,6 +65,7 @@ struct QuickAddWordContentView: View {
                         .font(.caption)
                 }
                 .contentShape(Rectangle())
+                .padding()
             }
             
             Text(viewModel.quickModuleIdStr)
@@ -87,13 +88,19 @@ struct QuickAddWordContentView: View {
         .activitySpinner(viewModel: viewModel)
         .navigationTitle(viewModel.title)
         .sheet(isPresented: $showTopicPicker) {
-            TopicPickerView(
-                topics: viewModel.dataMgr.quickModule?.topics ?? [],
-                selected: viewModel.dataMgr.quickTopic?.topicPreload
-            ) { newTopic in
-                Task {
-                    await viewModel.setQuickTopic(preload: newTopic)
-                    print(newTopic.name)
+            VStack {
+                TopicPickerView(
+                    topics: viewModel.dataMgr.quickModule?.topics ?? [],
+                    selected: viewModel.dataMgr.quickTopic?.topicPreload
+                ) { newTopic in
+                    Task {
+                        await viewModel.setQuickTopic(preload: newTopic)
+                        print(newTopic.name)
+                    }
+                }
+                
+                Button("New Topic") {
+                    print("Create new topic")
                 }
             }
         }

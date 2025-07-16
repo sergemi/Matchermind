@@ -143,6 +143,15 @@ final class EditTopicViewViewModel: DataViewModel, HasUnsavedChanges{
         }
     }
     
+    func showSelectExerciseView() {
+        if isQuickAdd {
+            router.quickAddPath.append(EditTopicNavigationLink.editExercises)
+        }
+        else {
+            router.editPath.append(EditTopicNavigationLink.editExercises)
+        }
+    }
+    
     //MARK: - Private interface
     private func setTopic(_ topic: Topic) {
         startTopic = topic

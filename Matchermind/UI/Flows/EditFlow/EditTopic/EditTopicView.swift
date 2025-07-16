@@ -43,6 +43,7 @@ struct EditTopicView: View {
 struct EditTopicContentView: View {
     @State private var viewModel: EditTopicViewViewModel
     @State var isFirstLoad: Bool = true
+    private var isQuickAdd: Bool
     
     init(module: Module,
          topicId: String?,
@@ -51,6 +52,7 @@ struct EditTopicContentView: View {
          router: AppRouter,
          authService: AuthService,
          dataMgr: DataManager) {
+        self.isQuickAdd = isQuickAdd
         _viewModel = State(initialValue: EditTopicViewViewModel(module: module,
                                                                 topicId: topicId,
                                                                 isQuickAdd: isQuickAdd,
@@ -73,21 +75,25 @@ struct EditTopicContentView: View {
                                    selectedLocaleId: $viewModel.currentTopic.translateLocaleId)
             
             Button {
-                print("Go to excercises")
-                viewModel.router.editPath.append(EditTopicNavigationLink.editExercises)
+                viewModel.showSelectExerciseView()
             } label: {
                 EditModuleExercisesView(exercises: $viewModel.currentTopic.exercises)
                     .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
             
-            EditWordsListView(words: $viewModel.currentTopic.words, onAdd: {
-                viewModel.router.editPath.append(EditTopicNavigationLink.addWord)
-            }, onEdit: {id in
-                if let wordPair = viewModel.currentTopic.words.first(where: {$0.id == id}) {
-                    viewModel.router.editPath.append(EditTopicNavigationLink.editWord(wordPair))
-                }
-            })
+            if isQuickAdd {
+                Spacer()
+            }
+            else {
+                EditWordsListView(words: $viewModel.currentTopic.words, onAdd: {
+                    viewModel.router.editPath.append(EditTopicNavigationLink.addWord)
+                }, onEdit: {id in
+                    if let wordPair = viewModel.currentTopic.words.first(where: {$0.id == id}) {
+                        viewModel.router.editPath.append(EditTopicNavigationLink.editWord(wordPair))
+                    }
+                })
+            }
             
             Button(viewModel.saveBtnTitle) {
                 Task {
@@ -133,13 +139,12 @@ struct EditTopicContentView: View {
     
     // TODO: Internal navigation (not used AppRouter)
     struct EditExercisesLink: Hashable {}
-    
-    enum EditTopicNavigationLink: Hashable {
-        case editExercises
-        case addWord
-        case editWord(WordPair)
-    }
-    
+}
+
+enum EditTopicNavigationLink: Hashable {
+    case editExercises
+    case addWord
+    case editWord(WordPair)
 }
 
 

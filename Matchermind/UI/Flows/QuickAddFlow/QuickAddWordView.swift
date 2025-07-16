@@ -21,6 +21,7 @@ struct QuickAddWordView: View {
                                     router: router,
                                     authService: authService,
                                     dataMgr: dataMgr)
+            .id(quickTopic.id)
             
         }
         else {
@@ -68,14 +69,18 @@ struct QuickAddWordContentView: View {
             }
             
             Text(viewModel.quickModuleIdStr)
-            Text(viewModel.quickTopickIdStr)
-            
+            Text(viewModel.quickTopickStr)
+            Text(viewModel.currentTopicStr)
+            //TODO: remove
+//            Text("locales: '\(viewModel.currentTopic.targetLocaleId)' - '\(viewModel.currentTopic.translateLocaleId)'")
+//            Text("locales2: '\(viewModel.dataMgr.quickTopic?.targetLocaleId ?? "unknown")' - '\(viewModel.dataMgr.quickTopic?.translateLocaleId ?? "unknown")'")
+
             EditWordPairView(wordPairs: $viewModel.currentTopic.words,
-                             targetLocaleId: viewModel.currentTopic.targetLocaleId,
-                             translateLocaleId: viewModel.currentTopic.translateLocaleId,
+                             targetLocaleId: viewModel.dataMgr.quickTopic?.targetLocaleId ?? "",
+                             translateLocaleId: viewModel.dataMgr.quickTopic?.translateLocaleId ?? "",
                              isSubView: true,
                              isRootView: true)
-            .id(viewModel.currentTopic.id)
+            .id(viewModel.dataMgr.quickTopic?.id ?? viewModel.currentTopic.id)
             if viewModel.hasUnsavedChanges {
                 Button("Save") {
                     Task {

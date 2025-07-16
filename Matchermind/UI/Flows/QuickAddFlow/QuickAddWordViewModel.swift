@@ -64,7 +64,7 @@ final class QuickAddWordViewModel: DataViewModel, HasUnsavedChanges {
         do {
             let topic = try await dataMgr.fetchTopic(id: preload.id)
             dataMgr.quickTopic = topic
-            currentTopic = topic
+//            currentTopic = topic
         } catch {
             errorMgr?.handleError(error)
         }
@@ -93,7 +93,11 @@ final class QuickAddWordViewModel: DataViewModel, HasUnsavedChanges {
         "quickModule: \(dataMgr.quickModule?.name ?? "nil")"
     }
     
-    var quickTopickIdStr: String {
-        "quickTopickId: \(dataMgr.quickTopic?.name ?? "nil")"
+    var quickTopickStr: String {
+        "quickTopick: \(dataMgr.quickTopic?.name ?? "nil")"
+    }
+    
+    var currentTopicStr: String {
+        "currentTopic: \(currentTopic.name)"
     }
 }

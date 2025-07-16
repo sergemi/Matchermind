@@ -8,11 +8,15 @@
 import Foundation
 
 @MainActor
-final class ProfileViewModel: AuthViewModel {
+final class ProfileViewModel: DataViewModel {
     var title = "Base profile"
     
     func detailed() {
         router.navigate(to: .profile(.statistics))
+    }
+    
+    func editQuickModule(preload: ModulePreload) {
+        router.navigate(to: .profile(.editQuickModule(preload: preload)))
     }
     
     func close() {

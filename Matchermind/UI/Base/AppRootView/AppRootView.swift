@@ -33,6 +33,7 @@ struct AppRootView: View {
                 .sheet(isPresented: $router.isShowingProfile) {
                     ProfileFlowView()
                         .environment(router)
+                        .environment(dataMgr)
                 }
             if router.isShowingAuth {
                 AuthFlowView(closeAction: router.closeAuth)

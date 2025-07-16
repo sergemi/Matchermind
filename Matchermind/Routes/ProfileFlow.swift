@@ -10,6 +10,7 @@ import SwiftUI
 enum ProfileFlowLink: Hashable {
     case base
     case statistics
+    case editQuickModule(preload: ModulePreload)
 }
 
 struct ProfileFlowView: View {
@@ -26,6 +27,9 @@ struct ProfileFlowView: View {
                         
                     case .statistics:
                         UserStatisticsView()
+                        
+                    case .editQuickModule(let preload):
+                        EditModuleView(modulePreload: preload , isQuickModule: true)
                     }
                 }
         }

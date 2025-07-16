@@ -12,6 +12,7 @@ import Foundation
 final class EditTopicViewViewModel: DataViewModel, HasUnsavedChanges{
     let module: Module
     var topicId: String?
+    let isQuickAdd: Bool
     var title: String {
         topicId != nil ? "Edit Topic" : "New Topic"
     }
@@ -33,11 +34,16 @@ final class EditTopicViewViewModel: DataViewModel, HasUnsavedChanges{
         hasUnsavedChanges
     }
     
+//    var isQuickModule: Bool { TODO: remove
+//        module.id == dataMgr.quickModule?.id
+//    }
+        
     var startTopic: Topic
     var currentTopic: Topic
     
     init(module: Module,
          topicId: String?,
+         isQuickAdd: Bool,
          errorMgr: ErrorManager?,
          router: AppRouter,
          authService: AuthService,
@@ -45,6 +51,7 @@ final class EditTopicViewViewModel: DataViewModel, HasUnsavedChanges{
         
         self.module = module
         self.topicId = topicId
+        self.isQuickAdd = isQuickAdd
         
         startTopic = Topic(name: "",
                            details: "",
@@ -115,9 +122,17 @@ final class EditTopicViewViewModel: DataViewModel, HasUnsavedChanges{
         do {
             if isNewTopic {
                 
-                _ = try await dataMgr.create(topic: currentTopic, moduleId: module.id)
+                let newModule = try await dataMgr.create(topic: currentTopic, moduleId: module.id)
                 setTopic(currentTopic)
                 topicId = currentTopic.id
+                                
+                if isQuickAdd {
+                    dataMgr.quickModule = newModule
+                    dataMgr.quickTopic = currentTopic
+                    if !router.quickAddPath.isEmpty {
+                        router.quickAddPath.removeLast()
+                    }
+                }
             }
             else {
                 let updatedTopic = try await dataMgr.update(topic: currentTopic, moduleId: module.id)

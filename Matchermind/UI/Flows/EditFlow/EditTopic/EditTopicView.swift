@@ -15,15 +15,24 @@ struct EditTopicView: View {
     
     let module: Module
     let topicId: String?
+    let isQuickAdd: Bool
     
     init(module: Module, topicId: String? = nil) {
         self.module = module
         self.topicId = topicId
+        self.isQuickAdd = false
+    }
+    
+    init(module: Module, isQuickAdd: Bool) {
+        self.module = module
+        self.topicId = nil
+        self.isQuickAdd = isQuickAdd
     }
     
     var body: some View {
         EditTopicContentView(module: module,
                              topicId: topicId,
+                             isQuickAdd: isQuickAdd,
                              errorMgr: errorMgr,
                              router: router,
                              authService: authService,
@@ -37,12 +46,14 @@ struct EditTopicContentView: View {
     
     init(module: Module,
          topicId: String?,
+         isQuickAdd: Bool,
          errorMgr: ErrorManager?,
          router: AppRouter,
          authService: AuthService,
          dataMgr: DataManager) {
         _viewModel = State(initialValue: EditTopicViewViewModel(module: module,
                                                                 topicId: topicId,
+                                                                isQuickAdd: isQuickAdd,
                                                                 errorMgr: errorMgr,
                                                                 router: router,
                                                                 authService: authService,

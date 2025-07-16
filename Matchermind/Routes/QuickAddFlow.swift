@@ -26,7 +26,7 @@ struct QuickAddFlowView: View {
                         QuickAddWordView()
                         
                     case .newTopic(let module):
-                        EditTopicView(module: module)
+                        EditTopicView(module: module, isQuickAdd: true)
                     }
                 }
         }

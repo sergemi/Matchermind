@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User: Equatable, Identifiable {
+struct User: Equatable, Identifiable, Codable {
     let id: String
     let email: String
     var name: String? = nil //TODO: maybe change inicialization later

@@ -5,13 +5,13 @@ struct AppRootView: View {
     @State private var errorManager = ErrorManager()
     
     @State private var authService = AuthService(service:
-                                                                                                    MockAuthService.initWithMockUser(loginned: true)
-//                                                 FirebaseAuthService()
+//                                                                                                    MockAuthService.initWithMockUser(loginned: true)
+                                                 FirebaseAuthService()
     )
     @State private var dataMgr: DataManager =
-    MocDataManager(testDelayMax: 0,
-                   withData: true)
-//    FirebaseDataManager()
+//    MocDataManager(testDelayMax: 0,
+//                   withData: true)
+    FirebaseDataManager()
     
     @State var viewModel = AppRootViewModel()
     

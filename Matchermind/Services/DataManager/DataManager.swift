@@ -39,7 +39,7 @@ class DataManager {
         self.user = user
         
         do {
-            try await _ = dataService.fetchUser(id: user.id)
+            self.user = try await dataService.fetchUser(id: user.id)
         } catch (DataManagerError.userNotFound) {
             let newUser = try await dataService.create(user: user)
             self.user = newUser
@@ -145,5 +145,6 @@ class DataManager {
     private func resetData() {
         modulePreloads.removeAll()
         quickModule = nil
+        quickTopic = nil
     }
 }

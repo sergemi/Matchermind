@@ -13,7 +13,12 @@ import Combine
 final class EditModulesListViewModel: DataViewModel {
     let title = "Modules to edit"
     var modules: [ModulePreload] {
-        dataMgr.modulePreloads
+        guard let user = authService.user else {
+            return []
+        }
+        let allModules = dataMgr.modulePreloads
+        let allEditableModules = allModules.filter{$0.authorId == user.id}
+        return allEditableModules
     }
     
     var quickModule: ModulePreload? {

@@ -32,7 +32,7 @@ struct LanguageSelectorButton: View {
             .contentShape(Rectangle())
         }
         .sheet(isPresented: $showPicker) {
-            LanguagePickerView(selectedLocaleId: $selectedLocaleId)
+            LanguagePickerView(selectedLanguageCode: $selectedLocaleId)
         }
     }
 }

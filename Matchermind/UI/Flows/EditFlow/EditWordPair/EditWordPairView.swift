@@ -81,8 +81,8 @@ struct EditWordPairView: View {
     let errorMgr = ErrorManager()
     
     EditWordPairView(wordPairs: .constant([]),
-                     targetLocaleId: Locale.current.identifier,
-                     translateLocaleId: Locale.current.identifier,
+                     targetLocaleId: Locale.currentLanguageCode,
+                     translateLocaleId: Locale.currentLanguageCode,
                      editedWordPair: nil)
     .environment(errorMgr)
 }

@@ -8,65 +8,72 @@
 import SwiftUI
 
 struct LanguagePickerView: View {
-    @Binding var selectedLocaleId: String
+    @Binding var selectedLanguageCode: String
     @Environment(\.dismiss) private var dismiss
     
     @State private var searchText = ""
     
-    private var allLocaleIds: [String] {
-        Locale.availableIdentifiers
-            .filter { id in
-                guard let name = Locale.current.localizedString(forIdentifier: id) else { return false }
-                return !name.trimmingCharacters(in: .whitespaces).isEmpty
-            }
-            .sorted { lhs, rhs in
-                Locale.current.localizedString(forIdentifier: lhs)?.localizedCaseInsensitiveCompare(
-                    Locale.current.localizedString(forIdentifier: rhs) ?? ""
-                ) == .orderedAscending
-            }
+    private var uniqueLanguageCodes: [String] {
+        let languageCodes = Locale.availableIdentifiers.compactMap {
+            Locale(identifier: $0).language.languageCode?.identifier
+        }
+        
+        // remove dublicates
+        let uniqueCodes = Set(languageCodes)
+        
+        // Sort by locale name
+        return uniqueCodes.sorted { lhs, rhs in
+            let lhsName = Locale.current.localizedString(forLanguageCode: lhs) ?? ""
+            let rhsName = Locale.current.localizedString(forLanguageCode: rhs) ?? ""
+            return lhsName.localizedCaseInsensitiveCompare(rhsName) == .orderedAscending
+        }
     }
     
-    private var filteredLocaleIds: [String] {
-        guard !searchText.isEmpty else { return allLocaleIds }
-        return allLocaleIds.filter {
-            Locale.current.localizedString(forIdentifier: $0)?
+    private var filteredLanguageCodes: [String] {
+        guard !searchText.isEmpty else { return uniqueLanguageCodes }
+        return uniqueLanguageCodes.filter { code in
+            Locale.current.localizedString(forLanguageCode: code)?
                 .localizedCaseInsensitiveContains(searchText) == true
         }
     }
-
+    
     var body: some View {
         NavigationStack {
-            List(filteredLocaleIds, id: \.self) { id in
+            List(filteredLanguageCodes, id: \.self) { code in
                 Button {
-                    selectedLocaleId = id
+                    selectedLanguageCode = code
                     dismiss()
                 } label: {
                     HStack {
-                        Text(Locale.current.localizedString(forIdentifier: id) ?? id)
+                        Text(Locale.current.localizedString(forLanguageCode: code) ?? code)
                         Spacer()
-                        if id == selectedLocaleId {
+                        if code == selectedLanguageCode {
                             Image(systemName: "checkmark")
                                 .foregroundColor(.accentColor)
                         }
                     }
+                    .foregroundStyle(.primary)
                 }
             }
-            .searchable(text: $searchText)
+            .searchable(text: $searchText, prompt: "Search for a language")
             .navigationTitle("Select Language")
         }
     }
 }
+
+// MARK: - Preview
 
 #Preview {
     LanguagePickerPreviewWrapper()
 }
 
 private struct LanguagePickerPreviewWrapper: View {
-    @State private var selectedLocaleId: String = "en"
-
+    @State private var selectedCode: String = "en"
+    
     var body: some View {
-        NavigationStack {
-            LanguagePickerView(selectedLocaleId: $selectedLocaleId)
-        }
+        Text("Selected language code: \(selectedCode)")
+            .sheet(isPresented: .constant(true)) {
+                LanguagePickerView(selectedLanguageCode: $selectedCode)
+            }
     }
 }

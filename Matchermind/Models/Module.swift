@@ -35,8 +35,8 @@ struct Module: Identifiable, Equatable, Codable, Hashable {
          topics: [TopicPreload] = [],
          authorId: String = "",
          isPublic: Bool = false,
-         targetLocaleId: String = Locale.current.identifier,
-         translateLocaleId: String = Locale.current.identifier) {
+         targetLocaleId: String = Locale.currentLanguageCode,
+         translateLocaleId: String = Locale.currentLanguageCode) {
         self.init(id: UUID().uuidString,
                   name: name,
                   details: details,

@@ -12,12 +12,14 @@ extension Locale {
         guard let languageCode = self.language.languageCode?.identifier else { return nil }
         return self.localizedString(forLanguageCode: languageCode)?.capitalized
     }
-}
-
-extension Locale {
+    
     func localizedLanguageName(for identifier: String) -> String? {
         let locale = Locale(identifier: identifier)
         guard let languageCode = locale.language.languageCode?.identifier else { return nil }
         return self.localizedString(forLanguageCode: languageCode)?.capitalized
+    }
+    
+    static var currentLanguageCode: String {
+        Locale.current.language.languageCode?.identifier ?? "en"
     }
 }

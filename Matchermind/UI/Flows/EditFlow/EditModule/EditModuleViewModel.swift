@@ -155,8 +155,8 @@ final class EditModuleViewModel: DataViewModel, HasUnsavedChanges {
                             topics: [],
                             authorId: authorId,
                             isPublic: true,
-                            targetLocaleId: Locale.current.identifier,
-                            translateLocaleId: Locale.current.identifier)
+                            targetLocaleId: Locale.currentLanguageCode,
+                            translateLocaleId: Locale.currentLanguageCode)
         return module
     }
     

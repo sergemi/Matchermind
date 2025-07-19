@@ -99,17 +99,4 @@ final class QuickAddWordViewModel: DataViewModel, HasUnsavedChanges {
         startTopic = topic
         currentTopic = topic
     }
-    
-    // TODO: remove
-    var quickModuleIdStr: String {
-        "quickModule: \(dataMgr.quickModule?.name ?? "nil")"
-    }
-    
-    var quickTopickStr: String {
-        "quickTopick: \(dataMgr.quickTopic?.name ?? "nil")"
-    }
-    
-    var currentTopicStr: String {
-        "currentTopic: \(currentTopic.name)"
-    }
 }

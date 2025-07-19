@@ -68,13 +68,6 @@ struct QuickAddWordContentView: View {
                 .padding()
             }
             
-            Text(viewModel.quickModuleIdStr)
-            Text(viewModel.quickTopickStr)
-            Text(viewModel.currentTopicStr)
-            //TODO: remove
-            //            Text("locales: '\(viewModel.currentTopic.targetLocaleId)' - '\(viewModel.currentTopic.translateLocaleId)'")
-            //            Text("locales2: '\(viewModel.dataMgr.quickTopic?.targetLocaleId ?? "unknown")' - '\(viewModel.dataMgr.quickTopic?.translateLocaleId ?? "unknown")'")
-            
             EditWordPairView(wordPairs: $viewModel.currentTopic.words,
                              targetLocaleId: viewModel.dataMgr.quickTopic?.targetLocaleId ?? "",
                              translateLocaleId: viewModel.dataMgr.quickTopic?.translateLocaleId ?? "",

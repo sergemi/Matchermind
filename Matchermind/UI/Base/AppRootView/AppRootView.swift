@@ -48,6 +48,9 @@ struct AppRootView: View {
         .withErrorAlert(errorManager: errorManager)
         .onChange(of: authService.user) { _, user in
             router.isShowingAuth = user == nil
+            if user == nil {
+                router.reset()
+            }
             if let user = user {
                 Task {
                     do {

@@ -17,7 +17,8 @@ enum AppRoute: Hashable {
 
 @Observable
 final class AppRouter {
-    var selectedTab: Tab = .learn
+    private static let defTab: Tab = .learn
+    var selectedTab: Tab = defTab
     
     var learnPath = NavigationPath()
     var editPath = NavigationPath()
@@ -58,6 +59,18 @@ final class AppRouter {
             profilePath.append(link)
             isShowingProfile = true // TODO: check if it work
         }
+    }
+    
+    func reset() {
+        print("AppRouter.reset")
+        learnPath = NavigationPath()
+        editPath = NavigationPath()
+        authPath = NavigationPath()
+        profilePath = NavigationPath()
+        quickAddPath = NavigationPath()
+        
+        selectedTab = AppRouter.defTab
+        isShowingProfile = false
     }
 
     func doLogin() {
